@@ -2,32 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//public enum NodeType { Default, Intersection }
 public class PathNode : MonoBehaviour
 {
-    //[SerializeField] NodeType typeOfNode;
-    //[SerializeField] bool hasTrafficLights;
     [SerializeField] bool allowedToPass = true;
     [SerializeField] float roadSpeedLimit = 30;
 
-    [SerializeField] PathNode[] possibleNextNodes;
+    [SerializeField] List<PathNode> possibleNextNodes;
 
-
-    /// <summary>
-    /// Return this node's type of path
-    /// </summary>
-    //public NodeType GetNodeType()
-    //{
-    //    return typeOfNode;
-    //}
-
-    /// <summary>
-    /// Returns true if this node has traffic lights 
-    /// </summary>
-    //public bool HasTrafficLights()
-    //{
-    //    return hasTrafficLights;
-    //}
 
     /// <summary>
     /// Returns true when green light is on, or if there is no traffic light present
@@ -66,12 +47,45 @@ public class PathNode : MonoBehaviour
     }
 
     /// <summary>
+    /// Sets the speed limit at this node
+    /// </summary>
+    public void SetRoadSpeedLimit(float input)
+    {
+        roadSpeedLimit = input;
+    }
+
+    /// <summary>
     /// Returns the nodes possible to go to next from this position
     /// </summary>
-    public PathNode[] GetPathNodes()
+    public List<PathNode> GetPathNodes()
     {
         return possibleNextNodes;
     }
+
+    /// <summary>
+    /// Adds a new node to the list of connected nodes, mainly used in editor too quickly create new nodes
+    /// </summary>
+    public void AddConnectedNode(PathNode input)
+    {
+        possibleNextNodes.Add(input);
+    }
+    public void AddConnectedNode(List<PathNode> input)
+    {
+        for (int i = 0; i < input.Count; i++)
+        {
+            possibleNextNodes.Add(input[i]);
+        }
+    }
+
+    /// <summary>
+    /// Replaces the connected node, mainly used in editor too quickly create new nodes between already made nodes
+    /// </summary>
+    public void ReplaceConnectedNode(PathNode input)
+    {
+        possibleNextNodes[0] = input;
+    }
+
+
 
     [Header("Editor")]
     public Color lineColor;
@@ -87,7 +101,7 @@ public class PathNode : MonoBehaviour
 
 
         Gizmos.color = lineColor;
-        for (int i = 0; i < possibleNextNodes.Length; i++)
+        for (int i = 0; i < possibleNextNodes.Count; i++)
         {
             Vector3 currentNode = this.transform.position;
             Vector3 nextNode = Vector3.zero;
@@ -95,4 +109,6 @@ public class PathNode : MonoBehaviour
             Gizmos.DrawLine(currentNode, nextNode);
         }
     }
+
+
 }

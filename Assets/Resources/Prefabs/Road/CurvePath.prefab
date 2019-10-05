@@ -58,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
       propertyPath: roadSpeedLimit
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
       propertyPath: roadSpeedLimit
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
@@ -329,7 +329,7 @@ PrefabInstance:
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
       propertyPath: roadSpeedLimit
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
@@ -714,7 +714,7 @@ PrefabInstance:
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
       propertyPath: roadSpeedLimit
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
@@ -852,7 +852,7 @@ PrefabInstance:
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
       propertyPath: roadSpeedLimit
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
@@ -990,7 +990,7 @@ PrefabInstance:
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}
       propertyPath: roadSpeedLimit
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4468894698761660115, guid: 9d032dc8c2f565142b554099a5fd1ea7,
         type: 3}

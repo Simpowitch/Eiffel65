@@ -14,9 +14,9 @@ public static class Pathfinding
         shortestPath.length = float.MaxValue;
         Path pathSoFar = new Path();
 
-        PathNode[] pathOptions = startPos.GetPathNodes();
+        List<PathNode> pathOptions = startPos.GetPathNodes();
         pathOptions = SortNodesByDistance(pathOptions, target);
-        for (int i = 0; i < pathOptions.Length; i++)
+        for (int i = 0; i < pathOptions.Count; i++)
         {
             pathSoFar.nodes.Clear();
             pathSoFar.length = 0f;
@@ -47,12 +47,12 @@ public static class Pathfinding
     /// </summary>
     private static void SearchNode(PathNode posToSearchFrom, PathNode target, ref Path shortestPath, Path pathSoFar, PathNode nodeToAvoid)
     {
-        PathNode[] pathOptions = posToSearchFrom.GetPathNodes();
-        if (pathOptions.Length > 1)
+        List<PathNode> pathOptions = posToSearchFrom.GetPathNodes();
+        if (pathOptions.Count > 1)
         {
             pathOptions = SortNodesByDistance(pathOptions, target);
         }
-        for (int i = 0; i < pathOptions.Length; i++)
+        for (int i = 0; i < pathOptions.Count; i++)
         {
             if (pathSoFar.nodes.Contains(pathOptions[i]))
             {
@@ -107,11 +107,11 @@ public static class Pathfinding
     /// <summary>
     /// Sorts the nodes by the distance to the target
     /// </summary>
-    private static PathNode[] SortNodesByDistance(PathNode[] nodesToSort, PathNode target)
+    private static List<PathNode> SortNodesByDistance(List<PathNode> nodesToSort, PathNode target)
     {
-        PathNode[] sortedArray = new PathNode[nodesToSort.Length];
+        PathNode[] sortedArray = new PathNode[nodesToSort.Count];
         sortedArray = nodesToSort.OrderBy(x => Vector3.Distance(target.transform.position, x.transform.position)).ToArray();
-        return sortedArray;
+        return sortedArray.ToList();
     }
 }
 

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 30
+  roadSpeedLimit: 50
   possibleNextNodes: []
   lineColor: {r: 0.05724907, g: 1, b: 0, a: 1}
   nodeSize: 1
