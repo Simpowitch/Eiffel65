@@ -193,9 +193,16 @@ public class CarAI : MonoBehaviour
     /// /// </summary>
     private void SetRandomTargetNode()
     {
-        PathNode[] allNodes = pathParent.GetComponentsInChildren<PathNode>();
-        PathNode chosenTarget = allNodes[Random.Range(0, allNodes.Length)];
-        SetNewEndTargetNode(chosenTarget);
+        if (pathParent)
+        {
+            PathNode[] allNodes = pathParent.GetComponentsInChildren<PathNode>();
+            PathNode chosenTarget = allNodes[Random.Range(0, allNodes.Length)];
+            SetNewEndTargetNode(chosenTarget);
+        }
+        else
+        {
+            currentState = AIState.Stopping;
+        }
     }
 
     /// <summary>
@@ -203,9 +210,16 @@ public class CarAI : MonoBehaviour
     /// /// </summary>
     private void SetRandomTargetNode(PathNode nodeToAvoid)
     {
-        PathNode[] allNodes = pathParent.GetComponentsInChildren<PathNode>();
-        PathNode chosenTarget = allNodes[Random.Range(0, allNodes.Length)];
-        SetNewEndTargetNode(chosenTarget, nodeToAvoid);
+        if (pathParent)
+        {
+            PathNode[] allNodes = pathParent.GetComponentsInChildren<PathNode>();
+            PathNode chosenTarget = allNodes[Random.Range(0, allNodes.Length)];
+            SetNewEndTargetNode(chosenTarget, nodeToAvoid);
+        }
+        else
+        {
+            currentState = AIState.Stopping;
+        }
     }
 
 
