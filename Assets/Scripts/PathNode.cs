@@ -103,10 +103,18 @@ public class PathNode : MonoBehaviour
         Gizmos.color = lineColor;
         for (int i = 0; i < possibleNextNodes.Count; i++)
         {
-            Vector3 currentNode = this.transform.position;
-            Vector3 nextNode = Vector3.zero;
-            nextNode = possibleNextNodes[i].transform.position;
-            Gizmos.DrawLine(currentNode, nextNode);
+            if (possibleNextNodes[i] != null)
+            {
+                Vector3 currentNode = this.transform.position;
+                Vector3 nextNode = Vector3.zero;
+                nextNode = possibleNextNodes[i].transform.position;
+                Gizmos.DrawLine(currentNode, nextNode);
+            }
+            else
+            {
+                possibleNextNodes.Remove(possibleNextNodes[i]);
+                i--;
+            }
         }
     }
 

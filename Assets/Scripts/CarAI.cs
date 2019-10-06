@@ -6,8 +6,9 @@ using System.Linq;
 public class CarAI : MonoBehaviour
 {
     [SerializeField] Transform pathParent;
-    public List<PathNode> path; //DEBUG PUBLIC - Currently longer than it should be. AI search algoritm seems bugged
+    public List<PathNode> path; //DEBUG PUBLIC
     public PathNode currentNode; //DEBUG PUBLIC - SHOULD BE SET TO THE CLOSEST ONE AT START
+    [SerializeField] PathNode targetNode;
 
     //How close we need to be a node to accept as arrived
     [SerializeField] float distanceToAcceptNodeArrival = 2f;
@@ -31,7 +32,14 @@ public class CarAI : MonoBehaviour
     private void Start()
     {
         //currentNode = SEARCH FOR CLOSEST NODE 
-        SetRandomTargetNode();
+        if (targetNode)
+        {
+            SetNewEndTargetNode(targetNode);
+        }
+        else
+        {
+            SetRandomTargetNode();
+        }
 
 
         wheelController = GetComponent<WheelDrive>();

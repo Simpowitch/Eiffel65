@@ -46,5 +46,5 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   possibleNextNodes: []
-  lineColor: {r: 0.05724907, g: 1, b: 0, a: 1}
+  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
   nodeSize: 1
