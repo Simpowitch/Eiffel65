@@ -5072,6 +5072,111 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1864290178}
     m_Modifications:
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1819066260}
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: hasTrafficLights
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: allowedToPass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: roadSpeedLimit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: hasTrafficLights
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: allowedToPass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: roadSpeedLimit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2127318679}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1394298776}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: typeOfNode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: roadSpeedLimit
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: hasTrafficLights
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: allowedToPass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1299925697}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: hasTrafficLights
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: allowedToPass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: roadSpeedLimit
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1816335579909509357, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
         type: 3}
       propertyPath: m_Name
@@ -5146,111 +5251,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 1394298776}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: typeOfNode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: roadSpeedLimit
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: hasTrafficLights
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: allowedToPass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 1299925697}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: hasTrafficLights
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: allowedToPass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: roadSpeedLimit
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: hasTrafficLights
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: allowedToPass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: roadSpeedLimit
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 2127318679}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 1819066260}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: hasTrafficLights
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: allowedToPass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: roadSpeedLimit
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4364212522644872098, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
         type: 3}
@@ -18433,6 +18433,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496158761}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &497368018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497368020}
+  - component: {fileID: 497368019}
+  m_Layer: 0
+  m_Name: PathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &497368019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497368018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  possibleNextNodes: []
+  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
+  nodeSize: 1
+--- !u!4 &497368020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497368018}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 276.73, y: 0, z: -403.15}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 505480487}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &498639742
 GameObject:
   m_ObjectHideFlags: 0
@@ -18835,6 +18883,9 @@ Transform:
   - {fileID: 437967170}
   - {fileID: 1262045750}
   - {fileID: 1780125882}
+  - {fileID: 497368020}
+  - {fileID: 1521388817}
+  - {fileID: 1367043512}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40250,7 +40301,7 @@ MonoBehaviour:
   pathParent: {fileID: 0}
   path: []
   currentNode: {fileID: 1078700611}
-  targetNode: {fileID: 1780125881}
+  targetNode: {fileID: 497368019}
   distanceToAcceptNodeArrival: 2
   speedToHold: 50
   roadSpeedLimit: 50
@@ -48664,6 +48715,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1864290178}
     m_Modifications:
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 324284418}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1394298773}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 842246872}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 845800878}
     - target: {fileID: 1816335579909509357, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
         type: 3}
       propertyPath: m_Name
@@ -48734,46 +48825,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 842246872}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 845800878}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 1394298773}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 324284418}
     - target: {fileID: 4364212522644872098, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
         type: 3}
       propertyPath: timeBetweenLightswitch
@@ -49822,6 +49873,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365533180}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1367043511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1367043512}
+  - component: {fileID: 1367043513}
+  m_Layer: 0
+  m_Name: PathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1367043512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367043511}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 275.8, y: 0, z: -401.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 505480487}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1367043513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367043511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  possibleNextNodes:
+  - {fileID: 497368019}
+  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
+  nodeSize: 1
 --- !u!1 &1370404155
 GameObject:
   m_ObjectHideFlags: 0
@@ -50234,6 +50334,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1864290178}
     m_Modifications:
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 282603217}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 166810450}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1339648903}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
+        type: 3}
+      propertyPath: possibleNextNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1179736720}
     - target: {fileID: 1816335579909509357, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
         type: 3}
       propertyPath: m_Name
@@ -50304,46 +50444,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086081223508, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 1339648903}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862085898705729, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 1179736720}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345105181723016106, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 166810450}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2823862086141735368, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
-        type: 3}
-      propertyPath: possibleNextNodes.Array.data[0]
-      value: 
-      objectReference: {fileID: 282603217}
     - target: {fileID: 4364212522644872098, guid: 638025f9967f3a94ebbc6b0d09b0f92f,
         type: 3}
       propertyPath: timeBetweenLightswitch
@@ -54158,6 +54258,55 @@ Transform:
   m_Father: {fileID: 1399700218}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
+--- !u!1 &1521388816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1521388817}
+  - component: {fileID: 1521388818}
+  m_Layer: 0
+  m_Name: PathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1521388817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521388816}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 273.27, y: 0, z: -400.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 505480487}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1521388818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521388816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  possibleNextNodes:
+  - {fileID: 1367043513}
+  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
+  nodeSize: 1
 --- !u!1 &1523097983
 GameObject:
   m_ObjectHideFlags: 0
@@ -62649,7 +62798,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  possibleNextNodes: []
+  possibleNextNodes:
+  - {fileID: 1521388818}
   lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
   nodeSize: 1
 --- !u!4 &1780125882
