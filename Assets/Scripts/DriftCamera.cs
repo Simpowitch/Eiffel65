@@ -16,16 +16,23 @@ public class DriftCamera : MonoBehaviour
     public float defaultSmoothing = 6f;
     float smoothing = 6f;
 
-    public Transform lookAtTarget;
     public AdvancedOptions advancedOptions;
 
-    public Transform camPositionParent;
+    public Transform carToFollow;
+    private Transform camRig;
+    private Transform lookAtTarget;
+    private Transform camPositionParent;
+
     private int currentCam = 0;
     private VehicleCamera[] cameras;
 
     private void Start()
     {
+        camRig = carToFollow.Find("CamRig");
+        lookAtTarget = camRig.GetChild(0);
+        camPositionParent = camRig.GetChild(1);
         cameras = camPositionParent.GetComponentsInChildren<VehicleCamera>();
+        GetComponent<GraphOverlay>().vehicleBody = carToFollow.GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()

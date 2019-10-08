@@ -8,7 +8,7 @@ public class GraphOverlayEditor : Editor {
     {
         GraphOverlay myTarget = (GraphOverlay)target;
 
-        myTarget.vehicleBody = (Rigidbody)EditorGUILayout.ObjectField("Vehicle", myTarget.vehicleBody, typeof(Rigidbody), true);
+        //myTarget.vehicleBody = (Rigidbody)EditorGUILayout.ObjectField("Vehicle", myTarget.vehicleBody, typeof(Rigidbody), true);
 
         if (!myTarget.vehicleBody)
             return;

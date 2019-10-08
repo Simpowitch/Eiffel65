@@ -42,10 +42,10 @@ public class PathNodeEditor : Editor
             newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
             newNode.transform.position = (myPathNode.transform.position + myPathNode.GetPathNodes()[0].transform.position) / 2;
             newNode.AddConnectedNode(myPathNode.GetPathNodes());
+            newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetPathNodes()[0].GetRoadSpeedLimit());
             myPathNode.ReplaceConnectedNode(newNode);
             newNode.transform.SetParent(myPathNode.transform.parent);
             newNode.gameObject.name = pathName;
-            newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
             Selection.activeGameObject = newNode.transform.gameObject;
         }
     }
