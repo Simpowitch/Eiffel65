@@ -17,18 +17,24 @@ public class CarAI : MonoBehaviour
     //Our vehicle
     Rigidbody rb;
     //Our speed
-    [SerializeField] float kmhSpeed; //DEBUG
+    [SerializeField] float kmhSpeed;
     //Our speed limit
     [SerializeField] float speedToHold = 50f;
     //The road speed limit
     [SerializeField] float roadSpeedLimit = 50f;
     //Tell the controller to brake or not
     [SerializeField] bool braking = false;
+    //How much does the speed affect sensor length, length = kmh / thisNumber
+    [SerializeField] float sensorLengthSpeedDependency = 4f;
+    //How many times faster do the criminal want to go compared to the road speed limit
+    [SerializeField] float criminalSpeedFactor = 1.5f;
 
     private enum AIState { Drive, Queue, AvoidCollision, Stopping, BackingFromStuck }
     [SerializeField] AIState currentState;
 
     [SerializeField] bool isCriminal = false;
+
+    public float steerPercentage; //DEBUG PUBLIC DEBUG DECLARED VARIABLE
 
     private void Start()
     {
@@ -57,7 +63,7 @@ public class CarAI : MonoBehaviour
     //Main function of the car AI
     private void FixedUpdate()
     {
-        float steerPercentage = 0;
+        steerPercentage = 0; //float steerPercentage = 0;
         float torquePercentage = 0;
 
         steerPercentage = SteerTowardsNextNode();
@@ -93,7 +99,7 @@ public class CarAI : MonoBehaviour
         {
             case AIState.Drive:
                 {
-                    float newSpeed = isCriminal ? Mathf.Max(30, roadSpeedLimit * 2 * (1 - Mathf.Abs(steerPercentage))) : Mathf.Max(10, roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)));
+                    float newSpeed = isCriminal ? Mathf.Max(30, roadSpeedLimit * criminalSpeedFactor * (1 - Mathf.Abs(steerPercentage))) : Mathf.Max(10, roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)));
                     SetSpeedToHold(newSpeed);
                 }
                 break;
@@ -107,7 +113,7 @@ public class CarAI : MonoBehaviour
             case AIState.AvoidCollision:
                 {
                     AvertFromCollision(ref steerPercentage);
-                    float newSpeed = isCriminal ? Mathf.Max(30, roadSpeedLimit * 1.5f * (1 - Mathf.Abs(steerPercentage))) : Mathf.Min(10, roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)));
+                    float newSpeed = isCriminal ? Mathf.Max(20, roadSpeedLimit * 1f * (1 - Mathf.Abs(steerPercentage))) : Mathf.Min(10, roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)));
                     SetSpeedToHold(newSpeed);
                 }
                 break;
@@ -351,7 +357,7 @@ public class CarAI : MonoBehaviour
         sensorStartPos += transform.forward * frontSensorPosition.z;
         sensorStartPos += transform.up * frontSensorPosition.y;
 
-        frontSensorLength = kmhSpeed / 2;
+        frontSensorLength = kmhSpeed / sensorLengthSpeedDependency;
         frontSensorLength = Mathf.Max(frontSensorLength, minimumForwardSensorLength);
 
         frontSensorsAngle = maxAngle * Mathf.Abs(turningPercentage);
@@ -409,33 +415,42 @@ public class CarAI : MonoBehaviour
             }
         }
 
-        //Front angled left sensor
-        collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(-frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength);
-        if (collisionDetected)
+        //if turning left
+        if (turningPercentage < -0.1f)
         {
-            collision = hit;
-            if (hit.transform.tag == "Vehicle")
+            //Front angled left sensor
+            collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(-frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength);
+            if (collisionDetected)
             {
-                return true;
-            }
-            else if (hit.transform.tag == "WorldObject")
-            {
-                return true;
+                collision = hit;
+                if (hit.transform.tag == "Vehicle")
+                {
+                    return true;
+                }
+                else if (hit.transform.tag == "WorldObject")
+                {
+                    return true;
+                }
             }
         }
-        //Front angled right sensor
+
         sensorStartPos += (transform.right * frontSideSensorXOffsetPos) * 2;
-        collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength);
-        if (collisionDetected)
+        //if turning right
+        if (turningPercentage > 0.1f)
         {
-            collision = hit;
-            if (hit.transform.tag == "Vehicle")
+            //Front angled right sensor
+            collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength);
+            if (collisionDetected)
             {
-                return true;
-            }
-            else if (hit.transform.tag == "WorldObject")
-            {
-                return true;
+                collision = hit;
+                if (hit.transform.tag == "Vehicle")
+                {
+                    return true;
+                }
+                else if (hit.transform.tag == "WorldObject")
+                {
+                    return true;
+                }
             }
         }
         collision = hit;
@@ -451,7 +466,7 @@ public class CarAI : MonoBehaviour
         sensorStartPos += transform.forward * frontSensorPosition.z;
         sensorStartPos += transform.up * frontSensorPosition.y;
 
-        frontSensorLength = kmhSpeed / 2;
+        frontSensorLength = kmhSpeed / sensorLengthSpeedDependency;
         frontSensorLength = Mathf.Max(frontSensorLength, minimumForwardSensorLength);
 
         frontSensorsAngle = maxAngle * Mathf.Abs(steerPercentage);
@@ -474,13 +489,18 @@ public class CarAI : MonoBehaviour
             avoidingCollision = true;
             distanceToClosestCollision = Mathf.Min(distanceToClosestCollision, Vector3.Distance(hit.point, transform.position));
         }
-        //Front angled right sensor
-        collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength * Mathf.Abs(steerPercentage));
-        if (collisionDetected)
+
+        //if steering right
+        if (steerPercentage > 0.1f)
         {
-            avoidMultiplier -= 0.1f;
-            avoidingCollision = true;
-            distanceToClosestCollision = Mathf.Min(distanceToClosestCollision, Vector3.Distance(hit.point, transform.position));
+            //Front angled right sensor
+            collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength * Mathf.Abs(steerPercentage));
+            if (collisionDetected)
+            {
+                avoidMultiplier -= 0.1f;
+                avoidingCollision = true;
+                distanceToClosestCollision = Mathf.Min(distanceToClosestCollision, Vector3.Distance(hit.point, transform.position));
+            }
         }
 
         //Front left sensor
@@ -493,13 +513,17 @@ public class CarAI : MonoBehaviour
             distanceToClosestCollision = Mathf.Min(distanceToClosestCollision, Vector3.Distance(hit.point, transform.position));
         }
 
-        //Front angled left sensor
-        collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(-frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength * Mathf.Abs(steerPercentage));
-        if (collisionDetected)
+        //if steering left
+        if (steerPercentage < -0.1f)
         {
-            avoidMultiplier += 0.1f;
-            avoidingCollision = true;
-            distanceToClosestCollision = Mathf.Min(distanceToClosestCollision, Vector3.Distance(hit.point, transform.position));
+            //Front angled left sensor
+            collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(-frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength * Mathf.Abs(steerPercentage));
+            if (collisionDetected)
+            {
+                avoidMultiplier += 0.1f;
+                avoidingCollision = true;
+                distanceToClosestCollision = Mathf.Min(distanceToClosestCollision, Vector3.Distance(hit.point, transform.position));
+            }
         }
 
         //Front center sensor
@@ -524,7 +548,15 @@ public class CarAI : MonoBehaviour
         //Apply counter steering
         if (avoidingCollision)
         {
-            steerPercentage = avoidMultiplier / (distanceToClosestCollision / 2);
+            steerPercentage += avoidMultiplier * Mathf.Min(1, (kmhSpeed/3.6f) * distanceToClosestCollision);
+            if (steerPercentage < -1)
+            {
+                steerPercentage = -1;
+            }
+            else if (steerPercentage > 1)
+            {
+                steerPercentage = 1;
+            }
         }
         return avoidingCollision;
     }

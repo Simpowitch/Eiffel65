@@ -37,6 +37,10 @@ public class WheelDrive : MonoBehaviour
 
     private float speed;
 
+    //How quickly the wheels turn into position
+    [SerializeField] float wheelChangeSpeed = 10f;
+    
+
     // Find all the WheelColliders down in the hierarchy.
     void Start()
     {
@@ -71,7 +75,7 @@ public class WheelDrive : MonoBehaviour
 
     private void LerpToSteeringTarget()
     {
-        steeringAngle = Mathf.Lerp(steeringAngle, targetSteerAngleAI, Time.deltaTime * 3);
+        steeringAngle = Mathf.Lerp(steeringAngle, targetSteerAngleAI, Time.deltaTime * wheelChangeSpeed);
     }
 
     private void FixedUpdate()
