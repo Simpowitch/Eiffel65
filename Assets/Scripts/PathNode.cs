@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SphereCollider))]
 public class PathNode : MonoBehaviour
 {
+    public static PathNode dragConnectedNode;
+
     [SerializeField] bool allowedToPass = true;
     [SerializeField] float roadSpeedLimit = 30;
+    [SerializeField] int pathFindingCost = 0;
 
     [SerializeField] List<PathNode> possibleNextNodes;
 
@@ -67,7 +71,10 @@ public class PathNode : MonoBehaviour
     /// </summary>
     public void AddConnectedNode(PathNode input)
     {
-        possibleNextNodes.Add(input);
+        if (input != this)
+        {
+            possibleNextNodes.Add(input);
+        }
     }
     public void AddConnectedNode(List<PathNode> input)
     {
@@ -85,6 +92,21 @@ public class PathNode : MonoBehaviour
         possibleNextNodes[0] = input;
     }
 
+    public void AddPathFindingCost()
+    {
+        pathFindingCost++;
+    }
+
+    public void ReducePathFindingCost()
+    {
+        pathFindingCost--;
+    }
+
+    public int GetPathFindingCost()
+    {
+        return pathFindingCost;
+    }
+
 
 
     [Header("Editor")]
@@ -98,7 +120,6 @@ public class PathNode : MonoBehaviour
         nodeColor = allowedToPass ? Color.blue : Color.red;
         Gizmos.color = nodeColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
-
 
         Gizmos.color = lineColor;
         for (int i = 0; i < possibleNextNodes.Count; i++)
@@ -117,6 +138,4 @@ public class PathNode : MonoBehaviour
             }
         }
     }
-
-
 }

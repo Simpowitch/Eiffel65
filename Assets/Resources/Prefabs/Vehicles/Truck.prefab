@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 64000011951304364}
   m_Layer: 0
   m_Name: TruckChassis
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 114000012308462854}
   m_Layer: 0
   m_Name: Truck
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -377,6 +377,7 @@ MonoBehaviour:
   stepsBelow: 5
   stepsAbove: 1
   driveType: 0
+  wheelChangeSpeed: 10
 --- !u!1 &1000012823932870
 GameObject:
   m_ObjectHideFlags: 0

@@ -66,33 +66,53 @@ public class CarAI : MonoBehaviour
         steerPercentage = 0; //float steerPercentage = 0;
         float torquePercentage = 0;
 
-        steerPercentage = SteerTowardsNextNode();
-
-        if (!CheckIfAllowedToPass() && !isCriminal)
+        if (currentNode == null)
         {
-            currentState = AIState.Queue;
+            currentState = AIState.Stopping;
         }
         else
         {
-            currentState = AIState.Drive;
-        }
-
-        if (CheckForCollision(steerPercentage, out RaycastHit collision))
-        {
-            if (collision.transform.tag == "WorldObject")
+            if (currentState != AIState.Queue || CheckIfAllowedToPass())
             {
-                currentState = kmhSpeed < 5 ? AIState.BackingFromStuck : AIState.AvoidCollision;
+                UpdateWaypoint();
+                if (currentNode == null)
+                {
+                    return;
+                }
             }
-            else if (collision.transform.tag == "Vehicle")
+            steerPercentage = SteerTowardsNextNode();
+
+            if (!CheckIfAllowedToPass() && !isCriminal)
             {
-                currentState = isCriminal ? AIState.AvoidCollision : AIState.Queue;
+                currentState = AIState.Queue;
             }
             else
             {
-                Debug.LogWarning("No function found for response to collison object tag");
+                currentState = AIState.Drive;
+            }
+
+
+            if (CheckForCollision(steerPercentage, out RaycastHit collision))
+            {
+                if (collision.transform.tag == "WorldObject")
+                {
+                    currentState = kmhSpeed < 5 ? AIState.BackingFromStuck : AIState.AvoidCollision;
+                }
+                else if (collision.transform.tag == "Vehicle")
+                {
+                    currentState = isCriminal ? AIState.AvoidCollision : AIState.Queue;
+                }
+                else
+                {
+                    Debug.LogWarning("No function found for response to collison object tag");
+                }
+            }
+
+            if (LaneChangeCheck(ref steerPercentage) && !isCriminal)
+            {
+                currentState = AIState.Queue;
             }
         }
-
 
 
         switch (currentState)
@@ -138,10 +158,7 @@ public class CarAI : MonoBehaviour
             torquePercentage *= -1;
         }
 
-        if (currentState != AIState.Queue || CheckIfAllowedToPass())
-        {
-            UpdateWaypoint();
-        }
+
 
         wheelController.AIDriver(steerPercentage, torquePercentage, braking);
     }
@@ -274,13 +291,25 @@ public class CarAI : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, path[0].transform.position) < distanceToAcceptNodeArrival)
         {
-            if (path.Count > 1)
+            if (path.Count > 0)
             {
+                currentNode.ReducePathFindingCost();
+
                 path.RemoveAt(0);
-                SetRoadSpeedLimit(path[0].GetComponent<PathNode>().GetRoadSpeedLimit());
-                currentNode = path[0];
+
+                if (path.Count > 0)
+                {
+                    currentNode = path[0];
+                    SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
+                    currentNode.AddPathFindingCost();
+                }
+                else
+                {
+                    currentNode = null;
+                }
+
             }
-            else
+            else if (pathParent != null)
             {
                 SetRandomTargetNode(); //add new path to go to
             }
@@ -337,15 +366,21 @@ public class CarAI : MonoBehaviour
 
 
     [Header("Sensor")]
-    [SerializeField] float minimumForwardSensorLength = 2f;
-    [SerializeField] float minimumAngledSensorLength = 2f;
-    [SerializeField] float maxAngle = 45;
 
+    [SerializeField] float carWidth = 2f;
+    [SerializeField] float carLength = 3f;
+
+    //Foward sensors
+    [SerializeField] float minimumForwardSensorLength = 2f;
     float frontSensorLength = 5f;
+
+    //Angled forward sensors
+    [SerializeField] float minimumAngledSensorLength = 2f;
     float frontAngledSensorLength = 10f;
-    [SerializeField] Vector3 frontSensorPosition = new Vector3(0, 0.2f, 1f);
-    [SerializeField] float frontSideSensorXOffsetPos = 1f;
+    [SerializeField] float maxAngle = 45;
     float frontSensorsAngle = 45;
+
+    int numberOfSideSensors = 3;
 
     /// <summary>
     /// Check the sensors in front of the car to slow down and queue up if there is another car infront of this one
@@ -354,8 +389,7 @@ public class CarAI : MonoBehaviour
     private bool CheckForCollision(float turningPercentage, out RaycastHit collision)
     {
         Vector3 sensorStartPos = transform.position;
-        sensorStartPos += transform.forward * frontSensorPosition.z;
-        sensorStartPos += transform.up * frontSensorPosition.y;
+        sensorStartPos += transform.forward * carLength / 2;
 
         frontSensorLength = kmhSpeed / sensorLengthSpeedDependency;
         frontSensorLength = Mathf.Max(frontSensorLength, minimumForwardSensorLength);
@@ -384,7 +418,7 @@ public class CarAI : MonoBehaviour
         }
 
         //Check front right sensor
-        sensorStartPos += transform.right * frontSideSensorXOffsetPos;
+        sensorStartPos += transform.right * (carWidth / 2);
         collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
         if (collisionDetected)
         {
@@ -400,7 +434,7 @@ public class CarAI : MonoBehaviour
         }
 
         //Front left sensor
-        sensorStartPos -= (transform.right * frontSideSensorXOffsetPos) * 2;
+        sensorStartPos -= (transform.right * carWidth);
         collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
         if (collisionDetected)
         {
@@ -434,7 +468,7 @@ public class CarAI : MonoBehaviour
             }
         }
 
-        sensorStartPos += (transform.right * frontSideSensorXOffsetPos) * 2;
+        sensorStartPos += (transform.right * carWidth);
         //if turning right
         if (turningPercentage > 0.1f)
         {
@@ -458,13 +492,57 @@ public class CarAI : MonoBehaviour
     }
 
     /// <summary>
+    /// Checks the sensors at the side the car is turning to avoid going into other cars
+    /// </summary>
+    private bool LaneChangeCheck(ref float turningPercentage)
+    {
+        Vector3 sensorStartPos = transform.position;
+        sensorStartPos += transform.forward * carLength / 2;
+
+        bool collisionDetected = false;
+        RaycastHit hit;
+
+        float sensorLength = carWidth;
+
+        //Right sensors
+        for (int sideSensor = 0; sideSensor < numberOfSideSensors; sideSensor++)
+        {
+            Vector3 sensorPos = sensorStartPos - transform.forward * (sideSensor * carLength / numberOfSideSensors);
+            collisionDetected = UseSensor(sensorStartPos, transform.right, out hit, sensorLength);
+            if (collisionDetected)
+            {
+                if (hit.transform.tag == "Vehicle")
+                {
+                    turningPercentage -= 0.1f;
+                    collisionDetected = true;
+                }
+            }
+        }
+
+        //Left sensors
+        for (int sideSensor = 0; sideSensor < numberOfSideSensors; sideSensor++)
+        {
+            Vector3 sensorPos = sensorStartPos - transform.forward * (sideSensor * carLength / numberOfSideSensors);
+            collisionDetected = UseSensor(sensorStartPos, -transform.right, out hit, sensorLength);
+            if (collisionDetected)
+            {
+                if (hit.transform.tag == "Vehicle")
+                {
+                    turningPercentage += 0.1f;
+                    collisionDetected = true;
+                }
+            }
+        }
+        return collisionDetected;
+    }
+
+    /// <summary>
     /// Check the sensors around the car for obstacles and provide steering to avoid
     /// </summary>
     private bool AvertFromCollision(ref float steerPercentage)
     {
         Vector3 sensorStartPos = transform.position;
-        sensorStartPos += transform.forward * frontSensorPosition.z;
-        sensorStartPos += transform.up * frontSensorPosition.y;
+        sensorStartPos += transform.forward * carLength / 2;
 
         frontSensorLength = kmhSpeed / sensorLengthSpeedDependency;
         frontSensorLength = Mathf.Max(frontSensorLength, minimumForwardSensorLength);
@@ -481,7 +559,7 @@ public class CarAI : MonoBehaviour
         RaycastHit hit;
 
         //Front right sensor
-        sensorStartPos += transform.right * frontSideSensorXOffsetPos;
+        sensorStartPos += transform.right * (carWidth / 2);
         collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
         if (collisionDetected)
         {
@@ -504,7 +582,7 @@ public class CarAI : MonoBehaviour
         }
 
         //Front left sensor
-        sensorStartPos -= (transform.right * frontSideSensorXOffsetPos) * 2;
+        sensorStartPos -= (transform.right * carWidth);
         collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
         if (collisionDetected)
         {
@@ -548,7 +626,7 @@ public class CarAI : MonoBehaviour
         //Apply counter steering
         if (avoidingCollision)
         {
-            steerPercentage += avoidMultiplier * Mathf.Min(1, (kmhSpeed/3.6f) * distanceToClosestCollision);
+            steerPercentage += avoidMultiplier * Mathf.Min(1, (kmhSpeed / 3.6f) * distanceToClosestCollision);
             if (steerPercentage < -1)
             {
                 steerPercentage = -1;
