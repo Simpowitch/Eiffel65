@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8532919329273304531}
   - component: {fileID: 4468894698761660115}
-  - component: {fileID: 7225285700098557553}
   m_Layer: 0
   m_Name: PathNode
   m_TagString: Untagged
@@ -50,16 +49,3 @@ MonoBehaviour:
   possibleNextNodes: []
   lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
   nodeSize: 1
---- !u!135 &7225285700098557553
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6842611504980067672}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}

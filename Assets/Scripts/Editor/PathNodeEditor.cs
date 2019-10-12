@@ -22,11 +22,7 @@ public class PathNodeEditor : Editor
 
         DrawDefaultInspector();
 
-
         GUILayout.Label("\nNew node options");
-
-        PathNode newNode = myPathNode; //needed to compile down below
-
 
         pathName = EditorGUILayout.TextField("PathName", pathName);
         changeSpeed = EditorGUILayout.Toggle("New node has new speed", changeSpeed);
@@ -245,7 +241,7 @@ public class PathNodeEditor : Editor
 
     private void OnSceneGUI()
     {
-        if (Event.current.type == EventType.KeyDown && Event.current.keyCode != KeyCode.C)
+        if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.C)
         {
             if (PathNode.dragConnectedNode == null)
             {
@@ -264,9 +260,8 @@ public class PathNodeEditor : Editor
         //if (Event.current.type == EventType.MouseDown)
         //{
         //    Camera cam = SceneView.lastActiveSceneView.camera;
-        //    Ray ray = cam.ViewportPointToRay(Input.mousePosition);
+        //    Ray ray = cam.ScreenPointToRay(Event.current.mousePosition);
         //    RaycastHit hit;
-
         //    if (Physics.Raycast(ray, out hit))
         //    {
         //        if (hit.transform.GetComponent<PathNode>() != null)
@@ -276,11 +271,10 @@ public class PathNodeEditor : Editor
         //        }
         //    }
         //}
-        //else if (Event.current.type == EventType.MouseUp && PathNode.dragConnectedNode != null)
+        //if (Event.current.type == EventType.MouseUp && PathNode.dragConnectedNode != null)
         //{
         //    Camera cam = SceneView.lastActiveSceneView.camera;
-
-        //    Ray ray = cam.ViewportPointToRay(Input.mousePosition);
+        //    Ray ray = cam.ScreenPointToRay(Event.current.mousePosition);
         //    RaycastHit hit;
         //    if (Physics.Raycast(ray, out hit))
         //    {
