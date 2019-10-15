@@ -198,7 +198,7 @@ public class DialogEditor : EditorWindow
             nodes = new List<Node>();
         }
 
-        nodes.Add(new Node(mousePosition, 200, 50, nodeStyle, selectedNodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint, OnClickRemoveNode));
+        nodes.Add(new Node(mousePosition, 400, 320, nodeStyle, selectedNodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint, OnClickRemoveNode));
 
     }
     private void OnClickInPoint(ConnectionPoint inPoint)
@@ -265,7 +265,11 @@ public class DialogEditor : EditorWindow
 
             for (int i = 0; i < connections.Count; i++)
             {
-                if (connections[i].inPoint == node.inPoint || connections[i].outPoint == node.outPoint)
+                if (connections[i].inPoint == node.inPoint ||
+                    connections[i].outPoint == node.choiceA ||
+                    connections[i].outPoint == node.choiceB ||
+                    connections[i].outPoint == node.choiceC ||
+                    connections[i].outPoint == node.choiceD)
                 {
                     connectionsToRemove.Add(connections[i]);
                 }
