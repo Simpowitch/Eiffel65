@@ -14,7 +14,7 @@ public class PathNode : MonoBehaviour
 
     [SerializeField] List<PathNode> possibleNextNodes;
 
-    List<PathNode> backwardNodes; //used for catmull-rom (curved path)
+    List<PathNode> backwardNodes = new List<PathNode>(); //used for catmull-rom (curved path)
     public int curveSubSteps = 20;
 
 
