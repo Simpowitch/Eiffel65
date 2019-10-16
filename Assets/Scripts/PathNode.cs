@@ -10,9 +10,14 @@ public class PathNode : MonoBehaviour
     [SerializeField] float roadSpeedLimit = 30;
     [SerializeField] int pathFindingCost = 0;
 
+
+
     [SerializeField] List<PathNode> possibleNextNodes;
 
     List<PathNode> backwardNodes; //used for catmull-rom (curved path)
+    public int curveSubSteps = 20;
+
+
 
 
     /// <summary>
@@ -97,6 +102,9 @@ public class PathNode : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Returns all backward connections of this node
+    /// </summary>
     public List<PathNode> GetBackWardConnections()
     {
         return backwardNodes;
@@ -133,23 +141,35 @@ public class PathNode : MonoBehaviour
     public Color lineColor;
     private Color nodeColor;
     public float nodeSize = 1f;
+
+
+    bool warningFlagShown = false;
+
     private void OnDrawGizmos()
     {
-        Transform[] pathTransforms = GetComponentsInChildren<Transform>();
-
+        int visualizationSubsteps = curveSubSteps;
         nodeColor = allowedToPass ? Color.blue : Color.red;
         Gizmos.color = nodeColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
         Gizmos.color = lineColor;
-        for (int i = 0; i < possibleNextNodes.Count; i++)
+
+        for (int i = 0; i < backwardNodes.Count; i++)
         {
-            if (possibleNextNodes[i] != null)
+            if (backwardNodes[i] == null)
+            {
+                backwardNodes.Remove(backwardNodes[i]);
+            }
+        }
+
+        for (int outNode = 0; outNode < possibleNextNodes.Count; outNode++)
+        {
+            if (possibleNextNodes[outNode] != null)
             {
                 Vector3 currentNode = this.transform.position;
                 Vector3 nextNode = Vector3.zero;
-                nextNode = possibleNextNodes[i].transform.position;
-                Gizmos.DrawLine(currentNode, nextNode);
+                nextNode = possibleNextNodes[outNode].transform.position;
+                //Gizmos.DrawLine(currentNode, nextNode);
 
                 Vector3 direction = (nextNode - currentNode).normalized;
                 Vector3 arrowPosition = currentNode + direction;
@@ -157,20 +177,54 @@ public class PathNode : MonoBehaviour
             }
             else
             {
-                possibleNextNodes.Remove(possibleNextNodes[i]);
-                i--;
+                possibleNextNodes.Remove(possibleNextNodes[outNode]);
+                outNode--;
             }
 
             //Safety check before catmull-rom to make sure connections can be checked both ways
-            if (!possibleNextNodes[i].GetBackWardConnections().Contains(this))
+            if (!possibleNextNodes[outNode].GetBackWardConnections().Contains(this))
             {
-                possibleNextNodes[i].AddBackwardsNodeConnection(this);
+                possibleNextNodes[outNode].AddBackwardsNodeConnection(this);
             }
 
+            if (backwardNodes.Count < 1 || possibleNextNodes.Count < 1)
+            {
+                if (!warningFlagShown)
+                {
+                    Debug.LogWarning("Missing connections to show line" + transform.name);
+                }
+                warningFlagShown = true;
+                break;
+            }
+            warningFlagShown = false;
+
+            Vector3 averageBackwardsNodePosition = Vector3.zero;
+            for (int inNode = 0; inNode < backwardNodes.Count; inNode++)
+            {
+                averageBackwardsNodePosition += backwardNodes[inNode].transform.position;
+            }
+            averageBackwardsNodePosition /= backwardNodes.Count;
+
+            Vector3 averageOutNodeOutNodesPosition = Vector3.zero;
+            for (int outNodeOutNode = 0; outNodeOutNode < possibleNextNodes[outNode].possibleNextNodes.Count; outNodeOutNode++)
+            {
+                averageOutNodeOutNodesPosition += possibleNextNodes[outNode].possibleNextNodes[outNodeOutNode].transform.position;
+            }
+            averageOutNodeOutNodesPosition /= possibleNextNodes[outNode].possibleNextNodes.Count;
+
+            for (int step = 0; step < visualizationSubsteps; step++)
+            {
+                float progress = (float)step / (float)visualizationSubsteps;
+                Vector3 a = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
+                progress = ((float)step + 1) / (float)visualizationSubsteps;
+                Vector3 b = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
+                Gizmos.DrawLine(a, b);
+            }
         }
     }
 
-    private int visualizationSubsteps = 20;
+
+
 
     private Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float i)
     {
