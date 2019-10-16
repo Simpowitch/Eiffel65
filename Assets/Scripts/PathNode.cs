@@ -12,6 +12,8 @@ public class PathNode : MonoBehaviour
 
     [SerializeField] List<PathNode> possibleNextNodes;
 
+    List<PathNode> backwardNodes; //used for catmull-rom (curved path)
+
 
     /// <summary>
     /// Returns true when green light is on, or if there is no traffic light present
@@ -70,17 +72,34 @@ public class PathNode : MonoBehaviour
     /// </summary>
     public void AddConnectedNode(PathNode input)
     {
-        if (input != this)
+        if (input != this && !possibleNextNodes.Contains(input))
         {
             possibleNextNodes.Add(input);
+            input.AddBackwardsNodeConnection(this);
         }
     }
     public void AddConnectedNode(List<PathNode> input)
     {
         for (int i = 0; i < input.Count; i++)
         {
-            possibleNextNodes.Add(input[i]);
+            AddConnectedNode(input[i]);
         }
+    }
+
+    /// <summary>
+    /// Adds a new node to the list of previous or incoming nodes, used for catmull-rom calculation
+    /// </summary>
+    public void AddBackwardsNodeConnection(PathNode input)
+    {
+        if (input != this && !backwardNodes.Contains(input))
+        {
+            backwardNodes.Add(input);
+        }
+    }
+
+    public List<PathNode> GetBackWardConnections()
+    {
+        return backwardNodes;
     }
 
     /// <summary>
@@ -90,6 +109,8 @@ public class PathNode : MonoBehaviour
     {
         possibleNextNodes[0] = input;
     }
+
+
 
     public void AddPathFindingCost()
     {
@@ -130,9 +151,9 @@ public class PathNode : MonoBehaviour
                 nextNode = possibleNextNodes[i].transform.position;
                 Gizmos.DrawLine(currentNode, nextNode);
 
-                Vector3 positionInMiddle = (currentNode + nextNode) / 2;
                 Vector3 direction = (nextNode - currentNode).normalized;
-                DrawArrow.ForGizmo(positionInMiddle, direction, lineColor, 0.3f, 30);
+                Vector3 arrowPosition = currentNode + direction;
+                DrawArrow.ForGizmo(arrowPosition, direction, lineColor, 0.4f, 30);
             }
             else
             {
@@ -140,13 +161,28 @@ public class PathNode : MonoBehaviour
                 i--;
             }
 
+            //Safety check before catmull-rom to make sure connections can be checked both ways
+            if (!possibleNextNodes[i].GetBackWardConnections().Contains(this))
+            {
+                possibleNextNodes[i].AddBackwardsNodeConnection(this);
+            }
 
         }
     }
 
     private int visualizationSubsteps = 20;
 
+    private Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float i)
+    {
+        // comments are no use here... it's the catmull-rom equation.
+        // Un-magic this, lord vector!
+        return 0.5f *
+               ((2 * p1) + (-p0 + p2) * i + (2 * p0 - 5 * p1 + 4 * p2 - p3) * i * i +
+                (-p0 + 3 * p1 - 3 * p2 + p3) * i * i * i);
+    }
 }
+
+
 
 public static class DrawArrow
 {
@@ -164,7 +200,6 @@ public static class DrawArrow
     {
         Gizmos.color = color;
         Gizmos.DrawRay(pos, direction);
-
         Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);
         Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 - arrowHeadAngle, 0) * new Vector3(0, 0, 1);
         Gizmos.DrawRay(pos + direction, right * arrowHeadLength);
