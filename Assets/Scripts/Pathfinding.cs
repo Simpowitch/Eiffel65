@@ -10,6 +10,7 @@ public static class Pathfinding
     /// </summary>
     public static Path GetPathToFollow(PathNode startPos, PathNode target, PathNode nodeToAvoid)
     {
+
         Path shortestPath = new Path();
         shortestPath.length = float.MaxValue;
         Path pathSoFar = new Path();
@@ -39,6 +40,7 @@ public static class Pathfinding
             pathSoFar.length -= distanceToNode;
         }
         shortestPath.nodes.Remove(startPos);
+        Debug.Log("New path calculated");
         return shortestPath;
     }
 
