@@ -18,7 +18,7 @@ public class TestFreezeCall : MonoBehaviour, IFreezeChoice
     {
         if(Input.GetKeyDown(KeyCode.P))
 		{
-			FastCalls[] _exampleCalls = new FastCalls[] { FastCalls.ExampleOne, FastCalls.ExampleTwo, FastCalls.ExampleThree, FastCalls.ExampleFour }; //List can not be longer than 4
+			string[] _exampleCalls = new string[] { "Throw flashbang", "Call for backup", "Run licenceplate through database" , "Try shooting the criminal [DANGEROUS]" }; //List can not be longer than 4
 			ChoiceFreeze.instance.FreezeCall(_exampleCalls, this);
 		}
 

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
-public enum FastCalls { NoAnswer, Yes, No, ExampleOne, ExampleTwo, ExampleThree, ExampleFour, WaitingForCall }
+public enum FastCalls { NoAnswer, OptionOne, OptionTwo, OptionThree, OptionFour, WaitingForCall }
 
 public interface IFreezeChoice
 {
@@ -15,11 +16,11 @@ public class ChoiceFreeze : MonoBehaviour
 	[SerializeField] float timeFrozen, timeScale;
 
 	int pressedKey = 0;
-	float timer;
+	float timer, timeFrozenInv;
 	FastCalls[] calls;
 	IFreezeChoice caller;
-	Dictionary<FastCalls, string> FastCallMessage;
 
+	static FastCalls[] callOptions = new FastCalls[] { FastCalls.OptionOne, FastCalls.OptionTwo, FastCalls.OptionThree, FastCalls.OptionFour };
 	static ChoiceFreeze inst;
 
 	public static ChoiceFreeze instance
@@ -38,22 +39,18 @@ public class ChoiceFreeze : MonoBehaviour
 			Destroy(gameObject);
 		}
 		inst = this;
-
-		FastCallMessage.Add(FastCalls.Yes, "Yes");
-		FastCallMessage.Add(FastCalls.No, "No");
-		FastCallMessage.Add(FastCalls.ExampleOne, "Send backup");
-		FastCallMessage.Add(FastCalls.ExampleTwo, "Set up trap");
-		FastCallMessage.Add(FastCalls.ExampleThree, "Hire hitman");
-		FastCallMessage.Add(FastCalls.ExampleFour, "Change radio station");
+		timeFrozenInv = 1 / timeFrozen;
 	}
 
 
 	private void LateUpdate()
 	{
+		print(GameManager.instance.FillBarAmount);
+
 		if (timer > 0)
 		{
 			getInputs();
-
+			GameManager.instance.FillBarAmount = timer * timeFrozenInv;
 			if(pressedKey != 0)
 			{
 				caller.RecieveFastCall(calls[pressedKey-1]);
@@ -100,45 +97,41 @@ public class ChoiceFreeze : MonoBehaviour
 		}
 	}
 
-	private void StartOptions()
-	{
-		for (int i = 0; i < calls.Length; i++)
-		{
-
-		}
-	}
-
 	private void EndOptions()
 	{
 		Time.timeScale = 1;
 		timer = 0;
 		pressedKey = 0;
+		GameManager.instance.DisplayFastChoice(false);
 	}
 
 	#endregion
 
 	#region Public Methods
-	
-	//Starts the fast call screen with only yes or no answers 
-	public void FreezeCall(IFreezeChoice caller)
-	{
-		FastCalls[] _tempArr = new FastCalls[] { FastCalls.Yes, FastCalls.No };
-		FreezeCall(_tempArr, caller);
-	}
 
-	//Starts the fast call screen with custom answers.
-	public void FreezeCall(FastCalls[] callsOptions, IFreezeChoice caller)
+	/// <summary>
+	///Starts the fast call screen with custom answers
+	///</summary>
+	public void FreezeCall(string[] callsOptions, IFreezeChoice caller)
 	{
 		if(callsOptions.Length > 4)
 		{
-			callsOptions = new FastCalls[] { callsOptions[0], callsOptions[1], callsOptions[2], callsOptions[3] };
-			Debug.LogError("<color=red> TOO MANY FASTCALLS, ARRAY IS NOW CUT DOWN TO FOUR ELEMENTS </color>");
+			callsOptions = new string[] { callsOptions[0], callsOptions[1], callsOptions[2], callsOptions[3] };
+			Debug.LogWarning("<color=red> TOO MANY FASTCALLS, ARRAY IS NOW CUT DOWN TO FOUR ELEMENTS </color>");
 		}
 
-		calls = callsOptions;
+		calls = new FastCalls[callsOptions.Length];
+
+		for (int i = 0; i < calls.Length; i++)
+		{
+			calls[i] = callOptions[i];
+		}
+		
 		this.caller = caller;
 		timer = timeFrozen;
 		Time.timeScale = timeScale;
+
+		GameManager.instance.DisplayFastChoice(true, callsOptions);
 	}
 	#endregion
 }
