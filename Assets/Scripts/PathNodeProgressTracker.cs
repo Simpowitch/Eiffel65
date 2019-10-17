@@ -6,77 +6,119 @@ public class PathNodeProgressTracker : MonoBehaviour
 {
     CarAI ai;
 
-    List<Vector3> pathNodeProgressPositions;
+    public List<Vector3> pathNodeProgressPositions;
     [SerializeField] int substeps = 10;
 
     Rigidbody rb;
 
     [SerializeField] int pathNodesToShow = 4;
-    [SerializeField] float lookAheadDistanceModifier = 4f;
-    [SerializeField] float lookAheadSpeedModifier = 0.1f;
+    [SerializeField] float lookAheadMinDistance = 4f;
+    [SerializeField] float lookAheadMaxDistance = 20f;
+    [SerializeField] float lookAheadSpeedModifier = 0.05f;
 
     public Vector3 target;
 
-
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-
     private void Update()
     {
-        int closestIndex = 0;
-        float closestDistance = float.MaxValue;
+        float distanceToTarget = float.MaxValue;
+        int targetIndex = 0;
 
+        float speed = rb.velocity.magnitude * 3.6f;
+        speed = Mathf.Max(1, speed);
+
+        //find closest node infront of the car
         for (int i = 0; i < pathNodeProgressPositions.Count; i++)
         {
             float testDistance = Vector3.Distance(rb.position, pathNodeProgressPositions[i]);
-            if (testDistance < closestDistance && testDistance > lookAheadDistanceModifier)
+            if (testDistance < distanceToTarget)
             {
-                //if the node is infront of the car
-                if (Vector3.Distance(pathNodeProgressPositions[i], rb.position + transform.forward) < testDistance)
-                closestDistance = testDistance;
-                closestIndex = i;
+                if (Vector3.Distance(pathNodeProgressPositions[i], rb.position + transform.forward) < testDistance && testDistance > lookAheadMinDistance && testDistance < lookAheadMaxDistance)
+                {
+                    distanceToTarget = testDistance;
+                    targetIndex = i;
+                }
             }
         }
-        int indexToFollow = closestIndex + Mathf.RoundToInt(rb.velocity.magnitude * lookAheadSpeedModifier);
-        indexToFollow = Mathf.Min(pathNodeProgressPositions.Count - 1, indexToFollow);
 
-        target = pathNodeProgressPositions[indexToFollow];
+        //if the car is moving, add a speed lookahead
+        if (speed > 1)
+        {
+            float add = speed * lookAheadSpeedModifier;
+            int maxTest = targetIndex + Mathf.RoundToInt(add);
+            maxTest = Mathf.Min(maxTest, pathNodeProgressPositions.Count - 1);
+            float testDistance = Vector3.Distance(rb.position, pathNodeProgressPositions[maxTest]);
+            if (testDistance > lookAheadMaxDistance)
+            {
+                add -= (testDistance - lookAheadMaxDistance);
+            }
+            add = Mathf.Max(add, lookAheadMinDistance);
+            targetIndex += Mathf.RoundToInt(add);
+            //never make it go outside of the range of the array
+            targetIndex = Mathf.Min(pathNodeProgressPositions.Count - 1, targetIndex);
+        }
+
+        target = pathNodeProgressPositions[targetIndex];
     }
 
-    public void UpdatePath(List<PathNode> path)
+
+    //TODO: Fix when path is close to end
+    public void UpdatePath(List<PathNode> path, PathNode currentNode)
     {
         pathNodeProgressPositions = new List<Vector3>();
 
         int nodes = pathNodesToShow;
-        nodes = Mathf.Min(path.Count, nodes);
+        nodes = Mathf.Min(path.Count-1, nodes);
 
-        float speed = rb.velocity.magnitude * 3.6f;
-        speed = Mathf.Max(1, speed);
-        Vector3 positionBehindCar = rb.position - transform.forward * speed;
+
 
         //There needs to be at least 2 nodes to calculate a catmullrom-path
-        for (int i = 0; i < nodes - 1; i++)
+        if (path.Count > 1)
         {
-            if (i == 0 && i + 1 < path.Count)
+            for (int i = 0; i < nodes; i++)
             {
-                CreateProgressPath(positionBehindCar, rb.position, path[i].transform.position, path[i + 1].transform.position);
-            }
-            else if (i == 1 && i + 2 < path.Count)
-            {
-                CreateProgressPath(rb.position, path[i].transform.position, path[i + 1].transform.position, path[i + 2].transform.position);
-            }
-            else if (i + 3 < path.Count)
-            {
-                CreateProgressPath(path[i].transform.position, path[i + 1].transform.position, path[i + 2].transform.position, path[i + 3].transform.position);
+                Vector3 pos0 = Vector3.zero;
+                Vector3 pos1 = Vector3.zero;
+                Vector3 pos2 = Vector3.zero;
+                Vector3 pos3 = Vector3.zero;
+
+                if (i == 0)
+                {
+                    //instead of showing many paths for all different kind of combinations of inputs and outputs, we take the average of position 0 of the catmull-rom if there are multiple
+                    Vector3 averageBackwardsNodePosition = Vector3.zero;
+                    for (int inNode = 0; inNode < currentNode.backwardNodes.Count; inNode++)
+                    {
+                        averageBackwardsNodePosition += currentNode.backwardNodes[inNode].transform.position;
+                    }
+                    averageBackwardsNodePosition /= currentNode.backwardNodes.Count;
+                    pos0 = averageBackwardsNodePosition;
+                    pos1 = currentNode.transform.position;
+                    pos2 = path[0].transform.position;
+                    pos3 = path[1].transform.position;
+                }
+                else if (i == 1)
+                {
+                    pos0 = currentNode.transform.position;
+                    pos1 = path[0].transform.position;
+                    pos2 = path[1].transform.position;
+                    pos3 = path[2].transform.position;
+                }
+                else
+                {
+                    pos0 = path[i - 2].transform.position;
+                    pos1 = path[i - 1].transform.position;
+                    pos2 = path[i].transform.position;
+                    pos3 = path[i + 1].transform.position;
+                }
+                CreateProgressPath(pos0, pos1, pos2, pos3);
             }
         }
-
-        if (nodes == 1)
+        else
         {
-            Debug.LogWarning("Cannot create a path with substeps since there is not enough nodes in the current path");
             CreateStraightPath(path[path.Count - 1].transform.position);
         }
     }
@@ -125,6 +167,12 @@ public class PathNodeProgressTracker : MonoBehaviour
             Gizmos.color = targetIndicatorColor;
             Gizmos.DrawLine(transform.position, target);
             Gizmos.DrawWireSphere(target, 0.5f);
+
+
+            for (int i = 0; i < pathNodeProgressPositions.Count; i++)
+            {
+                Gizmos.DrawWireSphere(pathNodeProgressPositions[i], 0.1f);
+            }
         }
     }
 }

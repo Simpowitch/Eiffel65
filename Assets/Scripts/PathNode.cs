@@ -12,10 +12,10 @@ public class PathNode : MonoBehaviour
 
 
 
-    [SerializeField] List<PathNode> possibleNextNodes;
+    [SerializeField] List<PathNode> possibleNextNodes = new List<PathNode>();
 
     public List<PathNode> backwardNodes = new List<PathNode>(); //used for catmull-rom (curved path)
-    [SerializeField] int pathSubsteps = 10;
+    [SerializeField] int pathSubsteps = 15;
 
 
     private void Start()
@@ -122,7 +122,20 @@ public class PathNode : MonoBehaviour
     /// </summary>
     public void ReplaceConnectedNode(PathNode input)
     {
-        possibleNextNodes[0] = input;
+        if (possibleNextNodes.Count == 0)
+        {
+            possibleNextNodes.Add(input);
+        }
+        else
+        {
+            possibleNextNodes[0] = input;
+        }
+        input.AddBackwardsNodeConnection(this);
+    }
+
+    public void ClearForwardConnections()
+    {
+        possibleNextNodes.Clear();
     }
 
 
@@ -149,9 +162,6 @@ public class PathNode : MonoBehaviour
     private Color nodeColor;
     public float nodeSize = 1f;
 
-
-    bool warningFlagShown = false;
-
     private void OnDrawGizmos()
     {
         bool catmullCurveAllowed = true;
@@ -161,6 +171,7 @@ public class PathNode : MonoBehaviour
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
         Gizmos.color = lineColor;
+
 
         //Safety check, delete inactive nodes
         for (int i = 0; i < backwardNodes.Count; i++)
@@ -178,7 +189,6 @@ public class PathNode : MonoBehaviour
                 Vector3 currentNode = this.transform.position;
                 Vector3 nextNode = Vector3.zero;
                 nextNode = possibleNextNodes[outNode].transform.position;
-                //Gizmos.DrawLine(currentNode, nextNode);
 
                 Vector3 direction = (nextNode - currentNode).normalized;
                 Vector3 arrowPosition = currentNode + direction;
@@ -199,19 +209,15 @@ public class PathNode : MonoBehaviour
             //If we are missing any connections anywhere here we cannot make a proper catmull-curve
             if (backwardNodes.Count < 1 || possibleNextNodes.Count < 1 || possibleNextNodes[outNode].possibleNextNodes.Count < 1)
             {
-                if (!warningFlagShown)
-                {
-                    Debug.LogWarning("Missing connections: " + transform.name);
-                }
-                warningFlagShown = true;
                 catmullCurveAllowed = false;
+                Color temp = Gizmos.color;
+                Gizmos.color = Color.red;
                 Gizmos.DrawLine(this.transform.position, possibleNextNodes[outNode].transform.position);
+                Gizmos.color = temp;
             }
 
             if (catmullCurveAllowed)
             {
-                warningFlagShown = false;
-
                 //instead of showing many paths for all different kind of combinations of inputs and outputs, we take the average of position 1 and 4 of the catmull-rom if there are multiple
                 Vector3 averageBackwardsNodePosition = Vector3.zero;
                 for (int inNode = 0; inNode < backwardNodes.Count; inNode++)

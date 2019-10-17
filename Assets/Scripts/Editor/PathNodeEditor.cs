@@ -9,7 +9,7 @@ public class PathNodeEditor : Editor
     string pathName = "PathNode";
     float pathSpeed = 0;
     bool changeSpeed = false;
-    int metersBetweenNodes = 10;
+    int metersBetweenNodes = 15;
     bool createExtraLanesToTheRight = false;
     int metersBetweenLanes = 3;
     int lanesToCreate = 1;
@@ -103,6 +103,16 @@ public class PathNodeEditor : Editor
         direction = direction.normalized;
         Vector3 position = myPathNode.transform.position;
         PathNode previousNode = myPathNode;
+
+        List<PathNode> originalConnections = new List<PathNode>();
+        originalConnections.AddRange(myPathNode.GetPathNodes());
+        for (int i = 0; i < originalConnections.Count; i++)
+        {
+            originalConnections[i].backwardNodes.Remove(myPathNode);
+        }
+
+        List<PathNode> createdNodes = new List<PathNode>();
+
         for (int i = 0; i < nodesToCreate; i++)
         {
             position += direction * metersBetweenNodes;
@@ -110,16 +120,21 @@ public class PathNodeEditor : Editor
             {
                 newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
                 newNode.transform.position = position;
-
                 newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetPathNodes()[0].GetRoadSpeedLimit());
-                newNode.AddConnectedNode(previousNode.GetPathNodes());
-                previousNode.ReplaceConnectedNode(newNode);
-
                 newNode.transform.SetParent(myPathNode.transform.parent);
                 newNode.gameObject.name = pathName;
-                previousNode = newNode;
+                createdNodes.Add(newNode);
             }
         }
+        myPathNode.ClearForwardConnections();
+        myPathNode.AddConnectedNode(createdNodes[0]);
+        for (int i = 0; i < createdNodes.Count - 1; i++)
+        {
+            createdNodes[i].AddConnectedNode(createdNodes[i + 1]);
+        }
+        //add the original nodes to the last created node
+        newNode = createdNodes[createdNodes.Count - 1];
+        newNode.AddConnectedNode(originalConnections);
         return newNode.gameObject;
     }
 
@@ -241,7 +256,8 @@ public class PathNodeEditor : Editor
 
     private void OnSceneGUI()
     {
-        if (Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.C)
+        Event ev = Event.current;
+        if (Event.current.type == EventType.KeyDown && !Event.current.shift && Event.current.keyCode == KeyCode.C)
         {
             if (PathNode.dragConnectedNode == null)
             {
@@ -256,40 +272,24 @@ public class PathNodeEditor : Editor
             }
         }
 
+        if (Selection.transforms.Length > 0 && Selection.transforms[0].GetComponent<PathNode>() != null)
+        {
+            PathNode myPathNode = Selection.transforms[0].GetComponent<PathNode>();
+            if (ev.type == EventType.KeyDown && ev.shift && ev.keyCode == KeyCode.C)
+            {
+                Selection.activeGameObject = CreateNewNode(myPathNode);
+            }
 
-        //if (Event.current.type == EventType.MouseDown)
-        //{
-        //    Camera cam = SceneView.lastActiveSceneView.camera;
-        //    Ray ray = cam.ScreenPointToRay(Event.current.mousePosition);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(ray, out hit))
-        //    {
-        //        if (hit.transform.GetComponent<PathNode>() != null)
-        //        {
-        //            PathNode.dragConnectedNode = hit.transform.GetComponent<PathNode>();
-        //            Debug.Log("Node to connect set");
-        //        }
-        //    }
-        //}
-        //if (Event.current.type == EventType.MouseUp && PathNode.dragConnectedNode != null)
-        //{
-        //    Camera cam = SceneView.lastActiveSceneView.camera;
-        //    Ray ray = cam.ScreenPointToRay(Event.current.mousePosition);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(ray, out hit))
-        //    {
-        //        if (hit.transform.GetComponent<PathNode>() != null)
-        //        {
-        //            PathNode.dragConnectedNode.AddConnectedNode(hit.transform.GetComponent<PathNode>());
-        //            PathNode.dragConnectedNode = null;
-        //            Debug.Log("Node connected");
-        //        }
-        //    }
-        //}
-        //else if (Event.current.type == EventType.MouseDrag)
-        //{
-        //    Gizmos.DrawLine(PathNode.dragConnectedNode.transform.position, Input.mousePosition);
-        //}
+            if (ev.type == EventType.KeyDown && ev.shift && ev.keyCode == KeyCode.R)
+            {
+                Selection.activeGameObject = ReplaceNodeSingle(myPathNode);
+            }
+
+            if (ev.type == EventType.KeyDown && ev.shift && ev.keyCode == KeyCode.M)
+            {
+                Selection.activeGameObject = ReplaceNodeMultiple(myPathNode);
+            }
+        }
     }
 
 

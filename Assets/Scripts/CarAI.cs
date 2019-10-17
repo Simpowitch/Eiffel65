@@ -29,6 +29,8 @@ public class CarAI : MonoBehaviour
     //How many times faster do the criminal want to go compared to the road speed limit
     [SerializeField] float criminalSpeedFactor = 1.5f;
 
+    [SerializeField] bool debugStop = false;
+
     public Vector3 progressTrackerAim;
     PathNodeProgressTracker aiPathProgressTracker;
 
@@ -58,7 +60,7 @@ public class CarAI : MonoBehaviour
         if (GetComponent<PathNodeProgressTracker>() != null)
         {
             aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
-            aiPathProgressTracker.UpdatePath(path);
+            aiPathProgressTracker.UpdatePath(path, currentNode);
         }
     }
 
@@ -72,6 +74,11 @@ public class CarAI : MonoBehaviour
     //Main function of the car AI
     private void FixedUpdate()
     {
+        if (debugStop)
+        {
+            wheelController.AIDriver(0, 0, true);
+            return;
+        }
         steerPercentage = 0; //float steerPercentage = 0;
         float torquePercentage = 0;
 
@@ -187,7 +194,7 @@ public class CarAI : MonoBehaviour
         path = Pathfinding.GetPathToFollow(currentNode, target, nodeToAvoid).nodes;
         if (path == null || path.Count == 0 || !path.Contains(target))
         {
-            Debug.LogError("Path to: '" + target.transform.name + "', not found. Please confirm that a path to this node exists");
+            Debug.LogError("Path to: '" + target.transform.name + target.transform.position + "', not found. Please confirm that a path to this node exists");
             currentState = AIState.Stopping;
             return false;
         }
@@ -328,7 +335,7 @@ public class CarAI : MonoBehaviour
                     currentNode = path[0];
                     SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
                     currentNode.AddPathFindingCost();
-                    GetComponent<PathNodeProgressTracker>().UpdatePath(path);
+                    GetComponent<PathNodeProgressTracker>().UpdatePath(path, currentNode);
                 }
                 else if (targetNode)
                 {
@@ -337,7 +344,7 @@ public class CarAI : MonoBehaviour
                 else
                 {
                     SetRandomTargetNode(); //add new path to go to
-                    GetComponent<PathNodeProgressTracker>().UpdatePath(path);
+                    GetComponent<PathNodeProgressTracker>().UpdatePath(path, currentNode);
 
                 }
             }
