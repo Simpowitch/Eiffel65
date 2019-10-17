@@ -43,7 +43,6 @@ public class CarAI : MonoBehaviour
 
     private void Start()
     {
-        //currentNode = SEARCH FOR CLOSEST NODE 
         if (targetNode)
         {
             SetNewEndTargetNode(targetNode, null);
@@ -328,14 +327,13 @@ public class CarAI : MonoBehaviour
             {
                 currentNode.ReducePathFindingCost();
 
+                currentNode = path[0];
                 path.RemoveAt(0);
 
                 if (path.Count > 0)
                 {
-                    currentNode = path[0];
                     SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
                     currentNode.AddPathFindingCost();
-                    GetComponent<PathNodeProgressTracker>().UpdatePath(path, currentNode);
                 }
                 else if (targetNode)
                 {
@@ -344,10 +342,9 @@ public class CarAI : MonoBehaviour
                 else
                 {
                     SetRandomTargetNode(); //add new path to go to
-                    GetComponent<PathNodeProgressTracker>().UpdatePath(path, currentNode);
-
                 }
             }
+            GetComponent<PathNodeProgressTracker>().UpdatePath(path, currentNode);
         }
     }
 
