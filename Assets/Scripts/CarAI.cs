@@ -29,6 +29,9 @@ public class CarAI : MonoBehaviour
     //How many times faster do the criminal want to go compared to the road speed limit
     [SerializeField] float criminalSpeedFactor = 1.5f;
 
+    public Vector3 progressTrackerAim;
+    PathNodeProgressTracker aiPathProgressTracker;
+
     private enum AIState { Drive, Queue, AvoidCollision, Stopping, BackingFromStuck }
     [SerializeField] AIState currentState;
 
@@ -41,7 +44,7 @@ public class CarAI : MonoBehaviour
         //currentNode = SEARCH FOR CLOSEST NODE 
         if (targetNode)
         {
-            SetNewEndTargetNode(targetNode);
+            SetNewEndTargetNode(targetNode, null);
         }
         else
         {
@@ -51,6 +54,12 @@ public class CarAI : MonoBehaviour
 
         wheelController = GetComponent<WheelDrive>();
         rb = GetComponent<Rigidbody>();
+
+        if (GetComponent<PathNodeProgressTracker>() != null)
+        {
+            aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
+            aiPathProgressTracker.UpdatePath(path);
+        }
     }
 
 
@@ -80,7 +89,13 @@ public class CarAI : MonoBehaviour
                     return;
                 }
             }
-            steerPercentage = SteerTowardsNextNode();
+
+            if (aiPathProgressTracker)
+            {
+                progressTrackerAim = aiPathProgressTracker.target;
+            }
+
+            steerPercentage = aiPathProgressTracker != null ? SteerTowardsPoint(progressTrackerAim) : SteerTowardsNextNode();
 
             if (!CheckIfAllowedToPass() && !isCriminal)
             {
@@ -165,33 +180,25 @@ public class CarAI : MonoBehaviour
 
     #region PathCreation
     /// <summary>
-    /// Set a defined target node. Also creates and saves the path to get there
-    /// /// </summary>
-    private void SetNewEndTargetNode(PathNode target)
-    {
-        path = Pathfinding.GetPathToFollow(currentNode, target, null).nodes;
-        if (path == null || path.Count == 0 || !path.Contains(target))
-        {
-            currentState = AIState.Stopping;
-            Debug.LogError("Path not found");
-        }
-        currentState = AIState.Drive;
-    }
-
-    /// <summary>
     /// Set a defined target node with a node to avoid. Also creates and saves the path to get there
     /// /// </summary>
-    private void SetNewEndTargetNode(PathNode target, PathNode avoid)
+    private bool SetNewEndTargetNode(PathNode target, PathNode nodeToAvoid)
     {
-        path = Pathfinding.GetPathToFollow(currentNode, target, avoid).nodes;
+        path = Pathfinding.GetPathToFollow(currentNode, target, nodeToAvoid).nodes;
         if (path == null || path.Count == 0 || !path.Contains(target))
         {
+            Debug.LogError("Path to: '" + target.transform.name + "', not found. Please confirm that a path to this node exists");
             currentState = AIState.Stopping;
-            Debug.LogError("Path not found");
+            return false;
         }
-        currentState = AIState.Drive;
+        else
+        {
+            currentState = AIState.Drive;
+            return true;
+        }
     }
 
+    int tests = 0;
     /// <summary>
     /// Set a random target node and then calls for a calculate path WITHOUT a node to avoid
     /// /// </summary>
@@ -201,7 +208,20 @@ public class CarAI : MonoBehaviour
         {
             PathNode[] allNodes = pathParent.GetComponentsInChildren<PathNode>();
             PathNode chosenTarget = allNodes[Random.Range(0, allNodes.Length)];
-            SetNewEndTargetNode(chosenTarget);
+            if (!SetNewEndTargetNode(chosenTarget, null) && tests < 10)
+            {
+                Debug.Log("Failed to find a path, trying a new random path");
+                SetRandomTargetNode();
+                tests++;
+            }
+            else if (tests >= 10)
+            {
+                Debug.LogError("Failed to find a random node to find a path to on 10 tries. Check node connections. This car will probably not function:  " + this.transform.name);
+            }
+            else
+            {
+                tests = 0;
+            }
         }
         else
         {
@@ -242,17 +262,23 @@ public class CarAI : MonoBehaviour
             }
             else
             {
-                Vector3 relativeVector = transform.InverseTransformPoint(path[0].transform.position);
-                relativeVector /= relativeVector.magnitude;
-                return (relativeVector.x / relativeVector.magnitude);
+                return SteerTowardsPoint(path[0].transform.position);
             }
         }
         else
         {
-            Vector3 relativeVector = transform.InverseTransformPoint(path[0].transform.position);
-            relativeVector /= relativeVector.magnitude;
-            return (relativeVector.x / relativeVector.magnitude);
+            return SteerTowardsPoint(path[0].transform.position);
         }
+    }
+
+    /// <summary>
+    /// Calculates how much the wheels should turn to go towards the target point, can be used by pathnodeprogresstracker
+    /// </summary>
+    private float SteerTowardsPoint(Vector3 point)
+    {
+        Vector3 relativeVector = transform.InverseTransformPoint(point);
+        relativeVector /= relativeVector.magnitude;
+        return (relativeVector.x / relativeVector.magnitude);
     }
 
     /// <summary>
@@ -302,16 +328,18 @@ public class CarAI : MonoBehaviour
                     currentNode = path[0];
                     SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
                     currentNode.AddPathFindingCost();
+                    GetComponent<PathNodeProgressTracker>().UpdatePath(path);
                 }
-                else
+                else if (targetNode)
                 {
                     currentNode = null;
                 }
+                else
+                {
+                    SetRandomTargetNode(); //add new path to go to
+                    GetComponent<PathNodeProgressTracker>().UpdatePath(path);
 
-            }
-            else if (pathParent != null)
-            {
-                SetRandomTargetNode(); //add new path to go to
+                }
             }
         }
     }
@@ -662,12 +690,15 @@ public class CarAI : MonoBehaviour
     public Color lineToNode = Color.yellow;
     private void OnDrawGizmos()
     {
-        if (path.Count > 0)
+        if (!aiPathProgressTracker)
         {
-            Gizmos.color = lineToNode;
-            Vector3 currentPos = this.transform.position;
-            Vector3 nextNodePos = path[0].transform.position;
-            Gizmos.DrawLine(currentPos, nextNodePos);
+            if (path.Count > 0)
+            {
+                Gizmos.color = lineToNode;
+                Vector3 currentPos = this.transform.position;
+                Vector3 nextNodePos = path[0].transform.position;
+                Gizmos.DrawLine(currentPos, nextNodePos);
+            }
         }
     }
 }

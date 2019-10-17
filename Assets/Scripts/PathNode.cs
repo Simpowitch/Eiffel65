@@ -14,10 +14,17 @@ public class PathNode : MonoBehaviour
 
     [SerializeField] List<PathNode> possibleNextNodes;
 
-    List<PathNode> backwardNodes = new List<PathNode>(); //used for catmull-rom (curved path)
-    public int curveSubSteps = 20;
+    public List<PathNode> backwardNodes = new List<PathNode>(); //used for catmull-rom (curved path)
+    [SerializeField] int pathSubsteps = 10;
 
 
+    private void Start()
+    {
+        if (possibleNextNodes.Count < 1)
+        {
+            Debug.LogError("You have not set up the path correctly, this node is missing a nodeconnection " + transform.name);
+        }
+    }
 
 
     /// <summary>
@@ -147,13 +154,15 @@ public class PathNode : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        int visualizationSubsteps = curveSubSteps;
+        bool catmullCurveAllowed = true;
+        int visualizationSubsteps = pathSubsteps;
         nodeColor = allowedToPass ? Color.blue : Color.red;
         Gizmos.color = nodeColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
         Gizmos.color = lineColor;
 
+        //Safety check, delete inactive nodes
         for (int i = 0; i < backwardNodes.Count; i++)
         {
             if (backwardNodes[i] == null)
@@ -187,38 +196,46 @@ public class PathNode : MonoBehaviour
                 possibleNextNodes[outNode].AddBackwardsNodeConnection(this);
             }
 
-            if (backwardNodes.Count < 1 || possibleNextNodes.Count < 1)
+            //If we are missing any connections anywhere here we cannot make a proper catmull-curve
+            if (backwardNodes.Count < 1 || possibleNextNodes.Count < 1 || possibleNextNodes[outNode].possibleNextNodes.Count < 1)
             {
                 if (!warningFlagShown)
                 {
-                    Debug.LogWarning("Missing connections to show line" + transform.name);
+                    Debug.LogWarning("Missing connections: " + transform.name);
                 }
                 warningFlagShown = true;
-                break;
+                catmullCurveAllowed = false;
+                Gizmos.DrawLine(this.transform.position, possibleNextNodes[outNode].transform.position);
             }
-            warningFlagShown = false;
 
-            Vector3 averageBackwardsNodePosition = Vector3.zero;
-            for (int inNode = 0; inNode < backwardNodes.Count; inNode++)
+            if (catmullCurveAllowed)
             {
-                averageBackwardsNodePosition += backwardNodes[inNode].transform.position;
-            }
-            averageBackwardsNodePosition /= backwardNodes.Count;
+                warningFlagShown = false;
 
-            Vector3 averageOutNodeOutNodesPosition = Vector3.zero;
-            for (int outNodeOutNode = 0; outNodeOutNode < possibleNextNodes[outNode].possibleNextNodes.Count; outNodeOutNode++)
-            {
-                averageOutNodeOutNodesPosition += possibleNextNodes[outNode].possibleNextNodes[outNodeOutNode].transform.position;
-            }
-            averageOutNodeOutNodesPosition /= possibleNextNodes[outNode].possibleNextNodes.Count;
+                //instead of showing many paths for all different kind of combinations of inputs and outputs, we take the average of position 1 and 4 of the catmull-rom if there are multiple
+                Vector3 averageBackwardsNodePosition = Vector3.zero;
+                for (int inNode = 0; inNode < backwardNodes.Count; inNode++)
+                {
+                    averageBackwardsNodePosition += backwardNodes[inNode].transform.position;
+                }
+                averageBackwardsNodePosition /= backwardNodes.Count;
 
-            for (int step = 0; step < visualizationSubsteps; step++)
-            {
-                float progress = (float)step / (float)visualizationSubsteps;
-                Vector3 a = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
-                progress = ((float)step + 1) / (float)visualizationSubsteps;
-                Vector3 b = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
-                Gizmos.DrawLine(a, b);
+                Vector3 averageOutNodeOutNodesPosition = Vector3.zero;
+                for (int outNodeOutNode = 0; outNodeOutNode < possibleNextNodes[outNode].possibleNextNodes.Count; outNodeOutNode++)
+                {
+                    averageOutNodeOutNodesPosition += possibleNextNodes[outNode].possibleNextNodes[outNodeOutNode].transform.position;
+                }
+                averageOutNodeOutNodesPosition /= possibleNextNodes[outNode].possibleNextNodes.Count;
+
+                //use catmull rom to draw a curved path
+                for (int step = 0; step < visualizationSubsteps; step++)
+                {
+                    float progress = (float)step / (float)visualizationSubsteps;
+                    Vector3 a = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
+                    progress = ((float)step + 1) / (float)visualizationSubsteps;
+                    Vector3 b = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
+                    Gizmos.DrawLine(a, b);
+                }
             }
         }
     }
