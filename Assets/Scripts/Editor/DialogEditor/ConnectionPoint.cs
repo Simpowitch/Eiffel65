@@ -13,13 +13,16 @@ public class ConnectionPoint
 
     public GUIStyle style;
 
+    public float YOffset;
+
     public Action<ConnectionPoint> OnClickConnectionPoint;
 
-    public ConnectionPoint(Node node, ConnectionPointType type, GUIStyle style, Action<ConnectionPoint> OnClickConnectionPoint)
+    public ConnectionPoint(Node node, ConnectionPointType type, GUIStyle style, Action<ConnectionPoint> OnClickConnectionPoint, float YOffset)
     {
         this.node = node;
         this.type = type;
         this.style = style;
+        this.YOffset = YOffset;
         this.OnClickConnectionPoint = OnClickConnectionPoint;
         rect = new Rect(0, 0, 10f, 20f);
     }
@@ -36,6 +39,7 @@ public class ConnectionPoint
 
             case ConnectionPointType.Out:
                 rect.x = node.rect.x + node.rect.width - 8f;
+                rect.y = node.rect.y + YOffset;
                 break;
         }
 
