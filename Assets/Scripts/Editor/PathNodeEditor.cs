@@ -60,12 +60,12 @@ public class PathNodeEditor : Editor
         }
 
         EditorGUILayout.HelpBox("Connect two nodes by pressing C and then select the node to add to the first selected node and press C again", MessageType.Info);
-        if (PathNode.dragConnectedNode != null)
+        if (PathNode.selectedNodeForConnection != null)
         {
-            EditorGUILayout.HelpBox(PathNode.dragConnectedNode.name + " is selected as node to receive new connection", MessageType.Info);
+            EditorGUILayout.HelpBox(PathNode.selectedNodeForConnection.name + " is selected as node to receive new connection", MessageType.Info);
             if (GUILayout.Button("Reset selected node to receive connection"))
             {
-                PathNode.dragConnectedNode = null;
+                PathNode.selectedNodeForConnection = null;
             }
         }
     }
@@ -259,15 +259,15 @@ public class PathNodeEditor : Editor
         Event ev = Event.current;
         if (Event.current.type == EventType.KeyDown && !Event.current.shift && Event.current.keyCode == KeyCode.C)
         {
-            if (PathNode.dragConnectedNode == null)
+            if (PathNode.selectedNodeForConnection == null)
             {
-                PathNode.dragConnectedNode = (PathNode)target;
+                PathNode.selectedNodeForConnection = (PathNode)target;
                 Debug.Log("Node to connect set");
             }
             else
             {
-                PathNode.dragConnectedNode.AddConnectedNode((PathNode)target);
-                PathNode.dragConnectedNode = null;
+                PathNode.selectedNodeForConnection.AddConnectedNode((PathNode)target);
+                PathNode.selectedNodeForConnection = null;
                 Debug.Log("Node connected");
             }
         }

@@ -7,14 +7,14 @@ public class PathNodeProgressTracker : MonoBehaviour
     CarAI ai;
 
     List<Vector3> waypoints;
-    [SerializeField] int substeps = 10;
+    [SerializeField] int substeps = 15;
 
     Rigidbody rb;
 
-    [SerializeField] int pathNodesToShow = 4;
+    [SerializeField] int pathNodesToShow = 3;
     [SerializeField] float lookAheadMinDistance = 1f;
-    [SerializeField] float lookAheadMaxDistance = 10f;
-    [SerializeField] float lookAheadSpeedModifier = 0.05f;
+    [SerializeField] float lookAheadMaxDistance = 8f;
+    [SerializeField] float lookAheadSpeedModifier = 0.1f;
 
     public Vector3 target;
 

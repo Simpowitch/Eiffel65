@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PathNode : MonoBehaviour
 {
-    public static PathNode dragConnectedNode;
+    public static PathNode selectedNodeForConnection; //used with hotkeys for quick connection between nodes
 
     [SerializeField] bool allowedToPass = true;
     [SerializeField] float roadSpeedLimit = 30;
@@ -15,7 +15,6 @@ public class PathNode : MonoBehaviour
     [SerializeField] List<PathNode> possibleNextNodes = new List<PathNode>();
 
     public List<PathNode> backwardNodes = new List<PathNode>(); //used for catmull-rom (curved path)
-    [SerializeField] int pathSubsteps = 15;
 
 
     private void Start()
@@ -161,11 +160,13 @@ public class PathNode : MonoBehaviour
     public Color lineColor;
     private Color nodeColor;
     public float nodeSize = 1f;
+    public int visualPathSubsteps = 15;
 
     private void OnDrawGizmos()
     {
         bool catmullCurveAllowed = true;
-        int visualizationSubsteps = pathSubsteps;
+
+        int visualizationSubsteps = visualPathSubsteps;
         nodeColor = allowedToPass ? Color.blue : Color.red;
         Gizmos.color = nodeColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);

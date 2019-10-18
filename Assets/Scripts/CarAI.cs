@@ -5,13 +5,16 @@ using System.Linq;
 
 public class CarAI : MonoBehaviour
 {
-    [SerializeField] Transform pathParent;
+    Vector3 progressTrackerAim;
+    PathNodeProgressTracker aiPathProgressTracker;
+
+    [SerializeField] Transform pathParent; //The path parent where the car picks random nodes from to go to
     public List<PathNode> path; //DEBUG PUBLIC
     public PathNode currentNode; //DEBUG PUBLIC - SHOULD BE SET TO THE CLOSEST ONE AT START
-    [SerializeField] PathNode targetNode;
+    [SerializeField] PathNode endNode; //Leave un-assigned if car is supposed to wander around without a set goal to stop at
 
     //How close we need to be a node to accept as arrived
-    [SerializeField] float distanceToAcceptNodeArrival = 2f;
+    [SerializeField] float nodeAcceptanceDistance = 4f;
     //The wheels controller script which applies torque, braking, steering etc.
     WheelDrive wheelController;
     //Our vehicle
@@ -19,33 +22,38 @@ public class CarAI : MonoBehaviour
     //Our speed
     [SerializeField] float kmhSpeed;
     //Our speed limit
-    [SerializeField] float speedToHold = 50f;
+    [SerializeField] float speedToHold = 10;
     //The road speed limit
-    [SerializeField] float roadSpeedLimit = 50f;
+    float roadSpeedLimit = 10;
     //Tell the controller to brake or not
-    [SerializeField] bool braking = false;
+    bool braking = false;
     //How much does the speed affect sensor length, length = kmh / thisNumber
     [SerializeField] float sensorLengthSpeedDependency = 4f;
     //How many times faster do the criminal want to go compared to the road speed limit
     [SerializeField] float criminalSpeedFactor = 1.5f;
-
+    //Immediately stops the car
     [SerializeField] bool debugStop = false;
 
-    public Vector3 progressTrackerAim;
-    PathNodeProgressTracker aiPathProgressTracker;
+    bool checkingIfStuck = false;
+    float timeBeforeReversingIfStuck = 2f;
+    bool isStuck = false;
+    int stuckSpeedSensistivity = 10;
 
-    private enum AIState { Drive, Queue, AvoidCollision, Stopping, BackingFromStuck }
+    private enum AIState { Drive, WaitForStopAndTrafficLights, Queue, AvoidCollision, Stopping, BackingFromStuck }
     [SerializeField] AIState currentState;
 
     [SerializeField] bool isCriminal = false;
+    [SerializeField] bool ignoreStopsAndTrafficLights = false;
+    [SerializeField] bool ignoreSpeedLimit = false;
 
-    public float steerPercentage; //DEBUG PUBLIC DEBUG DECLARED VARIABLE
+    //How much is the car steering to the right (1) or left (-1)
+    float steerPercentage;
 
     private void Start()
     {
-        if (targetNode)
+        if (endNode)
         {
-            SetNewEndTargetNode(targetNode, null);
+            SetNewEndTargetNode(endNode, null);
         }
         else
         {
@@ -73,80 +81,111 @@ public class CarAI : MonoBehaviour
     //Main function of the car AI
     private void FixedUpdate()
     {
+        //Start with resetting values
+        steerPercentage = 0;
+        float torquePercentage = 0;
+        braking = false;
+        float distanceToObstacle = float.MaxValue;
+
+        //Stopping the car if we have no current node (should not happen)
+        //Also stopping if prompted by debug-stop-bool (panic-button)
         if (debugStop)
         {
             wheelController.AIDriver(0, 0, true);
             return;
         }
-        steerPercentage = 0; //float steerPercentage = 0;
-        float torquePercentage = 0;
-
-        if (currentNode == null)
+        else if (currentNode == null)
         {
             currentState = AIState.Stopping;
+            wheelController.AIDriver(0, 0, true);
+            return;
+        }
+
+        //Update current node and path if we are in acceptable range
+        //Set status to Queue if there is a red light on our pathnode
+        if (ignoreStopsAndTrafficLights)
+        {
+            currentState = AIState.Drive;
+            UpdateWaypoint();
+        }
+        else if (CheckIfAllowedToPass())
+        {
+            currentState = AIState.Drive;
+            UpdateWaypoint();
         }
         else
         {
-            if (currentState != AIState.Queue || CheckIfAllowedToPass())
+            currentState = AIState.WaitForStopAndTrafficLights;
+        }
+
+        //Calculate steering
+        if (aiPathProgressTracker)
+        {
+            progressTrackerAim = aiPathProgressTracker.target;
+        }
+        steerPercentage = aiPathProgressTracker != null ? SteerTowardsPoint(progressTrackerAim) : SteerTowardsNextNode();
+
+        //Check for collisions
+        if (CheckForCollision(steerPercentage, out RaycastHit collision))
+        {
+            if (collision.transform.tag == "WorldObject")
             {
-                UpdateWaypoint();
-                if (currentNode == null)
-                {
-                    return;
-                }
+                currentState = kmhSpeed < 5 ? AIState.BackingFromStuck : AIState.AvoidCollision;
             }
-
-            if (aiPathProgressTracker)
+            else if (collision.transform.tag == "Vehicle")
             {
-                progressTrackerAim = aiPathProgressTracker.target;
-            }
-
-            steerPercentage = aiPathProgressTracker != null ? SteerTowardsPoint(progressTrackerAim) : SteerTowardsNextNode();
-
-            if (!CheckIfAllowedToPass() && !isCriminal)
-            {
-                currentState = AIState.Queue;
+                currentState = isCriminal ? AIState.AvoidCollision : AIState.Queue;
             }
             else
             {
-                currentState = AIState.Drive;
+                Debug.LogWarning("No function found for response to collison object tag");
             }
 
-
-            if (CheckForCollision(steerPercentage, out RaycastHit collision))
-            {
-                if (collision.transform.tag == "WorldObject")
-                {
-                    currentState = kmhSpeed < 5 ? AIState.BackingFromStuck : AIState.AvoidCollision;
-                }
-                else if (collision.transform.tag == "Vehicle")
-                {
-                    currentState = isCriminal ? AIState.AvoidCollision : AIState.Queue;
-                }
-                else
-                {
-                    Debug.LogWarning("No function found for response to collison object tag");
-                }
-            }
-
+            //What does this? How will it work, if only when turning, maybe different names needed
             if (LaneChangeCheck(ref steerPercentage) && !isCriminal)
             {
                 currentState = AIState.Queue;
             }
+            distanceToObstacle = Vector3.Distance(rb.position, collision.point);
         }
 
+        if (kmhSpeed + stuckSpeedSensistivity < speedToHold)
+        {
+            if (!checkingIfStuck)
+            {
+                StartCoroutine("CheckIfStuck");
+            }
+        }
+        else
+        {
+            StopCoroutine("CheckIfStuck");
+            isStuck = false;
+            checkingIfStuck = false;
+        }
+
+        if (isStuck)
+        {
+            currentState = AIState.BackingFromStuck;
+        }
 
         switch (currentState)
         {
             case AIState.Drive:
                 {
-                    float newSpeed = isCriminal ? Mathf.Max(30, roadSpeedLimit * criminalSpeedFactor * (1 - Mathf.Abs(steerPercentage))) : Mathf.Max(10, roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)));
+                    float newSpeed = ignoreSpeedLimit ? roadSpeedLimit * criminalSpeedFactor * (1 - Mathf.Abs(steerPercentage)) : roadSpeedLimit * (1 - Mathf.Abs(steerPercentage));
+                    SetSpeedToHold(newSpeed);
+                }
+                break;
+            case AIState.WaitForStopAndTrafficLights:
+                {
+                    float distanceToStop = Vector3.Distance(path[0].transform.position, transform.position);
+                    float newSpeed = distanceToStop < 5 ? 0 : Mathf.Min(roadSpeedLimit, distanceToStop);
                     SetSpeedToHold(newSpeed);
                 }
                 break;
             case AIState.Queue:
                 {
-                    float distanceToStop = Vector3.Distance(path[0].transform.position, transform.position);
+                    float distanceToStop = distanceToObstacle;
                     float newSpeed = distanceToStop < 5 ? 0 : Mathf.Min(roadSpeedLimit, distanceToStop);
                     SetSpeedToHold(newSpeed);
                 }
@@ -154,7 +193,7 @@ public class CarAI : MonoBehaviour
             case AIState.AvoidCollision:
                 {
                     AvertFromCollision(ref steerPercentage);
-                    float newSpeed = isCriminal ? Mathf.Max(20, roadSpeedLimit * 1f * (1 - Mathf.Abs(steerPercentage))) : Mathf.Min(10, roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)));
+                    float newSpeed = ignoreSpeedLimit ? Mathf.Max(20, roadSpeedLimit * 1f * (1 - Mathf.Abs(steerPercentage))) : Mathf.Min(10, roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)));
                     SetSpeedToHold(newSpeed);
                 }
                 break;
@@ -193,7 +232,7 @@ public class CarAI : MonoBehaviour
         path = Pathfinding.GetPathToFollow(currentNode, target, nodeToAvoid).nodes;
         if (path == null || path.Count == 0 || !path.Contains(target))
         {
-            Debug.LogError("Path to: '" + target.transform.name + target.transform.position + "', not found. Please confirm that a path to this node exists");
+            Debug.LogWarning("Path to: '" + target.transform.name + target.transform.position + "', not found. Please confirm that a path to this node exists");
             currentState = AIState.Stopping;
             return false;
         }
@@ -220,7 +259,7 @@ public class CarAI : MonoBehaviour
                 SetRandomTargetNode();
                 tests++;
             }
-            else if (tests >= 10)
+            else if (tests >= 15)
             {
                 Debug.LogError("Failed to find a random node to find a path to on 10 tries. Check node connections. This car will probably not function:  " + this.transform.name);
             }
@@ -262,7 +301,7 @@ public class CarAI : MonoBehaviour
         {
             float distanceToNode = Vector3.Distance(transform.position, path[0].transform.position);
             Vector3 posToTest = transform.position + GetComponent<Rigidbody>().velocity.normalized * distanceToNode;
-            if (Vector3.Distance(posToTest, path[0].transform.position) < distanceToAcceptNodeArrival)
+            if (Vector3.Distance(posToTest, path[0].transform.position) < nodeAcceptanceDistance)
             {
                 return 0;
             }
@@ -321,7 +360,7 @@ public class CarAI : MonoBehaviour
     /// </summary>
     private void UpdateWaypoint()
     {
-        if (Vector3.Distance(transform.position, path[0].transform.position) < distanceToAcceptNodeArrival)
+        if (Vector3.Distance(transform.position, path[0].transform.position) < nodeAcceptanceDistance)
         {
             if (path.Count > 0)
             {
@@ -335,7 +374,7 @@ public class CarAI : MonoBehaviour
                     SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
                     currentNode.AddPathFindingCost();
                 }
-                else if (targetNode)
+                else if (endNode)
                 {
                     currentNode = null;
                 }
@@ -393,7 +432,13 @@ public class CarAI : MonoBehaviour
         return path[0].GetComponent<PathNode>().IsAllowedToPass();
     }
 
-
+    IEnumerator CheckIfStuck()
+    {
+        checkingIfStuck = true;
+        yield return new WaitForSeconds(timeBeforeReversingIfStuck);
+        isStuck = (kmhSpeed + stuckSpeedSensistivity < speedToHold);
+        checkingIfStuck = false;
+    }
 
 
 
