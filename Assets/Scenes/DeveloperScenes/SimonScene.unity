@@ -5479,7 +5479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1385911082}
@@ -19420,6 +19420,7 @@ Transform:
   - {fileID: 263818675}
   - {fileID: 1550786725}
   - {fileID: 360114862}
+  - {fileID: 942958896}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26451,12 +26452,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1744948532}
   backwardNodes:
   - {fileID: 1932351846}
+  - {fileID: 937571331}
   lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
   nodeSize: 1
   visualPathSubsteps: 15
@@ -26579,7 +26581,7 @@ GameObject:
   - component: {fileID: 554614625}
   m_Layer: 0
   m_Name: DownLookingCamera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27434,7 +27436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 30
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 981423088}
@@ -31081,13 +31083,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowedToPass: 0
-  roadSpeedLimit: 25
+  allowedToPass: 1
+  roadSpeedLimit: 30
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1932351846}
   backwardNodes:
-  - {fileID: 1554115005}
   - {fileID: 703439623}
   lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
   nodeSize: 1
@@ -31899,7 +31900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 30
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1232730131}
@@ -32327,7 +32328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 676505143}
@@ -34724,7 +34725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -37380,7 +37381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1084556631}
@@ -37433,7 +37434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1432464841}
@@ -41329,12 +41330,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 30
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 816203733}
   backwardNodes:
   - {fileID: 952930320}
+  - {fileID: 942958895}
   lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
   nodeSize: 1
   visualPathSubsteps: 15
@@ -44037,7 +44039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 952930320}
@@ -44054,7 +44056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932430383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -241.92, y: 0, z: -180.4}
+  m_LocalPosition: {x: -241.17, y: 0, z: -190.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368425501}
@@ -44182,10 +44184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1720552659}
+  - {fileID: 553101372}
   backwardNodes:
   - {fileID: 1716227820}
   lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
@@ -44389,6 +44392,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 941104549}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &942958894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 942958896}
+  - component: {fileID: 942958895}
+  m_Layer: 0
+  m_Name: PathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &942958895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942958894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  pathFindingCost: 0
+  possibleNextNodes:
+  - {fileID: 889363733}
+  backwardNodes:
+  - {fileID: 952930320}
+  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
+  nodeSize: 1
+  visualPathSubsteps: 15
+--- !u!4 &942958896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942958894}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -242.73999, y: 0, z: -241.175}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 368425501}
+  m_RootOrder: 59
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &943681401
 GameObject:
   m_ObjectHideFlags: 0
@@ -44578,7 +44634,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
-  - {fileID: 889363733}
+  - {fileID: 942958895}
   backwardNodes:
   - {fileID: 932430384}
   lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
@@ -45784,7 +45840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1108821545}
@@ -51722,7 +51778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 143184951}
@@ -55199,7 +55255,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 989396397}
-  - {fileID: 2128375506}
   - {fileID: 1080908794}
   - {fileID: 1732742599}
   m_Father: {fileID: 0}
@@ -56159,7 +56214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 756899684}
@@ -62086,7 +62141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 932430384}
@@ -62944,7 +62999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1571274334}
@@ -66172,7 +66227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 370542214}
@@ -68206,7 +68261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 30
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1359990948}
@@ -70264,7 +70319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539912724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0, z: -359.39}
+  m_LocalPosition: {x: -1.81, y: 0, z: -359.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368425501}
@@ -70300,7 +70355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1698759924}
@@ -70317,7 +70372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541557681}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.17, y: 0, z: -389.76}
+  m_LocalPosition: {x: 3.7, y: 0, z: -394.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368425501}
@@ -71127,7 +71182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554115004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.15, y: 0, z: -372.06}
+  m_LocalPosition: {x: 9.46, y: 0, z: -371.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368425501}
@@ -72299,7 +72354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1541557682}
@@ -72316,7 +72371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583965185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 0, z: -381.18}
+  m_LocalPosition: {x: -2.25, y: 0, z: -382.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368425501}
@@ -75258,7 +75313,7 @@ GameObject:
   - component: {fileID: 1667673428}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75315,7 +75370,7 @@ MonoBehaviour:
     updateCameraInUpdate: 0
     updateCameraInFixedUpdate: 1
     updateCameraInLateUpdate: 0
-  carToFollow: {fileID: 2128375506}
+  carToFollow: {fileID: 1732742599}
 --- !u!81 &1667673430
 AudioListener:
   m_ObjectHideFlags: 0
@@ -77434,7 +77489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698759923}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.77, y: 0, z: -383.13}
+  m_LocalPosition: {x: 9.37, y: 0, z: -383.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 368425501}
@@ -77927,7 +77982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 30
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 937571331}
@@ -78196,7 +78251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1456455366}
@@ -78547,7 +78602,7 @@ MonoBehaviour:
   ignoreSpeedLimit: 0
   carWidth: 2
   carLength: 3
-  minimumForwardSensorLength: 5
+  minimumForwardSensorLength: 2
   minimumAngledSensorLength: 2
   maxAngle: 45
   lineToNode: {r: 1, g: 0.9459826, b: 0, a: 1}
@@ -87584,7 +87639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 553101372}
@@ -87806,7 +87861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.58
+      value: -1.56
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -87814,7 +87869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -368.05
+      value: -372.66
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -87822,7 +87877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0016304558
+      value: -0.7059527
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.z
@@ -87830,11 +87885,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999987
+      value: 0.70825905
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -87842,7 +87897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.187
+      value: -89.813
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -87851,12 +87906,12 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.562
+      value: 40706.062
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0503
+      value: 6512.97
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -87866,17 +87921,17 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
+      value: 0.67725265
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.336
+      value: 34790.973
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.614
+      value: 5566.5557
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -87886,47 +87941,47 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
+      value: 0.67725265
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.44
+      value: 34293.95
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.9507
+      value: 5487.0317
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19619998
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
+      value: 0.67725265
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40208.66
+      value: 40209.027
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.386
+      value: 6433.445
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620003
+      value: 0.19620001
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
+      value: 0.67725265
       objectReference: {fileID: 0}
     - target: {fileID: 114000013910545014, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -88630,7 +88685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 8747352}
@@ -93525,7 +93580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 10
+  roadSpeedLimit: 20
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1959772066}
@@ -94563,224 +94618,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2127318678}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2128375505
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1208552238}
-    m_Modifications:
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_Name
-      value: City V2 Car
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_TagString
-      value: Vehicle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -373.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.0016304558
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999987
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.187
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40706.555
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6513.0483
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34791.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5566.6123
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19619998
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34293.445
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5486.951
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40208.676
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6433.388
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620001
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013910545014, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: pilotedBy
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013910545014, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: wheelChangeSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
---- !u!4 &2128375506 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 2128375505}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2128375507 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 2128375505}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2128375508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128375507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathParent: {fileID: 368425501}
-  path: []
-  currentNode: {fileID: 1554115005}
-  endNode: {fileID: 0}
-  nodeAcceptanceDistance: 4
-  kmhSpeed: 0
-  speedToHold: 50
-  sensorLengthSpeedDependency: 4
-  criminalSpeedFactor: 1.5
-  debugStop: 0
-  currentState: 0
-  isCriminal: 0
-  ignoreStopsAndTrafficLights: 0
-  ignoreSpeedLimit: 0
-  carWidth: 2
-  carLength: 3
-  minimumForwardSensorLength: 5
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  lineToNode: {r: 1, g: 0.9459826, b: 0, a: 1}
---- !u!114 &2128375512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128375507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  substeps: 15
-  pathNodesToShow: 5
-  lookAheadMinDistance: 1.5
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.2
-  target: {x: 0, y: 0, z: 0}
-  targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &2128645065
 GameObject:
   m_ObjectHideFlags: 0

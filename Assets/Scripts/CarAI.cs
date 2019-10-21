@@ -69,6 +69,8 @@ public class CarAI : MonoBehaviour
             aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
             aiPathProgressTracker.UpdatePath(path, currentNode);
         }
+
+        SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
     }
 
 
@@ -140,14 +142,14 @@ public class CarAI : MonoBehaviour
             {
                 Debug.LogWarning("No function found for response to collison object tag");
             }
-
-            //What does this? How will it work, if only when turning, maybe different names needed
-            if (LaneChangeCheck(ref steerPercentage) && !isCriminal)
-            {
-                currentState = AIState.Queue;
-            }
             distanceToObstacle = Vector3.Distance(rb.position, collision.point);
         }
+
+        ////What does this? How will it work, if only when turning, maybe different names needed
+        //if (LaneChangeCheck(ref steerPercentage) && !isCriminal)
+        //{
+        //    currentState = AIState.Queue;
+        //}
 
         if (kmhSpeed + stuckSpeedSensistivity < speedToHold)
         {
@@ -449,13 +451,13 @@ public class CarAI : MonoBehaviour
 
     //Foward sensors
     [SerializeField] float minimumForwardSensorLength = 2f;
-    float frontSensorLength = 5f;
+    float frontSensorLength;
 
     //Angled forward sensors
     [SerializeField] float minimumAngledSensorLength = 2f;
-    float frontAngledSensorLength = 10f;
+    float frontAngledSensorLength;
     [SerializeField] float maxAngle = 45;
-    float frontSensorsAngle = 45;
+    float frontSensorsAngle;
 
     int numberOfSideSensors = 3;
 
