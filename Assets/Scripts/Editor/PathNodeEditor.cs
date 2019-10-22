@@ -11,7 +11,7 @@ public class PathNodeEditor : Editor
     bool changeSpeed = false;
     int metersBetweenNodes = 15;
     bool createExtraLanesToTheRight = false;
-    int metersBetweenLanes = 3;
+    int metersBetweenLanes = 4;
     int lanesToCreate = 1;
     bool forbidLaneChangeInEnd = false;
     int laneChangeDisallowanceNodes = 1;
@@ -275,6 +275,8 @@ public class PathNodeEditor : Editor
         if (Selection.transforms.Length > 0 && Selection.transforms[0].GetComponent<PathNode>() != null)
         {
             PathNode myPathNode = Selection.transforms[0].GetComponent<PathNode>();
+            myPathNode = (PathNode)target;
+
             if (ev.type == EventType.KeyDown && ev.shift && ev.keyCode == KeyCode.C)
             {
                 Selection.activeGameObject = CreateNewNode(myPathNode);

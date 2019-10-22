@@ -5,8 +5,15 @@ using System.Linq;
 
 public class CarAI : MonoBehaviour
 {
-    Vector3 progressTrackerAim;
+    //The progress tracker responsible for following a path between pathnodes
     PathNodeProgressTracker aiPathProgressTracker;
+    //The wheels controller script which applies torque, braking, steering etc.
+    WheelDrive wheelController;
+    //Our vehicle
+    Rigidbody rb;
+
+    //The aimed for targetpathnode-progress
+    Vector3 progressTrackerAim;
 
     [SerializeField] Transform pathParent; //The path parent where the car picks random nodes from to go to
     public List<PathNode> path; //DEBUG PUBLIC
@@ -15,24 +22,18 @@ public class CarAI : MonoBehaviour
 
     //How close we need to be a node to accept as arrived
     [SerializeField] float nodeAcceptanceDistance = 4f;
-    //The wheels controller script which applies torque, braking, steering etc.
-    WheelDrive wheelController;
-    //Our vehicle
-    Rigidbody rb;
     //Our speed
     [SerializeField] float kmhSpeed;
     //Our speed limit
-    [SerializeField] float speedToHold = 10;
+    [SerializeField] float speedToHold = 30;
     //The road speed limit
     float roadSpeedLimit = 10;
     //Tell the controller to brake or not
     bool braking = false;
-    //How much does the speed affect sensor length, length = kmh / thisNumber
-    [SerializeField] float sensorLengthSpeedDependency = 4f;
-    //How many times faster do the criminal want to go compared to the road speed limit
-    [SerializeField] float criminalSpeedFactor = 1.5f;
     //Immediately stops the car
     [SerializeField] bool debugStop = false;
+    //How much is the car steering to the right (1) or left (-1)
+    float steerPercentage;
 
     bool checkingIfStuck = false;
     float timeBeforeReversingIfStuck = 2f;
@@ -45,20 +46,21 @@ public class CarAI : MonoBehaviour
     [SerializeField] bool isCriminal = false;
     [SerializeField] bool ignoreStopsAndTrafficLights = false;
     [SerializeField] bool ignoreSpeedLimit = false;
+    //How many times faster do the criminal want to go compared to the road speed limit
+    [SerializeField] float criminalSpeedFactor = 1.5f;
 
-    //How much is the car steering to the right (1) or left (-1)
-    float steerPercentage;
 
     private void Start()
     {
-        if (endNode)
-        {
-            SetNewEndTargetNode(endNode, null);
-        }
-        else
-        {
-            SetRandomTargetNode();
-        }
+        //if (endNode)
+        //{
+        //    SetNewEndTargetNode(endNode, null);
+        //}
+        //else
+        //{
+        //    SetRandomTargetNode();
+        //}
+        CreateRandomizedPath();
 
 
         wheelController = GetComponent<WheelDrive>();
@@ -93,18 +95,22 @@ public class CarAI : MonoBehaviour
         //Also stopping if prompted by debug-stop-bool (panic-button)
         if (debugStop)
         {
+            currentState = AIState.Stopping;
             wheelController.AIDriver(0, 0, true);
             return;
         }
         else if (currentNode == null)
         {
+            if (currentState != AIState.Stopping)
+            {
+                Debug.LogWarning("Current node of car " + transform.name + " is missing");
+            }
             currentState = AIState.Stopping;
             wheelController.AIDriver(0, 0, true);
             return;
         }
 
         //Update current node and path if we are in acceptable range
-        //Set status to Queue if there is a red light on our pathnode
         if (ignoreStopsAndTrafficLights)
         {
             currentState = AIState.Drive;
@@ -130,6 +136,7 @@ public class CarAI : MonoBehaviour
         //Check for collisions
         if (CheckForCollision(steerPercentage, out RaycastHit collision))
         {
+            distanceToObstacle = Vector3.Distance(rb.position, collision.point);
             if (collision.transform.tag == "WorldObject")
             {
                 currentState = kmhSpeed < 5 ? AIState.BackingFromStuck : AIState.AvoidCollision;
@@ -142,8 +149,8 @@ public class CarAI : MonoBehaviour
             {
                 Debug.LogWarning("No function found for response to collison object tag");
             }
-            distanceToObstacle = Vector3.Distance(rb.position, collision.point);
         }
+
 
         ////What does this? How will it work, if only when turning, maybe different names needed
         //if (LaneChangeCheck(ref steerPercentage) && !isCriminal)
@@ -165,6 +172,12 @@ public class CarAI : MonoBehaviour
             checkingIfStuck = false;
         }
 
+        //If target vector3 is behind the car
+        if (Vector3.Distance(progressTrackerAim, rb.position - transform.forward.normalized) < Vector3.Distance(progressTrackerAim, rb.position))
+        {
+            currentState = AIState.BackingFromStuck;
+        }
+
         if (isStuck)
         {
             currentState = AIState.BackingFromStuck;
@@ -174,7 +187,8 @@ public class CarAI : MonoBehaviour
         {
             case AIState.Drive:
                 {
-                    float newSpeed = ignoreSpeedLimit ? roadSpeedLimit * criminalSpeedFactor * (1 - Mathf.Abs(steerPercentage)) : roadSpeedLimit * (1 - Mathf.Abs(steerPercentage));
+                    float newSpeed = CalculateSpeedToHold();
+                    newSpeed = Mathf.Max(10, newSpeed); //minimum
                     SetSpeedToHold(newSpeed);
                 }
                 break;
@@ -187,15 +201,16 @@ public class CarAI : MonoBehaviour
                 break;
             case AIState.Queue:
                 {
-                    float distanceToStop = distanceToObstacle;
-                    float newSpeed = distanceToStop < 5 ? 0 : Mathf.Min(roadSpeedLimit, distanceToStop);
+                    float newSpeed = distanceToObstacle < 3 ? 0 : Mathf.Min(roadSpeedLimit, distanceToObstacle);
                     SetSpeedToHold(newSpeed);
                 }
                 break;
             case AIState.AvoidCollision:
                 {
                     AvertFromCollision(ref steerPercentage);
-                    float newSpeed = ignoreSpeedLimit ? Mathf.Max(20, roadSpeedLimit * 1f * (1 - Mathf.Abs(steerPercentage))) : Mathf.Min(10, roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)));
+                    float newSpeed = CalculateSpeedToHold();
+                    newSpeed *= 0.75f; //75% for safety
+                    newSpeed = Mathf.Max(10, newSpeed); //minimum
                     SetSpeedToHold(newSpeed);
                 }
                 break;
@@ -207,21 +222,21 @@ public class CarAI : MonoBehaviour
                 break;
             case AIState.BackingFromStuck:
                 {
-                    SetSpeedToHold(3);
+                    SetSpeedToHold(5);
                 }
                 break;
         }
 
         torquePercentage = Drive((currentState == AIState.BackingFromStuck));
 
+        //Invert values if we are reversing
         if (currentState == AIState.BackingFromStuck)
         {
             steerPercentage *= -1;
             torquePercentage *= -1;
         }
 
-
-
+        //Send values to the tires of the car
         wheelController.AIDriver(steerPercentage, torquePercentage, braking);
     }
 
@@ -292,7 +307,28 @@ public class CarAI : MonoBehaviour
             currentState = AIState.Stopping;
         }
     }
+
+    /// <summary>
+    /// Find a node x-number of nodes forward from current point, then calls for the PathFinding to find the closest and best way there
+    /// It may differ from the order we make here since there can be multiple lanes and we don't want the car to swtch more times than it needs
+    /// /// </summary>
+    int pathCreationNumberOfNodes = 30;
+    private void CreateRandomizedPath()
+    {
+        PathNode nodeAt = currentNode;
+        for (int i = 0; i < pathCreationNumberOfNodes; i++)
+        {
+            nodeAt = nodeAt.GetPathNodes()[Random.Range(0, nodeAt.GetPathNodes().Count)];
+        }
+        SetNewEndTargetNode(nodeAt, null);
+    }
     #endregion
+
+    private float CalculateSpeedToHold()
+    {
+        float newSpeed = roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)) * (1 - Mathf.Abs(aiPathProgressTracker.curvePercentage));
+        return ignoreSpeedLimit? newSpeed *criminalSpeedFactor : newSpeed;
+    }
 
     /// <summary>
     /// Calculates how much the wheels should turn to go towards the current node
@@ -382,13 +418,16 @@ public class CarAI : MonoBehaviour
                 }
                 else
                 {
-                    SetRandomTargetNode(); //add new path to go to
+                    //SetRandomTargetNode(); //add new path to go to
+                    CreateRandomizedPath(); //Performance improved randomizer
                 }
             }
-            GetComponent<PathNodeProgressTracker>().UpdatePath(path, currentNode);
+            if (aiPathProgressTracker)
+            {
+                aiPathProgressTracker.UpdatePath(path, currentNode);
+            }
         }
     }
-
 
     /// <summary>
     /// The car brakes
@@ -406,9 +445,6 @@ public class CarAI : MonoBehaviour
             //turn off brakelights
         }
     }
-
-    //private bool 
-
 
     /// <summary>
     /// Sets the new speed limit which the car will try to follow
@@ -449,6 +485,9 @@ public class CarAI : MonoBehaviour
     [SerializeField] float carWidth = 2f;
     [SerializeField] float carLength = 3f;
 
+    //How much does the speed affect sensor length, length = kmh / thisNumber
+    [SerializeField] float sensorLengthSpeedDependency = 4f;
+
     //Foward sensors
     [SerializeField] float minimumForwardSensorLength = 2f;
     float frontSensorLength;
@@ -463,7 +502,6 @@ public class CarAI : MonoBehaviour
 
     /// <summary>
     /// Check the sensors in front of the car to slow down and queue up if there is another car infront of this one
-    /// Also changes state to Backing if there is an object blocking the path
     /// </summary>
     private bool CheckForCollision(float turningPercentage, out RaycastHit collision)
     {
@@ -718,6 +756,10 @@ public class CarAI : MonoBehaviour
         return avoidingCollision;
     }
 
+    [SerializeField] float criticalCollisionDistance = 2f;
+    [SerializeField] float warningCollisionDistance = 5f;
+    [SerializeField] float infoCollisionDistance = 10f;
+
     /// <summary>
     /// Uses raycast to detect obstacles
     /// </summary>
@@ -729,7 +771,21 @@ public class CarAI : MonoBehaviour
         {
             if (hit.transform.tag != "Terrain")
             {
-                Debug.DrawLine(startPos, hit.point);
+                float distance = Vector3.Distance(rb.position, hit.point);
+                Color rayColor = Color.black;
+                if (distance < criticalCollisionDistance)
+                {
+                    rayColor = Color.red;
+                }
+                else if (distance < warningCollisionDistance)
+                {
+                    rayColor = Color.yellow;
+                }
+                else if (distance < infoCollisionDistance)
+                {
+                    rayColor = Color.white;
+                }
+                Debug.DrawLine(startPos, hit.point, rayColor);
                 return true;
             }
         }

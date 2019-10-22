@@ -11,12 +11,20 @@ public class PathNodeProgressTracker : MonoBehaviour
 
     Rigidbody rb;
 
-    [SerializeField] int pathNodesToShow = 3;
-    [SerializeField] float lookAheadMinDistance = 1f;
+    [SerializeField] int pathNodesToShow = 2;
+    [SerializeField] float lookAheadMinDistance = 0.5f;
     [SerializeField] float lookAheadMaxDistance = 8f;
     [SerializeField] float lookAheadSpeedModifier = 0.1f;
 
+    //Used to check points ahead to see if the path is curved or straight, which helps cars decide if they should lower their speed to be safer in the future
+    int lookAheadAdaptSpeedCurveCheck = 15;
+
+    //This helps us to make sure we don't target the same position again if already close enough
+    float distanceToAccept = 5f;
+    public int passedProgress = 0;
+
     public Vector3 target;
+    public float curvePercentage;
 
     private void Awake()
     {
@@ -27,6 +35,12 @@ public class PathNodeProgressTracker : MonoBehaviour
     {
         if (waypoints.Count > 0)
         {
+            //If close enough say to go to the next point
+            if (Vector3.Distance(rb.position, target) < distanceToAccept)
+            {
+                passedProgress++;
+            }
+
             float distanceToTarget = float.MaxValue;
             int targetIndex = 0;
 
@@ -49,14 +63,22 @@ public class PathNodeProgressTracker : MonoBehaviour
                     }
                 }
             }
+            targetIndex += passedProgress;
+
+            targetIndex = Mathf.Min(targetIndex, waypoints.Count - 1);
             target = waypoints[targetIndex];
+
+            int curveTargetIndex = targetIndex + lookAheadAdaptSpeedCurveCheck;
+            curveTargetIndex = Mathf.Min(curveTargetIndex, waypoints.Count - 1);
+            curvePercentage = CalculateCurvePercentage(waypoints[curveTargetIndex]);
         }
     }
 
 
-    //TODO: Fix when path is close to end
     public void UpdatePath(List<PathNode> path, PathNode currentNode)
     {
+        curvePercentage = 0;
+        passedProgress = 0;
         waypoints = new List<Vector3>();
         if (path.Count > 0)
         {
@@ -112,6 +134,13 @@ public class PathNodeProgressTracker : MonoBehaviour
         }
     }
 
+    private float CalculateCurvePercentage(Vector3 endPoint)
+    {
+        Vector3 relativeVector = transform.InverseTransformPoint(endPoint);
+        relativeVector /= relativeVector.magnitude;
+        return (relativeVector.x / relativeVector.magnitude);
+    }
+
     private Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float i)
     {
         // comments are no use here... it's the catmull-rom equation.
@@ -130,13 +159,13 @@ public class PathNodeProgressTracker : MonoBehaviour
         {
             if (waypoints.Count > 0)
             {
+                Gizmos.color = targetIndicatorColor;
                 for (int i = 0; i < waypoints.Count - 1; i++)
                 {
                     Gizmos.DrawLine(waypoints[i], waypoints[i + 1]);
                 }
-                Gizmos.color = targetIndicatorColor;
                 Gizmos.DrawLine(transform.position, target);
-                Gizmos.DrawWireSphere(target, 0.5f);
+                Gizmos.DrawWireSphere(target, 0.2f);
 
                 for (int i = 0; i < waypoints.Count; i++)
                 {
