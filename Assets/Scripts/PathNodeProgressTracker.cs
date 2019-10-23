@@ -68,9 +68,9 @@ public class PathNodeProgressTracker : MonoBehaviour
             targetIndex = Mathf.Min(targetIndex, waypoints.Count - 1);
             target = waypoints[targetIndex];
 
-            int curveTargetIndex = targetIndex + lookAheadAdaptSpeedCurveCheck;
-            curveTargetIndex = Mathf.Min(curveTargetIndex, waypoints.Count - 1);
-            curvePercentage = CalculateCurvePercentage(waypoints[curveTargetIndex]);
+            //int curveTargetIndex = targetIndex + lookAheadAdaptSpeedCurveCheck;
+            //curveTargetIndex = Mathf.Min(curveTargetIndex, waypoints.Count - 1);
+            //curvePercentage = CalculateCurvePercentage(waypoints[curveTargetIndex]);
         }
     }
 
@@ -113,6 +113,7 @@ public class PathNodeProgressTracker : MonoBehaviour
             {
                 CreateStraightPath(path[0].transform.position);
             }
+            curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count-1]);
         }
     }
 

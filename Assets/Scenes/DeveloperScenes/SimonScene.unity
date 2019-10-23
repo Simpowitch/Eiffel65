@@ -5595,7 +5595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 69.59
+      value: 69.75
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5711,14 +5711,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
   path: []
-  currentNode: {fileID: 1659632432}
+  currentNode: {fileID: 201947719}
   endNode: {fileID: 0}
   nodeAcceptanceDistance: 4
   kmhSpeed: 0
   speedToHold: 30
   debugStop: 0
   currentState: 0
-  isCriminal: 0
+  recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
@@ -5934,7 +5934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 20
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1385911082}
@@ -25818,12 +25818,12 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.045
+      value: 6513.0444
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -25833,12 +25833,12 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.6187
+      value: 5566.618
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -25868,7 +25868,7 @@ PrefabInstance:
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19620003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
@@ -25892,14 +25892,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
   path: []
-  currentNode: {fileID: 826327399}
+  currentNode: {fileID: 1628894075}
   endNode: {fileID: 0}
   nodeAcceptanceDistance: 4
   kmhSpeed: 0
   speedToHold: 30
   debugStop: 0
   currentState: 0
-  isCriminal: 0
+  recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
@@ -47226,7 +47226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 20
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 1720552659}
@@ -51970,7 +51970,7 @@ MonoBehaviour:
   speedToHold: 50
   debugStop: 0
   currentState: 0
-  isCriminal: 0
+  recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
@@ -53829,7 +53829,7 @@ MonoBehaviour:
   speedToHold: 50
   debugStop: 0
   currentState: 0
-  isCriminal: 0
+  recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
@@ -80473,13 +80473,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667673427}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 50, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &1668167630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83913,7 +83913,7 @@ MonoBehaviour:
   speedToHold: 50
   debugStop: 0
   currentState: 0
-  isCriminal: 0
+  recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
@@ -93266,7 +93266,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_Name
-      value: FamilyCar (2)
+      value: Criminal
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
@@ -93319,17 +93319,17 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.523
+      value: 40706.516
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.044
+      value: 6513.0425
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -93349,32 +93349,32 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.48
+      value: 34293.49
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.957
+      value: 5486.9585
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620003
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40208.637
+      value: 40208.645
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.3823
+      value: 6433.383
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.1962
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
@@ -93398,17 +93398,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
   path: []
-  currentNode: {fileID: 1659632432}
+  currentNode: {fileID: 201947719}
   endNode: {fileID: 0}
-  nodeAcceptanceDistance: 4
+  nodeAcceptanceDistance: 6
   kmhSpeed: 0
   speedToHold: 30
   debugStop: 0
   currentState: 0
-  isCriminal: 0
+  recklessDriver: 1
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
-  criminalSpeedFactor: 1.5
+  criminalSpeedFactor: 1.25
   carWidth: 2
   carLength: 3
   sensorLengthSpeedDependency: 4
@@ -93425,27 +93425,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1918592208}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1918592215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918592209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  substeps: 15
-  pathNodesToShow: 3
-  lookAheadMinDistance: 1
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.1
-  passedProgress: 0
-  target: {x: 0, y: 0, z: 0}
-  curvePercentage: 0
-  targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1921244859
 GameObject:
   m_ObjectHideFlags: 0
@@ -93837,7 +93816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 20
+  roadSpeedLimit: 50
   pathFindingCost: 0
   possibleNextNodes:
   - {fileID: 553101372}
