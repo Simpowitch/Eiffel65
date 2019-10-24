@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private Text[] promptSpaces;
 	[SerializeField] private Image fillBar;
 
-
+	ChoiceFreeze cf;
 
 	static GameManager inst;
 
@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
 		set { fillBar.fillAmount = value; }
 	}
 
+	public ChoiceFreeze choiceFreeze
+	{
+		get { return cf; }
+	}
+
 
 	public static GameManager instance
 	{
@@ -26,13 +31,16 @@ public class GameManager : MonoBehaviour
 	}
 
 
+
+
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
 		if (instance == null || instance == this)
 			inst = this;
 		else
 			Destroy(gameObject);
+		cf = GetComponent<ChoiceFreeze>();
     }
 
 	public void DisplayFastChoice(bool enabled)
@@ -40,7 +48,7 @@ public class GameManager : MonoBehaviour
 		menus[0].SetActive(enabled);
 	}
 
-	public void DisplayFastChoice(bool enabled, string[] prompts)
+	public void DisplayFastChoice(bool enabled, FastCall[] prompts)
 	{
 		//Resets the prompts on the canvas
 		foreach(Text t in promptSpaces)
@@ -52,7 +60,7 @@ public class GameManager : MonoBehaviour
 
 		for (int i = 0; i < prompts.Length; i++)
 		{
-			promptSpaces[i].text = i + ". " + prompts[i];
+			promptSpaces[i].text = (i+1) + ". " + prompts[i].callText;
 		}
 	}
 }
