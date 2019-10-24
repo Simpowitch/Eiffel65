@@ -7,7 +7,7 @@ public enum FastCalls { NoAnswer, OptionOne, OptionTwo, OptionThree, OptionFour,
 
 public interface IFreezeChoice
 {
-	void RecieveFastCall(FastCalls f);
+	void RecieveFastCall(int f);
 }
 
 public class ChoiceFreeze : MonoBehaviour
@@ -45,7 +45,6 @@ public class ChoiceFreeze : MonoBehaviour
 
 	private void LateUpdate()
 	{
-		print(GameManager.instance.FillBarAmount);
 
 		if (timer > 0)
 		{
@@ -53,7 +52,7 @@ public class ChoiceFreeze : MonoBehaviour
 			GameManager.instance.FillBarAmount = timer * timeFrozenInv;
 			if(pressedKey != 0)
 			{
-				caller.RecieveFastCall(calls[pressedKey-1]);
+				caller.RecieveFastCall(pressedKey);
 				EndOptions();
 				return;
 			}
@@ -62,7 +61,7 @@ public class ChoiceFreeze : MonoBehaviour
 			if(timer <= 0)
 			{
 				EndOptions();
-				caller.RecieveFastCall(FastCalls.NoAnswer);
+				caller.RecieveFastCall(0);
 			}
 		}
 	}
@@ -112,11 +111,11 @@ public class ChoiceFreeze : MonoBehaviour
 	/// <summary>
 	///Starts the fast call screen with custom answers
 	///</summary>
-	public void FreezeCall(string[] callsOptions, IFreezeChoice caller)
+	public void FreezeCall(FastCall[] callsOptions, IFreezeChoice caller)
 	{
 		if(callsOptions.Length > 4)
 		{
-			callsOptions = new string[] { callsOptions[0], callsOptions[1], callsOptions[2], callsOptions[3] };
+			callsOptions = new FastCall[] { callsOptions[0], callsOptions[1], callsOptions[2], callsOptions[3] };
 			Debug.LogWarning("<color=red> TOO MANY FASTCALLS, ARRAY IS NOW CUT DOWN TO FOUR ELEMENTS </color>");
 		}
 
@@ -130,6 +129,7 @@ public class ChoiceFreeze : MonoBehaviour
 		this.caller = caller;
 		timer = timeFrozen;
 		Time.timeScale = timeScale;
+		
 
 		GameManager.instance.DisplayFastChoice(true, callsOptions);
 	}
