@@ -429,7 +429,7 @@ public class CarAI : MonoBehaviour
         {
             if (path.Count > 0)
             {
-                currentNode.ReducePathFindingCost();
+                currentNode.AddCarToNode(this);
 
                 currentNode = path[0];
                 path.RemoveAt(0);
@@ -437,7 +437,7 @@ public class CarAI : MonoBehaviour
                 if (path.Count > 0)
                 {
                     SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
-                    currentNode.AddPathFindingCost();
+                    currentNode.RemoveCarFromNode(this);
                 }
                 else if (endNode)
                 {

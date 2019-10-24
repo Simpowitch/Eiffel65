@@ -8,9 +8,10 @@ public class PathNode : MonoBehaviour
 
     [SerializeField] bool allowedToPass = true;
     [SerializeField] float roadSpeedLimit = 30;
-    [SerializeField] int pathFindingCost = 0;
 
-
+    public bool isPartOfIntersection = false; //Used to enable cars to check for other cars in the intersection
+    public Intersection intersection;
+    List<CarAI> carsOnThisNode = new List<CarAI>();
 
     [SerializeField] List<PathNode> possibleNextNodes = new List<PathNode>();
 
@@ -139,20 +140,21 @@ public class PathNode : MonoBehaviour
 
 
 
-    public void AddPathFindingCost()
+    public void AddCarToNode(CarAI car)
     {
-        pathFindingCost++;
+        carsOnThisNode.Add(car);
     }
 
-    public void ReducePathFindingCost()
+    public void RemoveCarFromNode(CarAI car)
     {
-        pathFindingCost--;
+        carsOnThisNode.Remove(car);
     }
 
-    public int GetPathFindingCost()
+    public List<CarAI> GetCarsOnThisNode()
     {
-        return pathFindingCost;
+        return carsOnThisNode;
     }
+
 
 
 
