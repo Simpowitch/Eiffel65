@@ -15,6 +15,8 @@ public class CarAI : MonoBehaviour
     Vector3 progressTrackerAim;
 
     [SerializeField] Transform pathParent; //The path parent where the car picks random nodes from to go to
+    [SerializeField] int maxNodesInRandomizer = 30;
+
     public List<PathNode> path; //The path with pathnodes to follow
     public PathNode currentNode; //DEBUG PUBLIC - SHOULD BE SET TO THE CLOSEST ONE AT START
     [SerializeField] PathNode endNode; //Leave un-assigned if car is supposed to wander around without a set goal to stop at
@@ -57,24 +59,15 @@ public class CarAI : MonoBehaviour
         wheelController = GetComponent<WheelDrive>();
         rb = GetComponent<Rigidbody>();
 
-        if (GetComponent<PathNodeProgressTracker>() != null)
-        {
-            aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
-            aiPathProgressTracker.UpdatePath(path, currentNode);
-        }
 
         if (endNode)
         {
-            SetNewEndTargetNode(endNode, null);
+            SetNewEndTargetNode(endNode, null, false);
         }
         else
         {
-            CreateRandomizedPath();
+            SetRandomTargetNode(null);
         }
-        //else
-        //{
-        //    SetRandomTargetNode();
-        //}
 
         SetRoadSpeedLimit(currentNode.GetRoadSpeedLimit());
 
@@ -83,13 +76,21 @@ public class CarAI : MonoBehaviour
             Debug.LogWarning("A rekless driver should not have the PathNodeProgressTracker script");
         }
 
+        if (GetComponent<PathNodeProgressTracker>() != null)
+        {
+            aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
+            aiPathProgressTracker.UpdatePath(path, currentNode);
+        }
+        
         if (recklessDriver)
         {
             nodeAcceptanceDistance = criminalNodeAcceptanceDistance;
         }
+
+        path[0].AddCarToNode(this);
     }
 
-    
+
 
     private void Update()
     {
@@ -264,9 +265,9 @@ public class CarAI : MonoBehaviour
     /// <summary>
     /// Set a defined target node with a node to avoid. Also creates and saves the path to get there
     /// /// </summary>
-    private bool SetNewEndTargetNode(PathNode target, PathNode nodeToAvoid)
+    private bool SetNewEndTargetNode(PathNode target, PathNode nodeToAvoid, bool useMaxNodes)
     {
-        path = Pathfinding.GetPathToFollow(currentNode, target, nodeToAvoid).nodes;
+        path = Pathfinding.GetPathToFollow(currentNode, target, nodeToAvoid, useMaxNodes, maxNodesInRandomizer).nodes;
         if (path == null || path.Count == 0 || !path.Contains(target))
         {
             Debug.LogWarning("Path to: '" + target.transform.name + target.transform.position + "', not found. Please confirm that a path to this node exists");
@@ -280,47 +281,39 @@ public class CarAI : MonoBehaviour
         }
     }
 
+    [SerializeField] float maxRangeFromCarToEndNodeRandom = 500f;
     int tests = 0;
+    int maxTests = 100;
     /// <summary>
-    /// Set a random target node and then calls for a calculate path WITHOUT a node to avoid
-    /// /// </summary>
-    private void SetRandomTargetNode()
-    {
-        if (pathParent)
-        {
-            PathNode[] allNodes = pathParent.GetComponentsInChildren<PathNode>();
-            PathNode chosenTarget = allNodes[Random.Range(0, allNodes.Length)];
-            if (!SetNewEndTargetNode(chosenTarget, null) && tests < 10)
-            {
-                Debug.Log("Failed to find a path, trying a new random path");
-                SetRandomTargetNode();
-                tests++;
-            }
-            else if (tests >= 15)
-            {
-                Debug.LogError("Failed to find a random node to find a path to on 10 tries. Check node connections. This car will probably not function:  " + this.transform.name);
-            }
-            else
-            {
-                tests = 0;
-            }
-        }
-        else
-        {
-            currentState = AIState.Stopping;
-        }
-    }
-
-    /// <summary>
-    /// Set a random target node and then calls for a calculate path WITH a node to avoid
+    /// Set a random target node and then calls for a calculate path, with possibility to avoid a node
     /// /// </summary>
     private void SetRandomTargetNode(PathNode nodeToAvoid)
     {
+        tests = 0;
         if (pathParent)
         {
             PathNode[] allNodes = pathParent.GetComponentsInChildren<PathNode>();
-            PathNode chosenTarget = allNodes[Random.Range(0, allNodes.Length)];
-            SetNewEndTargetNode(chosenTarget, nodeToAvoid);
+            int maxNodes = allNodes.Length;
+            PathNode chosenTarget = allNodes[Random.Range(0, maxNodes)];
+            float distance = Vector3.Distance(rb.position, chosenTarget.transform.position);
+
+            while (distance > maxRangeFromCarToEndNodeRandom && tests < maxTests)
+            {
+                chosenTarget = allNodes[Random.Range(0, maxNodes)];
+                distance = Vector3.Distance(rb.position, chosenTarget.transform.position);
+                tests++;
+            }
+
+            if (!SetNewEndTargetNode(chosenTarget, nodeToAvoid, true) && tests < maxTests)
+            {
+                Debug.Log("Failed to find a path, trying a new random path");
+                SetRandomTargetNode(nodeToAvoid);
+                tests++;
+            }
+            else if (tests >= maxTests)
+            {
+                Debug.LogError("Failed to find a random node to find a path to on "+ tests + " tries. Check node connections. This car will probably not function:  " + this.transform.name);
+            }
         }
         else
         {
@@ -328,20 +321,21 @@ public class CarAI : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Find a node x-number of nodes forward from current point, then calls for the PathFinding to find the closest and best way there
-    /// It may differ from the order we make here since there can be multiple lanes and we don't want the car to swtch more times than it needs
-    /// /// </summary>
-    int pathCreationNumberOfNodes = 30;
-    private void CreateRandomizedPath()
-    {
-        PathNode nodeAt = currentNode;
-        for (int i = 0; i < pathCreationNumberOfNodes; i++)
-        {
-            nodeAt = nodeAt.GetPathNodes()[Random.Range(0, nodeAt.GetPathNodes().Count)];
-        }
-        SetNewEndTargetNode(nodeAt, null);
-    }
+    //was inneficient, improved old one above by choosing pathnode within allowed distance
+    ///// <summary>
+    ///// Find a node x-number of nodes forward from current point, then calls for the PathFinding to find the closest and best way there
+    ///// It may differ from the order we make here since there can be multiple lanes and we don't want the car to swtch more times than it needs
+    ///// /// </summary>
+    //int pathCreationNumberOfNodes = 30;
+    //private void CreateRandomizedPath()
+    //{
+    //    PathNode nodeAt = currentNode;
+    //    for (int i = 0; i < pathCreationNumberOfNodes; i++)
+    //    {
+    //        nodeAt = nodeAt.GetPathNodes()[Random.Range(0, nodeAt.GetPathNodes().Count)];
+    //    }
+    //    SetNewEndTargetNode(nodeAt, null);
+    //}
     #endregion
 
     private float CalculateSpeedToHold()
@@ -429,7 +423,7 @@ public class CarAI : MonoBehaviour
         {
             if (path.Count > 0)
             {
-                currentNode.AddCarToNode(this);
+                path[0].RemoveCarFromNode(this);
 
                 currentNode = path[0];
                 path.RemoveAt(0);
@@ -437,7 +431,6 @@ public class CarAI : MonoBehaviour
                 if (path.Count > 0)
                 {
                     SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
-                    currentNode.RemoveCarFromNode(this);
                 }
                 else if (endNode)
                 {
@@ -445,8 +438,8 @@ public class CarAI : MonoBehaviour
                 }
                 else
                 {
-                    //SetRandomTargetNode(); //add new path to go to
-                    CreateRandomizedPath(); //Performance improved randomizer
+                    SetRandomTargetNode(null); //add new path to go to
+                    path[0].AddCarToNode(this);
                 }
             }
             if (aiPathProgressTracker)
@@ -494,7 +487,7 @@ public class CarAI : MonoBehaviour
     /// </summary>
     public bool CheckIfAllowedToPass()
     {
-        return path[0].GetComponent<PathNode>().IsAllowedToPass();
+        return path[0].IsAllowedToPass();
     }
 
     IEnumerator CheckIfStuck()

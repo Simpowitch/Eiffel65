@@ -471,7 +471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1693478376}
   backwardNodes:
@@ -588,7 +589,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor:
+  - {fileID: 1906436856}
   possibleNextNodes:
   - {fileID: 1238297597}
   - {fileID: 1605097606}
@@ -859,7 +862,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 10451369}
   backwardNodes:
@@ -1005,7 +1009,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 144573756}
   backwardNodes: []
@@ -1097,7 +1102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 166810446}
   backwardNodes: []
@@ -1241,7 +1247,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1939923424}
   backwardNodes:
@@ -2419,7 +2426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1331407953}
   backwardNodes: []
@@ -2597,7 +2605,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 156144843}
   backwardNodes: []
@@ -2666,7 +2675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1398248850}
   - {fileID: 366539755}
@@ -2988,7 +2998,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 303831573}
   backwardNodes: []
@@ -3133,7 +3144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 971505493}
   backwardNodes:
@@ -3312,7 +3324,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1339648905}
   backwardNodes: []
@@ -3749,7 +3762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 965712015}
   backwardNodes:
@@ -4118,7 +4132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 0}
   backwardNodes: []
@@ -5311,7 +5326,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1869785047}
   - {fileID: 928051175}
@@ -5552,7 +5568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 282603217}
   backwardNodes: []
@@ -5585,9 +5602,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3
+      value: -3.7
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5595,7 +5616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 69.75
+      value: -19.8
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5615,7 +5636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5632,62 +5653,82 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.516
+      value: 40706.477
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0425
+      value: 6513.0366
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620003
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.348
+      value: 34791.406
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.616
+      value: 5566.625
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620003
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.49
+      value: 34293.523
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.9585
+      value: 5486.964
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
       value: 0.1962
       objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40208.645
+      value: 40208.598
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.383
+      value: 6433.3755
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
       value: 0.1962
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
@@ -5711,17 +5752,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
   path: []
-  currentNode: {fileID: 201947719}
+  currentNode: {fileID: 1049131960}
   endNode: {fileID: 0}
-  nodeAcceptanceDistance: 4
   kmhSpeed: 0
-  speedToHold: 30
   debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
   sensorLengthSpeedDependency: 4
@@ -5882,7 +5922,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 263818674}
   backwardNodes:
@@ -5935,7 +5976,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1385911082}
   backwardNodes:
@@ -6080,7 +6122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1906190799}
   backwardNodes: []
@@ -6132,7 +6175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1921356465}
   backwardNodes: []
@@ -6610,7 +6654,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1394298775}
   backwardNodes: []
@@ -6682,7 +6727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1394298776}
   backwardNodes: []
@@ -6737,7 +6783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 324284417}
   backwardNodes: []
@@ -8007,7 +8054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1304621630}
   backwardNodes: []
@@ -8029,7 +8077,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1360772936}
   backwardNodes: []
@@ -8078,7 +8127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1131906518}
   backwardNodes: []
@@ -8100,7 +8150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1900318995}
   backwardNodes: []
@@ -9130,7 +9181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 515394200}
   - {fileID: 101207552}
@@ -9169,7 +9221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1845742390}
   - {fileID: 1819378536}
@@ -9501,7 +9554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2050306841}
   - {fileID: 162976109}
@@ -9647,7 +9701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 57708218}
   backwardNodes: []
@@ -9823,7 +9878,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 459615193}
   - {fileID: 2141169689}
@@ -10078,7 +10134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1659632432}
   backwardNodes:
@@ -13093,7 +13150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1939923424}
   backwardNodes:
@@ -13503,7 +13561,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1550786724}
   backwardNodes:
@@ -13864,7 +13923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 760167736}
   backwardNodes:
@@ -14260,7 +14320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 402472809}
   backwardNodes: []
@@ -15307,7 +15368,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 184313806}
   backwardNodes: []
@@ -15329,7 +15391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1873252316}
   backwardNodes: []
@@ -15402,7 +15465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1547340576}
   backwardNodes: []
@@ -15472,7 +15536,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1959772066}
   backwardNodes:
@@ -15617,7 +15682,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1672480701}
   backwardNodes:
@@ -15867,6 +15933,214 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288724875}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &290922898
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1208552238}
+    m_Modifications:
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_Name
+      value: Car 2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.629987
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6607224
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -116.69999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0000007450579
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 40706.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6513.0464
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.1962
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34791.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5566.6187
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19619998
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34293.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5486.955
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 40208.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6433.3794
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+--- !u!4 &290922899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
+    type: 3}
+  m_PrefabInstance: {fileID: 290922898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &290922900 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
+    type: 3}
+  m_PrefabInstance: {fileID: 290922898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &290922901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290922900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  substeps: 15
+  pathNodesToShow: 3
+  lookAheadMinDistance: 1
+  lookAheadMaxDistance: 8
+  lookAheadSpeedModifier: 0.1
+  passedProgress: 0
+  target: {x: 0, y: 0, z: 0}
+  curvePercentage: 0
+  targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &290922902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290922900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathParent: {fileID: 368425501}
+  path: []
+  currentNode: {fileID: 367199368}
+  endNode: {fileID: 0}
+  kmhSpeed: 0
+  debugStop: 0
+  currentState: 0
+  recklessDriver: 0
+  ignoreStopsAndTrafficLights: 0
+  ignoreSpeedLimit: 0
+  criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
+  carWidth: 2
+  carLength: 3
+  sensorLengthSpeedDependency: 4
+  minimumForwardSensorLength: 2
+  minimumAngledSensorLength: 2
+  maxAngle: 45
+  criticalCollisionDistance: 2
+  warningCollisionDistance: 5
+  infoCollisionDistance: 10
+  lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &292292116
 GameObject:
   m_ObjectHideFlags: 0
@@ -16310,7 +16584,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 407035145}
   - {fileID: 18247373}
@@ -17198,7 +17473,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2126357775}
   backwardNodes: []
@@ -18062,7 +18338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1909516215}
   backwardNodes: []
@@ -18084,7 +18361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 721385458}
   backwardNodes: []
@@ -18453,7 +18731,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1106971415}
   backwardNodes:
@@ -18523,7 +18802,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 71957034}
   - {fileID: 101207552}
@@ -18838,7 +19118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 637986574}
   backwardNodes:
@@ -19415,7 +19696,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2095407776}
   backwardNodes:
@@ -19717,7 +19999,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 939160230}
   backwardNodes:
@@ -19932,7 +20215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 992635505}
   - {fileID: 1825644287}
@@ -20296,7 +20580,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 166810450}
   backwardNodes: []
@@ -20455,7 +20740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 18247373}
   - {fileID: 407035145}
@@ -20624,7 +20910,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 30915104}
   - {fileID: 1349888761}
@@ -20878,7 +21165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 185247425}
   backwardNodes: []
@@ -21862,7 +22150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1468780843}
   backwardNodes: []
@@ -21915,7 +22204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 627362434}
   backwardNodes: []
@@ -22085,7 +22375,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1181677592}
   backwardNodes:
@@ -22245,7 +22536,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1432488288}
   backwardNodes:
@@ -22571,7 +22863,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 509991331}
   - {fileID: 1108808073}
@@ -23063,7 +23356,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 515394200}
   - {fileID: 71957034}
@@ -23117,7 +23411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1716227820}
   backwardNodes:
@@ -23262,7 +23557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 453874135}
   backwardNodes:
@@ -23499,7 +23795,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1223306532}
   - {fileID: 135232257}
@@ -23856,7 +24153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 135232257}
   - {fileID: 1223306532}
@@ -23911,7 +24209,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1874360560}
   - {fileID: 808062929}
@@ -24058,7 +24357,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 594367206}
   backwardNodes:
@@ -24111,7 +24411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 992635505}
   backwardNodes:
@@ -24164,7 +24465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 963146433}
   - {fileID: 1616940781}
@@ -24442,7 +24744,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 713488906}
   backwardNodes:
@@ -24601,7 +24904,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1612083597}
   - {fileID: 1209665612}
@@ -25760,7 +26064,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_Name
-      value: FamilyCar (1)
+      value: Car 2
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
@@ -25768,7 +26072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.97
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25776,7 +26080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 70.71
+      value: -19.65
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -25796,7 +26100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -25813,62 +26117,82 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.53
+      value: 40706.477
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0444
+      value: 6513.0366
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.363
+      value: 34791.406
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.618
+      value: 5566.625
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.48
+      value: 34293.523
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.957
+      value: 5486.9644
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
       value: 0.19620001
       objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40208.63
+      value: 40208.598
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.381
+      value: 6433.3755
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620003
+      value: 0.1962
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
@@ -25892,17 +26216,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
   path: []
-  currentNode: {fileID: 1628894075}
+  currentNode: {fileID: 1723407738}
   endNode: {fileID: 0}
-  nodeAcceptanceDistance: 4
   kmhSpeed: 0
-  speedToHold: 30
   debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
   sensorLengthSpeedDependency: 4
@@ -26463,7 +26786,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 367199368}
   - {fileID: 298294939}
@@ -26702,7 +27026,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 317080539}
   backwardNodes: []
@@ -26771,7 +27096,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 717464406}
   backwardNodes: []
@@ -27306,7 +27632,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 590241481}
   backwardNodes: []
@@ -28463,7 +28790,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1744948532}
   backwardNodes:
@@ -28790,7 +29118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 282603219}
   backwardNodes: []
@@ -29447,7 +29776,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 981423088}
   backwardNodes:
@@ -29609,7 +29939,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 0}
   backwardNodes: []
@@ -30181,7 +30512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1705640104}
   backwardNodes: []
@@ -30339,7 +30671,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1461388309}
   backwardNodes:
@@ -30600,7 +30933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 752891578}
   backwardNodes:
@@ -31102,7 +31436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1208857707}
   - {fileID: 829380838}
@@ -31774,7 +32109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 982370994}
   backwardNodes: []
@@ -32238,7 +32574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 734923926}
   backwardNodes:
@@ -32617,7 +32954,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1684807720}
   - {fileID: 192694480}
@@ -33104,7 +33442,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1819066261}
   backwardNodes: []
@@ -33313,7 +33652,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1932351846}
   backwardNodes:
@@ -34076,7 +34416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 558678289}
   backwardNodes: []
@@ -34129,7 +34470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1232730131}
   backwardNodes:
@@ -34199,7 +34541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1299925697}
   backwardNodes: []
@@ -34237,7 +34580,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1728257641}
   - {fileID: 405548076}
@@ -34612,7 +34956,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 676505143}
   backwardNodes:
@@ -34770,7 +35115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1428217103}
   backwardNodes: []
@@ -34839,7 +35185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1415122616}
   - {fileID: 1766515415}
@@ -34879,7 +35226,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor:
+  - {fileID: 1906436856}
+  - {fileID: 10451369}
   possibleNextNodes:
   - {fileID: 1605097606}
   backwardNodes:
@@ -35234,7 +35584,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1723407738}
   - {fileID: 1049131960}
@@ -35291,7 +35642,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 692464737}
   backwardNodes: []
@@ -35900,7 +36252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 651609018}
   backwardNodes:
@@ -36229,7 +36582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2144380867}
   - {fileID: 447120045}
@@ -36315,7 +36669,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 455742379}
   - {fileID: 1573802827}
@@ -36570,7 +36925,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 328314337}
   backwardNodes:
@@ -37175,7 +37531,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 573832701}
   backwardNodes:
@@ -37497,7 +37854,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2018666042}
   backwardNodes:
@@ -37552,7 +37910,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1766515415}
   - {fileID: 1415122616}
@@ -37793,7 +38152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1498737391}
   backwardNodes: []
@@ -38063,7 +38423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1706302020}
   - {fileID: 720905206}
@@ -38150,7 +38511,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 201947719}
   backwardNodes:
@@ -38220,7 +38582,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1415122616}
   - {fileID: 1585236313}
@@ -38493,7 +38856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 577110571}
   - {fileID: 366539755}
@@ -38719,7 +39083,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 842924922}
   backwardNodes: []
@@ -39641,7 +40006,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1476293093}
   backwardNodes:
@@ -39696,7 +40062,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1756926164}
   - {fileID: 745873223}
@@ -40151,7 +40518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1084556631}
   backwardNodes:
@@ -40204,7 +40572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 20
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1432464841}
   - {fileID: 1113034442}
@@ -40998,7 +41367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 440256904}
   - {fileID: 446660058}
@@ -41276,7 +41646,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1404167599}
   backwardNodes:
@@ -41633,7 +42004,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 282603216}
   backwardNodes: []
@@ -41795,7 +42167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1766515415}
   - {fileID: 1585236313}
@@ -42553,7 +42926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 428200884}
   backwardNodes: []
@@ -42599,7 +42973,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 179936301}
   backwardNodes: []
@@ -42621,7 +42996,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 329586607}
   backwardNodes: []
@@ -44265,7 +44641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 324284418}
   backwardNodes: []
@@ -44318,7 +44695,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 816203733}
   backwardNodes:
@@ -44374,7 +44752,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 778807689}
   backwardNodes: []
@@ -46289,7 +46668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 388820238}
   backwardNodes: []
@@ -46843,7 +47223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2067846554}
   - {fileID: 764790458}
@@ -47082,7 +47463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 952930320}
   backwardNodes:
@@ -47227,7 +47609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1720552659}
   - {fileID: 553101372}
@@ -47295,7 +47678,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1628894075}
   backwardNodes:
@@ -47518,7 +47902,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 889363733}
   backwardNodes:
@@ -47727,7 +48112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 942958895}
   backwardNodes:
@@ -48284,7 +48670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 463967742}
   - {fileID: 1166176448}
@@ -48339,7 +48726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1932490695}
   backwardNodes:
@@ -48592,7 +48980,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 988595585}
   backwardNodes: []
@@ -48736,7 +49125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 287126894}
   backwardNodes:
@@ -49097,7 +49487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 20
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1108821545}
   backwardNodes:
@@ -49242,7 +49633,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 324284417}
   backwardNodes: []
@@ -49355,6 +49747,214 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985433938}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &987216380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1208552238}
+    m_Modifications:
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_Name
+      value: Car (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6607224
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -78.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 40706.508
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6513.041
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.1962
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34791.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5566.6343
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34293.496
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5486.9595
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 40208.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6433.3667
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620003
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+--- !u!4 &987216381 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
+    type: 3}
+  m_PrefabInstance: {fileID: 987216380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &987216382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
+    type: 3}
+  m_PrefabInstance: {fileID: 987216380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &987216383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987216382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  substeps: 15
+  pathNodesToShow: 2
+  lookAheadMinDistance: 0.5
+  lookAheadMaxDistance: 8
+  lookAheadSpeedModifier: 0.1
+  passedProgress: 0
+  target: {x: 0, y: 0, z: 0}
+  curvePercentage: 0
+  targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &987216384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987216382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathParent: {fileID: 368425501}
+  path: []
+  currentNode: {fileID: 1684807720}
+  endNode: {fileID: 0}
+  kmhSpeed: 0
+  debugStop: 0
+  currentState: 0
+  recklessDriver: 0
+  ignoreStopsAndTrafficLights: 0
+  ignoreSpeedLimit: 0
+  criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
+  carWidth: 2
+  carLength: 3
+  sensorLengthSpeedDependency: 4
+  minimumForwardSensorLength: 2
+  minimumAngledSensorLength: 2
+  maxAngle: 45
+  criticalCollisionDistance: 2
+  warningCollisionDistance: 5
+  infoCollisionDistance: 10
+  lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &988088905
 GameObject:
   m_ObjectHideFlags: 0
@@ -49418,7 +50018,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1045287419}
   backwardNodes: []
@@ -49659,7 +50260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2103089018}
   backwardNodes:
@@ -51965,15 +52567,14 @@ MonoBehaviour:
   path: []
   currentNode: {fileID: 1554115005}
   endNode: {fileID: 0}
-  nodeAcceptanceDistance: 4
   kmhSpeed: 0
-  speedToHold: 50
   debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
   sensorLengthSpeedDependency: 4
@@ -52128,7 +52729,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1840955212}
   backwardNodes: []
@@ -52212,7 +52814,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1538574375}
   - {fileID: 612392439}
@@ -52266,7 +52869,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 84304646}
   - {fileID: 1199175415}
@@ -53155,7 +53759,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 763196332}
   backwardNodes: []
@@ -53550,7 +54155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 577110571}
   - {fileID: 1398248850}
@@ -53824,15 +54430,14 @@ MonoBehaviour:
   path: []
   currentNode: {fileID: 0}
   endNode: {fileID: 0}
-  nodeAcceptanceDistance: 2
   kmhSpeed: 0
-  speedToHold: 50
   debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
   sensorLengthSpeedDependency: 4
@@ -54004,7 +54609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 430433398}
   backwardNodes:
@@ -54979,7 +55585,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 348372214}
   backwardNodes:
@@ -55230,7 +55837,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 298294939}
   - {fileID: 367199368}
@@ -55271,7 +55879,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 143184951}
   backwardNodes:
@@ -55388,7 +55997,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1108808073}
   - {fileID: 509991331}
@@ -55859,7 +56469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 161990128}
   - {fileID: 1814935422}
@@ -56555,7 +57166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1339648902}
   backwardNodes: []
@@ -56950,6 +57562,214 @@ Transform:
   m_Father: {fileID: 1265546052}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1159659399
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1208552238}
+    m_Modifications:
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_Name
+      value: Car (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6607224
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -115.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0000007450579
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 40706.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6513.0464
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.1962
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34791.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5566.6187
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19619998
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34293.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5486.955
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 40208.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6433.3794
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+--- !u!4 &1159659400 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
+    type: 3}
+  m_PrefabInstance: {fileID: 1159659399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1159659401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
+    type: 3}
+  m_PrefabInstance: {fileID: 1159659399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1159659402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159659401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  substeps: 15
+  pathNodesToShow: 2
+  lookAheadMinDistance: 0.5
+  lookAheadMaxDistance: 8
+  lookAheadSpeedModifier: 0.1
+  passedProgress: 0
+  target: {x: 0, y: 0, z: 0}
+  curvePercentage: 0
+  targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &1159659403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159659401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathParent: {fileID: 368425501}
+  path: []
+  currentNode: {fileID: 298294939}
+  endNode: {fileID: 0}
+  kmhSpeed: 0
+  debugStop: 0
+  currentState: 0
+  recklessDriver: 0
+  ignoreStopsAndTrafficLights: 0
+  ignoreSpeedLimit: 0
+  criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
+  carWidth: 2
+  carLength: 3
+  sensorLengthSpeedDependency: 4
+  minimumForwardSensorLength: 2
+  minimumAngledSensorLength: 2
+  maxAngle: 45
+  criticalCollisionDistance: 2
+  warningCollisionDistance: 5
+  infoCollisionDistance: 10
+  lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1160400939
 GameObject:
   m_ObjectHideFlags: 0
@@ -57138,7 +57958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1209665612}
   - {fileID: 1612083597}
@@ -57919,7 +58740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1432464841}
   backwardNodes:
@@ -58468,7 +59290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1906436856}
   backwardNodes:
@@ -58964,11 +59787,15 @@ Transform:
   m_Children:
   - {fileID: 989396397}
   - {fileID: 1080908794}
-  - {fileID: 139171723}
-  - {fileID: 493229307}
   - {fileID: 1918592211}
   - {fileID: 1732742599}
   - {fileID: 1035349140}
+  - {fileID: 139171723}
+  - {fileID: 493229307}
+  - {fileID: 987216381}
+  - {fileID: 1840393697}
+  - {fileID: 1159659400}
+  - {fileID: 290922899}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -59003,7 +59830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 248550107}
   backwardNodes:
@@ -59057,7 +59885,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1839049791}
   backwardNodes:
@@ -59851,7 +60680,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 928051175}
   - {fileID: 1869785047}
@@ -60090,7 +60920,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 756899684}
   backwardNodes:
@@ -60207,7 +61038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1806542574}
   backwardNodes:
@@ -60508,7 +61340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 591244099}
   backwardNodes:
@@ -62709,7 +63542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 696233593}
   - {fileID: 161990128}
@@ -63856,7 +64690,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 67876689}
   backwardNodes: []
@@ -65213,7 +66048,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 712795933}
   backwardNodes: []
@@ -65235,7 +66071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 760986800}
   backwardNodes: []
@@ -65284,7 +66121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 768797969}
   backwardNodes: []
@@ -65306,7 +66144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 845788347}
   backwardNodes: []
@@ -65756,7 +66595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1806962564}
   backwardNodes:
@@ -65967,7 +66807,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 437561203}
   backwardNodes:
@@ -66176,7 +67017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 20
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 932430384}
   backwardNodes:
@@ -66231,7 +67073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 161990128}
   - {fileID: 696233593}
@@ -66737,7 +67580,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1048239204}
   backwardNodes:
@@ -67015,7 +67859,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1398248850}
   - {fileID: 577110571}
@@ -67087,7 +67932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1571274334}
   backwardNodes:
@@ -68359,7 +69205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 776755941}
   backwardNodes: []
@@ -68408,7 +69255,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1379131635}
   backwardNodes: []
@@ -68430,7 +69278,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1075423109}
   backwardNodes: []
@@ -68452,7 +69301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 59272521}
   backwardNodes: []
@@ -68816,7 +69666,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1339648903}
   backwardNodes: []
@@ -68983,7 +69834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -69313,7 +70164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 455042761}
   backwardNodes:
@@ -69664,7 +70516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 842246872}
   backwardNodes: []
@@ -70119,7 +70972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 919279102}
   backwardNodes: []
@@ -70567,7 +71421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 370542214}
   backwardNodes:
@@ -70635,7 +71490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 741510344}
   backwardNodes:
@@ -70766,7 +71622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1353766336}
   backwardNodes:
@@ -71415,7 +72272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1819066260}
   backwardNodes: []
@@ -71837,7 +72695,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1539912725}
   backwardNodes:
@@ -71923,7 +72782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2057957189}
   backwardNodes:
@@ -72234,7 +73094,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1154049074}
   backwardNodes: []
@@ -72434,7 +73295,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 166810447}
   backwardNodes: []
@@ -72671,7 +73533,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1752800142}
   backwardNodes:
@@ -72816,7 +73679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1359990948}
   backwardNodes:
@@ -72993,7 +73857,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1819378536}
   - {fileID: 1845742390}
@@ -73242,7 +74107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1365374205}
   backwardNodes: []
@@ -73804,7 +74670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 192694480}
   - {fileID: 1684807720}
@@ -74966,7 +75833,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 829380838}
   - {fileID: 1208857707}
@@ -75021,7 +75889,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1583965186}
   backwardNodes:
@@ -75074,7 +75943,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 20
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1698759924}
   backwardNodes:
@@ -75636,7 +76506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2050306841}
   - {fileID: 664829208}
@@ -75707,7 +76578,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 360114861}
   backwardNodes:
@@ -75884,7 +76756,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 703439623}
   backwardNodes:
@@ -76674,7 +77547,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1436221959}
   backwardNodes:
@@ -76819,7 +77693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1616940781}
   - {fileID: 963146433}
@@ -77128,7 +78003,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 20
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1541557682}
   backwardNodes:
@@ -77183,7 +78059,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1394298773}
   backwardNodes: []
@@ -77706,7 +78583,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 447120045}
   - {fileID: 2144380867}
@@ -77761,7 +78639,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 26773951}
   backwardNodes: []
@@ -77905,7 +78784,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 969982679}
   backwardNodes: []
@@ -78205,7 +79085,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 355777151}
   backwardNodes:
@@ -78259,7 +79140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 147332802}
   backwardNodes: []
@@ -78403,7 +79285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1166176448}
   - {fileID: 463967742}
@@ -78458,7 +79341,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 693774281}
   backwardNodes:
@@ -79155,7 +80039,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 826327399}
   backwardNodes:
@@ -80098,7 +80983,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 446660058}
   - {fileID: 440256904}
@@ -81139,7 +82025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1071941258}
   backwardNodes: []
@@ -81184,7 +82071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 54549691}
   backwardNodes: []
@@ -81314,7 +82202,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1517563998}
   backwardNodes:
@@ -81884,7 +82773,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2141169689}
   - {fileID: 459615193}
@@ -82323,7 +83213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 143439561}
   backwardNodes:
@@ -82625,7 +83516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1554115005}
   backwardNodes:
@@ -82834,7 +83726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 403300209}
   backwardNodes: []
@@ -82886,7 +83779,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1049131960}
   - {fileID: 1723407738}
@@ -83190,7 +84084,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 937571331}
   backwardNodes:
@@ -83459,7 +84354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1456455366}
   backwardNodes:
@@ -83512,7 +84408,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1199175415}
   - {fileID: 84304646}
@@ -83836,7 +84733,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 283545787}
   backwardNodes:
@@ -83908,15 +84806,14 @@ MonoBehaviour:
   path: []
   currentNode: {fileID: 1554115005}
   endNode: {fileID: 0}
-  nodeAcceptanceDistance: 4
   kmhSpeed: 0
-  speedToHold: 50
   debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
   criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
   sensorLengthSpeedDependency: 4
@@ -84522,7 +85419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 816990810}
   backwardNodes:
@@ -84949,7 +85847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1371917902}
   backwardNodes:
@@ -85002,7 +85901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1573802827}
   - {fileID: 455742379}
@@ -85112,7 +86012,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 845800878}
   backwardNodes: []
@@ -87189,7 +88090,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1473602735}
   backwardNodes:
@@ -87242,7 +88144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 337590575}
   backwardNodes:
@@ -87697,7 +88600,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2127318679}
   backwardNodes: []
@@ -88614,7 +89518,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 889406756}
   backwardNodes: []
@@ -88636,7 +89541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 279528262}
   backwardNodes: []
@@ -88697,7 +89603,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1907975040}
   - {fileID: 696345955}
@@ -89060,7 +89967,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 70671440}
   backwardNodes:
@@ -89875,7 +90783,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1942906102}
   backwardNodes:
@@ -89948,6 +90857,214 @@ Transform:
   m_Father: {fileID: 1135134644}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1840393696
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1208552238}
+    m_Modifications:
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_Name
+      value: Car 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6607224
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -74.340004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 40706.562
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6513.0503
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.1962
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34791.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5566.624
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34293.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5486.9507
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 40208.598
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 6433.376
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.6772526
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
+--- !u!4 &1840393697 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
+    type: 3}
+  m_PrefabInstance: {fileID: 1840393696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1840393698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
+    type: 3}
+  m_PrefabInstance: {fileID: 1840393696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1840393699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840393698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  substeps: 15
+  pathNodesToShow: 3
+  lookAheadMinDistance: 1
+  lookAheadMaxDistance: 8
+  lookAheadSpeedModifier: 0.1
+  passedProgress: 0
+  target: {x: 0, y: 0, z: 0}
+  curvePercentage: 0
+  targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &1840393700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840393698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathParent: {fileID: 368425501}
+  path: []
+  currentNode: {fileID: 192694480}
+  endNode: {fileID: 0}
+  kmhSpeed: 0
+  debugStop: 0
+  currentState: 0
+  recklessDriver: 0
+  ignoreStopsAndTrafficLights: 0
+  ignoreSpeedLimit: 0
+  criminalSpeedFactor: 1.5
+  maxRangeFromCarToEndNodeRandom: 100
+  carWidth: 2
+  carLength: 3
+  sensorLengthSpeedDependency: 4
+  minimumForwardSensorLength: 2
+  minimumAngledSensorLength: 2
+  maxAngle: 45
+  criticalCollisionDistance: 2
+  warningCollisionDistance: 5
+  infoCollisionDistance: 10
+  lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1840955211
 GameObject:
   m_ObjectHideFlags: 0
@@ -89979,7 +91096,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 529879595}
   backwardNodes: []
@@ -90128,7 +91246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 696345955}
   - {fileID: 1907975040}
@@ -90890,7 +92009,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 764790458}
   - {fileID: 2067846554}
@@ -90947,7 +92067,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 162976109}
   - {fileID: 664829208}
@@ -91217,7 +92338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 745873223}
   - {fileID: 1756926164}
@@ -91488,7 +92610,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 805709017}
   backwardNodes:
@@ -92451,7 +93574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 15
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 696233593}
   - {fileID: 1814935422}
@@ -92884,7 +94008,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1606284852}
   backwardNodes: []
@@ -92936,7 +94061,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 182055906}
   backwardNodes:
@@ -92990,7 +94116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 405548076}
   - {fileID: 1728257641}
@@ -93047,7 +94174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1466313183}
   backwardNodes: []
@@ -93270,7 +94398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
@@ -93302,7 +94430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -93400,15 +94528,14 @@ MonoBehaviour:
   path: []
   currentNode: {fileID: 201947719}
   endNode: {fileID: 0}
-  nodeAcceptanceDistance: 6
   kmhSpeed: 0
-  speedToHold: 30
   debugStop: 0
   currentState: 0
   recklessDriver: 1
   ignoreStopsAndTrafficLights: 0
-  ignoreSpeedLimit: 0
+  ignoreSpeedLimit: 1
   criminalSpeedFactor: 1.25
+  maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
   sensorLengthSpeedDependency: 4
@@ -93548,7 +94675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 20694655}
   backwardNodes: []
@@ -93817,7 +94945,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 553101372}
   - {fileID: 1385911082}
@@ -93871,7 +95000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1246345654}
   backwardNodes:
@@ -94048,7 +95178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1880440754}
   backwardNodes:
@@ -94120,7 +95251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -94413,7 +95544,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 768468349}
   backwardNodes:
@@ -94970,7 +96102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 8747352}
   backwardNodes:
@@ -96612,7 +97745,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 612392439}
   - {fileID: 1538574375}
@@ -96886,7 +98020,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1485787902}
   backwardNodes:
@@ -97391,7 +98526,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 30
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1394298775}
   backwardNodes: []
@@ -98188,7 +99324,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 269574574}
   backwardNodes:
@@ -98917,7 +100054,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 720905206}
   - {fileID: 1706302020}
@@ -99844,7 +100982,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1619593893}
   backwardNodes:
@@ -100081,7 +101220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 20
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 1959772066}
   - {fileID: 416450184}
@@ -100889,7 +102029,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 707985567}
   backwardNodes: []
@@ -101859,7 +103000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 2028651135}
   backwardNodes:
@@ -101945,7 +103087,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  pathFindingCost: 0
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
   possibleNextNodes:
   - {fileID: 808062929}
   - {fileID: 1874360560}

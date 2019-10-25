@@ -10,8 +10,8 @@ public class PathNode : MonoBehaviour
     [SerializeField] float roadSpeedLimit = 30;
 
     public bool isPartOfIntersection = false; //Used to enable cars to check for other cars in the intersection
-    public Intersection intersection;
-    List<CarAI> carsOnThisNode = new List<CarAI>();
+    [SerializeField] List<PathNode> nodesToWaitFor = new List<PathNode>();
+    public List<CarAI> carsOnThisNode = new List<CarAI>(); //debug public
 
     [SerializeField] List<PathNode> possibleNextNodes = new List<PathNode>();
 
@@ -32,11 +32,28 @@ public class PathNode : MonoBehaviour
     /// </summary>
     public bool IsAllowedToPass()
     {
-        //if (!hasTrafficLights)
-        //{
-        //    return true;
-        //}
-        return allowedToPass;
+        if (!allowedToPass)
+        {
+            return false;
+        }
+        else
+        {
+            if (isPartOfIntersection)
+            {
+                for (int i = 0; i < nodesToWaitFor.Count; i++)
+                {
+                    if (nodesToWaitFor[i].carsOnThisNode.Count != 0)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 
     /// <summary>
@@ -142,12 +159,26 @@ public class PathNode : MonoBehaviour
 
     public void AddCarToNode(CarAI car)
     {
-        carsOnThisNode.Add(car);
+        if (carsOnThisNode.Contains(car))
+        {
+            Debug.LogWarning("Tried to att the an already existing car to this node" + transform.name);
+        }
+        else
+        {
+            carsOnThisNode.Add(car);
+        }
     }
 
     public void RemoveCarFromNode(CarAI car)
     {
-        carsOnThisNode.Remove(car);
+        if (carsOnThisNode.Contains(car))
+        {
+            carsOnThisNode.Remove(car);
+        }
+        else
+        {
+            Debug.LogWarning("Tried to remove a car from this node" + transform.name);
+        }
     }
 
     public List<CarAI> GetCarsOnThisNode()

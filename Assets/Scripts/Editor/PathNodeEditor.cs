@@ -9,7 +9,7 @@ public class PathNodeEditor : Editor
     string pathName = "PathNode";
     float pathSpeed = 0;
     bool changeSpeed = false;
-    int metersBetweenNodes = 15;
+    int metersBetweenNodes = 20;
     bool createExtraLanesToTheRight = false;
     int metersBetweenLanes = 4;
     int lanesToCreate = 1;

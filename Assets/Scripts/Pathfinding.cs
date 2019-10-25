@@ -5,10 +5,11 @@ using System.Linq;
 
 public static class Pathfinding
 {
+
     /// <summary>
     /// Main function to recieve a path of nodes to follow to get to the target
     /// </summary>
-    public static Path GetPathToFollow(PathNode startPos, PathNode target, PathNode nodeToAvoid)
+    public static Path GetPathToFollow(PathNode startPos, PathNode target, PathNode nodeToAvoid, bool useMaxNodes, int maxNodes)
     {
         Path shortestPath = new Path();
         shortestPath.length = float.MaxValue;
@@ -33,7 +34,7 @@ public static class Pathfinding
                 break;
             }
 
-            SearchNode(pathOptions[i], target, ref shortestPath, pathSoFar, nodeToAvoid);
+            SearchNode(pathOptions[i], target, ref shortestPath, pathSoFar, nodeToAvoid, useMaxNodes, maxNodes);
 
             pathSoFar.nodes.RemoveAt(pathSoFar.nodes.Count - 1);
             pathSoFar.length -= distanceToNode;
@@ -46,8 +47,12 @@ public static class Pathfinding
     /// <summary>
     /// Searches for a path to the target node and checks for already traversed nodes, as well as the shortest path in total distance;
     /// </summary>
-    private static void SearchNode(PathNode posToSearchFrom, PathNode target, ref Path shortestPath, Path pathSoFar, PathNode nodeToAvoid)
+    private static void SearchNode(PathNode posToSearchFrom, PathNode target, ref Path shortestPath, Path pathSoFar, PathNode nodeToAvoid, bool useMaxNodes, int maxNodes)
     {
+        if (useMaxNodes && pathSoFar.nodes.Count > maxNodes)
+        {
+            return;
+        }
         List<PathNode> pathOptions = posToSearchFrom.GetPathNodes();
         if (pathOptions.Count > 1)
         {
@@ -98,7 +103,7 @@ public static class Pathfinding
                 continue;
             }
 
-            SearchNode(pathOptions[i], target, ref shortestPath, pathSoFar, nodeToAvoid);
+            SearchNode(pathOptions[i], target, ref shortestPath, pathSoFar, nodeToAvoid, useMaxNodes, maxNodes);
             pathSoFar.nodes.RemoveAt(pathSoFar.nodes.Count - 1);
             pathSoFar.length -= distanceToNode;
         }
