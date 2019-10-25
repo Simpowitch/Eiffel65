@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(PathNode))]
+[CanEditMultipleObjects]
 public class PathNodeEditor : Editor
 {
     string pathName = "PathNode";

@@ -197,16 +197,15 @@ public class PathNode : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        bool catmullCurveAllowed = true;
-
-        int visualizationSubsteps = visualPathSubsteps;
+        //Draw sphere
         nodeColor = allowedToPass ? Color.blue : Color.red;
         Gizmos.color = nodeColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
+        #region DrawLinesAndCheckConnectivity
+        bool catmullCurveAllowed = true;
+        int visualizationSubsteps = visualPathSubsteps;
         Gizmos.color = lineColor;
-
-
         //Safety check, delete inactive nodes
         for (int i = 0; i < backwardNodes.Count; i++)
         {
@@ -276,6 +275,17 @@ public class PathNode : MonoBehaviour
                     Vector3 b = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
                     Gizmos.DrawLine(a, b);
                 }
+            }
+        }
+        #endregion
+
+        //Show waiting nodes
+        Gizmos.color = Color.red;
+        for (int i = 0; i < nodesToWaitFor.Count; i++)
+        {
+            if (nodesToWaitFor[i].carsOnThisNode.Count != 0)
+            {
+                Gizmos.DrawLine(this.transform.position, nodesToWaitFor[i].transform.position);
             }
         }
     }

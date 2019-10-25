@@ -473,6 +473,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1693478376}
   backwardNodes:
@@ -589,9 +590,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  isPartOfIntersection: 0
+  isPartOfIntersection: 1
   nodesToWaitFor:
   - {fileID: 1906436856}
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1238297597}
   - {fileID: 1605097606}
@@ -864,6 +866,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 10451369}
   backwardNodes:
@@ -1011,6 +1014,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 144573756}
   backwardNodes: []
@@ -1104,6 +1108,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 166810446}
   backwardNodes: []
@@ -1249,6 +1254,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1939923424}
   backwardNodes:
@@ -2428,6 +2434,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1331407953}
   backwardNodes: []
@@ -2607,6 +2614,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 156144843}
   backwardNodes: []
@@ -2677,6 +2685,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1398248850}
   - {fileID: 366539755}
@@ -3000,6 +3009,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 303831573}
   backwardNodes: []
@@ -3146,6 +3156,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 971505493}
   backwardNodes:
@@ -3326,6 +3337,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1339648905}
   backwardNodes: []
@@ -3764,6 +3776,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 965712015}
   backwardNodes:
@@ -4134,6 +4147,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 0}
   backwardNodes: []
@@ -5328,6 +5342,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1869785047}
   - {fileID: 928051175}
@@ -5570,6 +5585,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 282603217}
   backwardNodes: []
@@ -5751,6 +5767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 1049131960}
   endNode: {fileID: 0}
@@ -5924,6 +5941,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 263818674}
   backwardNodes:
@@ -5978,6 +5996,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1385911082}
   backwardNodes:
@@ -6124,6 +6143,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1906190799}
   backwardNodes: []
@@ -6177,6 +6197,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1921356465}
   backwardNodes: []
@@ -6656,6 +6677,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1394298775}
   backwardNodes: []
@@ -6729,6 +6751,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1394298776}
   backwardNodes: []
@@ -6785,6 +6808,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 324284417}
   backwardNodes: []
@@ -8056,6 +8080,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1304621630}
   backwardNodes: []
@@ -8079,6 +8104,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1360772936}
   backwardNodes: []
@@ -8129,6 +8155,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1131906518}
   backwardNodes: []
@@ -8152,6 +8179,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1900318995}
   backwardNodes: []
@@ -9183,6 +9211,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 515394200}
   - {fileID: 101207552}
@@ -9223,6 +9252,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1845742390}
   - {fileID: 1819378536}
@@ -9556,6 +9586,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2050306841}
   - {fileID: 162976109}
@@ -9703,6 +9734,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 57708218}
   backwardNodes: []
@@ -9880,6 +9912,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 459615193}
   - {fileID: 2141169689}
@@ -10136,6 +10169,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1659632432}
   backwardNodes:
@@ -13152,6 +13186,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1939923424}
   backwardNodes:
@@ -13563,6 +13598,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1550786724}
   backwardNodes:
@@ -13925,6 +13961,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 760167736}
   backwardNodes:
@@ -14322,6 +14359,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 402472809}
   backwardNodes: []
@@ -15370,6 +15408,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 184313806}
   backwardNodes: []
@@ -15393,6 +15432,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1873252316}
   backwardNodes: []
@@ -15467,6 +15507,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1547340576}
   backwardNodes: []
@@ -15538,6 +15579,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1959772066}
   backwardNodes:
@@ -15684,6 +15726,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1672480701}
   backwardNodes:
@@ -16120,6 +16163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 367199368}
   endNode: {fileID: 0}
@@ -16586,6 +16630,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 407035145}
   - {fileID: 18247373}
@@ -17475,6 +17520,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2126357775}
   backwardNodes: []
@@ -18340,6 +18386,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1909516215}
   backwardNodes: []
@@ -18363,6 +18410,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 721385458}
   backwardNodes: []
@@ -18733,6 +18781,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1106971415}
   backwardNodes:
@@ -18804,6 +18853,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 71957034}
   - {fileID: 101207552}
@@ -19120,6 +19170,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 637986574}
   backwardNodes:
@@ -19698,6 +19749,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2095407776}
   backwardNodes:
@@ -19998,9 +20050,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 939160230}
   backwardNodes:
@@ -20217,6 +20270,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 992635505}
   - {fileID: 1825644287}
@@ -20582,6 +20636,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 166810450}
   backwardNodes: []
@@ -20742,6 +20797,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 18247373}
   - {fileID: 407035145}
@@ -20912,6 +20968,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 30915104}
   - {fileID: 1349888761}
@@ -21167,6 +21224,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 185247425}
   backwardNodes: []
@@ -22152,6 +22210,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1468780843}
   backwardNodes: []
@@ -22206,6 +22265,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 627362434}
   backwardNodes: []
@@ -22377,6 +22437,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1181677592}
   backwardNodes:
@@ -22538,6 +22599,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1432488288}
   backwardNodes:
@@ -22865,6 +22927,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 509991331}
   - {fileID: 1108808073}
@@ -23358,6 +23421,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 515394200}
   - {fileID: 71957034}
@@ -23413,6 +23477,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1716227820}
   backwardNodes:
@@ -23559,6 +23624,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 453874135}
   backwardNodes:
@@ -23797,6 +23863,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1223306532}
   - {fileID: 135232257}
@@ -24155,6 +24222,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 135232257}
   - {fileID: 1223306532}
@@ -24211,6 +24279,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1874360560}
   - {fileID: 808062929}
@@ -24359,6 +24428,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 594367206}
   backwardNodes:
@@ -24413,6 +24483,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 992635505}
   backwardNodes:
@@ -24467,6 +24538,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 963146433}
   - {fileID: 1616940781}
@@ -24746,6 +24818,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 713488906}
   backwardNodes:
@@ -24906,6 +24979,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1612083597}
   - {fileID: 1209665612}
@@ -26215,6 +26289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 1723407738}
   endNode: {fileID: 0}
@@ -26788,6 +26863,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 367199368}
   - {fileID: 298294939}
@@ -27028,6 +27104,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 317080539}
   backwardNodes: []
@@ -27098,6 +27175,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 717464406}
   backwardNodes: []
@@ -27634,6 +27712,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 590241481}
   backwardNodes: []
@@ -28792,6 +28871,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1744948532}
   backwardNodes:
@@ -29120,6 +29200,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 282603219}
   backwardNodes: []
@@ -29778,6 +29859,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 981423088}
   backwardNodes:
@@ -29941,6 +30023,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 0}
   backwardNodes: []
@@ -30514,6 +30597,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1705640104}
   backwardNodes: []
@@ -30673,6 +30757,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1461388309}
   backwardNodes:
@@ -30935,6 +31020,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 752891578}
   backwardNodes:
@@ -31438,6 +31524,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1208857707}
   - {fileID: 829380838}
@@ -32111,6 +32198,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 982370994}
   backwardNodes: []
@@ -32576,6 +32664,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 734923926}
   backwardNodes:
@@ -32956,6 +33045,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1684807720}
   - {fileID: 192694480}
@@ -33444,6 +33534,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1819066261}
   backwardNodes: []
@@ -33654,6 +33745,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1932351846}
   backwardNodes:
@@ -34418,6 +34510,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 558678289}
   backwardNodes: []
@@ -34472,6 +34565,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1232730131}
   backwardNodes:
@@ -34543,6 +34637,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1299925697}
   backwardNodes: []
@@ -34582,6 +34677,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1728257641}
   - {fileID: 405548076}
@@ -34958,6 +35054,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 676505143}
   backwardNodes:
@@ -35117,6 +35214,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1428217103}
   backwardNodes: []
@@ -35187,6 +35285,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1415122616}
   - {fileID: 1766515415}
@@ -35226,10 +35325,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  isPartOfIntersection: 0
+  isPartOfIntersection: 1
   nodesToWaitFor:
   - {fileID: 1906436856}
   - {fileID: 10451369}
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1605097606}
   backwardNodes:
@@ -35586,6 +35686,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1723407738}
   - {fileID: 1049131960}
@@ -35644,6 +35745,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 692464737}
   backwardNodes: []
@@ -36254,6 +36356,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 651609018}
   backwardNodes:
@@ -36584,6 +36687,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2144380867}
   - {fileID: 447120045}
@@ -36671,6 +36775,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 455742379}
   - {fileID: 1573802827}
@@ -36927,6 +37032,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 328314337}
   backwardNodes:
@@ -37533,6 +37639,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 573832701}
   backwardNodes:
@@ -37856,6 +37963,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2018666042}
   backwardNodes:
@@ -37912,6 +38020,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1766515415}
   - {fileID: 1415122616}
@@ -38154,6 +38263,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1498737391}
   backwardNodes: []
@@ -38425,6 +38535,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1706302020}
   - {fileID: 720905206}
@@ -38513,6 +38624,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 201947719}
   backwardNodes:
@@ -38584,6 +38696,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1415122616}
   - {fileID: 1585236313}
@@ -38858,6 +38971,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 577110571}
   - {fileID: 366539755}
@@ -39085,6 +39199,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 842924922}
   backwardNodes: []
@@ -40008,6 +40123,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1476293093}
   backwardNodes:
@@ -40064,6 +40180,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1756926164}
   - {fileID: 745873223}
@@ -40520,6 +40637,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1084556631}
   backwardNodes:
@@ -40574,6 +40692,7 @@ MonoBehaviour:
   roadSpeedLimit: 20
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1432464841}
   - {fileID: 1113034442}
@@ -41369,6 +41488,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 440256904}
   - {fileID: 446660058}
@@ -41648,6 +41768,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1404167599}
   backwardNodes:
@@ -42006,6 +42127,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 282603216}
   backwardNodes: []
@@ -42169,6 +42291,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1766515415}
   - {fileID: 1585236313}
@@ -42928,6 +43051,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 428200884}
   backwardNodes: []
@@ -42975,6 +43099,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 179936301}
   backwardNodes: []
@@ -42998,6 +43123,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 329586607}
   backwardNodes: []
@@ -44643,6 +44769,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 324284418}
   backwardNodes: []
@@ -44697,6 +44824,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 816203733}
   backwardNodes:
@@ -44754,6 +44882,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 778807689}
   backwardNodes: []
@@ -46670,6 +46799,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 388820238}
   backwardNodes: []
@@ -47225,6 +47355,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2067846554}
   - {fileID: 764790458}
@@ -47465,6 +47596,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 952930320}
   backwardNodes:
@@ -47611,6 +47743,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1720552659}
   - {fileID: 553101372}
@@ -47680,6 +47813,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1628894075}
   backwardNodes:
@@ -47904,6 +48038,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 889363733}
   backwardNodes:
@@ -48114,6 +48249,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 942958895}
   backwardNodes:
@@ -48672,6 +48808,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 463967742}
   - {fileID: 1166176448}
@@ -48726,8 +48863,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  isPartOfIntersection: 0
+  isPartOfIntersection: 1
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1932490695}
   backwardNodes:
@@ -48982,6 +49120,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 988595585}
   backwardNodes: []
@@ -49127,6 +49266,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 287126894}
   backwardNodes:
@@ -49489,6 +49629,7 @@ MonoBehaviour:
   roadSpeedLimit: 20
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1108821545}
   backwardNodes:
@@ -49635,6 +49776,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 324284417}
   backwardNodes: []
@@ -49934,6 +50076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 1684807720}
   endNode: {fileID: 0}
@@ -50020,6 +50163,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1045287419}
   backwardNodes: []
@@ -50262,6 +50406,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2103089018}
   backwardNodes:
@@ -52564,6 +52709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 1554115005}
   endNode: {fileID: 0}
@@ -52731,6 +52877,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1840955212}
   backwardNodes: []
@@ -52816,6 +52963,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1538574375}
   - {fileID: 612392439}
@@ -52871,6 +53019,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 84304646}
   - {fileID: 1199175415}
@@ -53761,6 +53910,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 763196332}
   backwardNodes: []
@@ -54157,6 +54307,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 577110571}
   - {fileID: 1398248850}
@@ -54427,6 +54578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 0}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 0}
   endNode: {fileID: 0}
@@ -54611,6 +54763,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 430433398}
   backwardNodes:
@@ -55587,6 +55740,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 348372214}
   backwardNodes:
@@ -55839,6 +55993,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 298294939}
   - {fileID: 367199368}
@@ -55881,6 +56036,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 143184951}
   backwardNodes:
@@ -55999,6 +56155,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1108808073}
   - {fileID: 509991331}
@@ -56471,6 +56628,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 161990128}
   - {fileID: 1814935422}
@@ -57168,6 +57326,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1339648902}
   backwardNodes: []
@@ -57749,6 +57908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 298294939}
   endNode: {fileID: 0}
@@ -57960,6 +58120,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1209665612}
   - {fileID: 1612083597}
@@ -58742,6 +58903,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1432464841}
   backwardNodes:
@@ -59292,6 +59454,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1906436856}
   backwardNodes:
@@ -59832,6 +59995,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 248550107}
   backwardNodes:
@@ -59887,6 +60051,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1839049791}
   backwardNodes:
@@ -60682,6 +60847,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 928051175}
   - {fileID: 1869785047}
@@ -60922,6 +61088,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 756899684}
   backwardNodes:
@@ -61040,6 +61207,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1806542574}
   backwardNodes:
@@ -61342,6 +61510,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 591244099}
   backwardNodes:
@@ -63544,6 +63713,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 696233593}
   - {fileID: 161990128}
@@ -64692,6 +64862,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 67876689}
   backwardNodes: []
@@ -66050,6 +66221,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 712795933}
   backwardNodes: []
@@ -66073,6 +66245,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 760986800}
   backwardNodes: []
@@ -66123,6 +66296,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 768797969}
   backwardNodes: []
@@ -66146,6 +66320,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 845788347}
   backwardNodes: []
@@ -66597,6 +66772,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1806962564}
   backwardNodes:
@@ -66809,6 +66985,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 437561203}
   backwardNodes:
@@ -67019,6 +67196,7 @@ MonoBehaviour:
   roadSpeedLimit: 20
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 932430384}
   backwardNodes:
@@ -67075,6 +67253,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 161990128}
   - {fileID: 696233593}
@@ -67582,6 +67761,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1048239204}
   backwardNodes:
@@ -67861,6 +68041,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1398248850}
   - {fileID: 577110571}
@@ -67934,6 +68115,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1571274334}
   backwardNodes:
@@ -69207,6 +69389,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 776755941}
   backwardNodes: []
@@ -69257,6 +69440,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1379131635}
   backwardNodes: []
@@ -69280,6 +69464,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1075423109}
   backwardNodes: []
@@ -69303,6 +69488,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 59272521}
   backwardNodes: []
@@ -69668,6 +69854,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1339648903}
   backwardNodes: []
@@ -70166,6 +70353,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 455042761}
   backwardNodes:
@@ -70518,6 +70706,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 842246872}
   backwardNodes: []
@@ -70974,6 +71163,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 919279102}
   backwardNodes: []
@@ -71423,6 +71613,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 370542214}
   backwardNodes:
@@ -71490,8 +71681,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  isPartOfIntersection: 0
+  isPartOfIntersection: 1
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 741510344}
   backwardNodes:
@@ -71624,6 +71816,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1353766336}
   backwardNodes:
@@ -72274,6 +72467,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1819066260}
   backwardNodes: []
@@ -72697,6 +72891,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1539912725}
   backwardNodes:
@@ -72784,6 +72979,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2057957189}
   backwardNodes:
@@ -73096,6 +73292,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1154049074}
   backwardNodes: []
@@ -73297,6 +73494,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 166810447}
   backwardNodes: []
@@ -73535,6 +73733,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1752800142}
   backwardNodes:
@@ -73681,6 +73880,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1359990948}
   backwardNodes:
@@ -73859,6 +74059,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1819378536}
   - {fileID: 1845742390}
@@ -74109,6 +74310,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1365374205}
   backwardNodes: []
@@ -74672,6 +74874,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 192694480}
   - {fileID: 1684807720}
@@ -75835,6 +76038,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 829380838}
   - {fileID: 1208857707}
@@ -75891,6 +76095,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1583965186}
   backwardNodes:
@@ -75945,6 +76150,7 @@ MonoBehaviour:
   roadSpeedLimit: 20
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1698759924}
   backwardNodes:
@@ -76508,6 +76714,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2050306841}
   - {fileID: 664829208}
@@ -76580,6 +76787,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 360114861}
   backwardNodes:
@@ -76758,6 +76966,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 703439623}
   backwardNodes:
@@ -77549,6 +77758,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1436221959}
   backwardNodes:
@@ -77695,6 +77905,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1616940781}
   - {fileID: 963146433}
@@ -78005,6 +78216,7 @@ MonoBehaviour:
   roadSpeedLimit: 20
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1541557682}
   backwardNodes:
@@ -78061,6 +78273,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1394298773}
   backwardNodes: []
@@ -78585,6 +78798,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 447120045}
   - {fileID: 2144380867}
@@ -78641,6 +78855,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 26773951}
   backwardNodes: []
@@ -78786,6 +79001,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 969982679}
   backwardNodes: []
@@ -79087,6 +79303,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 355777151}
   backwardNodes:
@@ -79142,6 +79359,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 147332802}
   backwardNodes: []
@@ -79287,6 +79505,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1166176448}
   - {fileID: 463967742}
@@ -79343,6 +79562,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 693774281}
   backwardNodes:
@@ -80041,6 +80261,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 826327399}
   backwardNodes:
@@ -80985,6 +81206,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 446660058}
   - {fileID: 440256904}
@@ -82027,6 +82249,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1071941258}
   backwardNodes: []
@@ -82073,6 +82296,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 54549691}
   backwardNodes: []
@@ -82204,6 +82428,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1517563998}
   backwardNodes:
@@ -82775,6 +83000,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2141169689}
   - {fileID: 459615193}
@@ -83215,6 +83441,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 143439561}
   backwardNodes:
@@ -83518,6 +83745,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1554115005}
   backwardNodes:
@@ -83728,6 +83956,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 403300209}
   backwardNodes: []
@@ -83781,6 +84010,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1049131960}
   - {fileID: 1723407738}
@@ -84086,6 +84316,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 937571331}
   backwardNodes:
@@ -84356,6 +84587,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1456455366}
   backwardNodes:
@@ -84410,6 +84642,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1199175415}
   - {fileID: 84304646}
@@ -84735,6 +84968,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 283545787}
   backwardNodes:
@@ -84803,6 +85037,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 1554115005}
   endNode: {fileID: 0}
@@ -85421,6 +85656,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 816990810}
   backwardNodes:
@@ -85849,6 +86085,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1371917902}
   backwardNodes:
@@ -85903,6 +86140,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1573802827}
   - {fileID: 455742379}
@@ -86014,6 +86252,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 845800878}
   backwardNodes: []
@@ -88092,6 +88331,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1473602735}
   backwardNodes:
@@ -88146,6 +88386,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 337590575}
   backwardNodes:
@@ -88602,6 +88843,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2127318679}
   backwardNodes: []
@@ -89520,6 +89762,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 889406756}
   backwardNodes: []
@@ -89543,6 +89786,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 279528262}
   backwardNodes: []
@@ -89605,6 +89849,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1907975040}
   - {fileID: 696345955}
@@ -89969,6 +90214,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 70671440}
   backwardNodes:
@@ -90785,6 +91031,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1942906102}
   backwardNodes:
@@ -91044,6 +91291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 192694480}
   endNode: {fileID: 0}
@@ -91098,6 +91346,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 529879595}
   backwardNodes: []
@@ -91248,6 +91497,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 696345955}
   - {fileID: 1907975040}
@@ -92011,6 +92261,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 764790458}
   - {fileID: 2067846554}
@@ -92069,6 +92320,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 162976109}
   - {fileID: 664829208}
@@ -92340,6 +92592,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 745873223}
   - {fileID: 1756926164}
@@ -92612,6 +92865,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 805709017}
   backwardNodes:
@@ -93576,6 +93830,7 @@ MonoBehaviour:
   roadSpeedLimit: 15
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 696233593}
   - {fileID: 1814935422}
@@ -94010,6 +94265,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1606284852}
   backwardNodes: []
@@ -94061,8 +94317,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  isPartOfIntersection: 0
+  isPartOfIntersection: 1
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 182055906}
   backwardNodes:
@@ -94118,6 +94375,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 405548076}
   - {fileID: 1728257641}
@@ -94176,6 +94434,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1466313183}
   backwardNodes: []
@@ -94525,6 +94784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathParent: {fileID: 368425501}
+  maxNodesInRandomizer: 30
   path: []
   currentNode: {fileID: 201947719}
   endNode: {fileID: 0}
@@ -94677,6 +94937,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 20694655}
   backwardNodes: []
@@ -94947,6 +95208,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 553101372}
   - {fileID: 1385911082}
@@ -95002,6 +95264,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1246345654}
   backwardNodes:
@@ -95180,6 +95443,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1880440754}
   backwardNodes:
@@ -95546,6 +95810,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 768468349}
   backwardNodes:
@@ -96104,6 +96369,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 8747352}
   backwardNodes:
@@ -97747,6 +98013,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 612392439}
   - {fileID: 1538574375}
@@ -98020,8 +98287,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedToPass: 1
   roadSpeedLimit: 50
-  isPartOfIntersection: 0
+  isPartOfIntersection: 1
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1485787902}
   backwardNodes:
@@ -98528,6 +98796,7 @@ MonoBehaviour:
   roadSpeedLimit: 30
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1394298775}
   backwardNodes: []
@@ -99326,6 +99595,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 269574574}
   backwardNodes:
@@ -100056,6 +100326,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 720905206}
   - {fileID: 1706302020}
@@ -100984,6 +101255,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1619593893}
   backwardNodes:
@@ -101222,6 +101494,7 @@ MonoBehaviour:
   roadSpeedLimit: 20
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 1959772066}
   - {fileID: 416450184}
@@ -102031,6 +102304,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 707985567}
   backwardNodes: []
@@ -103002,6 +103276,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 2028651135}
   backwardNodes:
@@ -103089,6 +103364,7 @@ MonoBehaviour:
   roadSpeedLimit: 50
   isPartOfIntersection: 0
   nodesToWaitFor: []
+  carsOnThisNode: []
   possibleNextNodes:
   - {fileID: 808062929}
   - {fileID: 1874360560}

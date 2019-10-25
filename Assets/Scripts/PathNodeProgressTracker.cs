@@ -35,42 +35,67 @@ public class PathNodeProgressTracker : MonoBehaviour
     {
         if (waypoints.Count > 0)
         {
-            //If close enough say to go to the next point
-            if (Vector3.Distance(rb.position, target) < distanceToAccept)
-            {
-                passedProgress++;
-            }
-
             float distanceToTarget = float.MaxValue;
             int targetIndex = 0;
 
-            float speed = rb.velocity.magnitude * 3.6f;
-            speed = Mathf.Max(1, speed);
+            float minDistance = 10f;
+            float maxDistance = 20f;
 
-            float minDist = lookAheadMinDistance * speed * lookAheadSpeedModifier;
-            float maxDist = lookAheadMaxDistance * speed * lookAheadSpeedModifier;
-
-            //find closest node infront of the car that is within acceptable distances
             for (int i = 0; i < waypoints.Count; i++)
             {
                 float testDistance = Vector3.Distance(rb.position, waypoints[i]);
                 if (testDistance < distanceToTarget)
                 {
-                    if (Vector3.Distance(waypoints[i], rb.position + transform.forward) < testDistance && testDistance > minDist && testDistance < maxDist)
+                    if (Vector3.Distance(waypoints[i], rb.position + transform.forward * minDistance) < testDistance && testDistance < maxDistance)
                     {
                         distanceToTarget = testDistance;
                         targetIndex = i;
                     }
                 }
             }
-            targetIndex += passedProgress;
 
             targetIndex = Mathf.Min(targetIndex, waypoints.Count - 1);
+
             target = waypoints[targetIndex];
 
-            //int curveTargetIndex = targetIndex + lookAheadAdaptSpeedCurveCheck;
-            //curveTargetIndex = Mathf.Min(curveTargetIndex, waypoints.Count - 1);
-            //curvePercentage = CalculateCurvePercentage(waypoints[curveTargetIndex]);
+            for (int i = 0; i < targetIndex-1; i++)
+            {
+                waypoints.RemoveAt(i);
+            }
+
+
+            ////If close enough say to go to the next point
+            //if (Vector3.Distance(rb.position, target) < distanceToAccept)
+            //{
+            //    passedProgress++;
+            //}
+
+            //float distanceToTarget = float.MaxValue;
+            //int targetIndex = 0;
+
+            //float speed = rb.velocity.magnitude * 3.6f;
+            //speed = Mathf.Max(1, speed);
+
+            //float minDist = lookAheadMinDistance * speed * lookAheadSpeedModifier;
+            //float maxDist = lookAheadMaxDistance * speed * lookAheadSpeedModifier;
+
+            ////find closest node infront of the car that is within acceptable distances
+            //for (int i = 0; i < waypoints.Count; i++)
+            //{
+            //    float testDistance = Vector3.Distance(rb.position, waypoints[i]);
+            //    if (testDistance < distanceToTarget)
+            //    {
+            //        if (Vector3.Distance(waypoints[i], rb.position + transform.forward) < testDistance && testDistance > minDist && testDistance < maxDist)
+            //        {
+            //            distanceToTarget = testDistance;
+            //            targetIndex = i;
+            //        }
+            //    }
+            //}
+            //targetIndex += passedProgress;
+
+            //targetIndex = Mathf.Min(targetIndex, waypoints.Count - 1);
+            //target = waypoints[targetIndex];
         }
     }
 

@@ -27,7 +27,6 @@ public static class Pathfinding
             float distanceToNode = Vector3.Distance(startPos.transform.position, pathOptions[i].transform.position);
             pathSoFar.length += distanceToNode;
 
-
             if (pathOptions[i] == target)
             {
                 shortestPath.nodes.Add(target);
@@ -40,7 +39,6 @@ public static class Pathfinding
             pathSoFar.length -= distanceToNode;
         }
         shortestPath.nodes.Remove(startPos);
-        Debug.Log("New path calculated!");
         return shortestPath;
     }
 
@@ -51,6 +49,19 @@ public static class Pathfinding
     {
         if (useMaxNodes && pathSoFar.nodes.Count > maxNodes)
         {
+            Path newPath = new Path();
+
+            for (int j = 0; j < pathSoFar.nodes.Count; j++)
+            {
+                newPath.nodes.Add(pathSoFar.nodes[j]);
+            }
+
+            newPath.length = pathSoFar.length;
+
+            if (newPath.length < shortestPath.length)
+            {
+                shortestPath = newPath;
+            }
             return;
         }
         List<PathNode> pathOptions = posToSearchFrom.GetPathNodes();

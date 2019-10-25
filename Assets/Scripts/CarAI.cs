@@ -81,7 +81,7 @@ public class CarAI : MonoBehaviour
             aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
             aiPathProgressTracker.UpdatePath(path, currentNode);
         }
-        
+
         if (recklessDriver)
         {
             nodeAcceptanceDistance = criminalNodeAcceptanceDistance;
@@ -173,12 +173,21 @@ public class CarAI : MonoBehaviour
             currentState = AIState.Queue;
         }
 
-        //Checking if stuck
-        if (kmhSpeed + stuckSpeedSensistivity < speedToHold && kmhSpeed <= lastSpeedCheck)
+        if (currentState == AIState.Drive || currentState == AIState.AvoidCollision)
         {
-            if (!checkingIfStuck)
+            //Checking if stuck
+            if (kmhSpeed + stuckSpeedSensistivity < speedToHold && kmhSpeed <= lastSpeedCheck)
             {
-                StartCoroutine("CheckIfStuck");
+                if (!checkingIfStuck)
+                {
+                    StartCoroutine("CheckIfStuck");
+                }
+            }
+            else
+            {
+                StopCoroutine("CheckIfStuck");
+                isStuck = false;
+                checkingIfStuck = false;
             }
         }
         else
@@ -268,14 +277,22 @@ public class CarAI : MonoBehaviour
     private bool SetNewEndTargetNode(PathNode target, PathNode nodeToAvoid, bool useMaxNodes)
     {
         path = Pathfinding.GetPathToFollow(currentNode, target, nodeToAvoid, useMaxNodes, maxNodesInRandomizer).nodes;
-        if (path == null || path.Count == 0 || !path.Contains(target))
+
+        if (!path.Contains(target) && path.Count == maxNodesInRandomizer)
         {
-            Debug.LogWarning("Path to: '" + target.transform.name + target.transform.position + "', not found. Please confirm that a path to this node exists");
+            Debug.Log("Path to: '" + target.transform.name + target.transform.position + "', from '" + currentNode.transform.name + currentNode.transform.position + "' could not be found since it was too far away. A shorter route towards it was created");
+            currentState = AIState.Drive;
+            return true;
+        }
+        else if (path == null || path.Count == 0)
+        {
+            Debug.LogWarning("Path to: '" + target.transform.name + target.transform.position + "', from '" + currentNode.transform.name + currentNode.transform.position + "', not found. Please confirm that a path to this node exists");
             currentState = AIState.Stopping;
             return false;
         }
         else
         {
+            Debug.Log("Path to: '" + target.transform.name + target.transform.position + "', from '" + currentNode.transform.name + currentNode.transform.position + "' was found without issue");
             currentState = AIState.Drive;
             return true;
         }
@@ -312,7 +329,7 @@ public class CarAI : MonoBehaviour
             }
             else if (tests >= maxTests)
             {
-                Debug.LogError("Failed to find a random node to find a path to on "+ tests + " tries. Check node connections. This car will probably not function:  " + this.transform.name);
+                Debug.LogError("Failed to find a random node to find a path to on " + tests + " tries. Check node connections. This car will probably not function:  " + this.transform.name);
             }
         }
         else
@@ -346,7 +363,12 @@ public class CarAI : MonoBehaviour
         }
         else
         {
-            float newSpeed = roadSpeedLimit * (1 - Mathf.Abs(steerPercentage)) * (1 - Mathf.Abs(aiPathProgressTracker.curvePercentage));
+
+            float newSpeed = roadSpeedLimit * (1 - Mathf.Abs(steerPercentage));
+            if (aiPathProgressTracker)
+            {
+                newSpeed *= (1 - Mathf.Abs(aiPathProgressTracker.curvePercentage));
+            }
             return ignoreSpeedLimit ? newSpeed * criminalSpeedFactor : newSpeed;
         }
     }
@@ -423,14 +445,16 @@ public class CarAI : MonoBehaviour
         {
             if (path.Count > 0)
             {
+                //Leaving old node
                 path[0].RemoveCarFromNode(this);
-
                 currentNode = path[0];
                 path.RemoveAt(0);
 
+                //If there are still nodes to travel to
                 if (path.Count > 0)
                 {
                     SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
+                    path[0].AddCarToNode(this);
                 }
                 else if (endNode)
                 {
@@ -438,7 +462,8 @@ public class CarAI : MonoBehaviour
                 }
                 else
                 {
-                    SetRandomTargetNode(null); //add new path to go to
+                    //Create new path
+                    SetRandomTargetNode(null);
                     path[0].AddCarToNode(this);
                 }
             }
@@ -919,9 +944,10 @@ public class CarAI : MonoBehaviour
 
     [Header("Editor")]
     public Color lineToNode = Color.yellow;
+    public bool showLineToNextNode = false;
     private void OnDrawGizmos()
     {
-        if (!aiPathProgressTracker)
+        if (showLineToNextNode)
         {
             if (path.Count > 0)
             {
