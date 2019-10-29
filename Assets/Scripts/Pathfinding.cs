@@ -15,7 +15,7 @@ public static class Pathfinding
         shortestPath.length = float.MaxValue;
         Path pathSoFar = new Path();
 
-        List<PathNode> pathOptions = startPos.GetPathNodes();
+        List<PathNode> pathOptions = startPos.GetNextPossibleNodes();
         pathOptions = SortNodesByDistance(pathOptions, target);
         for (int i = 0; i < pathOptions.Count; i++)
         {
@@ -64,7 +64,7 @@ public static class Pathfinding
             }
             return;
         }
-        List<PathNode> pathOptions = posToSearchFrom.GetPathNodes();
+        List<PathNode> pathOptions = posToSearchFrom.GetNextPossibleNodes();
         if (pathOptions.Count > 1)
         {
             pathOptions = SortNodesByDistance(pathOptions, target);

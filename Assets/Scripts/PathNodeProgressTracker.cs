@@ -58,9 +58,12 @@ public class PathNodeProgressTracker : MonoBehaviour
 
             target = waypoints[targetIndex];
 
-            for (int i = 0; i < targetIndex-1; i++)
+            for (int i = 0; i < targetIndex - 1; i++)
             {
-                waypoints.RemoveAt(i);
+                if (waypoints.Count > 2)
+                {
+                    waypoints.RemoveAt(0);
+                }
             }
 
 
@@ -114,11 +117,11 @@ public class PathNodeProgressTracker : MonoBehaviour
 
 
             Vector3 averageBackwardsNodePosition = Vector3.zero;
-            for (int inNode = 0; inNode < currentNode.backwardNodes.Count; inNode++)
+            for (int inNode = 0; inNode < currentNode.GetBackWardConnections().Count; inNode++)
             {
-                averageBackwardsNodePosition += currentNode.backwardNodes[inNode].transform.position;
+                averageBackwardsNodePosition += currentNode.GetBackWardConnections()[inNode].transform.position;
             }
-            averageBackwardsNodePosition /= currentNode.backwardNodes.Count;
+            averageBackwardsNodePosition /= currentNode.GetBackWardConnections().Count;
 
             nodePositions.Add(averageBackwardsNodePosition);
             nodePositions.Add(currentNode.transform.position);
@@ -138,7 +141,7 @@ public class PathNodeProgressTracker : MonoBehaviour
             {
                 CreateStraightPath(path[0].transform.position);
             }
-            curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count-1]);
+            curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count - 1]);
         }
     }
 

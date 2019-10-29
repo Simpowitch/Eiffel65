@@ -75,7 +75,7 @@ public class PathNodeEditor : Editor
     {
         PathNode newNode;
         newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
-        myPathNode.AddConnectedNode(newNode);
+        myPathNode.AddPossibleNextNode(newNode);
         newNode.transform.SetParent(myPathNode.transform.parent);
         newNode.gameObject.name = pathName;
         newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
@@ -86,9 +86,9 @@ public class PathNodeEditor : Editor
     {
         PathNode newNode;
         newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
-        newNode.transform.position = (myPathNode.transform.position + myPathNode.GetPathNodes()[0].transform.position) / 2;
-        newNode.AddConnectedNode(myPathNode.GetPathNodes());
-        newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetPathNodes()[0].GetRoadSpeedLimit());
+        newNode.transform.position = (myPathNode.transform.position + myPathNode.GetNextPossibleNodes()[0].transform.position) / 2;
+        newNode.AddConnectedNode(myPathNode.GetNextPossibleNodes());
+        newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetNextPossibleNodes()[0].GetRoadSpeedLimit());
         myPathNode.ReplaceConnectedNode(newNode);
         newNode.transform.SetParent(myPathNode.transform.parent);
         newNode.gameObject.name = pathName;
@@ -98,15 +98,15 @@ public class PathNodeEditor : Editor
     private GameObject ReplaceNodeMultiple(PathNode myPathNode)
     {
         PathNode newNode = myPathNode;
-        Vector3 endPos = myPathNode.GetPathNodes()[0].transform.position;
-        int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, myPathNode.GetPathNodes()[0].transform.position) / metersBetweenNodes);
-        Vector3 direction = myPathNode.GetPathNodes()[0].transform.position - myPathNode.transform.position;
+        Vector3 endPos = myPathNode.GetNextPossibleNodes()[0].transform.position;
+        int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, myPathNode.GetNextPossibleNodes()[0].transform.position) / metersBetweenNodes);
+        Vector3 direction = myPathNode.GetNextPossibleNodes()[0].transform.position - myPathNode.transform.position;
         direction = direction.normalized;
         Vector3 position = myPathNode.transform.position;
         PathNode previousNode = myPathNode;
 
         List<PathNode> originalConnections = new List<PathNode>();
-        originalConnections.AddRange(myPathNode.GetPathNodes());
+        originalConnections.AddRange(myPathNode.GetNextPossibleNodes());
         for (int i = 0; i < originalConnections.Count; i++)
         {
             originalConnections[i].backwardNodes.Remove(myPathNode);
@@ -121,17 +121,17 @@ public class PathNodeEditor : Editor
             {
                 newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
                 newNode.transform.position = position;
-                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetPathNodes()[0].GetRoadSpeedLimit());
+                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetNextPossibleNodes()[0].GetRoadSpeedLimit());
                 newNode.transform.SetParent(myPathNode.transform.parent);
                 newNode.gameObject.name = pathName;
                 createdNodes.Add(newNode);
             }
         }
         myPathNode.ClearForwardConnections();
-        myPathNode.AddConnectedNode(createdNodes[0]);
+        myPathNode.AddPossibleNextNode(createdNodes[0]);
         for (int i = 0; i < createdNodes.Count - 1; i++)
         {
-            createdNodes[i].AddConnectedNode(createdNodes[i + 1]);
+            createdNodes[i].AddPossibleNextNode(createdNodes[i + 1]);
         }
         //add the original nodes to the last created node
         newNode = createdNodes[createdNodes.Count - 1];
@@ -147,14 +147,14 @@ public class PathNodeEditor : Editor
         DestroyImmediate(empty);
         parent.gameObject.name = "RoadSegment";
         parent.SetParent(myPathNode.gameObject.transform.parent);
-        parent.transform.position = (myPathNode.transform.position + myPathNode.GetPathNodes()[0].transform.position) / 2;
+        parent.transform.position = (myPathNode.transform.position + myPathNode.GetNextPossibleNodes()[0].transform.position) / 2;
 
-        myPathNode.transform.LookAt(myPathNode.GetPathNodes()[0].transform);
+        myPathNode.transform.LookAt(myPathNode.GetNextPossibleNodes()[0].transform);
 
         Vector3 startPos = myPathNode.transform.position;
-        Vector3 endPos = myPathNode.GetPathNodes()[0].transform.position;
-        int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, myPathNode.GetPathNodes()[0].transform.position) / metersBetweenNodes) + 1; //the start and finish nodes will be removed
-        Vector3 direction = myPathNode.GetPathNodes()[0].transform.position - myPathNode.transform.position;
+        Vector3 endPos = myPathNode.GetNextPossibleNodes()[0].transform.position;
+        int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, myPathNode.GetNextPossibleNodes()[0].transform.position) / metersBetweenNodes) + 1; //the start and finish nodes will be removed
+        Vector3 direction = myPathNode.GetNextPossibleNodes()[0].transform.position - myPathNode.transform.position;
         direction = direction.normalized;
         Vector3 position = startPos;
 
@@ -182,11 +182,11 @@ public class PathNodeEditor : Editor
 
                 newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), position, myPathNode.transform.rotation);
 
-                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetPathNodes()[0].GetRoadSpeedLimit());
+                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetNextPossibleNodes()[0].GetRoadSpeedLimit());
 
                 if (previousNode != null)
                 {
-                    previousNode.AddConnectedNode(newNode);
+                    previousNode.AddPossibleNextNode(newNode);
                 }
 
                 string name = pathName;
@@ -227,17 +227,17 @@ public class PathNodeEditor : Editor
 
                     if (lane + 1 < lanes.Length && node + 1 < lanes[lane + 1].Count)
                     {
-                        lanes[lane][node].AddConnectedNode(lanes[lane + 1][node + 1]);
+                        lanes[lane][node].AddPossibleNextNode(lanes[lane + 1][node + 1]);
                     }
                     if (lane - 1 >= 0 && node + 1 < lanes[lane - 1].Count)
                     {
-                        lanes[lane][node].AddConnectedNode(lanes[lane - 1][node + 1]);
+                        lanes[lane][node].AddPossibleNextNode(lanes[lane - 1][node + 1]);
                     }
                 }
             }
         }
 
-        GameObject.DestroyImmediate(myPathNode.GetPathNodes()[0].gameObject);
+        GameObject.DestroyImmediate(myPathNode.GetNextPossibleNodes()[0].gameObject);
         GameObject.DestroyImmediate(myPathNode.gameObject);
         return newNode.gameObject;
     }
@@ -267,7 +267,7 @@ public class PathNodeEditor : Editor
             }
             else
             {
-                PathNode.selectedNodeForConnection.AddConnectedNode((PathNode)target);
+                PathNode.selectedNodeForConnection.AddPossibleNextNode((PathNode)target);
                 PathNode.selectedNodeForConnection = null;
                 Debug.Log("Node connected");
             }

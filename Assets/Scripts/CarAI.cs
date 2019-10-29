@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CarAI : MonoBehaviour
 {
+    public Turn turningDirection;
+
     //The progress tracker responsible for following a path between pathnodes
     PathNodeProgressTracker aiPathProgressTracker;
     //The wheels controller script which applies torque, braking, steering etc.
@@ -146,7 +148,7 @@ public class CarAI : MonoBehaviour
         {
             progressTrackerAim = aiPathProgressTracker.target;
         }
-        steerPercentage = aiPathProgressTracker != null ? SteerTowardsPoint(progressTrackerAim) : SteerTowardsNextNode();
+        steerPercentage = aiPathProgressTracker != null ? SteerTowardsPoint(progressTrackerAim) : SteerTowardsNode(path[0]);
 
         //Check for collisions forward
         if (CheckForCollision(steerPercentage, out RaycastHit collision))
@@ -376,24 +378,24 @@ public class CarAI : MonoBehaviour
     /// <summary>
     /// Calculates how much the wheels should turn to go towards the current node
     /// </summary>
-    private float SteerTowardsNextNode()
+    private float SteerTowardsNode(PathNode inputNode)
     {
         if (recklessDriver) //do not aim exactly at the nodes
         {
-            float distanceToNode = Vector3.Distance(transform.position, path[0].transform.position);
+            float distanceToNode = Vector3.Distance(transform.position, inputNode.transform.position);
             Vector3 posToTest = transform.position + GetComponent<Rigidbody>().velocity.normalized * distanceToNode;
-            if (Vector3.Distance(posToTest, path[0].transform.position) < nodeAcceptanceDistance)
+            if (Vector3.Distance(posToTest, inputNode.transform.position) < nodeAcceptanceDistance)
             {
                 return 0;
             }
             else
             {
-                return SteerTowardsPoint(path[0].transform.position);
+                return SteerTowardsPoint(inputNode.transform.position);
             }
         }
         else
         {
-            return SteerTowardsPoint(path[0].transform.position);
+            return SteerTowardsPoint(inputNode.transform.position);
         }
     }
 
@@ -443,35 +445,33 @@ public class CarAI : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, path[0].transform.position) < nodeAcceptanceDistance)
         {
+            //Leaving old node
+            path[0].RemoveCarFromNode(this);
+            currentNode = path[0];
+            path.RemoveAt(0);
+
+            //If there are still nodes to travel to
             if (path.Count > 0)
             {
-                //Leaving old node
-                path[0].RemoveCarFromNode(this);
-                currentNode = path[0];
-                path.RemoveAt(0);
-
-                //If there are still nodes to travel to
-                if (path.Count > 0)
-                {
-                    SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
-                    path[0].AddCarToNode(this);
-                }
-                else if (endNode)
-                {
-                    currentNode = null;
-                }
-                else
-                {
-                    //Create new path
-                    SetRandomTargetNode(null);
-                    path[0].AddCarToNode(this);
-                }
+                SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
+                path[0].AddCarToNode(this);
             }
-            if (aiPathProgressTracker)
+            else if (endNode)
             {
-                aiPathProgressTracker.UpdatePath(path, currentNode);
+                currentNode = null;
+            }
+            else
+            {
+                //Create new path
+                SetRandomTargetNode(null);
+                path[0].AddCarToNode(this);
             }
         }
+        if (aiPathProgressTracker)
+        {
+            aiPathProgressTracker.UpdatePath(path, currentNode);
+        }
+        turningDirection = CheckTurning();
     }
 
     /// <summary>
@@ -939,6 +939,22 @@ public class CarAI : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private Turn CheckTurning()
+    {
+        //if (path.Count > 1 && path[0].GetNextPossibleNodes().Count > 1)
+        //{
+        //    for (int i = 0; i < path[0].outChoices.Count; i++)
+        //    {
+        //        if (path[1] == path[0].outChoices[i].outNode)
+        //        {
+        //            return path[0].outChoices[i].turnDirection;
+        //        }
+        //    }
+        //    Debug.LogWarning("Did not find the correct direction, check outnode choices");
+        //}
+        return Turn.Straight;
     }
 
 

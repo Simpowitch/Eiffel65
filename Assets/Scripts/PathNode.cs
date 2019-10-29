@@ -14,7 +14,7 @@ public class PathNode : MonoBehaviour
     public List<CarAI> carsOnThisNode = new List<CarAI>(); //debug public
 
     [SerializeField] List<PathNode> possibleNextNodes = new List<PathNode>();
-
+    //public List<DirectionChoice> outChoices = new List<DirectionChoice>();
     public List<PathNode> backwardNodes = new List<PathNode>(); //used for catmull-rom (curved path)
 
 
@@ -91,7 +91,7 @@ public class PathNode : MonoBehaviour
     /// <summary>
     /// Returns the nodes possible to go to next from this position
     /// </summary>
-    public List<PathNode> GetPathNodes()
+    public List<PathNode> GetNextPossibleNodes()
     {
         return possibleNextNodes;
     }
@@ -99,7 +99,7 @@ public class PathNode : MonoBehaviour
     /// <summary>
     /// Adds a new node to the list of connected nodes, mainly used in editor too quickly create new nodes
     /// </summary>
-    public void AddConnectedNode(PathNode input)
+    public void AddPossibleNextNode(PathNode input)
     {
         if (input != this && !possibleNextNodes.Contains(input))
         {
@@ -111,7 +111,7 @@ public class PathNode : MonoBehaviour
     {
         for (int i = 0; i < input.Count; i++)
         {
-            AddConnectedNode(input[i]);
+            AddPossibleNextNode(input[i]);
         }
     }
 
@@ -152,6 +152,10 @@ public class PathNode : MonoBehaviour
 
     public void ClearForwardConnections()
     {
+        for (int i = 0; i < possibleNextNodes.Count; i++)
+        {
+            possibleNextNodes[i].backwardNodes.Remove(this);
+        }
         possibleNextNodes.Clear();
     }
 
@@ -190,48 +194,35 @@ public class PathNode : MonoBehaviour
 
 
     [Header("Editor")]
-    public Color lineColor;
-    private Color nodeColor;
-    public float nodeSize = 1f;
-    public int visualPathSubsteps = 15;
+    Color lineColor = Color.green;
+    Color allowedToPassColor = Color.green;
+    Color notAllowedToPassColor = Color.red;
+    float nodeSize = 1f;
+    int visualPathSubsteps = 15; //substeps for catmull-rom curve
 
     private void OnDrawGizmos()
     {
         //Draw sphere
-        nodeColor = allowedToPass ? Color.blue : Color.red;
-        Gizmos.color = nodeColor;
+        Gizmos.color = allowedToPass ? allowedToPassColor : notAllowedToPassColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
         #region DrawLinesAndCheckConnectivity
         bool catmullCurveAllowed = true;
         int visualizationSubsteps = visualPathSubsteps;
-        Gizmos.color = lineColor;
-        //Safety check, delete inactive nodes
-        for (int i = 0; i < backwardNodes.Count; i++)
-        {
-            if (backwardNodes[i] == null)
-            {
-                backwardNodes.Remove(backwardNodes[i]);
-            }
-        }
 
+        ValidateConnections();
+
+        //Lines and curves
+        Gizmos.color = lineColor;
         for (int outNode = 0; outNode < possibleNextNodes.Count; outNode++)
         {
-            if (possibleNextNodes[outNode] != null)
-            {
-                Vector3 currentNode = this.transform.position;
-                Vector3 nextNode = Vector3.zero;
-                nextNode = possibleNextNodes[outNode].transform.position;
+            Vector3 currentNode = this.transform.position;
+            Vector3 nextNode = Vector3.zero;
+            nextNode = possibleNextNodes[outNode].transform.position;
 
-                Vector3 direction = (nextNode - currentNode).normalized;
-                Vector3 arrowPosition = currentNode + direction;
-                DrawArrow.ForGizmo(arrowPosition, direction, lineColor, 0.4f, 30);
-            }
-            else
-            {
-                possibleNextNodes.Remove(possibleNextNodes[outNode]);
-                outNode--;
-            }
+            Vector3 direction = (nextNode - currentNode).normalized;
+            Vector3 arrowPosition = currentNode + direction;
+            DrawArrow.ForGizmo(arrowPosition, direction, lineColor, 0.4f, 30);
 
             //Safety check before catmull-rom to make sure connections can be checked both ways
             if (!possibleNextNodes[outNode].GetBackWardConnections().Contains(this))
@@ -290,9 +281,6 @@ public class PathNode : MonoBehaviour
         }
     }
 
-
-
-
     private Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float i)
     {
         // comments are no use here... it's the catmull-rom equation.
@@ -300,6 +288,47 @@ public class PathNode : MonoBehaviour
         return 0.5f *
                ((2 * p1) + (-p0 + p2) * i + (2 * p0 - 5 * p1 + 4 * p2 - p3) * i * i +
                 (-p0 + 3 * p1 - 3 * p2 + p3) * i * i * i);
+    }
+
+    private void ValidateConnections()
+    {
+        //Safety check, delete inactive nodes
+        for (int i = 0; i < backwardNodes.Count; i++)
+        {
+            if (backwardNodes[i] == null)
+            {
+                backwardNodes.Remove(backwardNodes[i]);
+                Debug.Log("Removed null-node");
+            }
+        }
+        for (int i = 0; i < possibleNextNodes.Count; i++)
+        {
+            if (possibleNextNodes[i] == null)
+            {
+                possibleNextNodes.Remove(possibleNextNodes[i]);
+                Debug.Log("Removed null-node");
+            }
+        }
+
+        //Add if this is missing in connected nodes backward nodes
+        for (int i = 0; i < possibleNextNodes.Count; i++)
+        {
+            if (!possibleNextNodes[i].GetBackWardConnections().Contains(this))
+            {
+                possibleNextNodes[i].AddBackwardsNodeConnection(this);
+                Debug.Log("Added missing node connection");
+            }
+        }
+
+        //If this node has backward - connections which no longer is connected to this node, remove the backward - connection
+        for (int i = 0; i < backwardNodes.Count; i++)
+        {
+            if (!backwardNodes[i].possibleNextNodes.Contains(this))
+            {
+                backwardNodes.Remove(backwardNodes[i]);
+                Debug.Log("Removed backward node (" + backwardNodes[i].transform.name + ") to a no longer connected node from: " + transform.name + transform.position);
+            }
+        }
     }
 }
 
@@ -345,4 +374,13 @@ public static class DrawArrow
         Debug.DrawRay(pos + direction, right * arrowHeadLength, color);
         Debug.DrawRay(pos + direction, left * arrowHeadLength, color);
     }
+}
+
+public enum Turn { NotSet, Straight, Left, Right }
+
+[System.Serializable]
+public struct DirectionChoice
+{
+    public PathNode outNode;
+    public Turn turnDirection;
 }

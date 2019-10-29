@@ -478,9 +478,6 @@ MonoBehaviour:
   - {fileID: 1693478376}
   backwardNodes:
   - {fileID: 1959772066}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &8747353
 Transform:
   m_ObjectHideFlags: 0
@@ -599,9 +596,6 @@ MonoBehaviour:
   - {fileID: 1605097606}
   backwardNodes:
   - {fileID: 18247373}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &10451370
 Transform:
   m_ObjectHideFlags: 0
@@ -872,9 +866,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 367199368}
   - {fileID: 298294939}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &18247374
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,9 +1009,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 144573756}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &20694656
 Transform:
   m_ObjectHideFlags: 0
@@ -1112,9 +1100,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 166810446}
   backwardNodes: []
-  lineColor: {r: 0.05724907, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &26773952
 Transform:
   m_ObjectHideFlags: 0
@@ -1259,9 +1244,6 @@ MonoBehaviour:
   - {fileID: 1939923424}
   backwardNodes:
   - {fileID: 370542214}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &30915105
 Transform:
   m_ObjectHideFlags: 0
@@ -2438,9 +2420,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1331407953}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &54549692
 Transform:
   m_ObjectHideFlags: 0
@@ -2618,9 +2597,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 156144843}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &57708219
 Transform:
   m_ObjectHideFlags: 0
@@ -2691,9 +2667,6 @@ MonoBehaviour:
   - {fileID: 366539755}
   - {fileID: 139157265}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &62539655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3013,9 +2986,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 303831573}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &67876690
 Transform:
   m_ObjectHideFlags: 0
@@ -3161,9 +3131,6 @@ MonoBehaviour:
   - {fileID: 971505493}
   backwardNodes:
   - {fileID: 1825644287}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &70671441
 Transform:
   m_ObjectHideFlags: 0
@@ -3341,9 +3308,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1339648905}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &71957035
 Transform:
   m_ObjectHideFlags: 0
@@ -3782,9 +3746,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1049131960}
   - {fileID: 1723407738}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &84304647
 Transform:
   m_ObjectHideFlags: 0
@@ -4151,9 +4112,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 0}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &101207553
 Transform:
   m_ObjectHideFlags: 0
@@ -5349,9 +5307,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 446660058}
   - {fileID: 440256904}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &135232258
 Transform:
   m_ObjectHideFlags: 0
@@ -5589,9 +5544,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 282603217}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &139157266
 Transform:
   m_ObjectHideFlags: 0
@@ -5766,6 +5718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -5789,6 +5742,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  showLineToNextNode: 0
 --- !u!4 &139171723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
@@ -5946,9 +5900,6 @@ MonoBehaviour:
   - {fileID: 263818674}
   backwardNodes:
   - {fileID: 1108821545}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &143184952
 Transform:
   m_ObjectHideFlags: 0
@@ -6001,9 +5952,6 @@ MonoBehaviour:
   - {fileID: 1385911082}
   backwardNodes:
   - {fileID: 1693478376}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &143439562
 Transform:
   m_ObjectHideFlags: 0
@@ -6147,9 +6095,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1906190799}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &144573757
 Transform:
   m_ObjectHideFlags: 0
@@ -6201,9 +6146,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1921356465}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &147332803
 Transform:
   m_ObjectHideFlags: 0
@@ -6681,9 +6623,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1394298775}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &161014133
 GameObject:
   m_ObjectHideFlags: 0
@@ -6755,9 +6694,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1394298776}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &162976107
 GameObject:
   m_ObjectHideFlags: 0
@@ -6812,9 +6748,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 324284417}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &165910505
 GameObject:
   m_ObjectHideFlags: 0
@@ -8084,9 +8017,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1304621630}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &166810447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8108,9 +8038,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1360772936}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &166810448
 Transform:
   m_ObjectHideFlags: 0
@@ -8159,9 +8086,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1131906518}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &166810450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8183,9 +8107,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1900318995}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &167864783
 GameObject:
   m_ObjectHideFlags: 0
@@ -9216,9 +9137,6 @@ MonoBehaviour:
   - {fileID: 515394200}
   - {fileID: 101207552}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &182055905
 GameObject:
   m_ObjectHideFlags: 0
@@ -9258,9 +9176,6 @@ MonoBehaviour:
   - {fileID: 1819378536}
   backwardNodes:
   - {fileID: 1906436856}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &182055907
 Transform:
   m_ObjectHideFlags: 0
@@ -9591,9 +9506,6 @@ MonoBehaviour:
   - {fileID: 2050306841}
   - {fileID: 162976109}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &184313807
 Transform:
   m_ObjectHideFlags: 0
@@ -9738,9 +9650,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 57708218}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &185247426
 Transform:
   m_ObjectHideFlags: 0
@@ -9919,9 +9828,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1517563998}
   - {fileID: 651609018}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &192694481
 Transform:
   m_ObjectHideFlags: 0
@@ -10174,9 +10080,6 @@ MonoBehaviour:
   - {fileID: 1659632432}
   backwardNodes:
   - {fileID: 768468349}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &201947720
 Transform:
   m_ObjectHideFlags: 0
@@ -13191,9 +13094,6 @@ MonoBehaviour:
   - {fileID: 1939923424}
   backwardNodes:
   - {fileID: 1208857707}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &248550108
 Transform:
   m_ObjectHideFlags: 0
@@ -13603,9 +13503,6 @@ MonoBehaviour:
   - {fileID: 1550786724}
   backwardNodes:
   - {fileID: 143184951}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &263818675
 Transform:
   m_ObjectHideFlags: 0
@@ -13965,11 +13862,7 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 760167736}
   backwardNodes:
-  - {fileID: 1461388309}
   - {fileID: 2057957189}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &269574575
 Transform:
   m_ObjectHideFlags: 0
@@ -14363,9 +14256,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 402472809}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &279528263
 Transform:
   m_ObjectHideFlags: 0
@@ -15412,9 +15302,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 184313806}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &282603217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15436,9 +15323,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1873252316}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &282603218
 Transform:
   m_ObjectHideFlags: 0
@@ -15511,9 +15395,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1547340576}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &282621069
 GameObject:
   m_ObjectHideFlags: 0
@@ -15584,9 +15465,6 @@ MonoBehaviour:
   - {fileID: 1959772066}
   backwardNodes:
   - {fileID: 1728257641}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &283545788
 Transform:
   m_ObjectHideFlags: 0
@@ -15731,9 +15609,6 @@ MonoBehaviour:
   - {fileID: 1672480701}
   backwardNodes:
   - {fileID: 971505493}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &287126895
 Transform:
   m_ObjectHideFlags: 0
@@ -16063,12 +15938,12 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.6187
+      value: 5566.6196
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19619998
+      value: 0.19620001
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -16078,17 +15953,17 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.47
+      value: 34293.477
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.955
+      value: 5486.956
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19619998
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -16103,12 +15978,12 @@ PrefabInstance:
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.3794
+      value: 6433.38
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -16162,6 +16037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -16185,6 +16061,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  showLineToNextNode: 0
 --- !u!1 &292292116
 GameObject:
   m_ObjectHideFlags: 0
@@ -16637,9 +16514,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1108808073}
   - {fileID: 509991331}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &298294940
 Transform:
   m_ObjectHideFlags: 0
@@ -17524,9 +17398,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 2126357775}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &317080540
 Transform:
   m_ObjectHideFlags: 0
@@ -18390,9 +18261,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1909516215}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &324284418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18414,9 +18282,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 721385458}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &324284419
 Transform:
   m_ObjectHideFlags: 0
@@ -18786,9 +18651,6 @@ MonoBehaviour:
   - {fileID: 1106971415}
   backwardNodes:
   - {fileID: 752891578}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &328314338
 Transform:
   m_ObjectHideFlags: 0
@@ -18858,9 +18720,6 @@ MonoBehaviour:
   - {fileID: 71957034}
   - {fileID: 101207552}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &330417557
 GameObject:
   m_ObjectHideFlags: 0
@@ -19175,9 +19034,6 @@ MonoBehaviour:
   - {fileID: 637986574}
   backwardNodes:
   - {fileID: 1806962564}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &337590576
 Transform:
   m_ObjectHideFlags: 0
@@ -19754,9 +19610,6 @@ MonoBehaviour:
   - {fileID: 2095407776}
   backwardNodes:
   - {fileID: 1106971415}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &348372215
 Transform:
   m_ObjectHideFlags: 0
@@ -20058,9 +19911,6 @@ MonoBehaviour:
   - {fileID: 939160230}
   backwardNodes:
   - {fileID: 1612083597}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &355777152
 Transform:
   m_ObjectHideFlags: 0
@@ -20276,9 +20126,6 @@ MonoBehaviour:
   - {fileID: 1825644287}
   backwardNodes:
   - {fileID: 1550786724}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &360114862
 Transform:
   m_ObjectHideFlags: 0
@@ -20640,9 +20487,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 166810450}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &366539756
 Transform:
   m_ObjectHideFlags: 0
@@ -20804,9 +20648,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 509991331}
   - {fileID: 1108808073}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &368425500
 GameObject:
   m_ObjectHideFlags: 0
@@ -20900,6 +20741,8 @@ Transform:
   - {fileID: 971505494}
   - {fileID: 287126895}
   - {fileID: 1672480702}
+  - {fileID: 436147107}
+  - {fileID: 1040208883}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20974,9 +20817,6 @@ MonoBehaviour:
   - {fileID: 1349888761}
   backwardNodes:
   - {fileID: 1432464841}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &370542215
 Transform:
   m_ObjectHideFlags: 0
@@ -21228,9 +21068,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 185247425}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &388820239
 Transform:
   m_ObjectHideFlags: 0
@@ -22214,9 +22051,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1468780843}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &402472810
 Transform:
   m_ObjectHideFlags: 0
@@ -22269,9 +22103,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 627362434}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &403300210
 Transform:
   m_ObjectHideFlags: 0
@@ -22443,9 +22274,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1907975040}
   - {fileID: 696345955}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &405548077
 Transform:
   m_ObjectHideFlags: 0
@@ -22605,9 +22433,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 298294939}
   - {fileID: 367199368}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &408960600
 GameObject:
   m_ObjectHideFlags: 0
@@ -22933,9 +22758,6 @@ MonoBehaviour:
   - {fileID: 1108808073}
   backwardNodes:
   - {fileID: 2103089018}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &418286379
 GameObject:
   m_ObjectHideFlags: 0
@@ -23426,9 +23248,6 @@ MonoBehaviour:
   - {fileID: 515394200}
   - {fileID: 71957034}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &428200885
 Transform:
   m_ObjectHideFlags: 0
@@ -23455,7 +23274,7 @@ GameObject:
   - component: {fileID: 430433399}
   - component: {fileID: 430433398}
   m_Layer: 0
-  m_Name: PathNode
+  m_Name: SouthParkWay E2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23481,10 +23300,7 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1716227820}
   backwardNodes:
-  - {fileID: 1084556631}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
+  - {fileID: 1040208882}
 --- !u!4 &430433399
 Transform:
   m_ObjectHideFlags: 0
@@ -23591,6 +23407,58 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431302264}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &436147105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 436147107}
+  - component: {fileID: 436147106}
+  m_Layer: 0
+  m_Name: PathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &436147106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436147105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
+  carsOnThisNode: []
+  possibleNextNodes:
+  - {fileID: 1744948532}
+  backwardNodes:
+  - {fileID: 553101372}
+--- !u!4 &436147107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436147105}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.51, y: 0, z: -254.58499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 368425501}
+  m_RootOrder: 66
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &437561202
 GameObject:
   m_ObjectHideFlags: 0
@@ -23629,9 +23497,6 @@ MonoBehaviour:
   - {fileID: 453874135}
   backwardNodes:
   - {fileID: 1353766336}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &437561204
 Transform:
   m_ObjectHideFlags: 0
@@ -23870,9 +23735,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 826327399}
   - {fileID: 1659632432}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &440256905
 Transform:
   m_ObjectHideFlags: 0
@@ -24229,9 +24091,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1659632432}
   - {fileID: 826327399}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &446660059
 Transform:
   m_ObjectHideFlags: 0
@@ -24286,9 +24145,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1605097606}
   - {fileID: 741510344}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &447120046
 Transform:
   m_ObjectHideFlags: 0
@@ -24433,9 +24289,6 @@ MonoBehaviour:
   - {fileID: 594367206}
   backwardNodes:
   - {fileID: 437561203}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &453874136
 Transform:
   m_ObjectHideFlags: 0
@@ -24488,9 +24341,6 @@ MonoBehaviour:
   - {fileID: 992635505}
   backwardNodes:
   - {fileID: 1404167599}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &455042762
 Transform:
   m_ObjectHideFlags: 0
@@ -24545,9 +24395,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 745873223}
   - {fileID: 1756926164}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &455742380
 Transform:
   m_ObjectHideFlags: 0
@@ -24824,9 +24671,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 192694480}
   - {fileID: 1684807720}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &459615194
 Transform:
   m_ObjectHideFlags: 0
@@ -24986,9 +24830,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 963146433}
   - {fileID: 1616940781}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &463967743
 Transform:
   m_ObjectHideFlags: 0
@@ -26288,6 +26129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -26311,6 +26153,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  showLineToNextNode: 0
 --- !u!4 &493229307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
@@ -26870,9 +26713,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 416450184}
   - {fileID: 1113034442}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &509991332
 Transform:
   m_ObjectHideFlags: 0
@@ -27108,9 +26948,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 317080539}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &515203379
 Transform:
   m_ObjectHideFlags: 0
@@ -27179,9 +27016,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 717464406}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &517750996
 GameObject:
   m_ObjectHideFlags: 0
@@ -27716,9 +27550,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 590241481}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &529879596
 Transform:
   m_ObjectHideFlags: 0
@@ -28873,13 +28704,10 @@ MonoBehaviour:
   nodesToWaitFor: []
   carsOnThisNode: []
   possibleNextNodes:
-  - {fileID: 1744948532}
+  - {fileID: 436147106}
   backwardNodes:
   - {fileID: 1932351846}
   - {fileID: 937571331}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &553101373
 Transform:
   m_ObjectHideFlags: 0
@@ -29204,9 +29032,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 282603219}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &558678290
 Transform:
   m_ObjectHideFlags: 0
@@ -29864,9 +29689,6 @@ MonoBehaviour:
   - {fileID: 981423088}
   backwardNodes:
   - {fileID: 756899684}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &573832702
 Transform:
   m_ObjectHideFlags: 0
@@ -30027,9 +29849,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 0}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &577124929
 GameObject:
   m_ObjectHideFlags: 0
@@ -30601,9 +30420,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1705640104}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &590241482
 Transform:
   m_ObjectHideFlags: 0
@@ -30762,9 +30578,6 @@ MonoBehaviour:
   - {fileID: 1461388309}
   backwardNodes:
   - {fileID: 1246345654}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &592083165
 GameObject:
   m_ObjectHideFlags: 0
@@ -31025,9 +30838,6 @@ MonoBehaviour:
   - {fileID: 752891578}
   backwardNodes:
   - {fileID: 453874135}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &594367207
 Transform:
   m_ObjectHideFlags: 0
@@ -31531,9 +31341,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 2018666042}
   - {fileID: 1048239204}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &612392440
 Transform:
   m_ObjectHideFlags: 0
@@ -32202,9 +32009,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 982370994}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &627362435
 Transform:
   m_ObjectHideFlags: 0
@@ -32669,9 +32473,6 @@ MonoBehaviour:
   - {fileID: 734923926}
   backwardNodes:
   - {fileID: 337590575}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &644293043
 GameObject:
   m_ObjectHideFlags: 0
@@ -33051,9 +32852,6 @@ MonoBehaviour:
   - {fileID: 192694480}
   backwardNodes:
   - {fileID: 734923926}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &651609019
 Transform:
   m_ObjectHideFlags: 0
@@ -33538,9 +33336,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1819066261}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &664829209
 Transform:
   m_ObjectHideFlags: 0
@@ -33750,9 +33545,6 @@ MonoBehaviour:
   - {fileID: 1932351846}
   backwardNodes:
   - {fileID: 703439623}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &676505144
 Transform:
   m_ObjectHideFlags: 0
@@ -34514,9 +34306,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 558678289}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &692464738
 Transform:
   m_ObjectHideFlags: 0
@@ -34570,9 +34359,6 @@ MonoBehaviour:
   - {fileID: 1232730131}
   backwardNodes:
   - {fileID: 1619593893}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &693774282
 Transform:
   m_ObjectHideFlags: 0
@@ -34641,9 +34427,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1299925697}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &696345954
 GameObject:
   m_ObjectHideFlags: 0
@@ -34684,9 +34467,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1845742390}
   - {fileID: 1819378536}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &696345956
 Transform:
   m_ObjectHideFlags: 0
@@ -35059,9 +34839,6 @@ MonoBehaviour:
   - {fileID: 676505143}
   backwardNodes:
   - {fileID: 1554115005}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &703439624
 Transform:
   m_ObjectHideFlags: 0
@@ -35218,9 +34995,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1428217103}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &707985568
 Transform:
   m_ObjectHideFlags: 0
@@ -35291,9 +35065,6 @@ MonoBehaviour:
   - {fileID: 1766515415}
   - {fileID: 1585236313}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &713488905
 GameObject:
   m_ObjectHideFlags: 0
@@ -35334,9 +35105,6 @@ MonoBehaviour:
   - {fileID: 1605097606}
   backwardNodes:
   - {fileID: 459615193}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &713488907
 Transform:
   m_ObjectHideFlags: 0
@@ -35693,9 +35461,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 2067846554}
   - {fileID: 764790458}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &720905207
 Transform:
   m_ObjectHideFlags: 0
@@ -35749,9 +35514,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 692464737}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &721385459
 Transform:
   m_ObjectHideFlags: 0
@@ -36361,9 +36123,6 @@ MonoBehaviour:
   - {fileID: 651609018}
   backwardNodes:
   - {fileID: 637986574}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &734923927
 Transform:
   m_ObjectHideFlags: 0
@@ -36693,9 +36452,6 @@ MonoBehaviour:
   - {fileID: 447120045}
   backwardNodes:
   - {fileID: 1432488288}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &741510345
 Transform:
   m_ObjectHideFlags: 0
@@ -36782,9 +36538,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1874360560}
   - {fileID: 808062929}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &745873224
 Transform:
   m_ObjectHideFlags: 0
@@ -37037,9 +36790,6 @@ MonoBehaviour:
   - {fileID: 328314337}
   backwardNodes:
   - {fileID: 594367206}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &752891579
 Transform:
   m_ObjectHideFlags: 0
@@ -37644,9 +37394,6 @@ MonoBehaviour:
   - {fileID: 573832701}
   backwardNodes:
   - {fileID: 1232730131}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &756899685
 Transform:
   m_ObjectHideFlags: 0
@@ -37968,9 +37715,6 @@ MonoBehaviour:
   - {fileID: 2018666042}
   backwardNodes:
   - {fileID: 269574574}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &760167737
 Transform:
   m_ObjectHideFlags: 0
@@ -38026,9 +37770,6 @@ MonoBehaviour:
   - {fileID: 1415122616}
   - {fileID: 889252543}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &760986801
 Transform:
   m_ObjectHideFlags: 0
@@ -38267,9 +38008,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1498737391}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &763196333
 Transform:
   m_ObjectHideFlags: 0
@@ -38542,9 +38280,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1869785047}
   - {fileID: 928051175}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &764790459
 Transform:
   m_ObjectHideFlags: 0
@@ -38629,9 +38364,6 @@ MonoBehaviour:
   - {fileID: 201947719}
   backwardNodes:
   - {fileID: 1942906102}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &768468350
 Transform:
   m_ObjectHideFlags: 0
@@ -38702,9 +38434,6 @@ MonoBehaviour:
   - {fileID: 1585236313}
   - {fileID: 889252543}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &775004951
 GameObject:
   m_ObjectHideFlags: 0
@@ -38977,9 +38706,6 @@ MonoBehaviour:
   - {fileID: 366539755}
   - {fileID: 139157265}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &776898439
 GameObject:
   m_ObjectHideFlags: 0
@@ -39203,9 +38929,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 842924922}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &778807690
 Transform:
   m_ObjectHideFlags: 0
@@ -40127,12 +39850,7 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1476293093}
   backwardNodes:
-  - {fileID: 30915104}
-  - {fileID: 1939923424}
   - {fileID: 1880440754}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &805709018
 Transform:
   m_ObjectHideFlags: 0
@@ -40187,9 +39905,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 2144380867}
   - {fileID: 447120045}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &808062930
 Transform:
   m_ObjectHideFlags: 0
@@ -40615,7 +40330,7 @@ GameObject:
   - component: {fileID: 816203734}
   - component: {fileID: 816203733}
   m_Layer: 0
-  m_Name: PathNode
+  m_Name: CurveNE OutE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40642,9 +40357,6 @@ MonoBehaviour:
   - {fileID: 1084556631}
   backwardNodes:
   - {fileID: 889363733}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &816203734
 Transform:
   m_ObjectHideFlags: 0
@@ -40698,9 +40410,6 @@ MonoBehaviour:
   - {fileID: 1113034442}
   backwardNodes:
   - {fileID: 1744948532}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &816990811
 Transform:
   m_ObjectHideFlags: 0
@@ -41493,11 +41202,7 @@ MonoBehaviour:
   - {fileID: 440256904}
   - {fileID: 446660058}
   backwardNodes:
-  - {fileID: 939160230}
   - {fileID: 1628894075}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &826327400
 Transform:
   m_ObjectHideFlags: 0
@@ -41774,9 +41479,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1538574375}
   - {fileID: 612392439}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &829380839
 Transform:
   m_ObjectHideFlags: 0
@@ -42131,9 +41833,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 282603216}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &842924923
 Transform:
   m_ObjectHideFlags: 0
@@ -42297,9 +41996,6 @@ MonoBehaviour:
   - {fileID: 1585236313}
   - {fileID: 889252543}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1001 &845800875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43055,9 +42751,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 428200884}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &845800877
 Transform:
   m_ObjectHideFlags: 0
@@ -43103,9 +42796,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 179936301}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &845800879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43127,9 +42817,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 329586607}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &846047403
 GameObject:
   m_ObjectHideFlags: 0
@@ -44773,9 +44460,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 324284418}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &889252544
 Transform:
   m_ObjectHideFlags: 0
@@ -44802,7 +44486,7 @@ GameObject:
   - component: {fileID: 889363734}
   - component: {fileID: 889363733}
   m_Layer: 0
-  m_Name: PathNode
+  m_Name: CurveNE InN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44828,11 +44512,7 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 816203733}
   backwardNodes:
-  - {fileID: 952930320}
   - {fileID: 942958895}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &889363734
 Transform:
   m_ObjectHideFlags: 0
@@ -44886,9 +44566,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 778807689}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &889406757
 Transform:
   m_ObjectHideFlags: 0
@@ -46803,9 +46480,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 388820238}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &919279103
 Transform:
   m_ObjectHideFlags: 0
@@ -47362,9 +47036,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1223306532}
   - {fileID: 135232257}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &928051176
 Transform:
   m_ObjectHideFlags: 0
@@ -47601,9 +47272,6 @@ MonoBehaviour:
   - {fileID: 952930320}
   backwardNodes:
   - {fileID: 1359990948}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &932430385
 Transform:
   m_ObjectHideFlags: 0
@@ -47749,9 +47417,6 @@ MonoBehaviour:
   - {fileID: 553101372}
   backwardNodes:
   - {fileID: 1716227820}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &937571332
 Transform:
   m_ObjectHideFlags: 0
@@ -47818,9 +47483,6 @@ MonoBehaviour:
   - {fileID: 1628894075}
   backwardNodes:
   - {fileID: 355777151}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &941007352
 GameObject:
   m_ObjectHideFlags: 0
@@ -48043,9 +47705,6 @@ MonoBehaviour:
   - {fileID: 889363733}
   backwardNodes:
   - {fileID: 952930320}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &942958896
 Transform:
   m_ObjectHideFlags: 0
@@ -48254,9 +47913,6 @@ MonoBehaviour:
   - {fileID: 942958895}
   backwardNodes:
   - {fileID: 932430384}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &952930321
 Transform:
   m_ObjectHideFlags: 0
@@ -48815,9 +48471,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 455742379}
   - {fileID: 1573802827}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &963146434
 Transform:
   m_ObjectHideFlags: 0
@@ -48870,9 +48523,6 @@ MonoBehaviour:
   - {fileID: 1932490695}
   backwardNodes:
   - {fileID: 84304646}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &965712016
 Transform:
   m_ObjectHideFlags: 0
@@ -49124,9 +48774,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 988595585}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &969982680
 Transform:
   m_ObjectHideFlags: 0
@@ -49271,9 +48918,6 @@ MonoBehaviour:
   - {fileID: 287126894}
   backwardNodes:
   - {fileID: 70671440}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &971505494
 Transform:
   m_ObjectHideFlags: 0
@@ -49634,9 +49278,6 @@ MonoBehaviour:
   - {fileID: 1108821545}
   backwardNodes:
   - {fileID: 573832701}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &981423089
 Transform:
   m_ObjectHideFlags: 0
@@ -49780,9 +49421,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 324284417}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &982370995
 Transform:
   m_ObjectHideFlags: 0
@@ -49991,17 +49629,17 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.496
+      value: 34293.504
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.9595
+      value: 5486.9604
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -50075,6 +49713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -50098,6 +49737,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  showLineToNextNode: 0
 --- !u!1 &988088905
 GameObject:
   m_ObjectHideFlags: 0
@@ -50167,9 +49807,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1045287419}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &988595586
 Transform:
   m_ObjectHideFlags: 0
@@ -50410,14 +50047,8 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 2103089018}
   backwardNodes:
-  - {fileID: 143184951}
-  - {fileID: 263818674}
-  - {fileID: 1550786724}
   - {fileID: 360114861}
   - {fileID: 455042761}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &992635506
 Transform:
   m_ObjectHideFlags: 0
@@ -52708,6 +52339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -52731,6 +52363,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.9459826, b: 0, a: 1}
+  showLineToNextNode: 0
 --- !u!114 &1035349142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52752,6 +52385,58 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
   targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!1 &1040208881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040208883}
+  - component: {fileID: 1040208882}
+  m_Layer: 0
+  m_Name: SouthParkWay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1040208882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040208881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
+  carsOnThisNode: []
+  possibleNextNodes:
+  - {fileID: 430433398}
+  backwardNodes:
+  - {fileID: 1084556631}
+--- !u!4 &1040208883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040208881}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -135.195, y: 0, z: -300.31}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 368425501}
+  m_RootOrder: 67
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043526540
 GameObject:
   m_ObjectHideFlags: 0
@@ -52881,9 +52566,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1840955212}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1045287420
 Transform:
   m_ObjectHideFlags: 0
@@ -52969,9 +52651,6 @@ MonoBehaviour:
   - {fileID: 612392439}
   backwardNodes:
   - {fileID: 1371917902}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1048239205
 Transform:
   m_ObjectHideFlags: 0
@@ -53026,9 +52705,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1706302020}
   - {fileID: 720905206}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1049131961
 Transform:
   m_ObjectHideFlags: 0
@@ -53914,9 +53590,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 763196332}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1071941259
 Transform:
   m_ObjectHideFlags: 0
@@ -54313,9 +53986,6 @@ MonoBehaviour:
   - {fileID: 1398248850}
   - {fileID: 139157265}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1075423110
 Transform:
   m_ObjectHideFlags: 0
@@ -54577,6 +54247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 0}
   maxNodesInRandomizer: 30
   path: []
@@ -54600,6 +54271,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 0, g: 0, b: 0, a: 0}
+  showLineToNextNode: 0
 --- !u!4 &1080908794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
@@ -54741,7 +54413,7 @@ GameObject:
   - component: {fileID: 1084556632}
   - component: {fileID: 1084556631}
   m_Layer: 0
-  m_Name: PathNode
+  m_Name: SouthParkWay E1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54765,12 +54437,9 @@ MonoBehaviour:
   nodesToWaitFor: []
   carsOnThisNode: []
   possibleNextNodes:
-  - {fileID: 430433398}
+  - {fileID: 1040208882}
   backwardNodes:
   - {fileID: 816203733}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1084556632
 Transform:
   m_ObjectHideFlags: 0
@@ -55745,9 +55414,6 @@ MonoBehaviour:
   - {fileID: 348372214}
   backwardNodes:
   - {fileID: 328314337}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1106971416
 Transform:
   m_ObjectHideFlags: 0
@@ -56000,9 +55666,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1113034442}
   - {fileID: 416450184}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1108821544
 GameObject:
   m_ObjectHideFlags: 0
@@ -56041,9 +55704,6 @@ MonoBehaviour:
   - {fileID: 143184951}
   backwardNodes:
   - {fileID: 981423088}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1108821546
 Transform:
   m_ObjectHideFlags: 0
@@ -56161,9 +55821,6 @@ MonoBehaviour:
   - {fileID: 509991331}
   backwardNodes:
   - {fileID: 816990810}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1113034443
 Transform:
   m_ObjectHideFlags: 0
@@ -56634,9 +56291,6 @@ MonoBehaviour:
   - {fileID: 1814935422}
   - {fileID: 1446936946}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1132014966
 GameObject:
   m_ObjectHideFlags: 0
@@ -57330,9 +56984,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1339648902}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1154049075
 Transform:
   m_ObjectHideFlags: 0
@@ -57808,12 +57459,12 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.6187
+      value: 5566.6196
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19619998
+      value: 0.19620001
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -57823,17 +57474,17 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.47
+      value: 34293.477
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.955
+      value: 5486.956
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19619998
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -57848,12 +57499,12 @@ PrefabInstance:
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.3794
+      value: 6433.38
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -57907,6 +57558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -57930,6 +57582,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  showLineToNextNode: 0
 --- !u!1 &1160400939
 GameObject:
   m_ObjectHideFlags: 0
@@ -58127,9 +57780,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1616940781}
   - {fileID: 963146433}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1166176449
 Transform:
   m_ObjectHideFlags: 0
@@ -58908,9 +58558,6 @@ MonoBehaviour:
   - {fileID: 1432464841}
   backwardNodes:
   - {fileID: 405548076}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1181677593
 Transform:
   m_ObjectHideFlags: 0
@@ -59460,9 +59107,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1723407738}
   - {fileID: 1049131960}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1199175416
 Transform:
   m_ObjectHideFlags: 0
@@ -60001,9 +59645,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 612392439}
   - {fileID: 1538574375}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1208857708
 Transform:
   m_ObjectHideFlags: 0
@@ -60057,9 +59698,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1166176448}
   - {fileID: 463967742}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1209665613
 Transform:
   m_ObjectHideFlags: 0
@@ -60854,9 +60492,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 440256904}
   - {fileID: 446660058}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1223306533
 Transform:
   m_ObjectHideFlags: 0
@@ -61093,9 +60728,6 @@ MonoBehaviour:
   - {fileID: 756899684}
   backwardNodes:
   - {fileID: 693774281}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1232730132
 Transform:
   m_ObjectHideFlags: 0
@@ -61212,9 +60844,6 @@ MonoBehaviour:
   - {fileID: 1806542574}
   backwardNodes:
   - {fileID: 10451369}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1238297598
 Transform:
   m_ObjectHideFlags: 0
@@ -61515,9 +61144,6 @@ MonoBehaviour:
   - {fileID: 591244099}
   backwardNodes:
   - {fileID: 1932490695}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1246345655
 Transform:
   m_ObjectHideFlags: 0
@@ -63719,9 +63345,6 @@ MonoBehaviour:
   - {fileID: 161990128}
   - {fileID: 1446936946}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1304621631
 Transform:
   m_ObjectHideFlags: 0
@@ -64866,9 +64489,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 67876689}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1331407954
 Transform:
   m_ObjectHideFlags: 0
@@ -66225,9 +65845,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 712795933}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &1339648903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66249,9 +65866,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 760986800}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1339648904
 Transform:
   m_ObjectHideFlags: 0
@@ -66300,9 +65914,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 768797969}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &1339648906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66324,9 +65935,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 845788347}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1340502538
 GameObject:
   m_ObjectHideFlags: 0
@@ -66777,9 +66385,6 @@ MonoBehaviour:
   - {fileID: 1806962564}
   backwardNodes:
   - {fileID: 370542214}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1349888762
 Transform:
   m_ObjectHideFlags: 0
@@ -66990,9 +66595,6 @@ MonoBehaviour:
   - {fileID: 437561203}
   backwardNodes:
   - {fileID: 1436221959}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1353766337
 Transform:
   m_ObjectHideFlags: 0
@@ -67201,9 +66803,6 @@ MonoBehaviour:
   - {fileID: 932430384}
   backwardNodes:
   - {fileID: 1476293093}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1359990949
 Transform:
   m_ObjectHideFlags: 0
@@ -67259,9 +66858,6 @@ MonoBehaviour:
   - {fileID: 696233593}
   - {fileID: 1814935422}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1360772937
 Transform:
   m_ObjectHideFlags: 0
@@ -67766,9 +67362,6 @@ MonoBehaviour:
   - {fileID: 1048239204}
   backwardNodes:
   - {fileID: 1752800142}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1372123703
 GameObject:
   m_ObjectHideFlags: 0
@@ -68047,9 +67640,6 @@ MonoBehaviour:
   - {fileID: 577110571}
   - {fileID: 366539755}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1382596602
 GameObject:
   m_ObjectHideFlags: 0
@@ -68121,9 +67711,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1932351846}
   - {fileID: 143439561}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1385911083
 Transform:
   m_ObjectHideFlags: 0
@@ -69393,9 +68980,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 776755941}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1394298774
 Transform:
   m_ObjectHideFlags: 0
@@ -69444,9 +69028,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1379131635}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &1394298776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69468,9 +69049,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1075423109}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &1394298777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69492,9 +69070,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 59272521}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1394638993
 GameObject:
   m_ObjectHideFlags: 0
@@ -69858,9 +69433,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1339648903}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1398919118
 GameObject:
   m_ObjectHideFlags: 0
@@ -70358,9 +69930,6 @@ MonoBehaviour:
   - {fileID: 455042761}
   backwardNodes:
   - {fileID: 829380838}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1404167600
 Transform:
   m_ObjectHideFlags: 0
@@ -70710,9 +70279,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 842246872}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1417342560
 GameObject:
   m_ObjectHideFlags: 0
@@ -71167,9 +70733,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 919279102}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1428217104
 Transform:
   m_ObjectHideFlags: 0
@@ -71619,9 +71182,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 816990810}
   - {fileID: 1181677592}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1432464842
 Transform:
   m_ObjectHideFlags: 0
@@ -71688,9 +71248,6 @@ MonoBehaviour:
   - {fileID: 741510344}
   backwardNodes:
   - {fileID: 407035145}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1433772555
 GameObject:
   m_ObjectHideFlags: 0
@@ -71821,9 +71378,6 @@ MonoBehaviour:
   - {fileID: 1353766336}
   backwardNodes:
   - {fileID: 1571274334}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1436221960
 Transform:
   m_ObjectHideFlags: 0
@@ -72471,9 +72025,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1819066260}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1446936947
 Transform:
   m_ObjectHideFlags: 0
@@ -72896,9 +72447,6 @@ MonoBehaviour:
   - {fileID: 1539912725}
   backwardNodes:
   - {fileID: 1720552659}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1456455367
 Transform:
   m_ObjectHideFlags: 0
@@ -72983,12 +72531,7 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 2057957189}
   backwardNodes:
-  - {fileID: 1932490695}
-  - {fileID: 1246345654}
   - {fileID: 591244099}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1461388310
 Transform:
   m_ObjectHideFlags: 0
@@ -73296,9 +72839,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1154049074}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1466313184
 Transform:
   m_ObjectHideFlags: 0
@@ -73498,9 +73038,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 166810447}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1468780844
 Transform:
   m_ObjectHideFlags: 0
@@ -73738,9 +73275,6 @@ MonoBehaviour:
   - {fileID: 1752800142}
   backwardNodes:
   - {fileID: 1806542574}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1473602736
 Transform:
   m_ObjectHideFlags: 0
@@ -73885,9 +73419,6 @@ MonoBehaviour:
   - {fileID: 1359990948}
   backwardNodes:
   - {fileID: 805709017}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1476293094
 Transform:
   m_ObjectHideFlags: 0
@@ -74065,9 +73596,6 @@ MonoBehaviour:
   - {fileID: 1845742390}
   backwardNodes:
   - {fileID: 2028651135}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1485787903
 Transform:
   m_ObjectHideFlags: 0
@@ -74314,9 +73842,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1365374205}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1500438391
 GameObject:
   m_ObjectHideFlags: 0
@@ -74879,11 +74404,7 @@ MonoBehaviour:
   - {fileID: 192694480}
   - {fileID: 1684807720}
   backwardNodes:
-  - {fileID: 734923926}
   - {fileID: 1672480701}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1517563999
 Transform:
   m_ObjectHideFlags: 0
@@ -76045,9 +75566,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1048239204}
   - {fileID: 2018666042}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1538574376
 Transform:
   m_ObjectHideFlags: 0
@@ -76100,9 +75618,6 @@ MonoBehaviour:
   - {fileID: 1583965186}
   backwardNodes:
   - {fileID: 1456455366}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1539912726
 Transform:
   m_ObjectHideFlags: 0
@@ -76155,9 +75670,6 @@ MonoBehaviour:
   - {fileID: 1698759924}
   backwardNodes:
   - {fileID: 1583965186}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1541557683
 Transform:
   m_ObjectHideFlags: 0
@@ -76719,9 +76231,6 @@ MonoBehaviour:
   - {fileID: 2050306841}
   - {fileID: 664829208}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1548091357
 GameObject:
   m_ObjectHideFlags: 0
@@ -76792,9 +76301,6 @@ MonoBehaviour:
   - {fileID: 360114861}
   backwardNodes:
   - {fileID: 263818674}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1550786725
 Transform:
   m_ObjectHideFlags: 0
@@ -76971,9 +76477,6 @@ MonoBehaviour:
   - {fileID: 703439623}
   backwardNodes:
   - {fileID: 1698759924}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1554115006
 Transform:
   m_ObjectHideFlags: 0
@@ -77763,9 +77266,6 @@ MonoBehaviour:
   - {fileID: 1436221959}
   backwardNodes:
   - {fileID: 1385911082}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1571274335
 Transform:
   m_ObjectHideFlags: 0
@@ -77912,9 +77412,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1756926164}
   - {fileID: 745873223}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1573802828
 Transform:
   m_ObjectHideFlags: 0
@@ -78221,9 +77718,6 @@ MonoBehaviour:
   - {fileID: 1541557682}
   backwardNodes:
   - {fileID: 1539912725}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1583965187
 Transform:
   m_ObjectHideFlags: 0
@@ -78277,9 +77771,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1394298773}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1585236314
 Transform:
   m_ObjectHideFlags: 0
@@ -78805,9 +78296,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 713488906}
   - {fileID: 10451369}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1605097607
 Transform:
   m_ObjectHideFlags: 0
@@ -78859,9 +78347,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 26773951}
   backwardNodes: []
-  lineColor: {r: 0.05724907, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1605584049
 Transform:
   m_ObjectHideFlags: 0
@@ -79005,9 +78490,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 969982679}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1606284853
 Transform:
   m_ObjectHideFlags: 0
@@ -79309,9 +78791,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 463967742}
   - {fileID: 1166176448}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1612083598
 Transform:
   m_ObjectHideFlags: 0
@@ -79363,9 +78842,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 147332802}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1613231047
 Transform:
   m_ObjectHideFlags: 0
@@ -79512,9 +78988,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1573802827}
   - {fileID: 455742379}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1616940782
 Transform:
   m_ObjectHideFlags: 0
@@ -79567,9 +79040,6 @@ MonoBehaviour:
   - {fileID: 693774281}
   backwardNodes:
   - {fileID: 2095407776}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1619593894
 Transform:
   m_ObjectHideFlags: 0
@@ -80266,9 +79736,6 @@ MonoBehaviour:
   - {fileID: 826327399}
   backwardNodes:
   - {fileID: 939160230}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1628894076
 Transform:
   m_ObjectHideFlags: 0
@@ -81212,9 +80679,6 @@ MonoBehaviour:
   - {fileID: 440256904}
   backwardNodes:
   - {fileID: 201947719}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1659632433
 Transform:
   m_ObjectHideFlags: 0
@@ -82253,9 +81717,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1071941258}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1668167632
 Transform:
   m_ObjectHideFlags: 0
@@ -82300,9 +81761,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 54549691}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1668303991
 GameObject:
   m_ObjectHideFlags: 0
@@ -82433,9 +81891,6 @@ MonoBehaviour:
   - {fileID: 1517563998}
   backwardNodes:
   - {fileID: 287126894}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1672480702
 Transform:
   m_ObjectHideFlags: 0
@@ -83007,9 +82462,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 651609018}
   - {fileID: 1517563998}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1684807721
 Transform:
   m_ObjectHideFlags: 0
@@ -83446,9 +82898,6 @@ MonoBehaviour:
   - {fileID: 143439561}
   backwardNodes:
   - {fileID: 8747352}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1693478377
 Transform:
   m_ObjectHideFlags: 0
@@ -83750,9 +83199,6 @@ MonoBehaviour:
   - {fileID: 1554115005}
   backwardNodes:
   - {fileID: 1541557682}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1698759925
 Transform:
   m_ObjectHideFlags: 0
@@ -83960,9 +83406,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 403300209}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1705640105
 Transform:
   m_ObjectHideFlags: 0
@@ -84017,9 +83460,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 764790458}
   - {fileID: 2067846554}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1706302021
 Transform:
   m_ObjectHideFlags: 0
@@ -84294,7 +83734,7 @@ GameObject:
   - component: {fileID: 1716227821}
   - component: {fileID: 1716227820}
   m_Layer: 0
-  m_Name: PathNode
+  m_Name: SouthParkWay E3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84321,9 +83761,6 @@ MonoBehaviour:
   - {fileID: 937571331}
   backwardNodes:
   - {fileID: 430433398}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1716227821
 Transform:
   m_ObjectHideFlags: 0
@@ -84592,9 +84029,6 @@ MonoBehaviour:
   - {fileID: 1456455366}
   backwardNodes:
   - {fileID: 937571331}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1720552660
 Transform:
   m_ObjectHideFlags: 0
@@ -84649,9 +84083,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 720905206}
   - {fileID: 1706302020}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1723407739
 Transform:
   m_ObjectHideFlags: 0
@@ -84974,9 +84405,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 696345955}
   - {fileID: 1907975040}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1728257642
 Transform:
   m_ObjectHideFlags: 0
@@ -85036,6 +84464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -85059,6 +84488,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.9459826, b: 0, a: 1}
+  showLineToNextNode: 0
 --- !u!1 &1733664093
 GameObject:
   m_ObjectHideFlags: 0
@@ -85660,10 +85090,7 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 816990810}
   backwardNodes:
-  - {fileID: 553101372}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
+  - {fileID: 436147106}
 --- !u!4 &1744948533
 Transform:
   m_ObjectHideFlags: 0
@@ -86090,9 +85517,6 @@ MonoBehaviour:
   - {fileID: 1371917902}
   backwardNodes:
   - {fileID: 1473602735}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1752800143
 Transform:
   m_ObjectHideFlags: 0
@@ -86147,9 +85571,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 808062929}
   - {fileID: 1874360560}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1756926165
 Transform:
   m_ObjectHideFlags: 0
@@ -86256,9 +85677,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 845800878}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1767398923
 GameObject:
   m_ObjectHideFlags: 0
@@ -88336,9 +87754,6 @@ MonoBehaviour:
   - {fileID: 1473602735}
   backwardNodes:
   - {fileID: 1238297597}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1806542575
 Transform:
   m_ObjectHideFlags: 0
@@ -88391,9 +87806,6 @@ MonoBehaviour:
   - {fileID: 337590575}
   backwardNodes:
   - {fileID: 1349888761}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1806962565
 Transform:
   m_ObjectHideFlags: 0
@@ -88847,9 +88259,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 2127318679}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1814935423
 Transform:
   m_ObjectHideFlags: 0
@@ -89766,9 +89175,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 889406756}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!114 &1819066261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89790,9 +89196,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 279528262}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1819066262
 Transform:
   m_ObjectHideFlags: 0
@@ -89856,9 +89259,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1485787902}
   - {fileID: 182055906}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1819378537
 Transform:
   m_ObjectHideFlags: 0
@@ -90219,9 +89619,6 @@ MonoBehaviour:
   - {fileID: 70671440}
   backwardNodes:
   - {fileID: 360114861}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1825644288
 Transform:
   m_ObjectHideFlags: 0
@@ -91036,9 +90433,6 @@ MonoBehaviour:
   - {fileID: 1942906102}
   backwardNodes:
   - {fileID: 1209665612}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1839591690
 GameObject:
   m_ObjectHideFlags: 0
@@ -91176,7 +90570,7 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19620001
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -91186,12 +90580,12 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.4
+      value: 34791.406
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.624
+      value: 5566.625
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -91290,6 +90684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -91313,6 +90708,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  showLineToNextNode: 0
 --- !u!1 &1840955211
 GameObject:
   m_ObjectHideFlags: 0
@@ -91350,9 +90746,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 529879595}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1840955213
 Transform:
   m_ObjectHideFlags: 0
@@ -91504,9 +90897,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 182055906}
   - {fileID: 1485787902}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1845742391
 Transform:
   m_ObjectHideFlags: 0
@@ -92268,9 +91658,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 135232257}
   - {fileID: 1223306532}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1869785048
 Transform:
   m_ObjectHideFlags: 0
@@ -92325,9 +91712,6 @@ MonoBehaviour:
   - {fileID: 162976109}
   - {fileID: 664829208}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1873252317
 Transform:
   m_ObjectHideFlags: 0
@@ -92599,9 +91983,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 447120045}
   - {fileID: 2144380867}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1874360561
 Transform:
   m_ObjectHideFlags: 0
@@ -92870,9 +92251,6 @@ MonoBehaviour:
   - {fileID: 805709017}
   backwardNodes:
   - {fileID: 1939923424}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1880440755
 Transform:
   m_ObjectHideFlags: 0
@@ -93836,9 +93214,6 @@ MonoBehaviour:
   - {fileID: 1814935422}
   - {fileID: 1446936946}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!1 &1900923002
 GameObject:
   m_ObjectHideFlags: 0
@@ -94269,9 +93644,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1606284852}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1906190800
 Transform:
   m_ObjectHideFlags: 0
@@ -94324,10 +93696,6 @@ MonoBehaviour:
   - {fileID: 182055906}
   backwardNodes:
   - {fileID: 1199175415}
-  - {fileID: 182055906}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1906436857
 Transform:
   m_ObjectHideFlags: 0
@@ -94382,9 +93750,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1819378536}
   - {fileID: 1845742390}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1907975041
 Transform:
   m_ObjectHideFlags: 0
@@ -94438,9 +93803,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1466313183}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1909516216
 Transform:
   m_ObjectHideFlags: 0
@@ -94783,6 +94145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turningDirection: 0
   pathParent: {fileID: 368425501}
   maxNodesInRandomizer: 30
   path: []
@@ -94806,6 +94169,7 @@ MonoBehaviour:
   warningCollisionDistance: 5
   infoCollisionDistance: 10
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  showLineToNextNode: 0
 --- !u!4 &1918592211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
@@ -94941,9 +94305,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 20694655}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1921356466
 Transform:
   m_ObjectHideFlags: 0
@@ -95214,9 +94575,6 @@ MonoBehaviour:
   - {fileID: 1385911082}
   backwardNodes:
   - {fileID: 676505143}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1932351847
 Transform:
   m_ObjectHideFlags: 0
@@ -95269,9 +94627,6 @@ MonoBehaviour:
   - {fileID: 1246345654}
   backwardNodes:
   - {fileID: 965712015}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1932490696
 Transform:
   m_ObjectHideFlags: 0
@@ -95449,9 +94804,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 30915104}
   - {fileID: 248550107}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1939923425
 Transform:
   m_ObjectHideFlags: 0
@@ -95815,9 +95167,6 @@ MonoBehaviour:
   - {fileID: 768468349}
   backwardNodes:
   - {fileID: 1839049791}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1942906103
 Transform:
   m_ObjectHideFlags: 0
@@ -96375,9 +95724,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 2103089018}
   - {fileID: 283545787}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &1959772067
 Transform:
   m_ObjectHideFlags: 0
@@ -98019,9 +97365,6 @@ MonoBehaviour:
   - {fileID: 1538574375}
   backwardNodes:
   - {fileID: 760167736}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2018666043
 Transform:
   m_ObjectHideFlags: 0
@@ -98294,9 +97637,6 @@ MonoBehaviour:
   - {fileID: 1485787902}
   backwardNodes:
   - {fileID: 2141169689}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2028651136
 Transform:
   m_ObjectHideFlags: 0
@@ -98800,9 +98140,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 1394298775}
   backwardNodes: []
-  lineColor: {r: 0.10215378, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2050306842
 Transform:
   m_ObjectHideFlags: 0
@@ -99600,9 +98937,6 @@ MonoBehaviour:
   - {fileID: 269574574}
   backwardNodes:
   - {fileID: 1461388309}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2057957190
 Transform:
   m_ObjectHideFlags: 0
@@ -100333,9 +99667,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 928051175}
   - {fileID: 1869785047}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2067846555
 Transform:
   m_ObjectHideFlags: 0
@@ -101260,9 +100591,6 @@ MonoBehaviour:
   - {fileID: 1619593893}
   backwardNodes:
   - {fileID: 348372214}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2095407777
 Transform:
   m_ObjectHideFlags: 0
@@ -101500,9 +100828,6 @@ MonoBehaviour:
   - {fileID: 416450184}
   backwardNodes:
   - {fileID: 992635505}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2103089019
 Transform:
   m_ObjectHideFlags: 0
@@ -102308,9 +101633,6 @@ MonoBehaviour:
   possibleNextNodes:
   - {fileID: 707985567}
   backwardNodes: []
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2126357776
 Transform:
   m_ObjectHideFlags: 0
@@ -103282,9 +102604,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 1684807720}
   - {fileID: 192694480}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2141169690
 Transform:
   m_ObjectHideFlags: 0
@@ -103371,9 +102690,6 @@ MonoBehaviour:
   backwardNodes:
   - {fileID: 741510344}
   - {fileID: 1605097606}
-  lineColor: {r: 0.09710693, g: 1, b: 0, a: 1}
-  nodeSize: 1
-  visualPathSubsteps: 15
 --- !u!4 &2144380868
 Transform:
   m_ObjectHideFlags: 0
