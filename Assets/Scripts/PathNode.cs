@@ -13,19 +13,17 @@ public class PathNode : MonoBehaviour
     [SerializeField] List<PathNode> nodesToWaitFor = new List<PathNode>();
     public List<CarAI> carsOnThisNode = new List<CarAI>(); //debug public
 
-    [SerializeField] List<PathNode> possibleNextNodes = new List<PathNode>();
-    //public List<DirectionChoice> outChoices = new List<DirectionChoice>();
-    public List<PathNode> backwardNodes = new List<PathNode>(); //used for catmull-rom (curved path)
+    public List<DirectionChoice> outChoices = new List<DirectionChoice>();
+    public List<PathNode> inNodes = new List<PathNode>(); //used for catmull-rom (curved path)
 
 
     private void Start()
     {
-        if (possibleNextNodes.Count < 1)
+        if (outChoices.Count < 1)
         {
             Debug.LogError("You have not set up the path correctly, this node is missing a nodeconnection " + transform.name);
         }
     }
-
 
     /// <summary>
     /// Returns true when green light is on, or if there is no traffic light present
@@ -89,75 +87,84 @@ public class PathNode : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the nodes possible to go to next from this position
+    /// Returns the nodes and directions possible to go to next from this position
     /// </summary>
-    public List<PathNode> GetNextPossibleNodes()
+    public List<DirectionChoice> GetOutChoices()
     {
-        return possibleNextNodes;
+        return outChoices;
     }
 
     /// <summary>
-    /// Adds a new node to the list of connected nodes, mainly used in editor too quickly create new nodes
+    /// Adds a new node to the list of connected nodes and out direction choices
     /// </summary>
-    public void AddPossibleNextNode(PathNode input)
+    public void AddOutChoice(DirectionChoice input)
     {
-        if (input != this && !possibleNextNodes.Contains(input))
+        if (input.outNode == this)
         {
-            possibleNextNodes.Add(input);
-            input.AddBackwardsNodeConnection(this);
+            Debug.Log("Cannot add this pathnode to itself" + transform.name);
+            return;
         }
+
+        for (int i = 0; i < outChoices.Count; i++)
+        {
+            if (outChoices[i].outNode == input.outNode)
+            {
+                Debug.Log("Cannot add an already existing connected node to this pathnode" + transform.name);
+                return;
+            }
+        }
+        outChoices.Add(input);
+        input.outNode.AddInConnection(this);
     }
-    public void AddConnectedNode(List<PathNode> input)
+
+    /// <summary>
+    /// Adds a list of nodes to the list of connected nodes and out direction choices
+    /// </summary>
+    public void AddOutChoice(List<DirectionChoice> input)
     {
         for (int i = 0; i < input.Count; i++)
         {
-            AddPossibleNextNode(input[i]);
+            AddOutChoice(input[i]);
         }
     }
 
     /// <summary>
     /// Adds a new node to the list of previous or incoming nodes, used for catmull-rom calculation
     /// </summary>
-    public void AddBackwardsNodeConnection(PathNode input)
+    public void AddInConnection(PathNode input)
     {
-        if (input != this && !backwardNodes.Contains(input))
+        if (input != this && !inNodes.Contains(input))
         {
-            backwardNodes.Add(input);
+            inNodes.Add(input);
         }
     }
 
     /// <summary>
     /// Returns all backward connections of this node
     /// </summary>
-    public List<PathNode> GetBackWardConnections()
+    public List<PathNode> GetInConnections()
     {
-        return backwardNodes;
+        return inNodes;
     }
 
     /// <summary>
     /// Replaces the connected node, mainly used in editor too quickly create new nodes between already made nodes
     /// </summary>
-    public void ReplaceConnectedNode(PathNode input)
+    public void ReplaceSingleConnection(PathNode newNode)
     {
-        if (possibleNextNodes.Count == 0)
-        {
-            possibleNextNodes.Add(input);
-        }
-        else
-        {
-            possibleNextNodes[0] = input;
-        }
-        input.AddBackwardsNodeConnection(this);
+        outChoices.Clear();
+        DirectionChoice newChoice = new DirectionChoice(newNode, Turn.Straight);
+        AddOutChoice(newChoice);
     }
 
-    public void ClearForwardConnections()
-    {
-        for (int i = 0; i < possibleNextNodes.Count; i++)
-        {
-            possibleNextNodes[i].backwardNodes.Remove(this);
-        }
-        possibleNextNodes.Clear();
-    }
+    //public void ClearForwardConnections()
+    //{
+    //    for (int i = 0; i < possibleNextNodes.Count; i++)
+    //    {
+    //        possibleNextNodes[i].inNodes.Remove(this);
+    //    }
+    //    possibleNextNodes.Clear();
+    //}
 
 
 
@@ -214,29 +221,29 @@ public class PathNode : MonoBehaviour
 
         //Lines and curves
         Gizmos.color = lineColor;
-        for (int outNode = 0; outNode < possibleNextNodes.Count; outNode++)
+        for (int i = 0; i < outChoices.Count; i++)
         {
             Vector3 currentNode = this.transform.position;
             Vector3 nextNode = Vector3.zero;
-            nextNode = possibleNextNodes[outNode].transform.position;
+            nextNode = outChoices[i].outNode.transform.position;
 
             Vector3 direction = (nextNode - currentNode).normalized;
             Vector3 arrowPosition = currentNode + direction;
             DrawArrow.ForGizmo(arrowPosition, direction, lineColor, 0.4f, 30);
 
             //Safety check before catmull-rom to make sure connections can be checked both ways
-            if (!possibleNextNodes[outNode].GetBackWardConnections().Contains(this))
+            if (!outChoices[i].outNode.GetInConnections().Contains(this))
             {
-                possibleNextNodes[outNode].AddBackwardsNodeConnection(this);
+                outChoices[i].outNode.AddInConnection(this);
             }
 
             //If we are missing any connections anywhere here we cannot make a proper catmull-curve
-            if (backwardNodes.Count < 1 || possibleNextNodes.Count < 1 || possibleNextNodes[outNode].possibleNextNodes.Count < 1)
+            if (inNodes.Count < 1 || inNodes.Count < 1 || outChoices[i].outNode.outChoices.Count < 1)
             {
                 catmullCurveAllowed = false;
                 Color temp = Gizmos.color;
                 Gizmos.color = Color.red;
-                Gizmos.DrawLine(this.transform.position, possibleNextNodes[outNode].transform.position);
+                Gizmos.DrawLine(this.transform.position, outChoices[i].outNode.transform.position);
                 Gizmos.color = temp;
             }
 
@@ -244,26 +251,26 @@ public class PathNode : MonoBehaviour
             {
                 //instead of showing many paths for all different kind of combinations of inputs and outputs, we take the average of position 1 and 4 of the catmull-rom if there are multiple
                 Vector3 averageBackwardsNodePosition = Vector3.zero;
-                for (int inNode = 0; inNode < backwardNodes.Count; inNode++)
+                for (int inNode = 0; inNode < inNodes.Count; inNode++)
                 {
-                    averageBackwardsNodePosition += backwardNodes[inNode].transform.position;
+                    averageBackwardsNodePosition += inNodes[inNode].transform.position;
                 }
-                averageBackwardsNodePosition /= backwardNodes.Count;
+                averageBackwardsNodePosition /= inNodes.Count;
 
                 Vector3 averageOutNodeOutNodesPosition = Vector3.zero;
-                for (int outNodeOutNode = 0; outNodeOutNode < possibleNextNodes[outNode].possibleNextNodes.Count; outNodeOutNode++)
+                for (int j = 0; j < outChoices[i].outNode.outChoices.Count; j++)
                 {
-                    averageOutNodeOutNodesPosition += possibleNextNodes[outNode].possibleNextNodes[outNodeOutNode].transform.position;
+                    averageOutNodeOutNodesPosition += outChoices[i].outNode.outChoices[j].outNode.transform.position;
                 }
-                averageOutNodeOutNodesPosition /= possibleNextNodes[outNode].possibleNextNodes.Count;
+                averageOutNodeOutNodesPosition /= outChoices[i].outNode.outChoices.Count;
 
                 //use catmull rom to draw a curved path
                 for (int step = 0; step < visualizationSubsteps; step++)
                 {
                     float progress = (float)step / (float)visualizationSubsteps;
-                    Vector3 a = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
+                    Vector3 a = CatmullRom(averageBackwardsNodePosition, this.transform.position, outChoices[i].outNode.transform.position, averageOutNodeOutNodesPosition, progress);
                     progress = ((float)step + 1) / (float)visualizationSubsteps;
-                    Vector3 b = CatmullRom(averageBackwardsNodePosition, this.transform.position, possibleNextNodes[outNode].transform.position, averageOutNodeOutNodesPosition, progress);
+                    Vector3 b = CatmullRom(averageBackwardsNodePosition, this.transform.position, outChoices[i].outNode.transform.position, averageOutNodeOutNodesPosition, progress);
                     Gizmos.DrawLine(a, b);
                 }
             }
@@ -293,40 +300,49 @@ public class PathNode : MonoBehaviour
     private void ValidateConnections()
     {
         //Safety check, delete inactive nodes
-        for (int i = 0; i < backwardNodes.Count; i++)
+        for (int i = 0; i < inNodes.Count; i++)
         {
-            if (backwardNodes[i] == null)
+            if (inNodes[i] == null)
             {
-                backwardNodes.Remove(backwardNodes[i]);
+                inNodes.Remove(inNodes[i]);
                 Debug.Log("Removed null-node");
             }
         }
-        for (int i = 0; i < possibleNextNodes.Count; i++)
+        for (int i = 0; i < outChoices.Count; i++)
         {
-            if (possibleNextNodes[i] == null)
+            if (outChoices[i].outNode == null)
             {
-                possibleNextNodes.Remove(possibleNextNodes[i]);
+                outChoices.RemoveAt(i);
                 Debug.Log("Removed null-node");
             }
         }
 
         //Add if this is missing in connected nodes backward nodes
-        for (int i = 0; i < possibleNextNodes.Count; i++)
+        for (int i = 0; i < outChoices.Count; i++)
         {
-            if (!possibleNextNodes[i].GetBackWardConnections().Contains(this))
+            if (!outChoices[i].outNode.GetInConnections().Contains(this))
             {
-                possibleNextNodes[i].AddBackwardsNodeConnection(this);
+                outChoices[i].outNode.AddInConnection(this);
                 Debug.Log("Added missing node connection");
             }
         }
 
-        //If this node has backward - connections which no longer is connected to this node, remove the backward - connection
-        for (int i = 0; i < backwardNodes.Count; i++)
+        //If this node has backward connections which no longer is connected to this node, remove the backward - connection
+        for (int i = 0; i < inNodes.Count; i++)
         {
-            if (!backwardNodes[i].possibleNextNodes.Contains(this))
+            List<DirectionChoice> choices = inNodes[i].GetOutChoices();
+            bool remove = true;
+            for (int j = 0; j < choices.Count; j++)
             {
-                backwardNodes.Remove(backwardNodes[i]);
-                Debug.Log("Removed backward node (" + backwardNodes[i].transform.name + ") to a no longer connected node from: " + transform.name + transform.position);
+                if (choices[j].outNode == this)
+                {
+                    remove = false;
+                }
+            }
+            if (remove)
+            {
+                inNodes.RemoveAt(i);
+                Debug.Log("Removed backward node (" + inNodes[i].transform.name + ") to a no longer connected node from: " + transform.name + transform.position);
             }
         }
     }
@@ -376,11 +392,17 @@ public static class DrawArrow
     }
 }
 
-public enum Turn { NotSet, Straight, Left, Right }
+public enum Turn { Straight, Left, Right }
 
 [System.Serializable]
 public struct DirectionChoice
 {
+    public DirectionChoice(PathNode node, Turn direction)
+    {
+        outNode = node;
+        turnDirection = direction;
+    }
+
     public PathNode outNode;
     public Turn turnDirection;
 }

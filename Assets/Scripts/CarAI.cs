@@ -943,17 +943,17 @@ public class CarAI : MonoBehaviour
 
     private Turn CheckTurning()
     {
-        //if (path.Count > 1 && path[0].GetNextPossibleNodes().Count > 1)
-        //{
-        //    for (int i = 0; i < path[0].outChoices.Count; i++)
-        //    {
-        //        if (path[1] == path[0].outChoices[i].outNode)
-        //        {
-        //            return path[0].outChoices[i].turnDirection;
-        //        }
-        //    }
-        //    Debug.LogWarning("Did not find the correct direction, check outnode choices");
-        //}
+        if (path.Count > 1 && path[0].GetOutChoices().Count > 1)
+        {
+            for (int i = 0; i < path[0].outChoices.Count; i++)
+            {
+                if (path[1] == path[0].outChoices[i].outNode)
+                {
+                    return path[0].outChoices[i].turnDirection;
+                }
+            }
+            Debug.LogWarning("Did not find the correct direction, check outnode choices");
+        }
         return Turn.Straight;
     }
 

@@ -117,11 +117,11 @@ public class PathNodeProgressTracker : MonoBehaviour
 
 
             Vector3 averageBackwardsNodePosition = Vector3.zero;
-            for (int inNode = 0; inNode < currentNode.GetBackWardConnections().Count; inNode++)
+            for (int inNode = 0; inNode < currentNode.GetInConnections().Count; inNode++)
             {
-                averageBackwardsNodePosition += currentNode.GetBackWardConnections()[inNode].transform.position;
+                averageBackwardsNodePosition += currentNode.GetInConnections()[inNode].transform.position;
             }
-            averageBackwardsNodePosition /= currentNode.GetBackWardConnections().Count;
+            averageBackwardsNodePosition /= currentNode.GetInConnections().Count;
 
             nodePositions.Add(averageBackwardsNodePosition);
             nodePositions.Add(currentNode.transform.position);

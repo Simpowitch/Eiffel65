@@ -10,7 +10,8 @@ public class PathNodeEditor : Editor
     string pathName = "PathNode";
     float pathSpeed = 0;
     bool changeSpeed = false;
-    int metersBetweenNodes = 20;
+    int metersBetweenNodes = 15;
+    string roadName = "RoadName";
     bool createExtraLanesToTheRight = false;
     int metersBetweenLanes = 4;
     int lanesToCreate = 1;
@@ -23,9 +24,11 @@ public class PathNodeEditor : Editor
 
         DrawDefaultInspector();
 
+        GUILayout.Space(10);
         GUILayout.Label("\nNew node options");
 
         pathName = EditorGUILayout.TextField("PathName", pathName);
+        roadName = EditorGUILayout.TextField("RoadName", roadName);
         changeSpeed = EditorGUILayout.Toggle("New node has new speed", changeSpeed);
         if (changeSpeed)
         {
@@ -75,7 +78,8 @@ public class PathNodeEditor : Editor
     {
         PathNode newNode;
         newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
-        myPathNode.AddPossibleNextNode(newNode);
+        DirectionChoice newChoice = new DirectionChoice(newNode, Turn.Straight);
+        myPathNode.AddOutChoice(newChoice);
         newNode.transform.SetParent(myPathNode.transform.parent);
         newNode.gameObject.name = pathName;
         newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
@@ -84,36 +88,55 @@ public class PathNodeEditor : Editor
 
     private GameObject ReplaceNodeSingle(PathNode myPathNode)
     {
+        if (myPathNode.outChoices.Count != 1)
+        {
+            Debug.LogWarning("Not allowed to replace nodes if the number of connections isn't 1");
+            return null;
+        }
+
         PathNode newNode;
         newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
-        newNode.transform.position = (myPathNode.transform.position + myPathNode.GetNextPossibleNodes()[0].transform.position) / 2;
-        newNode.AddConnectedNode(myPathNode.GetNextPossibleNodes());
-        newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetNextPossibleNodes()[0].GetRoadSpeedLimit());
-        myPathNode.ReplaceConnectedNode(newNode);
+        newNode.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
+        newNode.AddOutChoice(myPathNode.GetOutChoices());
+        newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
+        myPathNode.ReplaceSingleConnection(newNode);
         newNode.transform.SetParent(myPathNode.transform.parent);
-        newNode.gameObject.name = pathName;
+        newNode.gameObject.name = roadName + " - " + pathName;
         return newNode.gameObject;
     }
 
     private GameObject ReplaceNodeMultiple(PathNode myPathNode)
     {
+        if (myPathNode.outChoices.Count != 1)
+        {
+            Debug.LogWarning("Not allowed to replace nodes if the number of connections isn't 1");
+            return null;
+        }
+
         PathNode newNode = myPathNode;
-        Vector3 endPos = myPathNode.GetNextPossibleNodes()[0].transform.position;
-        int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, myPathNode.GetNextPossibleNodes()[0].transform.position) / metersBetweenNodes);
-        Vector3 direction = myPathNode.GetNextPossibleNodes()[0].transform.position - myPathNode.transform.position;
+        PathNode endNode = myPathNode.GetOutChoices()[0].outNode;
+        Vector3 endPos = endNode.transform.position;
+        int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, endPos) / metersBetweenNodes);
+        Vector3 direction = endPos - myPathNode.transform.position;
         direction = direction.normalized;
         Vector3 position = myPathNode.transform.position;
         PathNode previousNode = myPathNode;
 
+        //Save the old connections
         List<PathNode> originalConnections = new List<PathNode>();
-        originalConnections.AddRange(myPathNode.GetNextPossibleNodes());
+        List<DirectionChoice> originalChoices = myPathNode.GetOutChoices();
+        for (int i = 0; i < originalChoices.Count; i++)
+        {
+            originalConnections.Add(originalChoices[i].outNode);
+        }
+
+        //Remove the selected node from in-nodes on the old connected nodes
         for (int i = 0; i < originalConnections.Count; i++)
         {
-            originalConnections[i].backwardNodes.Remove(myPathNode);
+            originalConnections[i].inNodes.Remove(myPathNode);
         }
 
         List<PathNode> createdNodes = new List<PathNode>();
-
         for (int i = 0; i < nodesToCreate; i++)
         {
             position += direction * metersBetweenNodes;
@@ -121,40 +144,57 @@ public class PathNodeEditor : Editor
             {
                 newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
                 newNode.transform.position = position;
-                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetNextPossibleNodes()[0].GetRoadSpeedLimit());
+                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
                 newNode.transform.SetParent(myPathNode.transform.parent);
-                newNode.gameObject.name = pathName;
+                newNode.gameObject.name = roadName + " - " + pathName + " " + i;
                 createdNodes.Add(newNode);
             }
         }
-        myPathNode.ClearForwardConnections();
-        myPathNode.AddPossibleNextNode(createdNodes[0]);
+
+        //Replace original pathnode connections with the first created node
+        myPathNode.ReplaceSingleConnection(createdNodes[0]);
+
+        //Add connectivity to each newly created node
         for (int i = 0; i < createdNodes.Count - 1; i++)
         {
-            createdNodes[i].AddPossibleNextNode(createdNodes[i + 1]);
+            DirectionChoice newDirection = new DirectionChoice(createdNodes[i + 1], Turn.Straight);
+            createdNodes[i].AddOutChoice(newDirection);
         }
         //add the original nodes to the last created node
         newNode = createdNodes[createdNodes.Count - 1];
-        newNode.AddConnectedNode(originalConnections);
+
+        for (int i = 0; i < originalConnections.Count; i++)
+        {
+            DirectionChoice choice = new DirectionChoice(originalConnections[i], Turn.Straight);
+            newNode.AddOutChoice(choice);
+        }
         return newNode.gameObject;
     }
 
     private GameObject CreateRoadSection(PathNode myPathNode)
     {
+        if (myPathNode.outChoices.Count != 1)
+        {
+            Debug.LogWarning("Not allowed to replace nodes if the number of connections isn't 1");
+            return null;
+        }
+
         PathNode newNode = myPathNode;
         GameObject empty = new GameObject();
         Transform parent = Instantiate(empty).transform;
         DestroyImmediate(empty);
-        parent.gameObject.name = "RoadSegment";
+        parent.gameObject.name = roadName;
         parent.SetParent(myPathNode.gameObject.transform.parent);
-        parent.transform.position = (myPathNode.transform.position + myPathNode.GetNextPossibleNodes()[0].transform.position) / 2;
+        parent.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
 
-        myPathNode.transform.LookAt(myPathNode.GetNextPossibleNodes()[0].transform);
+        //Rotate the node - helps us create the nodes in line towards the endnode
+        myPathNode.transform.LookAt(myPathNode.GetOutChoices()[0].outNode.transform);
 
+        PathNode endNode = myPathNode.GetOutChoices()[0].outNode;
         Vector3 startPos = myPathNode.transform.position;
-        Vector3 endPos = myPathNode.GetNextPossibleNodes()[0].transform.position;
-        int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, myPathNode.GetNextPossibleNodes()[0].transform.position) / metersBetweenNodes) + 1; //the start and finish nodes will be removed
-        Vector3 direction = myPathNode.GetNextPossibleNodes()[0].transform.position - myPathNode.transform.position;
+        Vector3 endPos = endNode.transform.position;
+        int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, endPos) / metersBetweenNodes) + 1; //the start and finish nodes will be removed
+        Vector3 direction = endPos - myPathNode.transform.position;
         direction = direction.normalized;
         Vector3 position = startPos;
 
@@ -164,14 +204,16 @@ public class PathNodeEditor : Editor
             lanes[i] = new List<PathNode>();
         }
 
+        //How much to the left or right should the lanes differ in position
         Vector3 offset = myPathNode.transform.right * (createExtraLanesToTheRight ? (float)metersBetweenLanes : (float)-metersBetweenLanes);
 
+        //Create the lanes
         for (int lane = 0; lane < lanes.Length; lane++)
         {
             PathNode previousNode = null;
             position = startPos + offset * lane;
 
-
+            //Create the nodes for the current lane
             for (int node = 0; node < nodesToCreate; node++)
             {
                 //last node
@@ -182,14 +224,15 @@ public class PathNodeEditor : Editor
 
                 newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), position, myPathNode.transform.rotation);
 
-                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetNextPossibleNodes()[0].GetRoadSpeedLimit());
+                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
 
                 if (previousNode != null)
                 {
-                    previousNode.AddPossibleNextNode(newNode);
+                    DirectionChoice choice = new DirectionChoice(newNode, Turn.Straight);
+                    previousNode.AddOutChoice(choice);
                 }
 
-                string name = pathName;
+                string name = roadName + " - " + pathName;
                 if (node == 0)
                 {
                     name += " start";
@@ -220,44 +263,39 @@ public class PathNodeEditor : Editor
             {
                 for (int node = 0; node < lanes[lane].Count; node++)
                 {
+                    //If we want to avoid cross connections close to the intersection for instance
                     if (forbidLaneChangeInEnd && node >= (lanes[lane].Count - laneChangeDisallowanceNodes - 1))
                     {
                         continue;
                     }
 
+                    //If there is a lane to one side of our (inside the array but not this) and there is a node forward on that lane to connect to
                     if (lane + 1 < lanes.Length && node + 1 < lanes[lane + 1].Count)
                     {
-                        lanes[lane][node].AddPossibleNextNode(lanes[lane + 1][node + 1]);
+                        DirectionChoice choice = new DirectionChoice(lanes[lane + 1][node + 1], Turn.Straight);
+                        lanes[lane][node].AddOutChoice(choice);
                     }
+                    //If there is a lane to one side of our (inside the array but not this) and there is a node forward on that lane to connect to
                     if (lane - 1 >= 0 && node + 1 < lanes[lane - 1].Count)
                     {
-                        lanes[lane][node].AddPossibleNextNode(lanes[lane - 1][node + 1]);
+                        DirectionChoice choice = new DirectionChoice(lanes[lane - 1][node + 1], Turn.Straight);
+                        lanes[lane][node].AddOutChoice(choice);
                     }
                 }
             }
         }
 
-        GameObject.DestroyImmediate(myPathNode.GetNextPossibleNodes()[0].gameObject);
+        GameObject.DestroyImmediate(myPathNode.GetOutChoices()[0].outNode.gameObject);
         GameObject.DestroyImmediate(myPathNode.gameObject);
         return newNode.gameObject;
     }
 
 
-    ////Enable connectionmaking in sceneview
-    //public Object obj;
-    //private void OnSceneGUI()
-    //{
-    //    PathNode myPathNode = (PathNode)target;
-    //    Vector3 position = myPathNode.transform.position;
-    //    Rect square = EditorGUILayout.BeginHorizontal();
-
-    //    obj = EditorGUILayout.ObjectField(obj, typeof(Object), true);
-    //    EditorGUILayout.EndHorizontal();
-    //}
-
     private void OnSceneGUI()
     {
         Event ev = Event.current;
+
+        //Connect with shortcut command
         if (Event.current.type == EventType.KeyDown && !Event.current.shift && Event.current.keyCode == KeyCode.C)
         {
             if (PathNode.selectedNodeForConnection == null)
@@ -267,7 +305,8 @@ public class PathNodeEditor : Editor
             }
             else
             {
-                PathNode.selectedNodeForConnection.AddPossibleNextNode((PathNode)target);
+                DirectionChoice choice = new DirectionChoice((PathNode)target, Turn.Straight);
+                PathNode.selectedNodeForConnection.AddOutChoice(choice);
                 PathNode.selectedNodeForConnection = null;
                 Debug.Log("Node connected");
             }
