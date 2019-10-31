@@ -106,13 +106,7 @@ public class PathNodeEditor : Editor
         }
         else
         {
-            GameObject empty = new GameObject();
-            roadSegmentParent = Instantiate(empty).transform;
-            DestroyImmediate(empty);
-            roadSegmentParent.gameObject.name = roadName;
-            roadSegmentParent.SetParent(selectedPathNode.transform.parent);
-            roadSegmentParent.transform.position = selectedPathNode.transform.position;
-            newNode.transform.SetParent(roadSegmentParent);
+            CreateRoadSegmentParent(selectedPathNode.transform.position, selectedPathNode);
         }
         newNode.gameObject.name = roadName + " - " + pathName;
         newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : selectedPathNode.GetRoadSpeedLimit());
@@ -156,6 +150,18 @@ public class PathNodeEditor : Editor
         //newNode.transform.SetParent(myPathNode.transform.parent);
         //newNode.gameObject.name = roadName + " - " + pathName;
         //return newNode.gameObject;
+    }
+
+    private Transform CreateRoadSegmentParent(Vector3 position, PathNode selectedPathNode)
+    {
+        GameObject empty = new GameObject();
+        roadSegmentParent = Instantiate(empty).transform;
+        DestroyImmediate(empty);
+        roadSegmentParent.gameObject.name = roadName;
+        roadSegmentParent.SetParent(selectedPathNode.gameObject.transform.parent);
+        roadSegmentParent.transform.position = position;
+        roadSegmentParent.tag = "RoadSegment";
+        return roadSegmentParent;
     }
 
     private GameObject ReplaceNodeMultiple(PathNode myPathNode)
@@ -236,12 +242,7 @@ public class PathNodeEditor : Editor
         PathNode newNode = myPathNode;
         if (!roadSegmentParent)
         {
-            GameObject empty = new GameObject();
-            roadSegmentParent = Instantiate(empty).transform;
-            DestroyImmediate(empty);
-            roadSegmentParent.gameObject.name = roadName;
-            roadSegmentParent.SetParent(myPathNode.gameObject.transform.parent);
-            roadSegmentParent.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
+            CreateRoadSegmentParent((myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2, myPathNode);
         }
 
         //Rotate the node - helps us create the nodes in line towards the endnode

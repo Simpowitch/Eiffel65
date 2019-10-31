@@ -4152,6 +4152,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 320894949}
+  - {fileID: 568564959}
   - {fileID: 1071909883}
   - {fileID: 359849329}
   - {fileID: 1058364285}
@@ -9446,7 +9447,7 @@ Transform:
   - {fileID: 1607994602}
   - {fileID: 1770925660}
   m_Father: {fileID: 98168814}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &179936299
 GameObject:
@@ -12020,57 +12021,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233425014}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &234043944
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 234043946}
-  - component: {fileID: 234043945}
-  m_Layer: 0
-  m_Name: Stenbergskurvan NE - PathNode
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &234043945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234043944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allowedToPass: 1
-  roadSpeedLimit: 50
-  isPartOfIntersection: 0
-  nodesToWaitFor: []
-  carsOnThisNode: []
-  outChoices: []
-  inNodes:
-  - {fileID: 1908905321}
---- !u!4 &234043946
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234043944}
-  m_LocalRotation: {x: -0, y: 0.9999774, z: 0, w: -0.006722232}
-  m_LocalPosition: {x: -8.4, y: 0, z: 8.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 795928587}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234515021
 GameObject:
   m_ObjectHideFlags: 0
@@ -20693,7 +20643,7 @@ Transform:
   - {fileID: 1981696060}
   - {fileID: 1775446135}
   m_Father: {fileID: 98168814}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360114860
 GameObject:
@@ -30287,6 +30237,38 @@ Transform:
   m_Father: {fileID: 1412146041}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
+--- !u!1 &568564958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 568564959}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE
+  m_TagString: RoadSegment
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &568564959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568564958}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -59.615753, y: 0, z: -157.31786}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 571076659}
+  - {fileID: 1946869521}
+  m_Father: {fileID: 98168814}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &569015483
 GameObject:
   m_ObjectHideFlags: 0
@@ -30379,6 +30361,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569015483}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &571076657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571076659}
+  - component: {fileID: 571076658}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &571076658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571076657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 1946869520}
+    turnDirection: 0
+  inNodes:
+  - {fileID: 1908905321}
+--- !u!4 &571076659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571076657}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: 0, w: -0.006722232}
+  m_LocalPosition: {x: -8.6, y: 0, z: 7.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &572340222
 GameObject:
   m_ObjectHideFlags: 0
@@ -40694,37 +40729,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795683535}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &795928586
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 795928587}
-  m_Layer: 0
-  m_Name: Stenbergskurvan NE
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &795928587
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795928586}
-  m_LocalRotation: {x: 0, y: -0.9999774, z: -0, w: -0.006722232}
-  m_LocalPosition: {x: 47.020004, y: 0, z: 0.00000333786}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 234043946}
-  m_Father: {fileID: 1071909883}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &796294131
 GameObject:
   m_ObjectHideFlags: 0
@@ -54572,7 +54576,7 @@ Transform:
   - {fileID: 231687814}
   - {fileID: 2093195540}
   m_Father: {fileID: 98168814}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059786526
 GameObject:
@@ -55344,9 +55348,8 @@ Transform:
   - {fileID: 792069446}
   - {fileID: 1908905322}
   - {fileID: 711537887}
-  - {fileID: 795928587}
   m_Father: {fileID: 98168814}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1071941257
 GameObject:
@@ -63972,7 +63975,7 @@ Transform:
   - {fileID: 1587956810}
   - {fileID: 578887672}
   m_Father: {fileID: 98168814}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1270369587
 PrefabInstance:
@@ -96383,7 +96386,7 @@ MonoBehaviour:
   nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
-  - outNode: {fileID: 234043945}
+  - outNode: {fileID: 571076658}
     turnDirection: 0
   inNodes:
   - {fileID: 711537886}
@@ -98121,6 +98124,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946810499}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1946869519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946869521}
+  - component: {fileID: 1946869520}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1946869520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946869519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  nodesToWaitFor: []
+  carsOnThisNode: []
+  outChoices: []
+  inNodes:
+  - {fileID: 571076658}
+--- !u!4 &1946869521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946869519}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: -7.8, y: 0, z: 64.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951234293
 GameObject:
   m_ObjectHideFlags: 0
