@@ -17,6 +17,7 @@ public class PathNodeEditor : Editor
     int lanesToCreate = 1;
     bool forbidLaneChangeInEnd = false;
     int laneChangeDisallowanceNodes = 1;
+    Transform roadSegmentParent;
 
     public override void OnInspectorGUI()
     {
@@ -27,8 +28,29 @@ public class PathNodeEditor : Editor
         GUILayout.Space(10);
         GUILayout.Label("\nNew node options");
 
+        if (roadName == "RoadName" && myPathNode.transform.parent)
+        {
+            roadName = myPathNode.transform.parent.tag == "RoadSegment" ? myPathNode.transform.parent.name : "RoadName";
+        }
         pathName = EditorGUILayout.TextField("PathName", pathName);
         roadName = EditorGUILayout.TextField("RoadName", roadName);
+
+        if (roadName != "RoadName")
+        {
+            if (GameObject.Find(roadName))
+            {
+                roadSegmentParent = GameObject.Find(roadName).transform;
+            }
+            else
+            {
+                roadSegmentParent = null;
+            }
+        }
+        else
+        {
+            roadSegmentParent = null;
+        }
+
         changeSpeed = EditorGUILayout.Toggle("New node has new speed", changeSpeed);
         if (changeSpeed)
         {
@@ -38,7 +60,7 @@ public class PathNodeEditor : Editor
         Event ev = Event.current;
         if (GUILayout.Button("Create new connected node (Shift + C)") || (ev.type == EventType.KeyDown && ev.shift && ev.keyCode == KeyCode.C))
         {
-            Selection.activeGameObject = CreateNewNode(myPathNode);
+            Selection.activeGameObject = CreateNewSingleConnection(myPathNode);
         }
 
         if (GUILayout.Button("Replace connected node with new node (Shift + R)") || (ev.type == EventType.KeyDown && ev.shift && ev.keyCode == KeyCode.R))
@@ -74,15 +96,39 @@ public class PathNodeEditor : Editor
         }
     }
 
-    private GameObject CreateNewNode(PathNode myPathNode)
+    private PathNode CreateNewNode(PathNode selectedPathNode)
     {
         PathNode newNode;
-        newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
+        newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), selectedPathNode.transform.position, selectedPathNode.transform.rotation);
+        if (roadSegmentParent)
+        {
+            newNode.transform.SetParent(roadSegmentParent);
+        }
+        else
+        {
+            GameObject empty = new GameObject();
+            roadSegmentParent = Instantiate(empty).transform;
+            DestroyImmediate(empty);
+            roadSegmentParent.gameObject.name = roadName;
+            roadSegmentParent.SetParent(selectedPathNode.transform.parent);
+            roadSegmentParent.transform.position = selectedPathNode.transform.position;
+            newNode.transform.SetParent(roadSegmentParent);
+        }
+        newNode.gameObject.name = roadName + " - " + pathName;
+        newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : selectedPathNode.GetRoadSpeedLimit());
+        return newNode;
+    }
+
+    private GameObject CreateNewSingleConnection(PathNode myPathNode)
+    {
+        //PathNode newNode;
+        //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
+        PathNode newNode = CreateNewNode(myPathNode);
         DirectionChoice newChoice = new DirectionChoice(newNode, Turn.Straight);
         myPathNode.AddOutChoice(newChoice);
-        newNode.transform.SetParent(myPathNode.transform.parent);
-        newNode.gameObject.name = pathName;
-        newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
+        //newNode.transform.SetParent(myPathNode.transform.parent);
+        //newNode.gameObject.name = roadName + " - " + pathName;
+        //newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
         return newNode.gameObject;
     }
 
@@ -94,15 +140,22 @@ public class PathNodeEditor : Editor
             return null;
         }
 
-        PathNode newNode;
-        newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
+        PathNode newNode = CreateNewNode(myPathNode);
         newNode.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
         newNode.AddOutChoice(myPathNode.GetOutChoices());
-        newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
         myPathNode.ReplaceSingleConnection(newNode);
-        newNode.transform.SetParent(myPathNode.transform.parent);
-        newNode.gameObject.name = roadName + " - " + pathName;
         return newNode.gameObject;
+
+
+        //PathNode newNode;
+        //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
+        //newNode.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
+        //newNode.AddOutChoice(myPathNode.GetOutChoices());
+        //newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
+        //myPathNode.ReplaceSingleConnection(newNode);
+        //newNode.transform.SetParent(myPathNode.transform.parent);
+        //newNode.gameObject.name = roadName + " - " + pathName;
+        //return newNode.gameObject;
     }
 
     private GameObject ReplaceNodeMultiple(PathNode myPathNode)
@@ -142,11 +195,12 @@ public class PathNodeEditor : Editor
             position += direction * metersBetweenNodes;
             if (Vector3.Distance(position, endPos) > metersBetweenNodes / 2)
             {
-                newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
+                newNode = CreateNewNode(myPathNode);
+                //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
                 newNode.transform.position = position;
-                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
-                newNode.transform.SetParent(myPathNode.transform.parent);
-                newNode.gameObject.name = roadName + " - " + pathName + " " + i;
+                //newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
+                //newNode.transform.SetParent(myPathNode.transform.parent);
+                //newNode.gameObject.name = roadName + " - " + pathName + " " + i;
                 createdNodes.Add(newNode);
             }
         }
@@ -180,15 +234,26 @@ public class PathNodeEditor : Editor
         }
 
         PathNode newNode = myPathNode;
-        GameObject empty = new GameObject();
-        Transform parent = Instantiate(empty).transform;
-        DestroyImmediate(empty);
-        parent.gameObject.name = roadName;
-        parent.SetParent(myPathNode.gameObject.transform.parent);
-        parent.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
+        if (!roadSegmentParent)
+        {
+            GameObject empty = new GameObject();
+            roadSegmentParent = Instantiate(empty).transform;
+            DestroyImmediate(empty);
+            roadSegmentParent.gameObject.name = roadName;
+            roadSegmentParent.SetParent(myPathNode.gameObject.transform.parent);
+            roadSegmentParent.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
+        }
 
         //Rotate the node - helps us create the nodes in line towards the endnode
         myPathNode.transform.LookAt(myPathNode.GetOutChoices()[0].outNode.transform);
+
+        List<PathNode> originalInNodes = new List<PathNode>();
+        //Save the inconnections from the startnode
+        for (int i = 0; i < myPathNode.inNodes.Count; i++)
+        {
+            originalInNodes.Add(myPathNode.inNodes[i]);
+        }
+
 
         PathNode endNode = myPathNode.GetOutChoices()[0].outNode;
         Vector3 startPos = myPathNode.transform.position;
@@ -222,9 +287,11 @@ public class PathNodeEditor : Editor
                     position = endPos + offset * lane;
                 }
 
-                newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), position, myPathNode.transform.rotation);
+                newNode = CreateNewNode(myPathNode);
+                newNode.transform.position = position;
+                //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), position, myPathNode.transform.rotation);
 
-                newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
+                //newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
 
                 if (previousNode != null)
                 {
@@ -247,7 +314,7 @@ public class PathNodeEditor : Editor
                 }
                 newNode.gameObject.name = name + ". Lane " + lane;
 
-                newNode.transform.SetParent(parent);
+                newNode.transform.SetParent(roadSegmentParent);
 
                 previousNode = newNode;
                 position += direction * metersBetweenNodes;
@@ -285,6 +352,13 @@ public class PathNodeEditor : Editor
             }
         }
 
+        //Add the original in-nodes connection towards the newly created first node on the new road
+        for (int i = 0; i < originalInNodes.Count; i++)
+        {
+            DirectionChoice newchoice = new DirectionChoice(lanes[0][0], Turn.Straight);
+            originalInNodes[i].AddOutChoice(newchoice);
+        }
+
         GameObject.DestroyImmediate(myPathNode.GetOutChoices()[0].outNode.gameObject);
         GameObject.DestroyImmediate(myPathNode.gameObject);
         return newNode.gameObject;
@@ -319,7 +393,7 @@ public class PathNodeEditor : Editor
 
             if (ev.type == EventType.KeyDown && ev.shift && ev.keyCode == KeyCode.C)
             {
-                Selection.activeGameObject = CreateNewNode(myPathNode);
+                Selection.activeGameObject = CreateNewSingleConnection(myPathNode);
             }
 
             if (ev.type == EventType.KeyDown && ev.shift && ev.keyCode == KeyCode.R)

@@ -169,10 +169,16 @@ public class CarAI : MonoBehaviour
         }
 
         //Check if anything is on our side of which we are turning
-        if (!recklessDriver && SideSensorChecks(ref steerPercentage, out collision))
+        if (!recklessDriver && turningDirection != Turn.Straight && SideSensorChecks(ref steerPercentage, out collision))
         {
-            distanceToObstacle = Vector3.Distance(rb.position, collision.point);
-            currentState = AIState.Queue;
+            if (collision.transform.tag == "Vehicle" && collision.transform.GetComponent<CarAI>() != null)
+            {
+                if (!CheckLaneChangePriority(collision.transform.GetComponent<CarAI>()))
+                {
+                    distanceToObstacle = Vector3.Distance(rb.position, collision.point);
+                    currentState = AIState.Queue;
+                }
+            }
         }
 
         if (currentState == AIState.Drive || currentState == AIState.AvoidCollision)
@@ -466,10 +472,10 @@ public class CarAI : MonoBehaviour
                 SetRandomTargetNode(null);
                 path[0].AddCarToNode(this);
             }
-        }
-        if (aiPathProgressTracker)
-        {
-            aiPathProgressTracker.UpdatePath(path, currentNode);
+            if (aiPathProgressTracker)
+            {
+                aiPathProgressTracker.UpdatePath(path, currentNode);
+            }
         }
         turningDirection = CheckTurning();
     }
@@ -524,9 +530,44 @@ public class CarAI : MonoBehaviour
     }
 
 
+    private Turn CheckTurning()
+    {
+        if (path.Count > 1 && path[0].GetOutChoices().Count > 1)
+        {
+            for (int i = 0; i < path[0].outChoices.Count; i++)
+            {
+                if (path[1] == path[0].outChoices[i].outNode)
+                {
+                    return path[0].outChoices[i].turnDirection;
+                }
+            }
+            Debug.LogWarning("Did not find the correct direction, check outnode choices");
+        }
+        return Turn.Straight;
+    }
+
+    private bool CheckLaneChangePriority(CarAI otherCar)
+    {
+        //If we are turning (changling lane)
+        if (turningDirection != Turn.Straight)
+        {
+            //if the other car is to the right of us and is changling lane to a left
+            if (otherCar.turningDirection == Turn.Left)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
+    }
 
     [Header("Sensor")]
-
     [SerializeField] float carWidth = 2f;
     [SerializeField] float carLength = 3f;
 
@@ -685,7 +726,7 @@ public class CarAI : MonoBehaviour
         RaycastHit hit;
         List<RaycastHit> collisions = new List<RaycastHit>();
 
-        if (!aiPathProgressTracker || aiPathProgressTracker.curvePercentage > 0.05f)
+        if (turningDirection == Turn.Right)
         {
             bool sensorCollision = false;
             //Right sensors
@@ -698,7 +739,7 @@ public class CarAI : MonoBehaviour
                     if (hit.transform.tag == "Vehicle")
                     {
                         collisions.Add(hit);
-                        turningPercentage -= (float)((float)1 / (float)numberOfSideSensors) * 0.1f;
+                        //turningPercentage -= (float)((float)1 / (float)numberOfSideSensors) * 0.1f;
                         collisionDetected = true;
                     }
                 }
@@ -711,7 +752,7 @@ public class CarAI : MonoBehaviour
                 if (hit.transform.tag == "Vehicle")
                 {
                     collisions.Add(hit);
-                    turningPercentage -= 0.1f;
+                    //turningPercentage -= 0.1f;
                     collisionDetected = true;
                 }
             }
@@ -723,12 +764,12 @@ public class CarAI : MonoBehaviour
                 if (hit.transform.tag == "Vehicle")
                 {
                     collisions.Add(hit);
-                    turningPercentage -= 0.1f;
+                    //turningPercentage -= 0.1f;
                     collisionDetected = true;
                 }
             }
         }
-        else if (!aiPathProgressTracker || aiPathProgressTracker.curvePercentage < -0.05f)
+        else if (turningDirection == Turn.Left)
         {
             bool sensorCollision = false;
             //Left sensors
@@ -741,7 +782,7 @@ public class CarAI : MonoBehaviour
                     if (hit.transform.tag == "Vehicle")
                     {
                         collisions.Add(hit);
-                        turningPercentage += (float)((float)1 / (float)numberOfSideSensors) * 0.1f;
+                        //turningPercentage += (float)((float)1 / (float)numberOfSideSensors) * 0.1f;
                         collisionDetected = true;
                     }
                 }
@@ -754,7 +795,7 @@ public class CarAI : MonoBehaviour
                 if (hit.transform.tag == "Vehicle")
                 {
                     collisions.Add(hit);
-                    turningPercentage += 0.1f;
+                    // turningPercentage += 0.1f;
                     collisionDetected = true;
                 }
             }
@@ -766,7 +807,7 @@ public class CarAI : MonoBehaviour
                 if (hit.transform.tag == "Vehicle")
                 {
                     collisions.Add(hit);
-                    turningPercentage += 0.1f;
+                    // turningPercentage += 0.1f;
                     collisionDetected = true;
                 }
             }
@@ -941,21 +982,7 @@ public class CarAI : MonoBehaviour
         return false;
     }
 
-    private Turn CheckTurning()
-    {
-        if (path.Count > 1 && path[0].GetOutChoices().Count > 1)
-        {
-            for (int i = 0; i < path[0].outChoices.Count; i++)
-            {
-                if (path[1] == path[0].outChoices[i].outNode)
-                {
-                    return path[0].outChoices[i].turnDirection;
-                }
-            }
-            Debug.LogWarning("Did not find the correct direction, check outnode choices");
-        }
-        return Turn.Straight;
-    }
+
 
 
     [Header("Editor")]
