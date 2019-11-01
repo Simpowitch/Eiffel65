@@ -8,9 +8,10 @@ public class PathNode : MonoBehaviour
 
     [SerializeField] bool allowedToPass = true;
     [SerializeField] float roadSpeedLimit = 30;
+    float intersectionSpeedLimitOverride = 30;
 
     public bool isPartOfIntersection = false; //Used to enable cars to check for other cars in the intersection
-    [SerializeField] List<PathNode> nodesToWaitFor = new List<PathNode>();
+    //[SerializeField] List<PathNode> nodesToWaitFor = new List<PathNode>();
     public List<CarAI> carsOnThisNode = new List<CarAI>(); //debug public
 
     public List<DirectionChoice> outChoices = new List<DirectionChoice>();
@@ -23,12 +24,14 @@ public class PathNode : MonoBehaviour
         {
             Debug.LogError("You have not set up the path correctly, this node is missing a nodeconnection " + transform.name);
         }
+        ValidateConnections();
+        ValidateSetup();
     }
 
     /// <summary>
     /// Returns true when green light is on, or if there is no traffic light present
     /// </summary>
-    public bool IsAllowedToPass()
+    public bool IsAllowedToPass(PathNode nextNodeToGoTo)
     {
         if (!allowedToPass)
         {
@@ -38,11 +41,19 @@ public class PathNode : MonoBehaviour
         {
             if (isPartOfIntersection)
             {
-                for (int i = 0; i < nodesToWaitFor.Count; i++)
+                //Check which outnode of this node we are going to next
+                for (int i = 0; i < outChoices.Count; i++)
                 {
-                    if (nodesToWaitFor[i].carsOnThisNode.Count != 0)
+                    if (outChoices[i].outNode == nextNodeToGoTo)
                     {
-                        return false;
+                        //Look through that choice and the nodes to wait for to see if there are any cars
+                        for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
+                        {
+                            if (outChoices[i].nodesToWaitFor[i].carsOnThisNode.Count != 0)
+                            {
+                                return false;
+                            }
+                        }
                     }
                 }
                 return true;
@@ -209,6 +220,9 @@ public class PathNode : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        ValidateConnections();
+        ValidateSetup();
+        
         //Draw sphere
         Gizmos.color = allowedToPass ? allowedToPassColor : notAllowedToPassColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
@@ -217,7 +231,6 @@ public class PathNode : MonoBehaviour
         bool catmullCurveAllowed = true;
         int visualizationSubsteps = visualPathSubsteps;
 
-        ValidateConnections();
 
         //Lines and curves
         Gizmos.color = lineColor;
@@ -279,11 +292,16 @@ public class PathNode : MonoBehaviour
 
         //Show waiting nodes
         Gizmos.color = Color.red;
-        for (int i = 0; i < nodesToWaitFor.Count; i++)
+
+        for (int i = 0; i < outChoices.Count; i++)
         {
-            if (nodesToWaitFor[i].carsOnThisNode.Count != 0)
+            //Look through that choice and the nodes to wait for to see if there are any cars
+            for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
             {
-                Gizmos.DrawLine(this.transform.position, nodesToWaitFor[i].transform.position);
+                if (outChoices[i].nodesToWaitFor[i].carsOnThisNode.Count != 0)
+                {
+                    Gizmos.DrawLine(this.transform.position, outChoices[i].nodesToWaitFor[j].transform.position);
+                }
             }
         }
     }
@@ -346,6 +364,28 @@ public class PathNode : MonoBehaviour
             }
         }
     }
+
+    private void ValidateSetup()
+    {
+        for (int i = 0; i < outChoices.Count; i++)
+        {
+            if (outChoices[i].nodesToWaitFor.Count > 0)
+            {
+                isPartOfIntersection = true;
+                break;
+            }
+        }
+
+        if (isPartOfIntersection)
+        {
+            roadSpeedLimit = intersectionSpeedLimitOverride;
+
+            for (int i = 0; i < inNodes.Count; i++)
+            {
+                inNodes[i].roadSpeedLimit = intersectionSpeedLimitOverride;
+            }
+        }
+    }
 }
 
 
@@ -395,7 +435,7 @@ public static class DrawArrow
 public enum Turn { Straight, Left, Right }
 
 [System.Serializable]
-public struct DirectionChoice
+public class DirectionChoice
 {
     public DirectionChoice(PathNode node, Turn direction)
     {
@@ -405,4 +445,5 @@ public struct DirectionChoice
 
     public PathNode outNode;
     public Turn turnDirection;
+    public List<PathNode> nodesToWaitFor = new List<PathNode>();
 }

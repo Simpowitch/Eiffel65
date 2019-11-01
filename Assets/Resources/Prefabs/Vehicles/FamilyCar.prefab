@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilotedBy: 0
-  maxAngle: 30
+  maxAngle: 45
   maxTorque: 900
   brakeTorque: 30000
   wheelShape: {fileID: 115638, guid: 2d269fe0b3459fd4b82b35627ebdb76b, type: 3}

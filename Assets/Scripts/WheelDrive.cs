@@ -39,7 +39,7 @@ public class WheelDrive : MonoBehaviour
 
     //How quickly the wheels turn into position
     [SerializeField] float wheelChangeSpeed = 10f;
-    
+
 
     // Find all the WheelColliders down in the hierarchy.
     void Start()
@@ -75,7 +75,12 @@ public class WheelDrive : MonoBehaviour
 
     private void LerpToSteeringTarget()
     {
-        steeringAngle = Mathf.Lerp(steeringAngle, targetSteerAngleAI, Time.deltaTime * wheelChangeSpeed);
+        steeringAngle = Mathf.Lerp(steeringAngle, targetSteerAngleAI, Time.fixedDeltaTime * wheelChangeSpeed);
+        if (float.IsNaN(steeringAngle))
+        {
+            steeringAngle = 0;
+            Debug.LogWarning("Value was NaN");
+        }
     }
 
     private void FixedUpdate()
@@ -115,7 +120,7 @@ public class WheelDrive : MonoBehaviour
 
             //if (wheel.transform.localPosition.z < 0)
             //{
-                wheel.brakeTorque = brakingTorque;
+            wheel.brakeTorque = brakingTorque;
             //}
 
             if (wheel.transform.localPosition.z < 0 && driveType != DriveType.FrontWheelDrive)

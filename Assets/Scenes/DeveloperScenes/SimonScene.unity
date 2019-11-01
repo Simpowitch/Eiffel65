@@ -472,7 +472,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -586,8 +585,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 1
-  nodesToWaitFor:
-  - {fileID: 1906436856}
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -854,7 +851,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -996,7 +992,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -1086,7 +1081,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -1228,7 +1222,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -2331,6 +2324,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50769159}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &51128596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 51128597}
+  m_Layer: 0
+  m_Name: Traffic Light Intersections
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &51128597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51128596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 770012375}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &51384064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,7 +2427,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -2579,7 +2602,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -2646,7 +2668,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -2964,7 +2985,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -3107,13 +3127,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1015616630}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 98636649}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 519998999}
 --- !u!4 &69843403
@@ -3162,7 +3183,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -3338,7 +3358,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -3739,13 +3758,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 25
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 453136544}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 578887673}
 --- !u!4 &78765557
@@ -3756,7 +3775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78765555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.438535, y: -0.14, z: 0.16501331}
+  m_LocalPosition: {x: 9.62, y: -0.14, z: 0.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058364285}
@@ -3826,7 +3845,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -4028,6 +4046,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86438627}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &86581404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86581406}
+  - component: {fileID: 86581405}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode 8L
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &86581405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86581404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 30
+  isPartOfIntersection: 1
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 1241226983}
+    turnDirection: 1
+    nodesToWaitFor: []
+  inNodes:
+  - {fileID: 1646949051}
+--- !u!4 &86581406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86581404}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: 48.3, y: 0, z: 80.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &86920834
 GameObject:
   m_ObjectHideFlags: 0
@@ -4159,7 +4230,7 @@ Transform:
   - {fileID: 178733470}
   - {fileID: 1267425202}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &98636648
 GameObject:
@@ -4193,13 +4264,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 715325126}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 121007322}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1143534992}
   - {fileID: 69843402}
@@ -4284,7 +4356,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -4583,11 +4654,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1075027601}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 2050359869}
 --- !u!4 &107621231
@@ -5310,13 +5381,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1215451841}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1015616630}
   - {fileID: 98636649}
@@ -5582,7 +5653,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -5818,7 +5888,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -5854,7 +5923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.7
+      value: -4.99
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5862,7 +5931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5882,7 +5951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5899,17 +5968,17 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.477
+      value: 40706.5
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0366
+      value: 6513.04
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -5939,12 +6008,12 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.523
+      value: 34293.504
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.964
+      value: 5486.9604
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -5959,22 +6028,27 @@ PrefabInstance:
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40208.598
+      value: 40208.594
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.3755
+      value: 6433.375
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19620001
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_ForceAppPointDistance
       value: 0.6772526
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013910545014, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: maxAngle
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
@@ -5997,10 +6071,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turningDirection: 0
-  pathParent: {fileID: 368425501}
+  pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 1049131960}
+  currentNode: {fileID: 2093195539}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -6040,11 +6114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substeps: 15
-  pathNodesToShow: 2
-  lookAheadMinDistance: 0.5
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.1
-  passedProgress: 0
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
   targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -6172,7 +6241,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -6222,7 +6290,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -6364,7 +6431,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -6414,7 +6480,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -6890,7 +6955,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -6960,7 +7024,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -6996,13 +7059,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 2037563635}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 887050705}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1869248631}
   - {fileID: 1025915564}
@@ -7069,7 +7133,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -8337,7 +8400,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -8357,7 +8419,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -8404,7 +8465,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -8424,7 +8484,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -8861,7 +8920,7 @@ Transform:
   - {fileID: 456548807}
   - {fileID: 403494154}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &172896632
 GameObject:
@@ -9498,7 +9557,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -9534,7 +9592,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -9862,7 +9919,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -10005,7 +10061,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -10179,7 +10234,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -10429,7 +10483,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -11908,11 +11961,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 2093195539}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 972135873}
 --- !u!4 &231687814
@@ -11923,7 +11976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231687812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.555148, y: -0.14, z: 9.192933}
+  m_LocalPosition: {x: 4.56, y: -0.14, z: 7.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058364285}
@@ -13494,7 +13547,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -13815,7 +13867,7 @@ GameObject:
   - component: {fileID: 262260120}
   - component: {fileID: 262260119}
   m_Layer: 0
-  m_Name: Stenbergskurvan - PathNode 1
+  m_Name: Stenbergskurvan - PathNode 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13836,11 +13888,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1691583186}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 449990403}
 --- !u!4 &262260120
@@ -13855,7 +13907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 320894949}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &262609012
 GameObject:
@@ -13954,7 +14006,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -14312,7 +14363,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -14704,7 +14754,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -15749,7 +15798,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -15769,7 +15817,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -15840,7 +15887,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -15908,7 +15954,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -16050,7 +16095,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -16313,7 +16357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.629987
+      value: 10.19
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16321,7 +16365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -116.69999
+      value: -139.21
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -16341,7 +16385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16358,17 +16402,17 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.54
+      value: 40706.69
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0464
+      value: 6513.0713
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -16378,12 +16422,12 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.37
+      value: 34791.22
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.6196
+      value: 5566.595
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -16398,17 +16442,17 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.477
+      value: 34293.312
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.956
+      value: 5486.9297
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19619998
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -16418,17 +16462,17 @@ PrefabInstance:
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40208.62
+      value: 40208.777
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.38
+      value: 6433.4043
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620003
+      value: 0.19620001
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -16462,11 +16506,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substeps: 15
-  pathNodesToShow: 3
-  lookAheadMinDistance: 1
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.1
-  passedProgress: 0
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
   targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -16483,10 +16522,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turningDirection: 0
-  pathParent: {fileID: 368425501}
+  pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 367199368}
+  currentNode: {fileID: 519998999}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -16497,7 +16536,7 @@ MonoBehaviour:
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
-  carLength: 3
+  carLength: 4
   sensorLengthSpeedDependency: 4
   minimumForwardSensorLength: 2
   minimumAngledSensorLength: 2
@@ -16951,7 +16990,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -17834,7 +17872,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -17885,11 +17922,11 @@ Transform:
   - {fileID: 1075027602}
   - {fileID: 1597324827}
   - {fileID: 959889039}
+  - {fileID: 797044668}
   - {fileID: 449990404}
   - {fileID: 262260120}
   - {fileID: 1691583187}
   - {fileID: 1090485433}
-  - {fileID: 797044668}
   - {fileID: 688850647}
   m_Father: {fileID: 98168814}
   m_RootOrder: 0
@@ -18738,7 +18775,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -18758,7 +18794,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -19125,7 +19160,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -19192,7 +19226,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -19504,7 +19537,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -20078,7 +20110,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -20345,14 +20376,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 2050359869}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
-  - {fileID: 406977604}
   - {fileID: 663858182}
+  - {fileID: 406977604}
 --- !u!4 &352670817
 Transform:
   m_ObjectHideFlags: 0
@@ -20431,7 +20462,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -20638,10 +20668,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1861977813}
-  - {fileID: 1647697684}
-  - {fileID: 1981696060}
   - {fileID: 1775446135}
+  - {fileID: 1981696060}
+  - {fileID: 1647697684}
+  - {fileID: 1861977813}
   m_Father: {fileID: 98168814}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20677,7 +20707,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -21037,7 +21066,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -21194,7 +21222,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -21360,7 +21387,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -21610,7 +21636,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -21660,11 +21685,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 792069445}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 793779761}
 --- !u!4 &388937831
@@ -22645,7 +22670,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -22696,7 +22720,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -22864,7 +22887,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -23018,15 +23040,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
-  isPartOfIntersection: 0
-  nodesToWaitFor: []
+  roadSpeedLimit: 30
+  isPartOfIntersection: 1
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 352670816}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   - outNode: {fileID: 1981600207}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 887050705}
 --- !u!1 &407035143
@@ -23075,7 +23098,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -23397,7 +23419,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -23885,7 +23906,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -23936,7 +23956,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -24078,7 +24097,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -24128,7 +24146,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -24362,7 +24379,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -24714,7 +24730,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -24764,7 +24779,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -24793,7 +24807,7 @@ GameObject:
   - component: {fileID: 449990404}
   - component: {fileID: 449990403}
   m_Layer: 0
-  m_Name: Stenbergskurvan - PathNode 0
+  m_Name: Stenbergskurvan - PathNode 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24814,11 +24828,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 262260119}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 797044667}
 --- !u!4 &449990404
@@ -24833,7 +24847,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 320894949}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &451851601
 GameObject:
@@ -24957,13 +24971,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 25
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 2048043748}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 78765556}
 --- !u!4 &453136545
@@ -25012,7 +25026,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -25062,7 +25075,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -25112,7 +25124,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -25385,7 +25396,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -25540,7 +25550,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -26701,7 +26710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.57
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26709,7 +26718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.65
+      value: 4.54
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -26729,7 +26738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -26746,17 +26755,17 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.477
+      value: 40706.484
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0366
+      value: 6513.038
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -26766,17 +26775,17 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.406
+      value: 34791.4
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.625
+      value: 5566.624
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -26786,12 +26795,12 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.523
+      value: 34293.51
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.9644
+      value: 5486.9624
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -26811,12 +26820,12 @@ PrefabInstance:
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.3755
+      value: 6433.376
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -26844,10 +26853,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turningDirection: 0
-  pathParent: {fileID: 368425501}
+  pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 1723407738}
+  currentNode: {fileID: 2048043748}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -26887,11 +26896,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substeps: 15
-  pathNodesToShow: 3
-  lookAheadMinDistance: 1
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.1
-  passedProgress: 0
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
   targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -27419,7 +27423,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -27653,7 +27656,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -27720,7 +27722,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -27880,13 +27881,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 887050705}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 2037563635}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1025915564}
   - {fileID: 1869248631}
@@ -27936,13 +27938,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1143534992}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 69843402}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1861977812}
 --- !u!4 &519999000
@@ -28364,7 +28367,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -29455,6 +29457,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549682888}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &552704784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 552704786}
+  - component: {fileID: 552704785}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &552704785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552704784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 705778104}
+    turnDirection: 0
+    nodesToWaitFor: []
+  inNodes:
+  - {fileID: 1215374676}
+--- !u!4 &552704786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552704784}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: -8.176765, y: 0, z: 37.797012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553050608
 GameObject:
   m_ObjectHideFlags: 0
@@ -29519,7 +29574,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -29646,7 +29700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &554614625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29842,7 +29896,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -29985,6 +30038,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561072710}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &561718304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561718306}
+  - component: {fileID: 561718305}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode 8R
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &561718305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561718304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 30
+  isPartOfIntersection: 1
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 1981600207}
+    turnDirection: 2
+    nodesToWaitFor: []
+  inNodes:
+  - {fileID: 1646949051}
+--- !u!4 &561718306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561718304}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: 48.2, y: 0, z: 75.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561893300
 GameObject:
   m_ObjectHideFlags: 0
@@ -30265,7 +30371,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 571076659}
+  - {fileID: 1215374677}
+  - {fileID: 552704786}
+  - {fileID: 705778105}
   - {fileID: 1946869521}
+  - {fileID: 841299497}
+  - {fileID: 620094952}
+  - {fileID: 1646949052}
+  - {fileID: 561718306}
+  - {fileID: 86581406}
   m_Father: {fileID: 98168814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30372,7 +30486,7 @@ GameObject:
   - component: {fileID: 571076659}
   - component: {fileID: 571076658}
   m_Layer: 0
-  m_Name: Stenbergskurvan NE - PathNode
+  m_Name: Stenbergskurvan NE - PathNode 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30393,11 +30507,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
-  - outNode: {fileID: 1946869520}
+  - outNode: {fileID: 1215374676}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1908905321}
 --- !u!4 &571076659
@@ -30582,7 +30696,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -30741,7 +30854,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -31011,13 +31123,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 25
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 78765556}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1587956809}
 --- !u!1 &579492709
@@ -31364,7 +31476,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -31520,7 +31631,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -31778,7 +31888,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -32277,7 +32386,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -32695,6 +32803,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620082677}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &620094950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 620094952}
+  - component: {fileID: 620094951}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode 6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &620094951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620094950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 1646949051}
+    turnDirection: 0
+    nodesToWaitFor: []
+  inNodes:
+  - {fileID: 841299496}
+--- !u!4 &620094952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620094950}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: 13.798492, y: 0, z: 76.38747}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &620395767
 GameObject:
   m_ObjectHideFlags: 0
@@ -32944,7 +33105,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -33406,7 +33566,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -33782,7 +33941,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -34261,15 +34419,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
-  isPartOfIntersection: 0
-  nodesToWaitFor: []
+  roadSpeedLimit: 30
+  isPartOfIntersection: 1
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1241226983}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 352670816}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor:
+    - {fileID: 1291192334}
+    - {fileID: 406977604}
   inNodes:
   - {fileID: 715325126}
 --- !u!4 &663858183
@@ -34320,7 +34481,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -34527,7 +34687,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -34793,13 +34952,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 830731450}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 939392668}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1291192334}
 --- !u!4 &682587892
@@ -35248,11 +35408,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1775446134}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1090485432}
 --- !u!4 &688850647
@@ -35395,7 +35555,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -35446,7 +35605,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -35513,7 +35671,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -35549,7 +35706,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -35919,7 +36075,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -35968,6 +36123,59 @@ Transform:
   - {fileID: 549682889}
   m_Father: {fileID: 1761237028}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &705778103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 705778105}
+  - component: {fileID: 705778104}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &705778104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705778103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 1946869520}
+    turnDirection: 0
+    nodesToWaitFor: []
+  inNodes:
+  - {fileID: 552704785}
+--- !u!4 &705778105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705778103}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: -7.965149, y: 0, z: 52.795517}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &707045785
 GameObject:
@@ -36074,7 +36282,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -36103,7 +36310,7 @@ GameObject:
   - component: {fileID: 711537887}
   - component: {fileID: 711537886}
   m_Layer: 0
-  m_Name: Granvagen W - PathNode
+  m_Name: Granvagen W - PathNode 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36124,11 +36331,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1908905321}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 792069445}
 --- !u!4 &711537887
@@ -36139,11 +36346,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711537885}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.51, y: 0, z: 0.0000016093254}
+  m_LocalPosition: {x: 23.51, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1071909883}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712795931
 GameObject:
@@ -36194,7 +36401,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -36230,9 +36436,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 1
-  nodesToWaitFor:
-  - {fileID: 1906436856}
-  - {fileID: 10451369}
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -36280,13 +36483,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 663858182}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 98636649}
   - {fileID: 1015616630}
@@ -36638,7 +36841,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -36690,7 +36892,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -37297,7 +37498,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -37623,7 +37823,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -37705,7 +37904,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -37955,7 +38153,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -38557,7 +38754,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -38607,151 +38803,6 @@ Transform:
   m_Father: {fileID: 1491738268}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &757506463
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1208552238}
-    m_Modifications:
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_Name
-      value: City V1 Car
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_TagString
-      value: Vehicle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 250.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -437.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.0064517185
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.99997926
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -0.739
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40706.945
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6513.111
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.67725265
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34791.098
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5566.5757
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620003
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.67725265
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34293.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5486.888
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620003
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.67725265
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40208.906
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6433.4253
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.67725265
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
 --- !u!1 &759933887
 GameObject:
   m_ObjectHideFlags: 0
@@ -38876,7 +38927,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -38928,7 +38978,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -39165,7 +39214,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -39433,7 +39481,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -39515,7 +39562,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -39582,10 +39628,61 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
+--- !u!1 &770012374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770012375}
+  - component: {fileID: 770012376}
+  m_Layer: 0
+  m_Name: Stenbergskuvan/Solvagsavenyn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770012375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770012374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3, y: 0, z: -72.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 51128597}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &770012376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770012374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2e1b0cc1d56ba41807747eeacbb913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightGroup1:
+  - {fileID: 1291192334}
+  - {fileID: 406977604}
+  - {fileID: 663858182}
+  - {fileID: 1215451841}
+  lightGroup2:
+  - {fileID: 561718305}
+  - {fileID: 86581405}
+  timeBetweenLightswitch: 10
 --- !u!1 &775004951
 GameObject:
   m_ObjectHideFlags: 0
@@ -39851,7 +39948,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -40073,7 +40169,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -40405,11 +40500,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 711537886}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 388937830}
   - {fileID: 1770925659}
@@ -40491,11 +40586,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 388937830}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 939392668}
   - {fileID: 830731450}
@@ -40772,7 +40867,7 @@ GameObject:
   - component: {fileID: 797044668}
   - component: {fileID: 797044667}
   m_Layer: 0
-  m_Name: Stenbergskurvan - PathNode
+  m_Name: Stenbergskurvan - PathNode 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40793,11 +40888,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 449990403}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 959889038}
 --- !u!4 &797044668
@@ -40812,7 +40907,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 320894949}
-  m_RootOrder: 10
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &797415007
 GameObject:
@@ -41154,7 +41249,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -41204,7 +41298,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -41654,7 +41747,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -41704,7 +41796,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 20
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -42494,7 +42585,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -42767,7 +42857,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -42849,13 +42938,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1607994601}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 793779761}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 682587891}
   - {fileID: 1981600207}
@@ -42965,6 +43055,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831605546}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &841299495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 841299497}
+  - component: {fileID: 841299496}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &841299496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841299495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 620094951}
+    turnDirection: 0
+    nodesToWaitFor: []
+  inNodes:
+  - {fileID: 1946869520}
+--- !u!4 &841299497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841299495}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: -1.2, y: 0, z: 76.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &842246871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43176,7 +43319,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -43336,7 +43478,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -44090,7 +44231,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -44134,7 +44274,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -44154,7 +44293,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -45760,13 +45898,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 406977604}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 519668244}
   - {fileID: 162736499}
@@ -45850,7 +45988,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -45901,7 +46038,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -45953,7 +46089,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -46740,13 +46875,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1148823378}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 1587956809}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1169706275}
   - {fileID: 1241226983}
@@ -47922,7 +48058,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -48474,7 +48609,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -48708,7 +48842,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -48850,7 +48983,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -48914,7 +49046,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -48950,13 +49081,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 793779761}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 1607994601}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1981600207}
   - {fileID: 682587891}
@@ -49190,7 +49322,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -49396,7 +49527,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -49653,7 +49783,7 @@ GameObject:
   - component: {fileID: 959889039}
   - component: {fileID: 959889038}
   m_Layer: 0
-  m_Name: Stenbergskurvan Curve E In
+  m_Name: Stenbergskurvan - PathNode 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49674,11 +49804,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 797044667}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1597324826}
 --- !u!4 &959889039
@@ -50003,7 +50133,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -50053,7 +50182,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 1
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -50271,11 +50399,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 972135873}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1148823378}
 --- !u!4 &969347410
@@ -50356,7 +50484,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -50498,7 +50625,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -50640,11 +50766,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 231687813}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 969347409}
 --- !u!4 &972135874
@@ -50655,7 +50781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972135872}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.301106, y: -0.14, z: 2.9379086}
+  m_LocalPosition: {x: 13.15, y: -0.14, z: 0.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058364285}
@@ -50909,7 +51035,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 20
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -51051,7 +51176,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -51178,7 +51302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.81
+      value: -39.88
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -51186,7 +51310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -78.33
+      value: -81.47
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -51206,7 +51330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -51327,11 +51451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substeps: 15
-  pathNodesToShow: 2
-  lookAheadMinDistance: 0.5
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.1
-  passedProgress: 0
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
   targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -51348,10 +51467,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turningDirection: 0
-  pathParent: {fileID: 368425501}
+  pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 1684807720}
+  currentNode: {fileID: 620094951}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -51436,7 +51555,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -51475,7 +51593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013369119048, guid: 53c496fec7e88b444858ad01c2739816, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.06
+      value: 5.94
       objectReference: {fileID: 0}
     - target: {fileID: 4000013369119048, guid: 53c496fec7e88b444858ad01c2739816, type: 3}
       propertyPath: m_LocalPosition.y
@@ -51483,7 +51601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013369119048, guid: 53c496fec7e88b444858ad01c2739816, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -384.97
+      value: -132.27
       objectReference: {fileID: 0}
     - target: {fileID: 4000013369119048, guid: 53c496fec7e88b444858ad01c2739816, type: 3}
       propertyPath: m_LocalRotation.x
@@ -51520,12 +51638,12 @@ PrefabInstance:
     - target: {fileID: 146000012257288626, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 36871.855
+      value: 36871.445
       objectReference: {fileID: 0}
     - target: {fileID: 146000012257288626, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5899.497
+      value: 5899.431
       objectReference: {fileID: 0}
     - target: {fileID: 146000012257288626, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
@@ -51535,12 +51653,12 @@ PrefabInstance:
     - target: {fileID: 146000011086574200, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 38128.15
+      value: 38128.56
       objectReference: {fileID: 0}
     - target: {fileID: 146000011086574200, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6100.5034
+      value: 6100.57
       objectReference: {fileID: 0}
     - target: {fileID: 146000011086574200, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
@@ -51550,12 +51668,12 @@ PrefabInstance:
     - target: {fileID: 146000012053955854, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 36891.035
+      value: 36890.61
       objectReference: {fileID: 0}
     - target: {fileID: 146000012053955854, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5902.566
+      value: 5902.4976
       objectReference: {fileID: 0}
     - target: {fileID: 146000012053955854, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
@@ -51565,12 +51683,12 @@ PrefabInstance:
     - target: {fileID: 146000011678907170, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 38108.96
+      value: 38109.387
       objectReference: {fileID: 0}
     - target: {fileID: 146000011678907170, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6097.434
+      value: 6097.502
       objectReference: {fileID: 0}
     - target: {fileID: 146000011678907170, guid: 53c496fec7e88b444858ad01c2739816,
         type: 3}
@@ -51675,7 +51793,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -52924,13 +53041,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 121007322}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 715325126}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 69843402}
   - {fileID: 1143534992}
@@ -53724,13 +53842,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 519668244}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 162736499}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 2093195539}
 --- !u!4 &1025915565
@@ -54056,76 +54175,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032827353}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1035349139 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 1400557838}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1035349140 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 1400557838}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1035349141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035349139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningDirection: 0
-  pathParent: {fileID: 368425501}
-  maxNodesInRandomizer: 30
-  path: []
-  currentNode: {fileID: 1554115005}
-  endNode: {fileID: 0}
-  kmhSpeed: 0
-  debugStop: 0
-  currentState: 0
-  recklessDriver: 0
-  ignoreStopsAndTrafficLights: 0
-  ignoreSpeedLimit: 0
-  criminalSpeedFactor: 1.5
-  maxRangeFromCarToEndNodeRandom: 100
-  carWidth: 2
-  carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 1
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
-  lineToNode: {r: 1, g: 0.9459826, b: 0, a: 1}
-  showLineToNextNode: 0
---- !u!114 &1035349142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035349139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  substeps: 15
-  pathNodesToShow: 5
-  lookAheadMinDistance: 1.5
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.2
-  passedProgress: 0
-  target: {x: 0, y: 0, z: 0}
-  curvePercentage: 0
-  targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1040208881
 GameObject:
   m_ObjectHideFlags: 0
@@ -54158,7 +54207,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -54300,7 +54348,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -54382,7 +54429,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -54432,7 +54478,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -55346,8 +55391,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 792069446}
-  - {fileID: 1908905322}
   - {fileID: 711537887}
+  - {fileID: 1908905322}
   m_Father: {fileID: 98168814}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -55385,7 +55430,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -55744,11 +55788,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1597324826}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 107621230}
 --- !u!4 &1075027602
@@ -55831,7 +55875,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -56078,55 +56121,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079487716}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1080908789 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 757506463}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1080908790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080908789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningDirection: 0
-  pathParent: {fileID: 0}
-  maxNodesInRandomizer: 30
-  path: []
-  currentNode: {fileID: 0}
-  endNode: {fileID: 0}
-  kmhSpeed: 0
-  debugStop: 0
-  currentState: 0
-  recklessDriver: 0
-  ignoreStopsAndTrafficLights: 0
-  ignoreSpeedLimit: 0
-  criminalSpeedFactor: 1.5
-  maxRangeFromCarToEndNodeRandom: 100
-  carWidth: 2
-  carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 1
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
-  lineToNode: {r: 0, g: 0, b: 0, a: 0}
-  showLineToNextNode: 0
---- !u!4 &1080908794 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 757506463}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1083278017
 GameObject:
   m_ObjectHideFlags: 0
@@ -56283,7 +56277,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -56453,7 +56446,7 @@ GameObject:
   - component: {fileID: 1090485433}
   - component: {fileID: 1090485432}
   m_Layer: 0
-  m_Name: Stenbergskurvan - PathNode 3
+  m_Name: Stenbergskurvan - PathNode 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56474,11 +56467,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 688850646}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1691583186}
 --- !u!4 &1090485433
@@ -56493,7 +56486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 320894949}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1091653223
 GameObject:
@@ -57308,7 +57301,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -57556,7 +57548,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -57592,7 +57583,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -57706,7 +57696,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -58173,7 +58162,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -58706,13 +58694,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 98636649}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 1015616630}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 519998999}
 --- !u!4 &1143534993
@@ -58853,11 +58842,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 969347409}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 898671100}
   - {fileID: 1829927359}
@@ -58974,7 +58963,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -59383,7 +59371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.9
+      value: 14.24
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59391,7 +59379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -115.74
+      value: -140.66
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -59411,7 +59399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -59428,17 +59416,17 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.54
+      value: 40706.69
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0464
+      value: 6513.0713
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.1962
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -59448,12 +59436,12 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.37
+      value: 34791.22
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.6196
+      value: 5566.595
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -59468,17 +59456,17 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.477
+      value: 34293.312
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.956
+      value: 5486.9297
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19619998
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -59488,17 +59476,17 @@ PrefabInstance:
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40208.62
+      value: 40208.777
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.38
+      value: 6433.4043
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620003
+      value: 0.19620001
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -59532,11 +59520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substeps: 15
-  pathNodesToShow: 2
-  lookAheadMinDistance: 0.5
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.1
-  passedProgress: 0
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
   targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -59553,10 +59536,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turningDirection: 0
-  pathParent: {fileID: 368425501}
+  pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 298294939}
+  currentNode: {fileID: 519998999}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -59766,7 +59749,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -59908,13 +59890,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 898671100}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 1829927359}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1215451841}
 --- !u!4 &1169706276
@@ -60597,7 +60580,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -61143,7 +61125,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -61633,10 +61614,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 989396397}
-  - {fileID: 1080908794}
-  - {fileID: 1918592211}
-  - {fileID: 1732742599}
-  - {fileID: 1035349140}
   - {fileID: 139171723}
   - {fileID: 493229307}
   - {fileID: 987216381}
@@ -61644,7 +61621,7 @@ Transform:
   - {fileID: 1159659400}
   - {fileID: 290922899}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1208857706
 GameObject:
@@ -61678,7 +61655,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -61728,7 +61704,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -62146,6 +62121,59 @@ Transform:
   m_Father: {fileID: 1324555206}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
+--- !u!1 &1215374675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215374677}
+  - component: {fileID: 1215374676}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1215374676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215374675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 50
+  isPartOfIntersection: 0
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 552704785}
+    turnDirection: 0
+    nodesToWaitFor: []
+  inNodes:
+  - {fileID: 571076658}
+--- !u!4 &1215374677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215374675}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: -8.388382, y: 0, z: 22.798508}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215451840
 GameObject:
   m_ObjectHideFlags: 0
@@ -62176,13 +62204,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
-  isPartOfIntersection: 0
-  nodesToWaitFor: []
+  roadSpeedLimit: 30
+  isPartOfIntersection: 1
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1169706275}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 121007322}
 --- !u!4 &1215451842
@@ -62571,7 +62599,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -62805,7 +62832,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -62919,7 +62945,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -62969,15 +62994,17 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1829927359}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 898671100}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 663858182}
+  - {fileID: 86581405}
 --- !u!4 &1241226984
 Transform:
   m_ObjectHideFlags: 0
@@ -63272,7 +63299,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -64644,13 +64670,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
-  isPartOfIntersection: 0
-  nodesToWaitFor: []
+  roadSpeedLimit: 30
+  isPartOfIntersection: 1
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 682587891}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 2037563635}
 --- !u!4 &1291192335
@@ -65570,7 +65596,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -66713,7 +66738,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -68068,7 +68092,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -68088,7 +68111,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -68135,7 +68157,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -68155,7 +68176,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -68603,7 +68623,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -68777,7 +68796,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353766335
 GameObject:
@@ -68811,7 +68830,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -69017,7 +69035,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 20
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -69069,7 +69086,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -69571,7 +69587,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -69846,7 +69861,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -69914,7 +69928,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -71182,7 +71195,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -71229,7 +71241,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -71249,7 +71260,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -71269,7 +71279,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -71631,7 +71640,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -71746,161 +71754,6 @@ Transform:
   m_Father: {fileID: 1412146041}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
---- !u!1001 &1400557838
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1208552238}
-    m_Modifications:
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_Name
-      value: City V2 Car (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_TagString
-      value: Vehicle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -370.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.13214265
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9912307
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 15.187
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40706.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6513.014
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19619998
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34791.797
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5566.6875
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620001
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34293.664
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5486.9863
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620003
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40208.203
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6433.3125
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620001
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013910545014, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: pilotedBy
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013910545014, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: wheelChangeSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
 --- !u!1 &1401621579
 GameObject:
   m_ObjectHideFlags: 0
@@ -72126,7 +71979,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -72474,7 +72326,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -72927,7 +72778,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -73373,7 +73223,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -73437,7 +73286,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 1
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -73565,7 +73413,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -74211,7 +74058,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -74520,7 +74366,7 @@ GameObject:
   - component: {fileID: 1455108677}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74631,7 +74477,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -74714,7 +74559,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -75020,7 +74864,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -75218,7 +75061,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -75453,7 +75295,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -75595,7 +75436,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -75769,7 +75609,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -76014,7 +75853,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -76574,7 +76412,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -77731,7 +77568,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -77781,7 +77617,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -77831,7 +77666,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 20
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -78390,7 +78224,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -78458,7 +78291,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -78632,7 +78464,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -79419,7 +79250,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -79561,7 +79391,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -79865,7 +79694,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 20
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -79917,7 +79745,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -79968,11 +79795,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 578887673}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1829927359}
   - {fileID: 898671100}
@@ -80454,11 +80281,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 959889038}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1075027601}
 --- !u!4 &1597324827
@@ -80545,7 +80372,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -80595,7 +80421,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -80737,7 +80562,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -80787,11 +80611,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1770925659}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 830731450}
   - {fileID: 939392668}
@@ -81089,7 +80913,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -81139,7 +80962,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -81281,7 +81103,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -81331,7 +81152,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -82025,7 +81845,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -82617,6 +82436,62 @@ Transform:
   m_Father: {fileID: 1781717997}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1646949050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646949052}
+  - component: {fileID: 1646949051}
+  m_Layer: 0
+  m_Name: Stenbergskurvan NE - PathNode 7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1646949051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646949050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deb4358ed649b54a93bdbf5fcfed4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowedToPass: 1
+  roadSpeedLimit: 30
+  isPartOfIntersection: 0
+  carsOnThisNode: []
+  outChoices:
+  - outNode: {fileID: 561718305}
+    turnDirection: 0
+    nodesToWaitFor: []
+  - outNode: {fileID: 86581405}
+    turnDirection: 1
+    nodesToWaitFor: []
+  inNodes:
+  - {fileID: 620094951}
+--- !u!4 &1646949052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646949050}
+  m_LocalRotation: {x: -0, y: 0.9999774, z: -0, w: -0.006722232}
+  m_LocalPosition: {x: 28.796986, y: 0, z: 76.174934}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 568564959}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647697682
 GameObject:
   m_ObjectHideFlags: 0
@@ -82628,7 +82503,7 @@ GameObject:
   - component: {fileID: 1647697684}
   - component: {fileID: 1647697683}
   m_Layer: 0
-  m_Name: Granvagen - Pathnode
+  m_Name: Granvagen - Pathnode 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82649,11 +82524,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1861977812}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1981696059}
 --- !u!4 &1647697684
@@ -82668,7 +82543,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 359849329}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1650149778
 GameObject:
@@ -83018,7 +82893,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -83329,7 +83203,7 @@ MonoBehaviour:
     updateCameraInUpdate: 0
     updateCameraInFixedUpdate: 1
     updateCameraInLateUpdate: 0
-  carToFollow: {fileID: 1732742599}
+  carToFollow: {fileID: 989396397}
 --- !u!81 &1667673430
 AudioListener:
   m_ObjectHideFlags: 0
@@ -84055,7 +83929,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -84098,7 +83971,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -84226,7 +84098,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -84793,7 +84664,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -85174,7 +85044,7 @@ GameObject:
   - component: {fileID: 1691583187}
   - component: {fileID: 1691583186}
   m_Layer: 0
-  m_Name: Stenbergskurvan - PathNode 2
+  m_Name: Stenbergskurvan - PathNode 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85195,11 +85065,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1090485432}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 262260119}
 --- !u!4 &1691583187
@@ -85214,7 +85084,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 320894949}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1693397787
 GameObject:
@@ -85280,7 +85150,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -85579,7 +85448,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -85785,7 +85653,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -85835,7 +85702,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -86134,7 +86000,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -86400,7 +86265,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -86450,7 +86314,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -86769,7 +86632,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -86787,76 +86649,6 @@ Transform:
   m_Father: {fileID: 304035104}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1732742598 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 1939965052}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1732742599 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 1939965052}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1732742600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732742598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  substeps: 15
-  pathNodesToShow: 5
-  lookAheadMinDistance: 1.5
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.2
-  passedProgress: 0
-  target: {x: 0, y: 0, z: 0}
-  curvePercentage: 0
-  targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
---- !u!114 &1732742601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732742598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningDirection: 0
-  pathParent: {fileID: 368425501}
-  maxNodesInRandomizer: 30
-  path: []
-  currentNode: {fileID: 1554115005}
-  endNode: {fileID: 0}
-  kmhSpeed: 0
-  debugStop: 0
-  currentState: 0
-  recklessDriver: 0
-  ignoreStopsAndTrafficLights: 0
-  ignoreSpeedLimit: 0
-  criminalSpeedFactor: 1.5
-  maxRangeFromCarToEndNodeRandom: 100
-  carWidth: 2
-  carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 1
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
-  lineToNode: {r: 1, g: 0.9459826, b: 0, a: 1}
-  showLineToNextNode: 0
 --- !u!1 &1733664093
 GameObject:
   m_ObjectHideFlags: 0
@@ -87453,7 +87245,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -87877,7 +87668,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -87927,7 +87717,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -88032,7 +87821,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -88408,11 +88196,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 792069445}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1607994601}
 --- !u!4 &1770925660
@@ -88553,11 +88341,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1981696059}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 688850646}
 --- !u!4 &1775446135
@@ -88572,7 +88360,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 359849329}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1779362886
 GameObject:
@@ -90213,7 +90001,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -90263,7 +90050,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -90715,7 +90501,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -91630,7 +91415,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -91650,7 +91434,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -91709,7 +91492,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -92067,7 +91849,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -92242,13 +92023,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1587956809}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 1148823378}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1241226983}
   - {fileID: 1169706275}
@@ -92935,7 +92717,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -93021,7 +92802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.42
+      value: -51.31
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -93029,7 +92810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -74.340004
+      value: -79.96
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -93049,7 +92830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -93066,17 +92847,17 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.562
+      value: 40706.508
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0503
+      value: 6513.041
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -93086,12 +92867,12 @@ PrefabInstance:
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.406
+      value: 34791.46
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.625
+      value: 5566.6343
       objectReference: {fileID: 0}
     - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -93106,17 +92887,17 @@ PrefabInstance:
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34293.44
+      value: 34293.504
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5486.9507
+      value: 5486.9604
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.1962
       objectReference: {fileID: 0}
     - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -93126,17 +92907,17 @@ PrefabInstance:
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40208.598
+      value: 40208.54
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6433.376
+      value: 6433.3667
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
-      value: 0.19620001
+      value: 0.19620003
       objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
@@ -93170,11 +92951,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   substeps: 15
-  pathNodesToShow: 3
-  lookAheadMinDistance: 1
-  lookAheadMaxDistance: 8
-  lookAheadSpeedModifier: 0.1
-  passedProgress: 0
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
   targetIndicatorColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -93191,10 +92967,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turningDirection: 0
-  pathParent: {fileID: 368425501}
+  pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 192694480}
+  currentNode: {fileID: 841299496}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -93247,7 +93023,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -93394,7 +93169,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -93924,11 +93698,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 519998999}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1647697683}
 --- !u!4 &1861977813
@@ -93943,7 +93717,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 359849329}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1862780856
 GameObject:
@@ -94204,13 +93978,14 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 162736499}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 519668244}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 2048043748}
 --- !u!4 &1869248632
@@ -94259,7 +94034,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -94311,7 +94085,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -94578,7 +94351,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -94844,7 +94616,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -95804,7 +95575,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 15
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -96233,7 +96003,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -96283,7 +96052,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 1
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -96333,7 +96101,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -96362,7 +96129,7 @@ GameObject:
   - component: {fileID: 1908905322}
   - component: {fileID: 1908905321}
   m_Layer: 0
-  m_Name: Granvagen W - PathNode
+  m_Name: Granvagen W - PathNode 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96383,11 +96150,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 571076658}
-    turnDirection: 0
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 711537886}
 --- !u!4 &1908905322
@@ -96402,7 +96169,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1071909883}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1909516214
 GameObject:
@@ -96438,7 +96205,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -96645,176 +96411,6 @@ Transform:
   m_Father: {fileID: 1265546052}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1918592208
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1208552238}
-    m_Modifications:
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_Name
-      value: Criminal
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6607224
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 77.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.00000058114523
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180.00002
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40706.516
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6513.0425
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620003
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34791.348
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5566.616
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620003
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34293.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5486.9585
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40208.645
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6433.383
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
---- !u!1 &1918592209 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 1918592208}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1918592210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918592209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turningDirection: 0
-  pathParent: {fileID: 368425501}
-  maxNodesInRandomizer: 30
-  path: []
-  currentNode: {fileID: 201947719}
-  endNode: {fileID: 0}
-  kmhSpeed: 0
-  debugStop: 0
-  currentState: 0
-  recklessDriver: 1
-  ignoreStopsAndTrafficLights: 0
-  ignoreSpeedLimit: 1
-  criminalSpeedFactor: 1.25
-  maxRangeFromCarToEndNodeRandom: 100
-  carWidth: 2
-  carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 2
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
-  lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  showLineToNextNode: 0
---- !u!4 &1918592211 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881,
-    type: 3}
-  m_PrefabInstance: {fileID: 1918592208}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1921244859
 GameObject:
   m_ObjectHideFlags: 0
@@ -96939,7 +96535,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -97206,7 +96801,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -97256,7 +96850,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -97430,7 +97023,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -97448,161 +97040,6 @@ Transform:
   m_Father: {fileID: 368425501}
   m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1939965052
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1208552238}
-    m_Modifications:
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_Name
-      value: City V2 Car (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_TagString
-      value: Vehicle
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -378.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.13214265
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9912307
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 15.187
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40706.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6513.014
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19619998
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34791.797
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5566.687
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34293.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5486.988
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40208.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6433.314
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1962
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013910545014, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: pilotedBy
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013910545014, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: wheelChangeSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
 --- !u!1 &1940123396
 GameObject:
   m_ObjectHideFlags: 0
@@ -97791,7 +97228,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -98135,7 +97571,7 @@ GameObject:
   - component: {fileID: 1946869521}
   - component: {fileID: 1946869520}
   m_Layer: 0
-  m_Name: Stenbergskurvan NE - PathNode
+  m_Name: Stenbergskurvan NE - PathNode 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98156,11 +97592,13 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
-  outChoices: []
+  outChoices:
+  - outNode: {fileID: 841299496}
+    turnDirection: 2
+    nodesToWaitFor: []
   inNodes:
-  - {fileID: 571076658}
+  - {fileID: 705778104}
 --- !u!4 &1946869521
 Transform:
   m_ObjectHideFlags: 0
@@ -98173,7 +97611,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 568564959}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951234293
 GameObject:
@@ -98396,7 +97834,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -99075,14 +98512,16 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 939392668}
     turnDirection: 0
+    nodesToWaitFor: []
   - outNode: {fileID: 830731450}
-    turnDirection: 0
+    turnDirection: 1
+    nodesToWaitFor: []
   inNodes:
+  - {fileID: 561718305}
   - {fileID: 406977604}
 --- !u!4 &1981600208
 Transform:
@@ -99109,7 +98548,7 @@ GameObject:
   - component: {fileID: 1981696060}
   - component: {fileID: 1981696059}
   m_Layer: 0
-  m_Name: Granvagen - PathNode
+  m_Name: Granvagen - PathNode 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99130,11 +98569,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1647697683}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 1775446134}
 --- !u!4 &1981696060
@@ -99149,7 +98588,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 359849329}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1982508683
 GameObject:
@@ -100142,7 +99581,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -100412,7 +99850,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 1
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -100585,13 +100022,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1291192334}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 162736499}
   - {fileID: 519668244}
@@ -100887,13 +100324,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 50
+  roadSpeedLimit: 25
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1869248631}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 453136544}
 --- !u!4 &2048043749
@@ -100904,7 +100341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048043747}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.37, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058364285}
@@ -101021,7 +100458,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 30
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -101072,11 +100508,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 107621230}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 352670816}
 --- !u!4 &2050359870
@@ -101869,7 +101305,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -102595,7 +102030,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -103517,11 +102951,11 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices:
   - outNode: {fileID: 1025915564}
     turnDirection: 0
+    nodesToWaitFor: []
   inNodes:
   - {fileID: 231687813}
 --- !u!4 &2093195540
@@ -103532,7 +102966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093195538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.866771, y: -0.14, z: 0.46372062}
+  m_LocalPosition: {x: -5.44, y: -0.14, z: 0.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1058364285}
@@ -103570,7 +103004,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -103804,7 +103237,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 20
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -104608,7 +104040,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -105576,7 +105007,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []
@@ -105658,7 +105088,6 @@ MonoBehaviour:
   allowedToPass: 1
   roadSpeedLimit: 50
   isPartOfIntersection: 0
-  nodesToWaitFor: []
   carsOnThisNode: []
   outChoices: []
   inNodes: []

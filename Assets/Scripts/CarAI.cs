@@ -5,6 +5,8 @@ using UnityEngine;
 public class CarAI : MonoBehaviour
 {
     public Turn turningDirection;
+    int turnPathNodeCount = 0;
+    bool performingTurn = false;
 
     //The progress tracker responsible for following a path between pathnodes
     PathNodeProgressTracker aiPathProgressTracker;
@@ -229,13 +231,13 @@ public class CarAI : MonoBehaviour
             case AIState.WaitForStopAndTrafficLights:
                 {
                     float distanceToStop = Vector3.Distance(path[0].transform.position, transform.position);
-                    float newSpeed = distanceToStop < 5 ? 0 : Mathf.Min(roadSpeedLimit, distanceToStop);
+                    float newSpeed = distanceToStop < 3 + (carLength/2) ? 0 : Mathf.Min(roadSpeedLimit, distanceToStop);
                     SetSpeedToHold(newSpeed);
                 }
                 break;
             case AIState.Queue:
                 {
-                    float newSpeed = distanceToObstacle < 3 ? 0 : Mathf.Min(roadSpeedLimit, distanceToObstacle);
+                    float newSpeed = distanceToObstacle < 3 + (carLength/2) ? 0 : Mathf.Min(roadSpeedLimit, distanceToObstacle);
                     SetSpeedToHold(newSpeed);
                 }
                 break;
@@ -410,6 +412,10 @@ public class CarAI : MonoBehaviour
     /// </summary>
     private float SteerTowardsPoint(Vector3 point)
     {
+        if (point == rb.position)
+        {
+            return 0;
+        }
         Vector3 relativeVector = transform.InverseTransformPoint(point);
         relativeVector /= relativeVector.magnitude;
         return (relativeVector.x / relativeVector.magnitude);
@@ -457,7 +463,7 @@ public class CarAI : MonoBehaviour
             path.RemoveAt(0);
 
             //If there are still nodes to travel to
-            if (path.Count > 0)
+            if (path.Count > 1)
             {
                 SetRoadSpeedLimit(currentNode.GetComponent<PathNode>().GetRoadSpeedLimit());
                 path[0].AddCarToNode(this);
@@ -469,6 +475,7 @@ public class CarAI : MonoBehaviour
             else
             {
                 //Create new path
+                path.Clear();
                 SetRandomTargetNode(null);
                 path[0].AddCarToNode(this);
             }
@@ -476,8 +483,8 @@ public class CarAI : MonoBehaviour
             {
                 aiPathProgressTracker.UpdatePath(path, currentNode);
             }
+            turningDirection = CheckTurning();
         }
-        turningDirection = CheckTurning();
     }
 
     /// <summary>
@@ -514,11 +521,18 @@ public class CarAI : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns true if there is a red light to stop for
+    /// Returns true if there is a red light to stop for. Or if there are cars needed to wait for
     /// </summary>
     public bool CheckIfAllowedToPass()
     {
-        return path[0].IsAllowedToPass();
+        if (path.Count > 1)
+        {
+            return path[0].IsAllowedToPass(path[1]);
+        }
+        else
+        {
+            return path[0].IsAllowedToPass(null);
+        }
     }
 
     IEnumerator CheckIfStuck()
@@ -532,13 +546,43 @@ public class CarAI : MonoBehaviour
 
     private Turn CheckTurning()
     {
-        if (path.Count > 1 && path[0].GetOutChoices().Count > 1)
+        if (path.Count > 1)
         {
             for (int i = 0; i < path[0].outChoices.Count; i++)
             {
                 if (path[1] == path[0].outChoices[i].outNode)
                 {
-                    return path[0].outChoices[i].turnDirection;
+                    Turn newTurn = path[0].outChoices[i].turnDirection;
+
+                    //If we are turning
+                    if (newTurn != Turn.Straight)
+                    {
+                        performingTurn = true;
+                        turnPathNodeCount = 0;
+                        return newTurn;
+                    }
+                    else
+                    {
+                        //If we are going straight from our next pathnode we still should use our blinkers through this turn we are currently making
+                        //Therefore we check if we are just passing through and out of the pathnode indicating a turn, we dont change state untill we pass the next pathnode (2)
+                        if (performingTurn)
+                        {
+                            turnPathNodeCount++;
+                            if (turnPathNodeCount == 2)
+                            {
+                                performingTurn = false;
+                                return newTurn;
+                            }
+                            else
+                            {
+                                return turningDirection;
+                            }
+                        }
+                        else //If not turning, and is currently not performing a turn from before simply return the new turn, which is straight
+                        {
+                            return newTurn;
+                        }
+                    }
                 }
             }
             Debug.LogWarning("Did not find the correct direction, check outnode choices");
@@ -758,7 +802,7 @@ public class CarAI : MonoBehaviour
             }
             //Right progress tracker sensor
             Vector3 progressTrackerSensor = carFront + (transform.right * carWidth / 2);
-            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim, out hit, sensorLength);
+            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim-progressTrackerSensor, out hit, sensorLength);
             if (sensorCollision)
             {
                 if (hit.transform.tag == "Vehicle")
@@ -801,7 +845,7 @@ public class CarAI : MonoBehaviour
             }
             //Left progress tracker sensor
             Vector3 progressTrackerSensor = carFront - (transform.right * carWidth / 2);
-            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim, out hit, sensorLength);
+            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim-progressTrackerSensor, out hit, sensorLength);
             if (sensorCollision)
             {
                 if (hit.transform.tag == "Vehicle")

@@ -4,46 +4,88 @@ using UnityEngine;
 
 public class TimedTrafficlights : MonoBehaviour
 {
+    private enum State { Group1, Group2 }
+    State state = State.Group1;
     [SerializeField] PathNode[] lightGroup1;
     [SerializeField] PathNode[] lightGroup2;
+    bool redForAll = false;
 
     // Start is called before the first frame update
     void Start()
     {
         //Sets the opposite of default to the lightgroup1
-        for (int i = 0; i < lightGroup1.Length; i++)
+        for (int i = 0; i < lightGroup2.Length; i++)
         {
-            lightGroup1[i].SwitchAllowedToPass();
+            lightGroup2[i].SetAllowedToPass(false);
         }
     }
 
     float timer;
-    [SerializeField] float timeBetweenLightswitch = 10f;
+    [SerializeField] float greenLightTime = 10f;
+    [SerializeField] float timeBetweenLightSwitches = 3f;
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer >= timeBetweenLightswitch)
+        if (!redForAll)
         {
-            timer -= timeBetweenLightswitch;
-            ReverseLights();
+            if (timer >= greenLightTime)
+            {
+                timer -= greenLightTime;
+                TurnAllRed();
+            }
+        }
+        else
+        {
+            if (timer >= timeBetweenLightSwitches)
+            {
+                timer -= timeBetweenLightSwitches;
+                redForAll = false;
+                ReverseLights();
+            }
         }
     }
 
-    
+    private void TurnAllRed()
+    {
+        redForAll = true;
+
+        if (state == State.Group1)
+        {
+            for (int i = 0; i < lightGroup1.Length; i++)
+            {
+                lightGroup1[i].SetAllowedToPass(false);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < lightGroup2.Length; i++)
+            {
+                lightGroup2[i].SetAllowedToPass(false);
+            }
+        }
+
+    }
 
     private void ReverseLights()
     {
-        for (int i = 0; i < lightGroup1.Length; i++)
+        if (state == State.Group1)
         {
-            lightGroup1[i].SwitchAllowedToPass();
+            state = State.Group2;
+            for (int i = 0; i < lightGroup2.Length; i++)
+            {
+                lightGroup2[i].SetAllowedToPass(true);
+            }
         }
-
-        for (int i = 0; i < lightGroup2.Length; i++)
+        else
         {
-            lightGroup2[i].SwitchAllowedToPass();
+            state = State.Group1;
+            for (int i = 0; i < lightGroup1.Length; i++)
+            {
+                lightGroup1[i].SetAllowedToPass(true);
+            }
         }
     }
 }
