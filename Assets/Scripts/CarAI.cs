@@ -21,8 +21,8 @@ public class CarAI : MonoBehaviour
     [SerializeField] Transform pathParent; //The path parent where the car picks random nodes from to go to
     [SerializeField] int maxNodesInRandomizer = 30;
 
-    public List<PathNode> path; //The path with pathnodes to follow
-    public PathNode currentNode; //DEBUG PUBLIC - SHOULD BE SET TO THE CLOSEST ONE AT START
+    [SerializeField] List<PathNode> path; //The path with pathnodes to follow - DEBUG PUBLIC
+    PathNode currentNode;
     [SerializeField] PathNode endNode; //Leave un-assigned if car is supposed to wander around without a set goal to stop at
 
     //How close we need to be a node to accept as arrived
@@ -63,6 +63,7 @@ public class CarAI : MonoBehaviour
         wheelController = GetComponent<WheelDrive>();
         rb = GetComponent<Rigidbody>();
 
+        currentNode = FindClosestNode();
 
         if (endNode)
         {
@@ -133,12 +134,12 @@ public class CarAI : MonoBehaviour
         if (ignoreStopsAndTrafficLights)
         {
             currentState = AIState.Drive;
-            UpdateWaypoint();
+            UpdatePathNode();
         }
         else if (CheckIfAllowedToPass())
         {
             currentState = AIState.Drive;
-            UpdateWaypoint();
+            UpdatePathNode();
         }
         else
         {
@@ -231,13 +232,13 @@ public class CarAI : MonoBehaviour
             case AIState.WaitForStopAndTrafficLights:
                 {
                     float distanceToStop = Vector3.Distance(path[0].transform.position, transform.position);
-                    float newSpeed = distanceToStop < 3 + (carLength/2) ? 0 : Mathf.Min(roadSpeedLimit, distanceToStop);
+                    float newSpeed = distanceToStop < 3 + (carLength / 2) ? 0 : Mathf.Min(roadSpeedLimit, distanceToStop);
                     SetSpeedToHold(newSpeed);
                 }
                 break;
             case AIState.Queue:
                 {
-                    float newSpeed = distanceToObstacle < 3 + (carLength/2) ? 0 : Mathf.Min(roadSpeedLimit, distanceToObstacle);
+                    float newSpeed = distanceToObstacle < 3 + (carLength / 2) ? 0 : Mathf.Min(roadSpeedLimit, distanceToObstacle);
                     SetSpeedToHold(newSpeed);
                 }
                 break;
@@ -453,7 +454,7 @@ public class CarAI : MonoBehaviour
     /// If so sets our current node to the next in the list
     /// Unless we are at the goal node. Then we search for a new random nodes
     /// </summary>
-    private void UpdateWaypoint()
+    private void UpdatePathNode()
     {
         if (Vector3.Distance(transform.position, path[0].transform.position) < nodeAcceptanceDistance)
         {
@@ -485,6 +486,26 @@ public class CarAI : MonoBehaviour
             }
             turningDirection = CheckTurning();
         }
+    }
+
+    private PathNode FindClosestNode()
+    {
+        Collider[] allOverlappingColliders = Physics.OverlapSphere(transform.position, 100f);
+        PathNode closestNode = null;
+        float distance = float.MaxValue;
+        foreach (var item in allOverlappingColliders)
+        {
+            if (item.GetComponent<PathNode>() != null)
+            {
+                float testDistance = Vector3.Distance(transform.position, item.transform.position);
+                if (testDistance < distance)
+                {
+                    closestNode = item.GetComponent<PathNode>();
+                    distance = testDistance;
+                }
+            }
+        }
+        return closestNode;
     }
 
     /// <summary>
@@ -802,7 +823,7 @@ public class CarAI : MonoBehaviour
             }
             //Right progress tracker sensor
             Vector3 progressTrackerSensor = carFront + (transform.right * carWidth / 2);
-            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim-progressTrackerSensor, out hit, sensorLength);
+            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim - progressTrackerSensor, out hit, sensorLength);
             if (sensorCollision)
             {
                 if (hit.transform.tag == "Vehicle")
@@ -845,7 +866,7 @@ public class CarAI : MonoBehaviour
             }
             //Left progress tracker sensor
             Vector3 progressTrackerSensor = carFront - (transform.right * carWidth / 2);
-            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim-progressTrackerSensor, out hit, sensorLength);
+            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim - progressTrackerSensor, out hit, sensorLength);
             if (sensorCollision)
             {
                 if (hit.transform.tag == "Vehicle")
