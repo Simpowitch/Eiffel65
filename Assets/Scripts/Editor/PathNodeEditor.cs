@@ -99,7 +99,11 @@ public class PathNodeEditor : Editor
     private PathNode CreateNewNode(PathNode selectedPathNode)
     {
         PathNode newNode;
-        newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), selectedPathNode.transform.position, selectedPathNode.transform.rotation);
+        //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), selectedPathNode.transform.position, selectedPathNode.transform.rotation);
+        GameObject newObject = PrefabUtility.InstantiatePrefab(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
+        newObject.transform.position = selectedPathNode.transform.position;
+        newNode = newObject.GetComponent<PathNode>();
+
         if (roadSegmentParent)
         {
             newNode.transform.SetParent(roadSegmentParent);
@@ -414,7 +418,11 @@ public class PathNodeEditor : Editor
     [MenuItem("PathNode/Create new pathnode #n")]
     static void CreateNewNode()
     {
-        PathNode newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"));
+        //PathNode newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"));
+
+        GameObject newObject = PrefabUtility.InstantiatePrefab(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
+        PathNode newNode = newObject.GetComponent<PathNode>();
+
         Camera cam = SceneView.lastActiveSceneView.camera;
 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));

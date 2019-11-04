@@ -4272,6 +4272,8 @@ Transform:
   - {fileID: 1058364285}
   - {fileID: 178733470}
   - {fileID: 1267425202}
+  - {fileID: 187992054}
+  - {fileID: 1328602028}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6159,7 +6161,6 @@ MonoBehaviour:
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 2093195539}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -10208,6 +10209,36 @@ Transform:
   - {fileID: 856873509}
   m_Father: {fileID: 26239150}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &187992053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187992054}
+  m_Layer: 0
+  m_Name: RoadName
+  m_TagString: RoadSegment
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187992054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187992053}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.1782327, y: 0, z: -180.78616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 98168814}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192141773
 GameObject:
@@ -16652,7 +16683,6 @@ MonoBehaviour:
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 519998999}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -27054,7 +27084,6 @@ MonoBehaviour:
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 2048043748}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -52005,7 +52034,6 @@ MonoBehaviour:
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 620094951}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -60158,7 +60186,6 @@ MonoBehaviour:
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 519998999}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
@@ -67360,6 +67387,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1394298774}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1328602027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1328602028}
+  m_Layer: 0
+  m_Name: RoadName
+  m_TagString: RoadSegment
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1328602028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328602027}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.1782327, y: 0, z: -180.78616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 98168814}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1330926273
 GameObject:
@@ -93787,7 +93844,6 @@ MonoBehaviour:
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
-  currentNode: {fileID: 841299496}
   endNode: {fileID: 0}
   kmhSpeed: 0
   debugStop: 0
