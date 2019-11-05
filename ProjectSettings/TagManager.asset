@@ -8,6 +8,7 @@ TagManager:
   - Vehicle
   - WorldObject
   - RoadSegment
+  - PathNode
   layers:
   - Default
   - TransparentFX

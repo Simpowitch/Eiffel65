@@ -3109,7 +3109,7 @@ GameObject:
   - component: {fileID: 69843404}
   m_Layer: 0
   m_Name: "Solv\xE4gsavenyn N - PathNode1. Lane 1"
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3756,7 +3756,7 @@ GameObject:
   - component: {fileID: 78765558}
   m_Layer: 0
   m_Name: Solvagsavenyn N-S Curve Pathnode start Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3774,7 +3774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 50
   isPartOfIntersection: 0
   carsOnThisNode: []
   outChoices:
@@ -4088,7 +4088,7 @@ GameObject:
   - component: {fileID: 86581407}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 8L
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4272,8 +4272,6 @@ Transform:
   - {fileID: 1058364285}
   - {fileID: 178733470}
   - {fileID: 1267425202}
-  - {fileID: 187992054}
-  - {fileID: 1328602028}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4290,7 +4288,7 @@ GameObject:
   - component: {fileID: 98636651}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode2. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4694,7 +4692,7 @@ GameObject:
   - component: {fileID: 107621232}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5437,7 +5435,7 @@ GameObject:
   - component: {fileID: 121007324}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode3. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6002,11 +6000,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_Name
-      value: Car
+      value: Car 1
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6157,17 +6155,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugStop: 0
   turningDirection: 0
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
   endNode: {fileID: 0}
   kmhSpeed: 0
-  debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
+  runningFromPolice: 0
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
@@ -6199,6 +6198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
   substeps: 15
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
@@ -7126,7 +7126,7 @@ GameObject:
   - component: {fileID: 162736501}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode1. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10210,36 +10210,6 @@ Transform:
   m_Father: {fileID: 26239150}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &187992053
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 187992054}
-  m_Layer: 0
-  m_Name: RoadName
-  m_TagString: RoadSegment
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &187992054
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187992053}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.1782327, y: 0, z: -180.78616}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 98168814}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192141773
 GameObject:
   m_ObjectHideFlags: 0
@@ -12072,7 +12042,7 @@ GameObject:
   - component: {fileID: 231687815}
   m_Layer: 0
   m_Name: Solvagsavenyn N-S Curve Pathnode1. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14013,7 +13983,7 @@ GameObject:
   - component: {fileID: 262260121}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 7
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16507,7 +16477,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_Name
-      value: Car 2 (2)
+      value: Car 6
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
@@ -16663,6 +16633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
   substeps: 15
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
@@ -16679,17 +16650,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugStop: 0
   turningDirection: 0
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
   endNode: {fileID: 0}
   kmhSpeed: 0
-  debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
+  runningFromPolice: 0
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
@@ -20514,7 +20486,7 @@ GameObject:
   - component: {fileID: 352670818}
   m_Layer: 0
   m_Name: Stenbergskurvan Ut W
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21838,7 +21810,7 @@ GameObject:
   - component: {fileID: 388937832}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode end. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23195,7 +23167,7 @@ GameObject:
   - component: {fileID: 406977605}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode end. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25009,7 +24981,7 @@ GameObject:
   - component: {fileID: 449990405}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 6
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25168,7 +25140,7 @@ GameObject:
   - component: {fileID: 453136546}
   m_Layer: 0
   m_Name: Solvagsavenyn N-S Curve Pathnode1. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25186,7 +25158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 50
   isPartOfIntersection: 0
   carsOnThisNode: []
   outChoices:
@@ -26934,7 +26906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27080,17 +27052,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugStop: 0
   turningDirection: 0
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
   endNode: {fileID: 0}
   kmhSpeed: 0
-  debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
+  runningFromPolice: 0
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
@@ -27122,6 +27095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
   substeps: 15
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
@@ -28089,7 +28063,7 @@ GameObject:
   - component: {fileID: 519668246}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode1. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28160,7 +28134,7 @@ GameObject:
   - component: {fileID: 519999001}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode start. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29725,7 +29699,7 @@ GameObject:
   - component: {fileID: 552704787}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 2
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30320,7 +30294,7 @@ GameObject:
   - component: {fileID: 561718307}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 8R
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30771,7 +30745,7 @@ GameObject:
   - component: {fileID: 571076660}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31389,7 +31363,7 @@ GameObject:
   - component: {fileID: 578887674}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode end. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31421,7 +31395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 50
   isPartOfIntersection: 0
   carsOnThisNode: []
   outChoices:
@@ -33127,7 +33101,7 @@ GameObject:
   - component: {fileID: 620094953}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 6
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34727,7 +34701,7 @@ GameObject:
   - component: {fileID: 663858184}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode end. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35272,7 +35246,7 @@ GameObject:
   - component: {fileID: 682587893}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode start. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35742,7 +35716,7 @@ GameObject:
   - component: {fileID: 688850648}
   m_Layer: 0
   m_Name: Stenbergskurvan - Pathnode InN
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36504,7 +36478,7 @@ GameObject:
   - component: {fileID: 705778106}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 3
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36693,7 +36667,7 @@ GameObject:
   - component: {fileID: 711537888}
   m_Layer: 0
   m_Name: Granvagen W - PathNode 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36861,7 +36835,7 @@ GameObject:
   - component: {fileID: 715325128}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode3. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40891,7 +40865,7 @@ GameObject:
   - component: {fileID: 792069447}
   m_Layer: 0
   m_Name: Granvagen W - Out W
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40991,7 +40965,7 @@ GameObject:
   - component: {fileID: 793779763}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode2. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41307,7 +41281,7 @@ GameObject:
   - component: {fileID: 797044669}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 5
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43371,7 +43345,7 @@ GameObject:
   - component: {fileID: 830731452}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode1. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43534,7 +43508,7 @@ GameObject:
   - component: {fileID: 841299498}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 5
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46361,7 +46335,7 @@ GameObject:
   - component: {fileID: 887050707}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode2. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47350,7 +47324,7 @@ GameObject:
   - component: {fileID: 898671102}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode1. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49570,7 +49544,7 @@ GameObject:
   - component: {fileID: 939392670}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode1. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50307,7 +50281,7 @@ GameObject:
   - component: {fileID: 959889040}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 4
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50916,7 +50890,7 @@ GameObject:
   - component: {fileID: 969347411}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode end. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51297,7 +51271,7 @@ GameObject:
   - component: {fileID: 972135875}
   m_Layer: 0
   m_Name: Solvagsavenyn N-S Curve start. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51858,11 +51832,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_Name
-      value: Car (1)
+      value: Car 3
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52014,6 +51988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
   substeps: 15
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
@@ -52030,17 +52005,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugStop: 0
   turningDirection: 0
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
   endNode: {fileID: 0}
   kmhSpeed: 0
-  debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
+  runningFromPolice: 0
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
@@ -52152,7 +52128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013318341794, guid: 53c496fec7e88b444858ad01c2739816, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013369119048, guid: 53c496fec7e88b444858ad01c2739816, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52286,6 +52262,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 989396396}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &989396398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000013318341794, guid: 53c496fec7e88b444858ad01c2739816,
+    type: 3}
+  m_PrefabInstance: {fileID: 989396396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &989396399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989396398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2a05b423e3e92489659e617260d316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingSirens: 0
 --- !u!54 &989396400 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 54000014098661938, guid: 53c496fec7e88b444858ad01c2739816,
@@ -53585,7 +53580,7 @@ GameObject:
   - component: {fileID: 1015616632}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode2. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54400,7 +54395,7 @@ GameObject:
   - component: {fileID: 1025915566}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode start. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56360,7 +56355,7 @@ GameObject:
   - component: {fileID: 1075027603}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 2
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57053,7 +57048,7 @@ GameObject:
   - component: {fileID: 1090485434}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 9
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59294,7 +59289,7 @@ GameObject:
   - component: {fileID: 1143534994}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode1. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59456,7 +59451,7 @@ GameObject:
   - component: {fileID: 1148823380}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode2. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60010,7 +60005,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_Name
-      value: Car (2)
+      value: Car 5
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
@@ -60018,7 +60013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.24
+      value: 14.42
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -60166,6 +60161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
   substeps: 15
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
@@ -60182,17 +60178,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugStop: 0
   turningDirection: 0
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
   endNode: {fileID: 0}
   kmhSpeed: 0
-  debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
+  runningFromPolice: 0
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
@@ -60517,7 +60514,7 @@ GameObject:
   - component: {fileID: 1169706277}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode start. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62794,7 +62791,7 @@ GameObject:
   - component: {fileID: 1215374678}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62861,7 +62858,7 @@ GameObject:
   - component: {fileID: 1215451843}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode end. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63663,7 +63660,7 @@ GameObject:
   - component: {fileID: 1241226985}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode start. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65355,7 +65352,7 @@ GameObject:
   - component: {fileID: 1291192336}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode end. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67387,36 +67384,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1394298774}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1328602027
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1328602028}
-  m_Layer: 0
-  m_Name: RoadName
-  m_TagString: RoadSegment
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1328602028
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328602027}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.1782327, y: 0, z: -180.78616}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 98168814}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1330926273
 GameObject:
@@ -80524,7 +80491,7 @@ GameObject:
   - component: {fileID: 1587956811}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode2. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81024,7 +80991,7 @@ GameObject:
   - component: {fileID: 1597324828}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 3
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81368,7 +81335,7 @@ GameObject:
   - component: {fileID: 1607994603}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode2. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83239,7 +83206,7 @@ GameObject:
   - component: {fileID: 1646949053}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 7
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83309,7 +83276,7 @@ GameObject:
   - component: {fileID: 1647697685}
   m_Layer: 0
   m_Name: Granvagen - Pathnode 2
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85864,7 +85831,7 @@ GameObject:
   - component: {fileID: 1691583188}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 8
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89009,7 +88976,7 @@ GameObject:
   - component: {fileID: 1770925661}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode end. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89168,7 +89135,7 @@ GameObject:
   - component: {fileID: 1775446136}
   m_Layer: 0
   m_Name: Granvagen Out E - PathNode
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92864,7 +92831,7 @@ GameObject:
   - component: {fileID: 1829927361}
   m_Layer: 0
   m_Name: Solvagsavenyn N - PathNode1. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93668,11 +93635,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_Name
-      value: Car 2 (1)
+      value: Car 4
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
@@ -93824,6 +93791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c4a65633381b545bde3e720aaddfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints: []
   substeps: 15
   target: {x: 0, y: 0, z: 0}
   curvePercentage: 0
@@ -93840,17 +93808,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe6d6248b804a540902a742768708fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugStop: 0
   turningDirection: 0
   pathParent: {fileID: 98168814}
   maxNodesInRandomizer: 30
   path: []
   endNode: {fileID: 0}
   kmhSpeed: 0
-  debugStop: 0
   currentState: 0
   recklessDriver: 0
   ignoreStopsAndTrafficLights: 0
   ignoreSpeedLimit: 0
+  runningFromPolice: 0
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
@@ -94552,7 +94521,7 @@ GameObject:
   - component: {fileID: 1861977814}
   m_Layer: 0
   m_Name: Granvagen - PathNode In W
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94846,7 +94815,7 @@ GameObject:
   - component: {fileID: 1869248633}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode start. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97032,7 +97001,7 @@ GameObject:
   - component: {fileID: 1908905323}
   m_Layer: 0
   m_Name: Granvagen W - PathNode 2
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98488,7 +98457,7 @@ GameObject:
   - component: {fileID: 1946869522}
   m_Layer: 0
   m_Name: Stenbergskurvan NE - PathNode 4
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99422,7 +99391,7 @@ GameObject:
   - component: {fileID: 1981600209}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode start. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99493,7 +99462,7 @@ GameObject:
   - component: {fileID: 1981696061}
   m_Layer: 0
   m_Name: Granvagen - PathNode 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100962,7 +100931,7 @@ GameObject:
   - component: {fileID: 2037563637}
   m_Layer: 0
   m_Name: Solvagsavenyn S - PathNode2. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101278,7 +101247,7 @@ GameObject:
   - component: {fileID: 2048043750}
   m_Layer: 0
   m_Name: Solvagsavenyn N-S Curve Pathnode2. Lane 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101296,7 +101265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowedToPass: 1
-  roadSpeedLimit: 25
+  roadSpeedLimit: 50
   isPartOfIntersection: 0
   carsOnThisNode: []
   outChoices:
@@ -101474,7 +101443,7 @@ GameObject:
   - component: {fileID: 2050359871}
   m_Layer: 0
   m_Name: Stenbergskurvan - PathNode 0
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103931,7 +103900,7 @@ GameObject:
   - component: {fileID: 2093195541}
   m_Layer: 0
   m_Name: Solvagsavenyn N-S Curve Pathnode2. Lane 1
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

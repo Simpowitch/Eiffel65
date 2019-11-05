@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5261219559459394821}
   m_Layer: 0
   m_Name: PathNode
-  m_TagString: Untagged
+  m_TagString: PathNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

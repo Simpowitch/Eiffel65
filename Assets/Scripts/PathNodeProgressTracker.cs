@@ -6,7 +6,7 @@ public class PathNodeProgressTracker : MonoBehaviour
 {
     //CarAI ai;
 
-    List<Vector3> waypoints;
+    public List<Vector3> waypoints;
     [SerializeField] int substeps = 15;
 
     Rigidbody rb;
