@@ -301,6 +301,8 @@ public class CarAI : MonoBehaviour
         //Test 2
 
         //Check State of the AI
+        searchBoxes.Clear();
+        searchSpheres.Clear();
         CheckIfStuck();
         currentState = CalculateState(out List<GameObject> possibleCollisions);
         //Switch-case on the state
@@ -323,14 +325,27 @@ public class CarAI : MonoBehaviour
                 torquePercentage = CalculateTorqueAndBrakes();
                 break;
             case AIState.Queue:
-                float distanceToClosestObstacle = Vector3.Distance(this.transform.position, GetClosestObject(this.transform.position, possibleCollisions).transform.position);
+                if (CheckIfAllowedToPass())
+                {
+                    UpdatePath();
+                }
+                float distanceToClosestObstacle = GetDistanceToObstacle(this.transform.position + transform.forward * carLength / 2, GetClosestObject(this.transform.position, possibleCollisions));
                 steerPercentage = SteerTowardsPoint(aiPathProgressTracker.target);
                 speedToHold = CalculateSpeedToHold();
                 speedToHold = Mathf.Min(speedToHold, distanceToClosestObstacle);
                 torquePercentage = CalculateTorqueAndBrakes();
                 break;
             case AIState.AvoidCollision:
-                Debug.LogWarning("Not implemented");
+                if (CheckIfAllowedToPass())
+                {
+                    UpdatePath();
+                }
+                distanceToClosestObstacle = GetDistanceToObstacle(this.transform.position + transform.forward * carLength / 2, GetClosestObject(this.transform.position, possibleCollisions));
+                steerPercentage = SteerTowardsPoint(aiPathProgressTracker.target);
+                SteerAwayFromCollision(GetClosestObject(this.transform.position, possibleCollisions), ref steerPercentage);
+                speedToHold = CalculateSpeedToHold();
+                speedToHold = Mathf.Min(speedToHold, distanceToClosestObstacle);
+                torquePercentage = CalculateTorqueAndBrakes();
                 break;
             case AIState.Stopping:
                 UpdatePath();
@@ -349,7 +364,14 @@ public class CarAI : MonoBehaviour
                 {
                     UpdatePath();
                 }
-                distanceToClosestObstacle = Vector3.Distance(this.transform.position, GetClosestObject(this.transform.position, possibleCollisions).transform.position);
+                if (possibleCollisions.Count > 0)
+                {
+                    distanceToClosestObstacle = GetDistanceToObstacle(this.transform.position + transform.forward * carLength / 2, GetClosestObject(this.transform.position, possibleCollisions));
+                }
+                else
+                {
+                    distanceToClosestObstacle = float.MaxValue;
+                }
                 steerPercentage = SteerTowardsPoint(aiPathProgressTracker.target);
                 speedToHold = CalculateSpeedToHold();
                 if (IsPoliceNearby(out PoliceVehicle policeVehicle))
@@ -518,6 +540,8 @@ public class CarAI : MonoBehaviour
         return newState;
     }
 
+
+
     string terrainTag = "Terrain";
     string vehicleTag = "Vehicle";
     string pathNodeTag = "PathNode";
@@ -527,8 +551,11 @@ public class CarAI : MonoBehaviour
     private bool DetectCollisionOnWaypoints(out GameObject firstCollision)
     {
         firstCollision = null;
+        float minimumDistanceToCheck = carLength;
         float collisionDetectionLength = kmhSpeed;
-        float collisionDetectionRadius = carWidth;
+
+
+
         List<Vector3> waypoints = aiPathProgressTracker.waypoints;
         List<Collider> collisions = new List<Collider>();
         List<GameObject> collisionObjects = new List<GameObject>();
@@ -538,7 +565,10 @@ public class CarAI : MonoBehaviour
             //If the distance between this car and the waypoint is short enough, check if there is a collision there
             if (Vector3.Distance(transform.position, waypoints[i]) < collisionDetectionLength)
             {
-                collisions.AddRange(Physics.OverlapSphere(waypoints[i], collisionDetectionRadius));
+                if (Vector3.Distance(transform.position, waypoints[i]) > minimumDistanceToCheck)
+                {
+                    collisions.AddRange(Physics.OverlapSphere(waypoints[i], carWidth / 2));
+                }
             }
             else
             {
@@ -563,6 +593,13 @@ public class CarAI : MonoBehaviour
                 collisionObjects.Add(collisions[i].gameObject);
             }
         }
+
+        //Display the search
+        for (int i = 0; i < collisionObjects.Count; i++)
+        {
+            searchSpheres.Add(new SearchSphere(collisionObjects[i].transform.position, carWidth/2));
+        }
+
         if (collisionObjects.Count > 0)
         {
             firstCollision = GetClosestObject(transform.position, collisionObjects);
@@ -571,13 +608,14 @@ public class CarAI : MonoBehaviour
         return firstCollision != null;
     }
 
-    //Box detection of cars only
+    //Detection of cars only
     private bool CheckSideSensors(out GameObject carOnTheSide)
     {
         carOnTheSide = null;
-        float collisionDetectionWidth = carWidth;
-        float collisionDetectionLength = carLength;
         Vector3 centerPoint;
+        //Vector3 searchBox = new Vector3(carWidth, carHeight, carLength);
+
+        int detectors = Mathf.CeilToInt(carLength / carWidth);
 
         if (turningDirection == Turn.Left)
         {
@@ -591,7 +629,17 @@ public class CarAI : MonoBehaviour
         List<Collider> collisions = new List<Collider>();
         List<GameObject> collisionObjects = new List<GameObject>();
 
-        collisions.AddRange(Physics.OverlapBox(centerPoint, new Vector3(collisionDetectionWidth, 5, collisionDetectionLength)));
+        //Start at the front of the car
+        centerPoint += transform.forward * (carLength/2);
+
+        for (int i = 0; i <= detectors; i++)
+        {
+            SearchSphere detector = new SearchSphere(centerPoint, carWidth / 2);
+            collisions.AddRange(Physics.OverlapSphere(detector.pos, detector.radius));
+            searchSpheres.Add(detector);
+            centerPoint -= transform.forward * ((carLength) / detectors);
+        }
+
 
         for (int i = 0; i < collisions.Count; i++)
         {
@@ -610,6 +658,7 @@ public class CarAI : MonoBehaviour
                 collisionObjects.Add(collisions[i].gameObject);
             }
         }
+
 
         if (collisionObjects.Count > 0)
         {
@@ -633,6 +682,21 @@ public class CarAI : MonoBehaviour
             {
                 distance = testDistance;
                 closest = allObjects[i];
+            }
+        }
+        return closest;
+    }
+    public static Vector3 GetClosestVector3(Vector3 origin, List<Vector3> allPositions)
+    {
+        float distance = float.MaxValue;
+        Vector3 closest = Vector3.zero;
+        for (int i = 0; i < allPositions.Count; i++)
+        {
+            float testDistance = Vector3.Distance(origin, allPositions[i]);
+            if (testDistance < distance)
+            {
+                distance = testDistance;
+                closest = allPositions[i];
             }
         }
         return closest;
@@ -790,9 +854,13 @@ public class CarAI : MonoBehaviour
     //    }
     //}
 
+    float closestNodeSearchDistance = 10f;
+    /// <summary>
+    /// Find the closest pathnode
+    /// </summary>
     private PathNode FindClosestNode()
     {
-        Collider[] allOverlappingColliders = Physics.OverlapSphere(transform.position, 100f);
+        Collider[] allOverlappingColliders = Physics.OverlapSphere(transform.position, closestNodeSearchDistance);
         PathNode closestNode = null;
         float distance = float.MaxValue;
         foreach (var item in allOverlappingColliders)
@@ -806,6 +874,13 @@ public class CarAI : MonoBehaviour
                     distance = testDistance;
                 }
             }
+        }
+
+        if (closestNode == null)
+        {
+            closestNodeSearchDistance *= 2;
+            closestNode = FindClosestNode();
+            closestNodeSearchDistance = 10f;
         }
         return closestNode;
     }
@@ -898,7 +973,9 @@ public class CarAI : MonoBehaviour
         checkingIfStuck = false;
     }
 
-
+    /// <summary>
+    /// Check which direction we are turning from the next pathnode
+    /// </summary>
     private Turn CheckTurning()
     {
         if (path.Count > 1)
@@ -945,12 +1022,15 @@ public class CarAI : MonoBehaviour
         return Turn.Straight;
     }
 
+    /// <summary>
+    /// Check if this car has priority over another
+    /// </summary>
     private bool CheckLaneChangePriority(CarAI otherCar)
     {
         //If we are turning (changling lane)
         if (turningDirection != Turn.Straight)
         {
-            //if the other car is to the right of us and is changling lane to a left
+            //if the other car is to the right of us and is changing lane to a left
             if (otherCar.turningDirection == Turn.Left)
             {
                 return true;
@@ -966,9 +1046,13 @@ public class CarAI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if there is a police car nearby and out the closest one
+    /// </summary>
     private bool IsPoliceNearby(out PoliceVehicle policeVehicle)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 20);
+        float distanceToCheck = Mathf.Max(10, kmhSpeed);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, distanceToCheck);
         float closestDistance = float.MaxValue;
         policeVehicle = null;
         foreach (var item in colliders)
@@ -1000,6 +1084,9 @@ public class CarAI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Provide steering to allow space for the police car
+    /// </summary>
     private void GiveWayToPolice(PoliceVehicle vehicleToGiveWayTo, ref float speed, ref float steering)
     {
         float steerDirectionTowardsCar = SteerTowardsPoint(vehicleToGiveWayTo.transform.position);
@@ -1012,426 +1099,466 @@ public class CarAI : MonoBehaviour
         speed = Mathf.Max(5, distanceToPolice * 2);
     }
 
+    /// <summary>
+    /// Provide steering away from the objectToAvoid dependent on our waypoint path and the distance to the obstacle
+    /// </summary>
+    private void SteerAwayFromCollision(GameObject objectToAvoid, ref float steering)
+    {
+        float distanceToObstacle = Vector3.Distance(objectToAvoid.transform.position, this.transform.position);
+
+        Vector3 waypointClosestToCollision = GetClosestVector3(objectToAvoid.transform.position, aiPathProgressTracker.waypoints);
+
+        float steerPercentageToWaypoint = SteerTowardsPoint(waypointClosestToCollision);
+        float steerPercentageToObstacle = SteerTowardsPoint(objectToAvoid.transform.position);
+
+        //If obstacle is left of the path
+        if (steerPercentageToObstacle < steerPercentageToWaypoint)
+        {
+            steering += 1f / distanceToObstacle;
+        }
+        else
+        {
+            steering -= 1f / distanceToObstacle;
+        }
+    }
+
+    private float GetDistanceToObstacle(Vector3 startPoint, GameObject obstacle)
+    {
+        if (Physics.Raycast(startPoint, obstacle.transform.position-startPoint, out RaycastHit hit, Mathf.Infinity))
+        {
+            if (hit.transform.gameObject == obstacle)
+            {
+                return Vector3.Distance(startPoint, hit.point);
+            }
+        }
+        return Vector3.Distance(startPoint, obstacle.transform.position);
+    }
+
     #region Sensors
     [Header("Sensor")]
     [SerializeField] float carWidth = 2f;
     [SerializeField] float carLength = 3f;
+    [SerializeField] float carHeight = 2.5f;
 
-    //How much does the speed affect sensor length, length = kmh / thisNumber
-    [SerializeField] float sensorLengthSpeedDependency = 4f;
+    ////How much does the speed affect sensor length, length = kmh / thisNumber
+    //[SerializeField] float sensorLengthSpeedDependency = 4f;
 
-    //Foward sensors
-    [SerializeField] float minimumForwardSensorLength = 2f;
-    float frontSensorLength;
+    ////Foward sensors
+    //[SerializeField] float minimumForwardSensorLength = 2f;
+    //float frontSensorLength;
 
-    //Angled forward sensors
-    [SerializeField] float minimumAngledSensorLength = 2f;
-    float frontAngledSensorLength;
-    [SerializeField] float maxAngle = 45;
-    float frontSensorsAngle;
+    ////Angled forward sensors
+    //[SerializeField] float minimumAngledSensorLength = 2f;
+    //float frontAngledSensorLength;
+    //[SerializeField] float maxAngle = 45;
+    //float frontSensorsAngle;
 
-    int numberOfSideSensors = 3;
+    //int numberOfSideSensors = 3;
 
-    /// <summary>
-    /// Check the sensors in front of the car to slow down and queue up if there is another car infront of this one. Outs the closest collision
-    /// </summary>
-    private bool CheckForCollision(float turningPercentage, out RaycastHit closestCollision)
-    {
-        Vector3 sensorStartPos = transform.position;
-        sensorStartPos += transform.forward * carLength / 2;
+    ///// <summary>
+    ///// Check the sensors in front of the car to slow down and queue up if there is another car infront of this one. Outs the closest collision
+    ///// </summary>
+    //private bool CheckForCollision(float turningPercentage, out RaycastHit closestCollision)
+    //{
+    //    Vector3 sensorStartPos = transform.position;
+    //    sensorStartPos += transform.forward * carLength / 2;
 
-        frontSensorLength = kmhSpeed / sensorLengthSpeedDependency;
-        frontSensorLength = Mathf.Max(frontSensorLength, minimumForwardSensorLength);
+    //    frontSensorLength = kmhSpeed / sensorLengthSpeedDependency;
+    //    frontSensorLength = Mathf.Max(frontSensorLength, minimumForwardSensorLength);
 
-        frontSensorsAngle = maxAngle * Mathf.Abs(turningPercentage);
-        frontAngledSensorLength = minimumAngledSensorLength * 2 * Mathf.Abs(turningPercentage);
-        frontAngledSensorLength = Mathf.Max(frontAngledSensorLength, minimumAngledSensorLength);
-
-
-        bool collisionDetected = false;
-        bool sensorCollision = false;
-        RaycastHit hit;
-        List<RaycastHit> collisions = new List<RaycastHit>();
-
-        //Front center sensor
-        sensorCollision = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
-        if (sensorCollision)
-        {
-            if (hit.transform.tag == "Vehicle")
-            {
-                collisions.Add(hit);
-                collisionDetected = true;
-            }
-            else if (hit.transform.tag == "WorldObject")
-            {
-                collisions.Add(hit);
-                collisionDetected = true;
-            }
-        }
-
-        //Check front right sensor
-        sensorStartPos += transform.right * (carWidth / 2);
-        sensorCollision = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
-        if (sensorCollision)
-        {
-            if (hit.transform.tag == "Vehicle")
-            {
-                collisions.Add(hit);
-                collisionDetected = true;
-            }
-            else if (hit.transform.tag == "WorldObject")
-            {
-                collisions.Add(hit);
-                collisionDetected = true;
-            }
-        }
-
-        //Front left sensor
-        sensorStartPos -= (transform.right * carWidth);
-        sensorCollision = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
-        if (sensorCollision)
-        {
-            if (hit.transform.tag == "Vehicle")
-            {
-                collisions.Add(hit);
-                collisionDetected = true;
-            }
-            else if (hit.transform.tag == "WorldObject")
-            {
-                collisions.Add(hit);
-                collisionDetected = true;
-            }
-        }
-
-        //if turning left
-        if (turningPercentage < -0.1f)
-        {
-            //Front angled left sensor
-            sensorCollision = UseSensor(sensorStartPos, Quaternion.AngleAxis(-frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength);
-            if (sensorCollision)
-            {
-                if (hit.transform.tag == "Vehicle")
-                {
-                    collisions.Add(hit);
-                    collisionDetected = true;
-                }
-                else if (hit.transform.tag == "WorldObject")
-                {
-                    collisions.Add(hit);
-                    collisionDetected = true;
-                }
-            }
-        }
-
-        sensorStartPos += (transform.right * carWidth);
-        //if turning right
-        if (turningPercentage > 0.1f)
-        {
-            //Front angled right sensor
-            sensorCollision = UseSensor(sensorStartPos, Quaternion.AngleAxis(frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength);
-            if (sensorCollision)
-            {
-                if (hit.transform.tag == "Vehicle")
-                {
-                    collisions.Add(hit);
-                    collisionDetected = true;
-                }
-                else if (hit.transform.tag == "WorldObject")
-                {
-                    collisions.Add(hit);
-                    collisionDetected = true;
-                }
-            }
-        }
-
-        closestCollision = new RaycastHit(); //needed for acceptance, overriden in for loop anyway if any hits are found
-        float distanceToClosestCollision = float.MaxValue;
-        for (int i = 0; i < collisions.Count; i++)
-        {
-            float testDistance = Vector3.Distance(rb.position, collisions[i].point);
-            if (testDistance < distanceToClosestCollision)
-            {
-                distanceToClosestCollision = testDistance;
-                closestCollision = collisions[i];
-            }
-        }
-        return collisionDetected;
-    }
-
-    /// <summary>
-    /// Checks the sensors at the side the car is turning to avoid going into other cars. Outs the closest collision
-    /// </summary>
-    private bool SideSensorChecks(ref float turningPercentage, out RaycastHit closestCollision)
-    {
-        Vector3 carFront = transform.position;
-        carFront += transform.forward * carLength / 2;
-        float sensorLength = carWidth * 3;
-
-        bool collisionDetected = false;
-
-        RaycastHit hit;
-        List<RaycastHit> collisions = new List<RaycastHit>();
-
-        if (turningDirection == Turn.Right)
-        {
-            bool sensorCollision = false;
-            //Right sensors
-            for (int sideSensor = 0; sideSensor < numberOfSideSensors; sideSensor++)
-            {
-                Vector3 sensorPos = carFront - transform.forward * (sideSensor * carLength / numberOfSideSensors);
-                sensorCollision = UseSensor(sensorPos, Quaternion.AngleAxis(89, transform.up) * transform.forward, out hit, sensorLength);
-                if (sensorCollision)
-                {
-                    if (hit.transform.tag == "Vehicle")
-                    {
-                        collisions.Add(hit);
-                        //turningPercentage -= (float)((float)1 / (float)numberOfSideSensors) * 0.1f;
-                        collisionDetected = true;
-                    }
-                }
-            }
-            //Front angled right sensor
-            Vector3 angledRightPos = carFront + (transform.right * carWidth / 2);
-            sensorCollision = UseSensor(angledRightPos, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, sensorLength);
-            if (sensorCollision)
-            {
-                if (hit.transform.tag == "Vehicle")
-                {
-                    collisions.Add(hit);
-                    //turningPercentage -= 0.1f;
-                    collisionDetected = true;
-                }
-            }
-            //Right progress tracker sensor
-            Vector3 progressTrackerSensor = carFront + (transform.right * carWidth / 2);
-            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim - progressTrackerSensor, out hit, sensorLength);
-            if (sensorCollision)
-            {
-                if (hit.transform.tag == "Vehicle")
-                {
-                    collisions.Add(hit);
-                    //turningPercentage -= 0.1f;
-                    collisionDetected = true;
-                }
-            }
-        }
-        else if (turningDirection == Turn.Left)
-        {
-            bool sensorCollision = false;
-            //Left sensors
-            for (int sideSensor = 0; sideSensor < numberOfSideSensors; sideSensor++)
-            {
-                Vector3 sensorPos = carFront - transform.forward * (sideSensor * carLength / numberOfSideSensors);
-                sensorCollision = UseSensor(sensorPos, Quaternion.AngleAxis(-89, transform.up) * transform.forward, out hit, sensorLength);
-                if (sensorCollision)
-                {
-                    if (hit.transform.tag == "Vehicle")
-                    {
-                        collisions.Add(hit);
-                        //turningPercentage += (float)((float)1 / (float)numberOfSideSensors) * 0.1f;
-                        collisionDetected = true;
-                    }
-                }
-            }
-            //Front angled left sensor
-            Vector3 angledLeftPos = carFront - (transform.right * carWidth / 2);
-            sensorCollision = UseSensor(angledLeftPos, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, sensorLength);
-            if (sensorCollision)
-            {
-                if (hit.transform.tag == "Vehicle")
-                {
-                    collisions.Add(hit);
-                    // turningPercentage += 0.1f;
-                    collisionDetected = true;
-                }
-            }
-            //Left progress tracker sensor
-            Vector3 progressTrackerSensor = carFront - (transform.right * carWidth / 2);
-            sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim - progressTrackerSensor, out hit, sensorLength);
-            if (sensorCollision)
-            {
-                if (hit.transform.tag == "Vehicle")
-                {
-                    collisions.Add(hit);
-                    // turningPercentage += 0.1f;
-                    collisionDetected = true;
-                }
-            }
-        }
+    //    frontSensorsAngle = maxAngle * Mathf.Abs(turningPercentage);
+    //    frontAngledSensorLength = minimumAngledSensorLength * 2 * Mathf.Abs(turningPercentage);
+    //    frontAngledSensorLength = Mathf.Max(frontAngledSensorLength, minimumAngledSensorLength);
 
 
-        closestCollision = new RaycastHit(); //needed for acceptance, overriden in for loop anyway if any hits are found
-        float distanceToClosestCollision = float.MaxValue;
-        for (int i = 0; i < collisions.Count; i++)
-        {
-            float testDistance = Vector3.Distance(rb.position, collisions[i].point);
-            if (testDistance < distanceToClosestCollision)
-            {
-                distanceToClosestCollision = testDistance;
-                closestCollision = collisions[i];
-            }
-        }
-        return collisionDetected;
-    }
+    //    bool collisionDetected = false;
+    //    bool sensorCollision = false;
+    //    RaycastHit hit;
+    //    List<RaycastHit> collisions = new List<RaycastHit>();
 
-    /// <summary>
-    /// Check the sensors around the car for obstacles and provide steering to avoid. Outs the closest collision
-    /// </summary>
-    private bool AvertFromCollision(ref float turningPercentage, out RaycastHit closestCollision)
-    {
-        Vector3 sensorStartPos = transform.position;
-        sensorStartPos += transform.forward * carLength / 2;
+    //    //Front center sensor
+    //    sensorCollision = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
+    //    if (sensorCollision)
+    //    {
+    //        if (hit.transform.tag == "Vehicle")
+    //        {
+    //            collisions.Add(hit);
+    //            collisionDetected = true;
+    //        }
+    //        else if (hit.transform.tag == "WorldObject")
+    //        {
+    //            collisions.Add(hit);
+    //            collisionDetected = true;
+    //        }
+    //    }
 
-        frontSensorLength = kmhSpeed / sensorLengthSpeedDependency;
-        frontSensorLength = Mathf.Max(frontSensorLength, minimumForwardSensorLength);
+    //    //Check front right sensor
+    //    sensorStartPos += transform.right * (carWidth / 2);
+    //    sensorCollision = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
+    //    if (sensorCollision)
+    //    {
+    //        if (hit.transform.tag == "Vehicle")
+    //        {
+    //            collisions.Add(hit);
+    //            collisionDetected = true;
+    //        }
+    //        else if (hit.transform.tag == "WorldObject")
+    //        {
+    //            collisions.Add(hit);
+    //            collisionDetected = true;
+    //        }
+    //    }
 
-        frontSensorsAngle = maxAngle * Mathf.Abs(turningPercentage);
-        frontAngledSensorLength = minimumAngledSensorLength * 2 * Mathf.Abs(turningPercentage);
-        frontAngledSensorLength = Mathf.Max(frontAngledSensorLength, minimumAngledSensorLength);
+    //    //Front left sensor
+    //    sensorStartPos -= (transform.right * carWidth);
+    //    sensorCollision = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
+    //    if (sensorCollision)
+    //    {
+    //        if (hit.transform.tag == "Vehicle")
+    //        {
+    //            collisions.Add(hit);
+    //            collisionDetected = true;
+    //        }
+    //        else if (hit.transform.tag == "WorldObject")
+    //        {
+    //            collisions.Add(hit);
+    //            collisionDetected = true;
+    //        }
+    //    }
 
-        float avoidMultiplier = 0;
-        bool avoidingCollision = false;
+    //    //if turning left
+    //    if (turningPercentage < -0.1f)
+    //    {
+    //        //Front angled left sensor
+    //        sensorCollision = UseSensor(sensorStartPos, Quaternion.AngleAxis(-frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength);
+    //        if (sensorCollision)
+    //        {
+    //            if (hit.transform.tag == "Vehicle")
+    //            {
+    //                collisions.Add(hit);
+    //                collisionDetected = true;
+    //            }
+    //            else if (hit.transform.tag == "WorldObject")
+    //            {
+    //                collisions.Add(hit);
+    //                collisionDetected = true;
+    //            }
+    //        }
+    //    }
 
-        bool collisionDetected;
-        RaycastHit hit;
-        List<RaycastHit> collisions = new List<RaycastHit>();
+    //    sensorStartPos += (transform.right * carWidth);
+    //    //if turning right
+    //    if (turningPercentage > 0.1f)
+    //    {
+    //        //Front angled right sensor
+    //        sensorCollision = UseSensor(sensorStartPos, Quaternion.AngleAxis(frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength);
+    //        if (sensorCollision)
+    //        {
+    //            if (hit.transform.tag == "Vehicle")
+    //            {
+    //                collisions.Add(hit);
+    //                collisionDetected = true;
+    //            }
+    //            else if (hit.transform.tag == "WorldObject")
+    //            {
+    //                collisions.Add(hit);
+    //                collisionDetected = true;
+    //            }
+    //        }
+    //    }
 
-        //Front right sensor
-        sensorStartPos += transform.right * (carWidth / 2);
-        collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
-        if (collisionDetected)
-        {
-            avoidMultiplier -= 1f;
-            avoidingCollision = true;
-            collisions.Add(hit);
-        }
+    //    closestCollision = new RaycastHit(); //needed for acceptance, overriden in for loop anyway if any hits are found
+    //    float distanceToClosestCollision = float.MaxValue;
+    //    for (int i = 0; i < collisions.Count; i++)
+    //    {
+    //        float testDistance = Vector3.Distance(rb.position, collisions[i].point);
+    //        if (testDistance < distanceToClosestCollision)
+    //        {
+    //            distanceToClosestCollision = testDistance;
+    //            closestCollision = collisions[i];
+    //        }
+    //    }
+    //    return collisionDetected;
+    //}
 
-        //if steering right
-        if (turningPercentage > 0.1f)
-        {
-            //Front angled right sensor
-            collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength * Mathf.Abs(turningPercentage));
-            if (collisionDetected)
-            {
-                avoidMultiplier -= 0.1f;
-                avoidingCollision = true;
-                collisions.Add(hit);
-            }
-        }
+    ///// <summary>
+    ///// Checks the sensors at the side the car is turning to avoid going into other cars. Outs the closest collision
+    ///// </summary>
+    //private bool SideSensorChecks(ref float turningPercentage, out RaycastHit closestCollision)
+    //{
+    //    Vector3 carFront = transform.position;
+    //    carFront += transform.forward * carLength / 2;
+    //    float sensorLength = carWidth * 3;
 
-        //Front left sensor
-        sensorStartPos -= (transform.right * carWidth);
-        collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
-        if (collisionDetected)
-        {
-            avoidMultiplier += 1f;
-            avoidingCollision = true;
-            collisions.Add(hit);
-        }
+    //    bool collisionDetected = false;
 
-        //if steering left
-        if (turningPercentage < -0.1f)
-        {
-            //Front angled left sensor
-            collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(-frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength * Mathf.Abs(turningPercentage));
-            if (collisionDetected)
-            {
-                avoidMultiplier += 0.1f;
-                avoidingCollision = true;
-                collisions.Add(hit);
-            }
-        }
+    //    RaycastHit hit;
+    //    List<RaycastHit> collisions = new List<RaycastHit>();
 
-        //Front center sensor
-        {
-            collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
-            if (collisionDetected)
-            {
-                if (avoidMultiplier == 0)
-                {
-                    if (hit.normal.x < 0)
-                    {
-                        avoidMultiplier = -1;
-                    }
-                    else
-                    {
-                        avoidMultiplier = 1;
-                    }
-                }
-                avoidingCollision = true;
-                collisions.Add(hit);
-            }
-        }
+    //    if (turningDirection == Turn.Right)
+    //    {
+    //        bool sensorCollision = false;
+    //        //Right sensors
+    //        for (int sideSensor = 0; sideSensor < numberOfSideSensors; sideSensor++)
+    //        {
+    //            Vector3 sensorPos = carFront - transform.forward * (sideSensor * carLength / numberOfSideSensors);
+    //            sensorCollision = UseSensor(sensorPos, Quaternion.AngleAxis(89, transform.up) * transform.forward, out hit, sensorLength);
+    //            if (sensorCollision)
+    //            {
+    //                if (hit.transform.tag == "Vehicle")
+    //                {
+    //                    collisions.Add(hit);
+    //                    //turningPercentage -= (float)((float)1 / (float)numberOfSideSensors) * 0.1f;
+    //                    collisionDetected = true;
+    //                }
+    //            }
+    //        }
+    //        //Front angled right sensor
+    //        Vector3 angledRightPos = carFront + (transform.right * carWidth / 2);
+    //        sensorCollision = UseSensor(angledRightPos, Quaternion.AngleAxis(45, transform.up) * transform.forward, out hit, sensorLength);
+    //        if (sensorCollision)
+    //        {
+    //            if (hit.transform.tag == "Vehicle")
+    //            {
+    //                collisions.Add(hit);
+    //                //turningPercentage -= 0.1f;
+    //                collisionDetected = true;
+    //            }
+    //        }
+    //        //Right progress tracker sensor
+    //        Vector3 progressTrackerSensor = carFront + (transform.right * carWidth / 2);
+    //        sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim - progressTrackerSensor, out hit, sensorLength);
+    //        if (sensorCollision)
+    //        {
+    //            if (hit.transform.tag == "Vehicle")
+    //            {
+    //                collisions.Add(hit);
+    //                //turningPercentage -= 0.1f;
+    //                collisionDetected = true;
+    //            }
+    //        }
+    //    }
+    //    else if (turningDirection == Turn.Left)
+    //    {
+    //        bool sensorCollision = false;
+    //        //Left sensors
+    //        for (int sideSensor = 0; sideSensor < numberOfSideSensors; sideSensor++)
+    //        {
+    //            Vector3 sensorPos = carFront - transform.forward * (sideSensor * carLength / numberOfSideSensors);
+    //            sensorCollision = UseSensor(sensorPos, Quaternion.AngleAxis(-89, transform.up) * transform.forward, out hit, sensorLength);
+    //            if (sensorCollision)
+    //            {
+    //                if (hit.transform.tag == "Vehicle")
+    //                {
+    //                    collisions.Add(hit);
+    //                    //turningPercentage += (float)((float)1 / (float)numberOfSideSensors) * 0.1f;
+    //                    collisionDetected = true;
+    //                }
+    //            }
+    //        }
+    //        //Front angled left sensor
+    //        Vector3 angledLeftPos = carFront - (transform.right * carWidth / 2);
+    //        sensorCollision = UseSensor(angledLeftPos, Quaternion.AngleAxis(-45, transform.up) * transform.forward, out hit, sensorLength);
+    //        if (sensorCollision)
+    //        {
+    //            if (hit.transform.tag == "Vehicle")
+    //            {
+    //                collisions.Add(hit);
+    //                // turningPercentage += 0.1f;
+    //                collisionDetected = true;
+    //            }
+    //        }
+    //        //Left progress tracker sensor
+    //        Vector3 progressTrackerSensor = carFront - (transform.right * carWidth / 2);
+    //        sensorCollision = UseSensor(progressTrackerSensor, progressTrackerAim - progressTrackerSensor, out hit, sensorLength);
+    //        if (sensorCollision)
+    //        {
+    //            if (hit.transform.tag == "Vehicle")
+    //            {
+    //                collisions.Add(hit);
+    //                // turningPercentage += 0.1f;
+    //                collisionDetected = true;
+    //            }
+    //        }
+    //    }
 
-        //Check closest collision
-        closestCollision = new RaycastHit(); //needed for acceptance, overriden in for loop anyway if any hits are found
-        float distanceToClosestCollision = float.MaxValue;
-        for (int i = 0; i < collisions.Count; i++)
-        {
-            float testDistance = Vector3.Distance(rb.position, collisions[i].point);
-            if (testDistance < distanceToClosestCollision)
-            {
-                distanceToClosestCollision = testDistance;
-                closestCollision = collisions[i];
-            }
-        }
 
-        //Apply counter steering
-        if (avoidingCollision)
-        {
-            turningPercentage += avoidMultiplier * Mathf.Min(1, (kmhSpeed / 3.6f) / distanceToClosestCollision);
-            if (turningPercentage < -1)
-            {
-                turningPercentage = -1;
-            }
-            else if (turningPercentage > 1)
-            {
-                turningPercentage = 1;
-            }
-        }
-        return avoidingCollision;
-    }
+    //    closestCollision = new RaycastHit(); //needed for acceptance, overriden in for loop anyway if any hits are found
+    //    float distanceToClosestCollision = float.MaxValue;
+    //    for (int i = 0; i < collisions.Count; i++)
+    //    {
+    //        float testDistance = Vector3.Distance(rb.position, collisions[i].point);
+    //        if (testDistance < distanceToClosestCollision)
+    //        {
+    //            distanceToClosestCollision = testDistance;
+    //            closestCollision = collisions[i];
+    //        }
+    //    }
+    //    return collisionDetected;
+    //}
 
-    [SerializeField] float criticalCollisionDistance = 2f;
-    [SerializeField] float warningCollisionDistance = 5f;
-    [SerializeField] float infoCollisionDistance = 10f;
+    ///// <summary>
+    ///// Check the sensors around the car for obstacles and provide steering to avoid. Outs the closest collision
+    ///// </summary>
+    //private bool AvertFromCollision(ref float turningPercentage, out RaycastHit closestCollision)
+    //{
+    //    Vector3 sensorStartPos = transform.position;
+    //    sensorStartPos += transform.forward * carLength / 2;
 
-    /// <summary>
-    /// Uses raycast to detect obstacles
-    /// </summary>
-    private bool UseSensor(Vector3 startPos, Vector3 direction, out RaycastHit hit, float sensorLength)
-    {
-        hit = new RaycastHit();
+    //    frontSensorLength = kmhSpeed / sensorLengthSpeedDependency;
+    //    frontSensorLength = Mathf.Max(frontSensorLength, minimumForwardSensorLength);
 
-        if (Physics.Raycast(startPos, direction, out hit, sensorLength))
-        {
-            if (hit.transform.tag != "Terrain" && hit.transform != transform)
-            {
-                float distance = Vector3.Distance(rb.position, hit.point);
-                Color rayColor = Color.black;
-                if (distance < criticalCollisionDistance)
-                {
-                    rayColor = Color.red;
-                }
-                else if (distance < warningCollisionDistance)
-                {
-                    rayColor = Color.yellow;
-                }
-                else if (distance < infoCollisionDistance)
-                {
-                    rayColor = Color.white;
-                }
-                Debug.DrawLine(startPos, hit.point, rayColor);
-                return true;
-            }
-        }
-        return false;
-    }
+    //    frontSensorsAngle = maxAngle * Mathf.Abs(turningPercentage);
+    //    frontAngledSensorLength = minimumAngledSensorLength * 2 * Mathf.Abs(turningPercentage);
+    //    frontAngledSensorLength = Mathf.Max(frontAngledSensorLength, minimumAngledSensorLength);
+
+    //    float avoidMultiplier = 0;
+    //    bool avoidingCollision = false;
+
+    //    bool collisionDetected;
+    //    RaycastHit hit;
+    //    List<RaycastHit> collisions = new List<RaycastHit>();
+
+    //    //Front right sensor
+    //    sensorStartPos += transform.right * (carWidth / 2);
+    //    collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
+    //    if (collisionDetected)
+    //    {
+    //        avoidMultiplier -= 1f;
+    //        avoidingCollision = true;
+    //        collisions.Add(hit);
+    //    }
+
+    //    //if steering right
+    //    if (turningPercentage > 0.1f)
+    //    {
+    //        //Front angled right sensor
+    //        collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength * Mathf.Abs(turningPercentage));
+    //        if (collisionDetected)
+    //        {
+    //            avoidMultiplier -= 0.1f;
+    //            avoidingCollision = true;
+    //            collisions.Add(hit);
+    //        }
+    //    }
+
+    //    //Front left sensor
+    //    sensorStartPos -= (transform.right * carWidth);
+    //    collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
+    //    if (collisionDetected)
+    //    {
+    //        avoidMultiplier += 1f;
+    //        avoidingCollision = true;
+    //        collisions.Add(hit);
+    //    }
+
+    //    //if steering left
+    //    if (turningPercentage < -0.1f)
+    //    {
+    //        //Front angled left sensor
+    //        collisionDetected = UseSensor(sensorStartPos, Quaternion.AngleAxis(-frontSensorsAngle, transform.up) * transform.forward, out hit, frontAngledSensorLength * Mathf.Abs(turningPercentage));
+    //        if (collisionDetected)
+    //        {
+    //            avoidMultiplier += 0.1f;
+    //            avoidingCollision = true;
+    //            collisions.Add(hit);
+    //        }
+    //    }
+
+    //    //Front center sensor
+    //    {
+    //        collisionDetected = UseSensor(sensorStartPos, transform.forward, out hit, frontSensorLength);
+    //        if (collisionDetected)
+    //        {
+    //            if (avoidMultiplier == 0)
+    //            {
+    //                if (hit.normal.x < 0)
+    //                {
+    //                    avoidMultiplier = -1;
+    //                }
+    //                else
+    //                {
+    //                    avoidMultiplier = 1;
+    //                }
+    //            }
+    //            avoidingCollision = true;
+    //            collisions.Add(hit);
+    //        }
+    //    }
+
+    //    //Check closest collision
+    //    closestCollision = new RaycastHit(); //needed for acceptance, overriden in for loop anyway if any hits are found
+    //    float distanceToClosestCollision = float.MaxValue;
+    //    for (int i = 0; i < collisions.Count; i++)
+    //    {
+    //        float testDistance = Vector3.Distance(rb.position, collisions[i].point);
+    //        if (testDistance < distanceToClosestCollision)
+    //        {
+    //            distanceToClosestCollision = testDistance;
+    //            closestCollision = collisions[i];
+    //        }
+    //    }
+
+    //    //Apply counter steering
+    //    if (avoidingCollision)
+    //    {
+    //        turningPercentage += avoidMultiplier * Mathf.Min(1, (kmhSpeed / 3.6f) / distanceToClosestCollision);
+    //        if (turningPercentage < -1)
+    //        {
+    //            turningPercentage = -1;
+    //        }
+    //        else if (turningPercentage > 1)
+    //        {
+    //            turningPercentage = 1;
+    //        }
+    //    }
+    //    return avoidingCollision;
+    //}
+
+    //[SerializeField] float criticalCollisionDistance = 2f;
+    //[SerializeField] float warningCollisionDistance = 5f;
+    //[SerializeField] float infoCollisionDistance = 10f;
+
+    ///// <summary>
+    ///// Uses raycast to detect obstacles
+    ///// </summary>
+    //private bool UseSensor(Vector3 startPos, Vector3 direction, out RaycastHit hit, float sensorLength)
+    //{
+    //    hit = new RaycastHit();
+
+    //    if (Physics.Raycast(startPos, direction, out hit, sensorLength))
+    //    {
+    //        if (hit.transform.tag != "Terrain" && hit.transform != transform)
+    //        {
+    //            float distance = Vector3.Distance(rb.position, hit.point);
+    //            Color rayColor = Color.black;
+    //            if (distance < criticalCollisionDistance)
+    //            {
+    //                rayColor = Color.red;
+    //            }
+    //            else if (distance < warningCollisionDistance)
+    //            {
+    //                rayColor = Color.yellow;
+    //            }
+    //            else if (distance < infoCollisionDistance)
+    //            {
+    //                rayColor = Color.white;
+    //            }
+    //            Debug.DrawLine(startPos, hit.point, rayColor);
+    //            return true;
+    //        }
+    //    }
+    //    return false;
+    //}
     #endregion
 
     [Header("Editor")]
     public Color lineToNode = Color.yellow;
     public bool showLineToNextNode = false;
+    List<SearchBox> searchBoxes = new List<SearchBox>();
+    List<SearchSphere> searchSpheres = new List<SearchSphere>();
+
+
     private void OnDrawGizmos()
     {
         if (showLineToNextNode)
@@ -1444,5 +1571,39 @@ public class CarAI : MonoBehaviour
                 Gizmos.DrawLine(currentPos, nextNodePos);
             }
         }
+
+        for (int i = 0; i < searchBoxes.Count; i++)
+        {
+            Gizmos.DrawWireCube(searchBoxes[i].pos, searchBoxes[i].boxDimensions);
+        }
+
+        for (int i = 0; i < searchSpheres.Count; i++)
+        {
+            Gizmos.DrawWireSphere(searchSpheres[i].pos, searchSpheres[i].radius);
+        }
+    }
+}
+
+public struct SearchBox
+{
+    public Vector3 pos;
+    public Vector3 boxDimensions;
+
+    public SearchBox(Vector3 pos, Vector3 boxDimensions)
+    {
+        this.pos = pos;
+        this.boxDimensions = boxDimensions;
+    }
+}
+
+public struct SearchSphere
+{
+    public Vector3 pos;
+    public float radius;
+
+    public SearchSphere(Vector3 pos, float radius)
+    {
+        this.pos = pos;
+        this.radius = radius;
     }
 }

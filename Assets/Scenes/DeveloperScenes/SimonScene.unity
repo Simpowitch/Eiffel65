@@ -6004,7 +6004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6171,13 +6171,7 @@ MonoBehaviour:
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 2
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
+  carHeight: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
 --- !u!4 &139171723 stripped
@@ -16485,7 +16479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.19
+      value: 10.190071
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16493,7 +16487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -139.21
+      value: -139.20995
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.x
@@ -16501,7 +16495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000007450579
+      value: 0.0041816714
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.z
@@ -16509,7 +16503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -1
+      value: -0.9999913
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_RootOrder
@@ -16521,7 +16515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 360
+      value: 359.521
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -16530,82 +16524,82 @@ PrefabInstance:
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 40706.69
+      value: 40706.785
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 6513.0713
+      value: 6513.0854
       objectReference: {fileID: 0}
     - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19620001
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.67725265
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34791.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5566.5806
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionDistance
+      value: 0.19619998
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_ForceAppPointDistance
+      value: 0.67725265
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 34293.207
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+        type: 3}
+      propertyPath: m_SuspensionSpring.damper
+      value: 5486.9136
+      objectReference: {fileID: 0}
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
       value: 0.19620003
       objectReference: {fileID: 0}
-    - target: {fileID: 146000012133133230, guid: 6577377bae7db18429e690f8f8f57881,
+    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
+      value: 0.67725265
       objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
-      value: 34791.22
+      value: 40208.875
       objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionSpring.damper
-      value: 5566.595
+      value: 6433.42
       objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620001
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000013638572144, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 34293.312
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 5486.9297
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
+    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_SuspensionDistance
       value: 0.1962
       objectReference: {fileID: 0}
-    - target: {fileID: 146000011612348708, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 40208.777
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6433.4043
-      objectReference: {fileID: 0}
-    - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
-        type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.19620001
-      objectReference: {fileID: 0}
     - target: {fileID: 146000011699788318, guid: 6577377bae7db18429e690f8f8f57881,
         type: 3}
       propertyPath: m_ForceAppPointDistance
-      value: 0.6772526
+      value: 0.67725265
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
@@ -16666,13 +16660,7 @@ MonoBehaviour:
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 4
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 2
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
+  carHeight: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
 --- !u!1 &292292116
@@ -26906,7 +26894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013904118194, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000012934762246, guid: 6577377bae7db18429e690f8f8f57881, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27068,13 +27056,7 @@ MonoBehaviour:
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 2
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
+  carHeight: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
 --- !u!4 &493229307 stripped
@@ -52021,13 +52003,7 @@ MonoBehaviour:
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 2
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
+  carHeight: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
 --- !u!1 &988088905
@@ -60194,13 +60170,7 @@ MonoBehaviour:
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 2
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
+  carHeight: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
 --- !u!1 &1160400939
@@ -93824,13 +93794,7 @@ MonoBehaviour:
   maxRangeFromCarToEndNodeRandom: 100
   carWidth: 2
   carLength: 3
-  sensorLengthSpeedDependency: 4
-  minimumForwardSensorLength: 2
-  minimumAngledSensorLength: 2
-  maxAngle: 45
-  criticalCollisionDistance: 2
-  warningCollisionDistance: 5
-  infoCollisionDistance: 10
+  carHeight: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
 --- !u!1 &1840955211

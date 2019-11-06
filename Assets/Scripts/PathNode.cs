@@ -212,7 +212,6 @@ public class PathNode : MonoBehaviour
 
 
     [Header("Editor")]
-    Color lineColor = Color.green;
     Color allowedToPassColor = Color.green;
     Color notAllowedToPassColor = Color.red;
     float nodeSize = 1f;
@@ -222,7 +221,7 @@ public class PathNode : MonoBehaviour
     {
         ValidateConnections();
         ValidateSetup();
-        
+
         //Draw sphere
         Gizmos.color = allowedToPass ? allowedToPassColor : notAllowedToPassColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
@@ -233,16 +232,14 @@ public class PathNode : MonoBehaviour
 
 
         //Lines and curves
-        Gizmos.color = lineColor;
         for (int i = 0; i < outChoices.Count; i++)
         {
-            Vector3 currentNode = this.transform.position;
-            Vector3 nextNode = Vector3.zero;
-            nextNode = outChoices[i].outNode.transform.position;
+            Gizmos.color = allowedToPass ? allowedToPassColor : notAllowedToPassColor; ;
 
-            Vector3 direction = (nextNode - currentNode).normalized;
-            Vector3 arrowPosition = currentNode + direction;
-            DrawArrow.ForGizmo(arrowPosition, direction, lineColor, 0.4f, 30);
+            if (!allowedToPass)
+            {
+                int test = 0;
+            }
 
             //Safety check before catmull-rom to make sure connections can be checked both ways
             if (!outChoices[i].outNode.GetInConnections().Contains(this))
@@ -259,6 +256,24 @@ public class PathNode : MonoBehaviour
                 Gizmos.DrawLine(this.transform.position, outChoices[i].outNode.transform.position);
                 Gizmos.color = temp;
             }
+
+            //Change color of gizmo if we cannot use this outchoice due to need to wait, or if not allowed to pass
+            for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
+            {
+                if (outChoices[i].nodesToWaitFor[j].carsOnThisNode.Count != 0)
+                {
+                    Gizmos.color = Color.red;
+                    break;
+                }
+            }
+
+            //Draw arrow
+            Vector3 currentNode = this.transform.position;
+            Vector3 nextNode = Vector3.zero;
+            nextNode = outChoices[i].outNode.transform.position;
+            Vector3 direction = (nextNode - currentNode).normalized;
+            Vector3 arrowPosition = currentNode + direction;
+            DrawArrow.ForGizmo(arrowPosition, direction, Gizmos.color, 0.4f, 30);
 
             if (catmullCurveAllowed)
             {
@@ -291,19 +306,19 @@ public class PathNode : MonoBehaviour
         #endregion
 
         //Show waiting nodes
-        Gizmos.color = Color.red;
+        //Gizmos.color = Color.red;
 
-        for (int i = 0; i < outChoices.Count; i++)
-        {
-            //Look through that choice and the nodes to wait for to see if there are any cars
-            for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
-            {
-                if (outChoices[i].nodesToWaitFor[i].carsOnThisNode.Count != 0)
-                {
-                    Gizmos.DrawLine(this.transform.position, outChoices[i].nodesToWaitFor[j].transform.position);
-                }
-            }
-        }
+        //for (int i = 0; i < outChoices.Count; i++)
+        //{
+        //    //Look through that choice and the nodes to wait for to see if there are any cars
+        //    for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
+        //    {
+        //        if (outChoices[i].nodesToWaitFor[j].carsOnThisNode.Count != 0)
+        //        {
+        //            Gizmos.DrawLine(this.transform.position, outChoices[i].nodesToWaitFor[j].transform.position);
+        //        }
+        //    }
+        //}
     }
 
     private Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float i)
