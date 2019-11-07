@@ -183,7 +183,8 @@ public class PathNode : MonoBehaviour
     {
         if (carsOnThisNode.Contains(car))
         {
-            Debug.LogWarning("Tried to att the an already existing car to this node" + transform.name);
+            //Do nothing
+            //Debug.LogWarning("Tried to add an already existing car: " + car.transform.name + " to this node" + transform.name);
         }
         else
         {
@@ -195,12 +196,23 @@ public class PathNode : MonoBehaviour
     {
         if (carsOnThisNode.Contains(car))
         {
-            carsOnThisNode.Remove(car);
+            StartCoroutine(RemoveCarAfterSeconds(2f, car));
+            //carsOnThisNode.Remove(car);
         }
         else
         {
-            Debug.LogWarning("Tried to remove a car from this node" + transform.name);
+            //DO nothing
+            //Debug.Log("Tried to remove " + car.transform.name + " from this node" + transform.name);
         }
+    }
+
+    IEnumerator RemoveCarAfterSeconds(float seconds, CarAI car)
+    {
+        CarAI tempCar = null;
+        carsOnThisNode.Remove(car);
+        carsOnThisNode.Add(tempCar);
+        yield return new WaitForSeconds(seconds);
+        carsOnThisNode.Remove(tempCar);
     }
 
     public List<CarAI> GetCarsOnThisNode()

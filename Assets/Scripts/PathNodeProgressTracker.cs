@@ -101,6 +101,7 @@ public class PathNodeProgressTracker : MonoBehaviour
 
         RemovePassedWaypoints();
         target = CalculateTarget();
+        curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count - 1]);
     }
 
     //Remove waypoints we are passing, but leave at least one
