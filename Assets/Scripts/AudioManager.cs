@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+	//Index 0 in sources is reserved for exclusive clips such as background music.
 	List<AudioSource> sources;
 
 	private static AudioManager inst;
@@ -95,8 +96,6 @@ public class AudioManager : MonoBehaviour
 			sources[index].Play();
 		}
 	}
-
-
 
 	#endregion
 }
