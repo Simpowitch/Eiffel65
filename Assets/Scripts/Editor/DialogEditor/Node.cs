@@ -53,7 +53,7 @@ public class Node
         imageRect = new Rect(position.x + 10, position.y + IMAGEOFFSET, 180, 80);
         locationText = new Rect(position.x + 10, position.y + LOCATIONOFFSET, 180, 20);
 
-        textRect = new Rect(position.x + 10, position.y + DIALOGTEXTOFFSET, 370, 170);
+        textRect = new Rect(position.x + 10, position.y + DIALOGTEXTOFFSET, 370, 70);
 
         choiceARect = new Rect(position.x + 200, position.y + CHOICEAOFFSET, 180, 20);
         choiceBRect = new Rect(position.x + 200, position.y + CHOICEBOFFSET, 180, 20);

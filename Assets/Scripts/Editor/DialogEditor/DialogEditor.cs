@@ -198,7 +198,7 @@ public class DialogEditor : EditorWindow
             nodes = new List<Node>();
         }
 
-        nodes.Add(new Node(mousePosition, 400, 320, nodeStyle, selectedNodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint, OnClickRemoveNode));
+        nodes.Add(new Node(mousePosition, 400, 220, nodeStyle, selectedNodeStyle, inPointStyle, outPointStyle, OnClickInPoint, OnClickOutPoint, OnClickRemoveNode));
 
     }
     private void OnClickInPoint(ConnectionPoint inPoint)
