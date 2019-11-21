@@ -71502,16 +71502,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4809811478002794976, guid: d7e736809b7b63e468c4318b873abfee,
-        type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 38128.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4809811478002794976, guid: d7e736809b7b63e468c4318b873abfee,
-        type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 6100.503
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7e736809b7b63e468c4318b873abfee, type: 3}
 --- !u!1001 &4846082170094318770

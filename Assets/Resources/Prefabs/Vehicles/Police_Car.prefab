@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4696219062040093738}
   - component: {fileID: 4696219061492206396}
   - component: {fileID: 6033695281009997330}
+  - component: {fileID: 936217277}
   m_Layer: 0
   m_Name: Police_Car
   m_TagString: Vehicle
@@ -149,7 +150,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4664284126951307066}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.06, y: 1, z: -384.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -229,6 +230,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &936217277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4664284126951307066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86578ccdd74c78f458841831da4be759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engineSounds: []
 --- !u!1 &4664284127074461028
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,8 +284,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 38128.15
-    damper: 6100.5034
+    spring: 38128.14
+    damper: 6100.503
     targetPosition: 0.5
   m_SuspensionDistance: 0.1962
   m_ForceAppPointDistance: 0.563627
