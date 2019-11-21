@@ -6,17 +6,23 @@ public class TimedTrafficlights : MonoBehaviour
 {
     private enum State { Group1, Group2 }
     State state = State.Group1;
-    [SerializeField] PathNode[] lightGroup1;
-    [SerializeField] PathNode[] lightGroup2;
+    [SerializeField] PathNode[] carLightgroup1;
+    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup1;
+    [SerializeField] PathNode[] carLightgroup2;
+    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup2;
     bool redForAll = false;
 
     // Start is called before the first frame update
     void Start()
     {
         //Sets the opposite of default to the lightgroup1
-        for (int i = 0; i < lightGroup2.Length; i++)
+        for (int i = 0; i < carLightgroup2.Length; i++)
         {
-            lightGroup2[i].SetAllowedToPass(false);
+            carLightgroup2[i].SetAllowedToPass(false);
+        }
+        for (int i = 0; i < pedestrianLightgroup2.Length; i++)
+        {
+            pedestrianLightgroup2[i].greenLight = false;
         }
     }
 
@@ -54,16 +60,24 @@ public class TimedTrafficlights : MonoBehaviour
 
         if (state == State.Group1)
         {
-            for (int i = 0; i < lightGroup1.Length; i++)
+            for (int i = 0; i < carLightgroup1.Length; i++)
             {
-                lightGroup1[i].SetAllowedToPass(false);
+                carLightgroup1[i].SetAllowedToPass(false);
+            }
+            for (int i = 0; i < pedestrianLightgroup1.Length; i++)
+            {
+                pedestrianLightgroup1[i].greenLight = false;
             }
         }
         else
         {
-            for (int i = 0; i < lightGroup2.Length; i++)
+            for (int i = 0; i < carLightgroup2.Length; i++)
             {
-                lightGroup2[i].SetAllowedToPass(false);
+                carLightgroup2[i].SetAllowedToPass(false);
+            }
+            for (int i = 0; i < pedestrianLightgroup2.Length; i++)
+            {
+                pedestrianLightgroup2[i].greenLight = false;
             }
         }
 
@@ -74,17 +88,25 @@ public class TimedTrafficlights : MonoBehaviour
         if (state == State.Group1)
         {
             state = State.Group2;
-            for (int i = 0; i < lightGroup2.Length; i++)
+            for (int i = 0; i < carLightgroup2.Length; i++)
             {
-                lightGroup2[i].SetAllowedToPass(true);
+                carLightgroup2[i].SetAllowedToPass(true);
+            }
+            for (int i = 0; i < pedestrianLightgroup2.Length; i++)
+            {
+                pedestrianLightgroup2[i].greenLight = true;
             }
         }
         else
         {
             state = State.Group1;
-            for (int i = 0; i < lightGroup1.Length; i++)
+            for (int i = 0; i < carLightgroup1.Length; i++)
             {
-                lightGroup1[i].SetAllowedToPass(true);
+                carLightgroup1[i].SetAllowedToPass(true);
+            }
+            for (int i = 0; i < pedestrianLightgroup1.Length; i++)
+            {
+                pedestrianLightgroup1[i].greenLight = true;
             }
         }
     }

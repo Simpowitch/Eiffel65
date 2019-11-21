@@ -16,11 +16,8 @@ public class PathNodeProgressTracker : MonoBehaviour
     float lookAheadMaxDistance = 10f;
     float lookAheadSpeedModifier = 0.5f;
 
-    //Used to check points ahead to see if the path is curved or straight, which helps cars decide if they should lower their speed to be safer in the future
-    //int lookAheadAdaptSpeedCurveCheck = 15;
-
     //This helps us to make sure we don't target the same position again if already close enough
-    float distanceToAcceptAsPassed = 5f;
+    public float distanceToAcceptAsPassed = 5f;
     //public int passedProgress = 0;
 
     public Vector3 target;
@@ -33,72 +30,6 @@ public class PathNodeProgressTracker : MonoBehaviour
 
     private void Update()
     {
-        //if (waypoints.Count > 0)
-        //{
-        //    float distanceToTarget = float.MaxValue;
-        //    int targetIndex = 0;
-
-
-        //    for (int i = 0; i < waypoints.Count; i++)
-        //    {
-        //        float testDistance = Vector3.Distance(rb.position, waypoints[i]);
-        //        if (testDistance < distanceToTarget)
-        //        {
-        //            //if (lookAheadMinDistance < testDistance && testDistance < lookAheadMaxDistance)
-        //            if (Vector3.Distance(waypoints[i], rb.position + transform.forward * lookAheadMinDistance) < testDistance && testDistance < lookAheadMaxDistance)
-        //            {
-        //                distanceToTarget = testDistance;
-        //                targetIndex = i;
-        //            }
-        //        }
-        //    }
-
-        //    targetIndex = Mathf.Min(targetIndex, waypoints.Count - 1);
-        //    target = waypoints[targetIndex];
-        //    for (int i = 0; i < targetIndex - 1; i++)
-        //    {
-        //        if (waypoints.Count > 2)
-        //        {
-        //            waypoints.RemoveAt(0);
-        //        }
-        //    }
-        //}
-
-
-        ////If close enough say to go to the next point
-        //if (Vector3.Distance(rb.position, target) < distanceToAccept)
-        //{
-        //    passedProgress++;
-        //}
-
-        //float distanceToTarget = float.MaxValue;
-        //int targetIndex = 0;
-
-        //float speed = rb.velocity.magnitude * 3.6f;
-        //speed = Mathf.Max(1, speed);
-
-        //float minDist = lookAheadMinDistance * speed * lookAheadSpeedModifier;
-        //float maxDist = lookAheadMaxDistance * speed * lookAheadSpeedModifier;
-
-        ////find closest node infront of the car that is within acceptable distances
-        //for (int i = 0; i < waypoints.Count; i++)
-        //{
-        //    float testDistance = Vector3.Distance(rb.position, waypoints[i]);
-        //    if (testDistance < distanceToTarget)
-        //    {
-        //        if (Vector3.Distance(waypoints[i], rb.position + transform.forward) < testDistance && testDistance > minDist && testDistance < maxDist)
-        //        {
-        //            distanceToTarget = testDistance;
-        //            targetIndex = i;
-        //        }
-        //    }
-        //}
-        //targetIndex += passedProgress;
-
-        //targetIndex = Mathf.Min(targetIndex, waypoints.Count - 1);
-        //target = waypoints[targetIndex];
-        //}
-
         RemovePassedWaypoints();
         target = CalculateTarget();
         curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count - 1]);

@@ -6,7 +6,7 @@ public class PathNode : MonoBehaviour
 {
     public static PathNode selectedNodeForConnection; //used with hotkeys for quick connection between nodes
 
-    [SerializeField] bool allowedToPass = true;
+    [SerializeField] bool greenLight = true;
     [SerializeField] float roadSpeedLimit = 30;
     float intersectionSpeedLimitOverride = 30;
 
@@ -31,37 +31,34 @@ public class PathNode : MonoBehaviour
     /// <summary>
     /// Returns true when green light is on, or if there is no traffic light present
     /// </summary>
-    public bool IsAllowedToPass(PathNode nextNodeToGoTo)
+    public bool IsCarAllowedToPass(PathNode nextNodeToGoTo)
     {
-        if (!allowedToPass)
+        if (!greenLight)
         {
             return false;
         }
-        else
+        if (isPartOfIntersection)
         {
-            if (isPartOfIntersection)
+            //Check which outnode of this node we are going to next
+            for (int i = 0; i < outChoices.Count; i++)
             {
-                //Check which outnode of this node we are going to next
-                for (int i = 0; i < outChoices.Count; i++)
+                if (outChoices[i].outNode == nextNodeToGoTo)
                 {
-                    if (outChoices[i].outNode == nextNodeToGoTo)
+                    //Look through that choice and the nodes to wait for to see if there are any cars
+                    for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
                     {
-                        //Look through that choice and the nodes to wait for to see if there are any cars
-                        for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
+                        if (outChoices[i].nodesToWaitFor[j].carsOnThisNode.Count != 0 && outChoices[i].nodesToWaitFor[j].greenLight)
                         {
-                            if (outChoices[i].nodesToWaitFor[i].carsOnThisNode.Count != 0)
-                            {
-                                return false;
-                            }
+                            return false;
                         }
                     }
                 }
-                return true;
             }
-            else
-            {
-                return true;
-            }
+            return true;
+        }
+        else
+        {
+            return true;
         }
     }
 
@@ -70,7 +67,7 @@ public class PathNode : MonoBehaviour
     /// </summary>
     public void SetAllowedToPass(bool input)
     {
-        allowedToPass = input;
+        greenLight = input;
     }
 
     /// <summary>
@@ -78,7 +75,7 @@ public class PathNode : MonoBehaviour
     /// </summary>
     public void SwitchAllowedToPass()
     {
-        allowedToPass = allowedToPass ? false : true;
+        greenLight = greenLight ? false : true;
     }
 
     /// <summary>
@@ -235,7 +232,7 @@ public class PathNode : MonoBehaviour
         ValidateSetup();
 
         //Draw sphere
-        Gizmos.color = allowedToPass ? allowedToPassColor : notAllowedToPassColor;
+        Gizmos.color = greenLight ? allowedToPassColor : notAllowedToPassColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
         #region DrawLinesAndCheckConnectivity
@@ -246,12 +243,7 @@ public class PathNode : MonoBehaviour
         //Lines and curves
         for (int i = 0; i < outChoices.Count; i++)
         {
-            Gizmos.color = allowedToPass ? allowedToPassColor : notAllowedToPassColor; ;
-
-            if (!allowedToPass)
-            {
-                int test = 0;
-            }
+            Gizmos.color = greenLight ? allowedToPassColor : notAllowedToPassColor; ;
 
             //Safety check before catmull-rom to make sure connections can be checked both ways
             if (!outChoices[i].outNode.GetInConnections().Contains(this))
@@ -272,7 +264,7 @@ public class PathNode : MonoBehaviour
             //Change color of gizmo if we cannot use this outchoice due to need to wait, or if not allowed to pass
             for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
             {
-                if (outChoices[i].nodesToWaitFor[j].carsOnThisNode.Count != 0)
+                if (outChoices[i].nodesToWaitFor[j].carsOnThisNode.Count != 0 && outChoices[i].nodesToWaitFor[j].greenLight)
                 {
                     Gizmos.color = Color.red;
                     break;

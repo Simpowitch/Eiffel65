@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(EasySuspension))]
 [RequireComponent(typeof(PathNodeProgressTracker))]
 [RequireComponent(typeof(WheelDrive))]
 [RequireComponent(typeof(Rigidbody))]
@@ -25,7 +26,7 @@ public class CarAI : MonoBehaviour
     Rigidbody rb;
 
     //The path parent where the car picks random nodes from to go to
-    [SerializeField] Transform pathParent;
+    [SerializeField] private Transform pathParent;
     //How many nodes is the maximum when getting a new random path
     [SerializeField] int maxNodesInRandomizer = 30;
 
@@ -36,6 +37,8 @@ public class CarAI : MonoBehaviour
     //A node where the car should stop
     //Leave un-assigned if car is supposed to wander around without a set goal to stop at
     [SerializeField] PathNode endNode;
+    //A point to go to, using paths as long as possible to get close and then going to this point
+    [SerializeField] Transform endPoint;
 
     //How close we need to be a node to accept as arrived
     float nodeAcceptanceDistance = 4f;
@@ -44,7 +47,7 @@ public class CarAI : MonoBehaviour
     //Our speed
     [SerializeField] float kmhSpeed;
     //Our speed limit
-    float speedToHold = 30;
+    [SerializeField] float speedToHold = 30;
     //How much is the car steering to the right (1) or left (-1)
     float steerPercentage;
     //How much are we accelerating (-1 = 100% backwards & 1 = 100% forwards)
@@ -69,7 +72,7 @@ public class CarAI : MonoBehaviour
     public CarAI blockingCar = null;
 
     //The state of the driver/rules
-    private enum AIState { Drive, StopAtNextPathNode, Queue, AvoidCollision, Stopping, BackingFromStuck, GiveWayEmergency }
+    private enum AIState { Drive, StopAtNextPathNode, Queue, AvoidCollision, Stopping, BackingFromStuck, GiveWayEmergency, DriveOffRoad }
     [SerializeField] AIState currentState;
 
 
@@ -88,7 +91,12 @@ public class CarAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
 
-        currentNode = FindClosestNode();
+        currentNode = FindClosestNode(transform.position);
+
+        if (endPoint)
+        {
+            endNode = FindClosestNode(endPoint.position);
+        }
 
         if (endNode)
         {
@@ -103,6 +111,7 @@ public class CarAI : MonoBehaviour
         if (recklessDriver)
         {
             nodeAcceptanceDistance = criminalNodeAcceptanceDistance;
+            aiPathProgressTracker.distanceToAcceptAsPassed *= 2;
         }
 
         path[0].AddCarToNode(this);
@@ -122,14 +131,19 @@ public class CarAI : MonoBehaviour
         blockingCar = null;
         searchBoxes.Clear();
         searchSpheres.Clear();
-        CheckIfLostConnection();
-        if (lostConnection)
+        //If there is not a set endnode of which we have to go to, check if we are "lost" and then calculate a new route
+        if (!endNode)
         {
-            Debug.Log(this.transform.name + " lost connection, looking for a new pathnode");
-            currentNode = FindClosestNode();
-            CalculatePathToRandomNode(null);
-            aiPathProgressTracker.UpdatePath(path, currentNode);
-            lostConnection = false;
+            CheckIfLostConnection();
+            if (lostConnection)
+            {
+                Debug.Log(this.transform.name + " lost connection, looking for a new pathnode");
+                currentNode.RemoveCarFromNode(this);
+                currentNode = FindClosestNode(transform.position);
+                CalculatePathToRandomNode(null);
+                aiPathProgressTracker.UpdatePath(path, currentNode);
+                lostConnection = false;
+            }
         }
         if (!backingCoroutineIsOn)
         {
@@ -187,13 +201,15 @@ public class CarAI : MonoBehaviour
                 steerPercentage = SteerTowardsPoint(aiPathProgressTracker.target);
                 SteerAwayFromCollision(GetClosestObject(this.transform.position, collisionsInMyPath), ref steerPercentage);
                 speedToHold = CalculateSpeedToHold();
-                speedToHold = Mathf.Min(speedToHold, distanceToClosestObstacle);
+                float speedCollisionFactor = distanceToClosestObstacle / kmhSpeed;
+                speedCollisionFactor = Mathf.Sqrt(Mathf.Min(speedCollisionFactor, 1));
+                speedToHold *= speedCollisionFactor;
+                //speedToHold = Mathf.Min(speedToHold, distanceToClosestObstacle);
                 torquePercentage = CalculateTorqueAndBrakes();
                 break;
             case AIState.Stopping:
-                UpdatePath();
-                steerPercentage = SteerTowardsPoint(aiPathProgressTracker.target);
                 speedToHold = 0;
+                steerPercentage = 0;
                 torquePercentage = CalculateTorqueAndBrakes();
                 break;
             case AIState.BackingFromStuck:
@@ -226,13 +242,29 @@ public class CarAI : MonoBehaviour
                     GiveWayToPolice(policeVehicle, ref speedToHold, ref steerPercentage);
                     float distanceToPolice = Vector3.Distance(this.transform.position, policeVehicle.transform.position);
                     distanceToClosestObstacle = Mathf.Min(distanceToClosestObstacle, distanceToPolice);
-                    speedToHold = distanceToPolice < carLength * 2 ? 0 : Mathf.Min(speedToHold, distanceToClosestObstacle);
+                    speedToHold = distanceToPolice < carLength ? 0 : Mathf.Min(speedToHold, distanceToClosestObstacle);
                 }
+                if (!CheckIfAllowedToPass())
+                {
+                    speedToHold = Mathf.Min(speedToHold, Vector3.Distance(this.transform.position, path[0].transform.position));
+                }
+                torquePercentage = CalculateTorqueAndBrakes();
+                break;
+            case AIState.DriveOffRoad:
+                if (Vector3.Distance(endPoint.position, transform.position) < nodeAcceptanceDistance)
+                {
+                    endPoint = null;
+                    return;
+                }
+                steerPercentage = SteerTowardsPoint(endPoint.position);
+                speedToHold = currentNode.GetRoadSpeedLimit();
                 torquePercentage = CalculateTorqueAndBrakes();
                 break;
         }
         //Apply to wheels
         wheelController.AIDriver(steerPercentage, torquePercentage, braking);
+        //Turn on the correct lights for the car
+        UseLights();
     }
 
     #region PathCreation
@@ -314,10 +346,17 @@ public class CarAI : MonoBehaviour
         possibleCollisions = new List<GameObject>();
         if (debugStop || path.Count == 0 || currentNode == null)
         {
-            return AIState.Stopping;
+            if (endPoint && !debugStop)
+            {
+                return newState = AIState.DriveOffRoad;
+            }
+            else
+            {
+                return AIState.Stopping;
+            }
         }
 
-        if (ignoreStopsAndTrafficLights || CheckIfAllowedToPass())
+        if (ignoreStopsAndTrafficLights || runningFromPolice || CheckIfAllowedToPass())
         {
             newState = AIState.Drive;
         }
@@ -329,7 +368,7 @@ public class CarAI : MonoBehaviour
         if (DetectCollisionOnWaypoints(out GameObject closestWaypointCollision))
         {
             possibleCollisions.Add(closestWaypointCollision);
-            if (!recklessDriver)
+            if (!recklessDriver && !runningFromPolice)
             {
                 newState = AIState.Queue;
             }
@@ -343,7 +382,7 @@ public class CarAI : MonoBehaviour
         if (turningDirection != Turn.Straight && CheckSideSensors(out GameObject carOnTheSide))
         {
             possibleCollisions.Add(carOnTheSide);
-            if (!recklessDriver)
+            if (!recklessDriver && !runningFromPolice)
             {
                 newState = AIState.Queue;
             }
@@ -364,50 +403,17 @@ public class CarAI : MonoBehaviour
 
         for (int i = 0; i < possibleCollisions.Count; i++)
         {
-            if (possibleCollisions[i].transform.parent.GetComponent<CarAI>() != null)
+            if (possibleCollisions[i].transform.GetComponent<CarAI>() != null && possibleCollisions[i].transform.parent.GetComponent<CarAI>() != null)
             {
                 blockingCar = possibleCollisions[i].transform.parent.GetComponent<CarAI>();
                 break;
             }
         }
 
-        ////Apply logic if we are stuck
-        //if (isStuck)
-        //{
-        //    switch (newState)
-        //    {
-        //        case AIState.Drive:
-        //            newState = AIState.BackingFromStuck;
-        //            break;
-        //        case AIState.StopAtNextPathNode:
-        //            break;
-        //        case AIState.Queue:
-        //            //Only allow statechange if both cars are blocking eachother
-        //            if (blockingCar && blockingCar.blockingCar == this)
-        //            {
-        //                if (blockingCar && blockingCar.currentState == AIState.Queue)
-        //                {
-        //                    newState = CheckTrafficRulePriority(blockingCar) ? AIState.Drive : AIState.Queue;
-        //                }
-        //                else
-        //                {
-        //                    newState = AIState.BackingFromStuck;
-        //                }
-        //            }
-        //            break;
-        //        case AIState.AvoidCollision:
-        //            newState = AIState.BackingFromStuck;
-        //            break;
-        //        case AIState.Stopping:
-        //            break;
-        //        case AIState.BackingFromStuck:
-        //            newState = AIState.BackingFromStuck;
-        //            break;
-        //        case AIState.GiveWayEmergency:
-        //            break;
-        //    }
-        //}
-
+        if (isStuck && newState == AIState.AvoidCollision || backingCoroutineIsOn)
+        {
+            newState = AIState.BackingFromStuck;
+        }
         return newState;
     }
 
@@ -429,8 +435,13 @@ public class CarAI : MonoBehaviour
         List<Collider> collisions = new List<Collider>();
         List<GameObject> collisionObjects = new List<GameObject>();
 
+        float searchSphereMultiplier = 1;
         //Check directly infront of the car
-        SearchSphere searchSphere = new SearchSphere(this.transform.position + (transform.forward * (carLength)), carWidth / 2 * 1.25f);
+        if (turningDirection != Turn.Straight)
+        {
+            searchSphereMultiplier *= 2;
+        }
+        SearchSphere searchSphere = new SearchSphere(this.transform.position + (transform.forward * (carLength)), carWidth * searchSphereMultiplier / 2 * 1.25f);
         searchSpheres.Add(searchSphere);
         collisions.AddRange(Physics.OverlapSphere(searchSphere.pos, searchSphere.radius));
 
@@ -442,7 +453,7 @@ public class CarAI : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position, waypoints[i]) > minimumDistanceToCheck)
                 {
-                    collisions.AddRange(Physics.OverlapSphere(waypoints[i], carWidth / 2));
+                    collisions.AddRange(Physics.OverlapSphere(waypoints[i], carWidth * searchSphereMultiplier / 2));
                 }
             }
             else
@@ -453,6 +464,11 @@ public class CarAI : MonoBehaviour
 
         for (int i = 0; i < collisions.Count; i++)
         {
+            if (collisions[i].gameObject.tag == "Pedestrian" && collisions[i].GetComponent<PedestrianAI>() != null && collisions[i].GetComponent<PedestrianAI>().isWaiting)
+            {
+                collisions.RemoveAt(i);
+                i--;
+            }
             if (collisions[i].gameObject.tag == terrainTag || collisions[i].gameObject.tag == pathNodeTag)
             {
                 collisions.RemoveAt(i);
@@ -472,7 +488,7 @@ public class CarAI : MonoBehaviour
         //Display the search
         for (int i = 0; i < collisionObjects.Count; i++)
         {
-            searchSpheres.Add(new SearchSphere(collisionObjects[i].transform.position, carWidth / 2));
+            searchSpheres.Add(new SearchSphere(collisionObjects[i].transform.position, carWidth  * searchSphereMultiplier / 2));
         }
 
         if (collisionObjects.Count > 0)
@@ -583,6 +599,10 @@ public class CarAI : MonoBehaviour
     /// </summary>
     private void UpdatePath()
     {
+        if (path.Count == 0)
+        {
+            return;
+        }
         if (Vector3.Distance(transform.position, path[0].transform.position) < nodeAcceptanceDistance)
         {
             //Leave old node
@@ -593,7 +613,7 @@ public class CarAI : MonoBehaviour
             //If we have arrived at the last node
             if (path.Count == 0 && endNode)
             {
-                currentNode = null;
+                //currentNode = null;
                 return;
             }
             //If there are more than one node left to visit
@@ -615,6 +635,10 @@ public class CarAI : MonoBehaviour
     /// </summary>
     private float CalculateSpeedToHold()
     {
+        if (!currentNode)
+        {
+            return 0;
+        }
         float newSpeed = currentNode.GetRoadSpeedLimit();
         newSpeed *= (1 - Mathf.Abs(steerPercentage));
         newSpeed *= (1 - Mathf.Abs(aiPathProgressTracker.curvePercentage));
@@ -670,22 +694,16 @@ public class CarAI : MonoBehaviour
     /// <summary>
     /// Find the closest pathnode
     /// </summary>
-    private PathNode FindClosestNode()
+    private PathNode FindClosestNode(Vector3 positionToSearchFrom)
     {
-        if (currentNode)
-        {
-            currentNode.RemoveCarFromNode(this);
-            currentNode = null;
-        }
-
-        Collider[] allOverlappingColliders = Physics.OverlapSphere(transform.position, closestNodeSearchDistance);
+        Collider[] allOverlappingColliders = Physics.OverlapSphere(positionToSearchFrom, closestNodeSearchDistance);
         PathNode closestNode = null;
         float distance = float.MaxValue;
         foreach (var item in allOverlappingColliders)
         {
             if (item.GetComponent<PathNode>() != null)
             {
-                float testDistance = Vector3.Distance(transform.position, item.transform.position);
+                float testDistance = Vector3.Distance(positionToSearchFrom, item.transform.position);
                 if (testDistance < distance)
                 {
                     closestNode = item.GetComponent<PathNode>();
@@ -697,7 +715,7 @@ public class CarAI : MonoBehaviour
         if (closestNode == null)
         {
             closestNodeSearchDistance *= 2;
-            closestNode = FindClosestNode();
+            closestNode = FindClosestNode(positionToSearchFrom);
             closestNodeSearchDistance = 10f;
         }
         return closestNode;
@@ -771,13 +789,20 @@ public class CarAI : MonoBehaviour
     /// </summary>
     public bool CheckIfAllowedToPass()
     {
-        if (path.Count > 1)
+        if (!ignoreStopsAndTrafficLights)
         {
-            return path[0].IsAllowedToPass(path[1]);
+            if (path.Count > 1)
+            {
+                return path[0].IsCarAllowedToPass(path[1]);
+            }
+            else
+            {
+                return path[0].IsCarAllowedToPass(null);
+            }
         }
         else
         {
-            return path[0].IsAllowedToPass(null);
+            return true;
         }
     }
 
@@ -789,7 +814,7 @@ public class CarAI : MonoBehaviour
     {
         //Checking if stuck
         //if (kmhSpeed < speedToHold && kmhSpeed <= lastSpeedCheck)
-        if (kmhSpeed + stuckSpeedSensistivity < speedToHold && kmhSpeed <= lastSpeedCheck)
+        if (kmhSpeed + stuckSpeedSensistivity < speedToHold && kmhSpeed <= lastSpeedCheck && kmhSpeed < 3)
         {
             if (!checkingIfStuck)
             {
@@ -984,11 +1009,17 @@ public class CarAI : MonoBehaviour
         float steerDirectionTowardsCar = SteerTowardsPoint(vehicleToGiveWayTo.transform.position);
         float distanceToPolice = Vector3.Distance(vehicleToGiveWayTo.transform.position, this.transform.position);
 
-        //take the middle ground between where i want to go and to avoid
-        float diviance = -steerDirectionTowardsCar / distanceToPolice;
-        steering += diviance;
-        float speedReduction = distanceToPolice;
-        speed = Mathf.Max(5, distanceToPolice * 2);
+        //Option 1: take the middle ground between where i want to go and to avoid
+        //float diviance = -steerDirectionTowardsCar / distanceToPolice;
+        //steering += diviance;
+        //speed = Mathf.Max(5, distanceToPolice);
+
+        //Option 2 steer towards my target + an offset
+        float avoidanceFactor = kmhSpeed / distanceToPolice;
+        avoidanceFactor = Mathf.Min(1, avoidanceFactor);
+        Vector3 offset = steerDirectionTowardsCar < 0 ? transform.right * carWidth * avoidanceFactor : -transform.right * carWidth * avoidanceFactor;
+        Vector3 giveWayWaypoint = aiPathProgressTracker.target + offset;
+        steering = SteerTowardsPoint(giveWayWaypoint);
     }
 
     /// <summary>
@@ -996,22 +1027,34 @@ public class CarAI : MonoBehaviour
     /// </summary>
     private void SteerAwayFromCollision(GameObject objectToAvoid, ref float steering)
     {
-        float distanceToObstacle = Vector3.Distance(objectToAvoid.transform.position, this.transform.position);
+        //OPTION 1
+        //float distanceToObstacle = Vector3.Distance(objectToAvoid.transform.position, this.transform.position);
 
-        Vector3 waypointClosestToCollision = GetClosestVector3(objectToAvoid.transform.position, aiPathProgressTracker.waypoints);
+        //Vector3 waypointClosestToCollision = GetClosestVector3(objectToAvoid.transform.position, aiPathProgressTracker.waypoints);
 
-        float steerPercentageToWaypoint = SteerTowardsPoint(waypointClosestToCollision);
-        float steerPercentageToObstacle = SteerTowardsPoint(objectToAvoid.transform.position);
+        //float steerPercentageToWaypoint = SteerTowardsPoint(waypointClosestToCollision);
+        //float steerPercentageToObstacle = SteerTowardsPoint(objectToAvoid.transform.position);
 
-        //If obstacle is left of the path
-        if (steerPercentageToObstacle < steerPercentageToWaypoint)
-        {
-            steering += 1f / distanceToObstacle;
-        }
-        else
-        {
-            steering -= 1f / distanceToObstacle;
-        }
+        ////If obstacle is left of the path
+        //if (steerPercentageToObstacle < steerPercentageToWaypoint)
+        //{
+        //    steering += 1f / distanceToObstacle;
+        //}
+        //else
+        //{
+        //    steering -= 1f / distanceToObstacle;
+        //}
+
+        //OPTION 2
+
+        float steerDirectionTowardsCar = SteerTowardsPoint(objectToAvoid.transform.position);
+        float distanceToCar = Vector3.Distance(objectToAvoid.transform.position, this.transform.position);
+
+        float avoidanceFactor = kmhSpeed / distanceToCar;
+        avoidanceFactor = Mathf.Min(1, avoidanceFactor);
+        Vector3 offset = steerDirectionTowardsCar < 0 ? objectToAvoid.transform.right * carWidth * 2 * avoidanceFactor : -objectToAvoid.transform.right * carWidth * 2 * avoidanceFactor;
+        Vector3 newWaypoint = aiPathProgressTracker.target + offset;
+        steering = SteerTowardsPoint(newWaypoint);
     }
 
     /// <summary>
@@ -1027,6 +1070,69 @@ public class CarAI : MonoBehaviour
             }
         }
         return Vector3.Distance(startPoint, obstacle.transform.position);
+    }
+
+    float blinkerTimeLit = 0.5f;
+    float blinkerTimeUnLit = 1f;
+    /// <summary>
+    /// Use lights depending on our car state (braking, turning etc.)
+    /// </summary>
+    private void UseLights()
+    {
+        //if nighttime
+        {
+            //use headlights
+        }
+        //else
+        {
+            //use normal lights
+        }
+        if (turningDirection != Turn.Straight && !blinkersCoroutineIsInitialized)
+        {
+            StartCoroutine(UseBlinkers(turningDirection));
+        }
+        else if (turningDirection == Turn.Straight && blinkersCoroutineIsInitialized)
+        {
+            StopCoroutine(UseBlinkers(turningDirection));
+        }
+        if (braking)
+        {
+            //use brakelights
+        }
+        else
+        {
+            //turn off brakelights
+        }
+    }
+
+    bool blinkersCoroutineIsInitialized = false;
+    //Blinks until coroutine is stopped
+    IEnumerator UseBlinkers(Turn side)
+    {
+        blinkersCoroutineIsInitialized = true;
+        while (true)
+        {
+            switch (side)
+            {
+                case Turn.Left:
+                    //turn on left blinker light
+                    break;
+                case Turn.Right:
+                    //turn on right blinker light
+                    break;
+            }
+            yield return new WaitForSeconds(blinkerTimeLit);
+            switch (side)
+            {
+                case Turn.Left:
+                    //turn off left blinker light
+                    break;
+                case Turn.Right:
+                    //turn off right blinker light
+                    break;
+            }
+            yield return new WaitForSeconds(blinkerTimeUnLit);
+        }
     }
 
     #region Sensors
