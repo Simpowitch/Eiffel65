@@ -7,7 +7,7 @@ public delegate void consequense();
 
 public class FastCallCaller : MonoBehaviour, IFreezeChoice
 {
-
+	[SerializeField] AudioClip[] clips;
 	[SerializeField] private FastCall[] Consequences = new FastCall[4];
 	[SerializeField] private Consequense NoAnswer;
 	[SerializeField] private WheelDrive.DriveControls triggerdBy = WheelDrive.DriveControls.Player;
@@ -75,6 +75,7 @@ public class FastCallCaller : MonoBehaviour, IFreezeChoice
 	private void Fired()
 	{
 		print("Police no more :( You're <color=red>FIRED </color>");
+		AudioManager.Instance.PlayClip(clips[0]);
 	}
 
 	private void Praised()
