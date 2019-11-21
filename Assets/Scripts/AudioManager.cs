@@ -27,16 +27,21 @@ public class AudioManager : MonoBehaviour
 		worldPositionSources = new List<AudioSource>(32);
 		movingAudioSources = new List<MovingAudioSource>(32);
 		sources.Add(gameObject.AddComponent<AudioSource>());
+		sources[0].loop = true;
 	}
 
 	private void Update()
 	{
 
-		foreach(MovingAudioSource source in movingAudioSources)
+		foreach (MovingAudioSource source in movingAudioSources)
 		{
-			if(source.audioSource.isPlaying)
+			if (source.audioSource.isPlaying)
 			{
 				source.transform.position = source.objectToFollow.position;
+			}
+			else if(source.audioSource.loop)
+			{
+				source.audioSource.loop = false;
 			}
 		}
 	}
@@ -51,8 +56,7 @@ public class AudioManager : MonoBehaviour
 	/// <param name="clip"></param>
 	public AudioSource PlayClip(AudioClip clip)
 	{
-		for (int i = 1; i < sources.
-Count; i++)
+		for (int i = 1; i < sources.Count; i++)
 		{
 			if (!sources[i].isPlaying)
 			{
@@ -97,10 +101,10 @@ Count; i++)
 	}
 
 	/// <summary>
-	/// Changes the clip of the first AudioSource (slot for exclusive sounds like music), returns the used AudioSource
+	/// Changes the clip of the first AudioSource (slot for exclusive sounds like music), returns the used AudioSource (this audiosource is looping)
 	/// </summary>
 	/// <param name="clip"></param>
-	public AudioSource PlayTopAudioSource(AudioClip clip)
+	public AudioSource SetBackgroundMusic(AudioClip clip)
 	{
 		sources[0].clip = clip;
 		sources[0].Play();
@@ -144,6 +148,37 @@ Count; i++)
 		worldPositionSources.Add(_source);
 		_source.clip = clip;
 		_source.spatialBlend = 1;
+		_source.Play();
+		return _source;
+	}
+
+	/// <summary>
+	/// Play a sound in worldspace
+	/// </summary>
+	/// <param name="clip"></param>
+	/// <param name="sourceOfAudio"></param>
+	/// <returns></returns>
+	public AudioSource PlayClip(AudioClip clip, Vector3 sourceOfAudio, bool loop)
+	{
+		if (!loop)
+			PlayClip(clip, sourceOfAudio);
+		for (int i = 1; i < worldPositionSources.Count; i++)
+		{
+			if (!worldPositionSources[i].isPlaying)
+			{
+				worldPositionSources[i].transform.position = sourceOfAudio;
+				worldPositionSources[i].clip = clip;
+				worldPositionSources[i].Play();
+				return worldPositionSources[i];
+			}
+		}
+		GameObject temp = new GameObject();
+		temp.transform.position = sourceOfAudio;
+		AudioSource _source = temp.AddComponent<AudioSource>();
+		worldPositionSources.Add(_source);
+		_source.clip = clip;
+		_source.spatialBlend = 1;
+		_source.loop = loop;
 		_source.Play();
 		return _source;
 	}

@@ -66,6 +66,15 @@ public class WheelDrive : MonoBehaviour
     float brakingTorque;
     float targetSteerAngleAI;
 
+	public float EngineTorque
+	{
+		get { return engineTorque; }
+	}
+	public float MaxTorque
+	{
+		get { return maxTorque; }
+	}
+
     public void AIDriver(float steering, float torque, bool braking)
     {
         targetSteerAngleAI = steering * maxAngle;
