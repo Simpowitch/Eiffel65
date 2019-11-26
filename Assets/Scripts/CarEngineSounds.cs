@@ -5,7 +5,10 @@ using UnityEngine;
 public class CarEngineSounds : MonoBehaviour
 {
 	private Object[] audioFiles;
+	private float[] speedThresholds = {int.MinValue, 1, 10, 30, 50, 70, 90, 100, 120, 150, 175, 200 };
+
 	[SerializeField] private AudioClip[] engineSounds;
+	private AudioSource previousAudioSource;
 	private WheelDrive wheels;
 	private int gear, previousGear;
 	private float inverse;
@@ -26,15 +29,39 @@ public class CarEngineSounds : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-		gear = Mathf.FloorToInt(wheels.EngineTorque * inverse);
-
+		gear = 11;
+		for (int i = 0; i < engineSounds.Length-1; i++)
+		{
+			if (IsInRange(wheels.Speed * Input.GetAxis("Vertical"), speedThresholds[i], speedThresholds[i+1]))
+			{
+				gear = i;
+			}
+		}
         if(gear != previousGear)
 		{
-			gear = gear == engineSounds.Length ? engineSounds.Length-1 : gear;
-			AudioManager.Instance.PlayClip(engineSounds[gear], transform);
+			if(previousAudioSource != null && previousAudioSource.isPlaying)
+			{
+				previousAudioSource.Stop();
+			}
+			previousAudioSource = AudioManager.Instance.PlayClip(engineSounds[gear], transform, true);
 		}
 		previousGear = gear;
+		print(gear);
     }
+
+	/// <summary>
+	/// Checks if number is between the two given numbers, where 'over' is inclusive and 'under' is exclusive
+	/// </summary>
+	/// <param name="over"></param>
+	/// <param name="under"></param>
+	/// <param name="number"></param>
+	/// <returns></returns>
+	private bool IsInRange(float number, float over, float under)
+	{
+		if (number >= over && number < under)
+			return true;		
+		return false;
+	}
 }

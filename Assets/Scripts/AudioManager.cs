@@ -148,6 +148,7 @@ public class AudioManager : MonoBehaviour
 		worldPositionSources.Add(_source);
 		_source.clip = clip;
 		_source.spatialBlend = 1;
+		_source.loop = false;
 		_source.Play();
 		return _source;
 	}
@@ -205,11 +206,33 @@ public class AudioManager : MonoBehaviour
 		MovingAudioSource _movingAudioSource = new MovingAudioSource(_source, temp.transform, fromObject);
 		movingAudioSources.Add(_movingAudioSource);
 		_source.clip = clip;
+		_source.loop = false;
 		_source.spatialBlend = 1;
 		_source.Play();
 		return _source;
 	}
 
+	public AudioSource PlayClip(AudioClip clip, Transform fromObject, bool loop)
+	{
+		for (int i = 1; i < worldPositionSources.Count; i++)
+		{
+			if (!worldPositionSources[i].isPlaying)
+			{
+				worldPositionSources[i].clip = clip;
+				worldPositionSources[i].Play();
+				return worldPositionSources[i];
+			}
+		}
+		GameObject temp = new GameObject();
+		AudioSource _source = temp.AddComponent<AudioSource>();
+		MovingAudioSource _movingAudioSource = new MovingAudioSource(_source, temp.transform, fromObject);
+		movingAudioSources.Add(_movingAudioSource);
+		_source.clip = clip;
+		_source.loop = loop;
+		_source.spatialBlend = 1;
+		_source.Play();
+		return _source;
+	}
 	#endregion
 
 

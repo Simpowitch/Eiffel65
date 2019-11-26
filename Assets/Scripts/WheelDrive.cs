@@ -74,6 +74,10 @@ public class WheelDrive : MonoBehaviour
 	{
 		get { return maxTorque; }
 	}
+	public float Speed
+	{
+		get { return speed; }
+	}
 
     public void AIDriver(float steering, float torque, bool braking)
     {
