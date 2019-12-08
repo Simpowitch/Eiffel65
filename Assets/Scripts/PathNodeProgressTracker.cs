@@ -16,6 +16,8 @@ public class PathNodeProgressTracker : MonoBehaviour
     float lookAheadMaxDistance = 10f;
     float lookAheadSpeedModifier = 0.5f;
 
+    int curvePercentageLookAheadIndex = 5;
+
     //This helps us to make sure we don't target the same position again if already close enough
     public float distanceToAcceptAsPassed = 5f;
     //public int passedProgress = 0;
@@ -32,7 +34,11 @@ public class PathNodeProgressTracker : MonoBehaviour
     {
         RemovePassedWaypoints();
         target = CalculateTarget();
-        curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count - 1]);
+        //curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count - 1]);
+
+        int index = Mathf.Min(curvePercentageLookAheadIndex, waypoints.Count - 1);
+
+        curvePercentage = CalculateCurvePercentage(waypoints[index]);
     }
 
     //Remove waypoints we are passing, but leave at least one

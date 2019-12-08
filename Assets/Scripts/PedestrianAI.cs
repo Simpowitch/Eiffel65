@@ -8,9 +8,14 @@ public class PedestrianAI : MonoBehaviour
     NavMeshAgent agent;
     [SerializeField] Transform pedestrianNodesParent = null;
     Transform[] pedestrianNodes;
-    PathNode[] carNodesInFrontOfMe;
-    PedestrianTrafficLight nearbyTrafficLight;
+    public PedestrianTrafficLight nearbyTrafficLight; //DEBUG
+    PedestrianTrafficLight lastVisitedTrafficLight;
     public bool isWaiting = false;
+
+    public enum PedestrianState { OnSidewalk, OnRoad}
+    public PedestrianState state = PedestrianState.OnSidewalk;
+
+    public bool isOnRoad = false;
 
     private void Start()
     {
@@ -25,6 +30,7 @@ public class PedestrianAI : MonoBehaviour
         {
             SetRandomTarget();
         }
+
 
         if (nearbyTrafficLight != null && !nearbyTrafficLight.greenLight || CheckForCars())
         {
@@ -68,6 +74,7 @@ public class PedestrianAI : MonoBehaviour
         {
             nearbyTrafficLight = other.GetComponent<PedestrianTrafficLight>();
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -77,7 +84,23 @@ public class PedestrianAI : MonoBehaviour
             if (nearbyTrafficLight == other.GetComponent<PedestrianTrafficLight>())
             {
                 nearbyTrafficLight = null;
+                lastVisitedTrafficLight = other.GetComponent<PedestrianTrafficLight>();
+                state = PedestrianState.OnRoad;
+                isOnRoad = true;
             }
         }
+        if (lastVisitedTrafficLight && other.tag == "PedestrianCrossing")
+        {
+            lastVisitedTrafficLight = null;
+            StartCoroutine(GetOffRoadInSeconds());
+        }
+    }
+
+    float seconds = 2;
+    IEnumerator GetOffRoadInSeconds()
+    {
+        yield return new WaitForSeconds(seconds);
+        state = PedestrianState.OnSidewalk;
+        isOnRoad = false;
     }
 }
