@@ -87,9 +87,16 @@ public class CarAI : MonoBehaviour
 
     private void Start()
     {
+
         wheelController = GetComponent<WheelDrive>();
         rb = GetComponent<Rigidbody>();
         aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
+
+        if (!pathParent)
+        {
+            Debug.LogWarning("Car cannot go without path parent set:" + transform.name);
+            return;
+        }
 
         currentNode = FindClosestNode(transform.position);
 
@@ -127,6 +134,11 @@ public class CarAI : MonoBehaviour
     //Main function of the car AI
     private void FixedUpdate()
     {
+        if (!pathParent)
+        {
+            return;
+        }
+
         //Check State of the AI
         blockingCar = null;
         searchBoxes.Clear();

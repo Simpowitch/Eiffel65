@@ -32,13 +32,16 @@ public class PathNodeProgressTracker : MonoBehaviour
 
     private void Update()
     {
-        RemovePassedWaypoints();
-        target = CalculateTarget();
-        //curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count - 1]);
+        if (waypoints.Count > 0)
+        {
+            RemovePassedWaypoints();
+            target = CalculateTarget();
+            //curvePercentage = CalculateCurvePercentage(waypoints[waypoints.Count - 1]);
 
-        int index = Mathf.Min(curvePercentageLookAheadIndex, waypoints.Count - 1);
+            int index = Mathf.Min(curvePercentageLookAheadIndex, waypoints.Count - 1);
 
-        curvePercentage = CalculateCurvePercentage(waypoints[index]);
+            curvePercentage = CalculateCurvePercentage(waypoints[index]);
+        }
     }
 
     //Remove waypoints we are passing, but leave at least one
