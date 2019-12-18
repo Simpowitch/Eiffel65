@@ -4,46 +4,110 @@ using UnityEngine;
 
 public class TimedTrafficlights : MonoBehaviour
 {
-    [SerializeField] PathNode[] lightGroup1;
-    [SerializeField] PathNode[] lightGroup2;
+    private enum State { Group1, Group2 }
+    State state = State.Group1;
+    [SerializeField] PathNode[] carLightgroup1 = null;
+    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup1 = null;
+    [SerializeField] PathNode[] carLightgroup2 = null;
+    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup2 = null;
+    bool redForAll = false;
 
     // Start is called before the first frame update
     void Start()
     {
         //Sets the opposite of default to the lightgroup1
-        for (int i = 0; i < lightGroup1.Length; i++)
+        for (int i = 0; i < carLightgroup2.Length; i++)
         {
-            lightGroup1[i].SwitchAllowedToPass();
+            carLightgroup2[i].SetAllowedToPass(false);
+        }
+        for (int i = 0; i < pedestrianLightgroup2.Length; i++)
+        {
+            pedestrianLightgroup2[i].greenLight = false;
         }
     }
 
     float timer;
-    [SerializeField] float timeBetweenLightswitch = 10f;
+    [SerializeField] float greenLightTime = 10f;
+    [SerializeField] float timeBetweenLightSwitches = 3f;
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer >= timeBetweenLightswitch)
+        if (!redForAll)
         {
-            timer -= timeBetweenLightswitch;
-            ReverseLights();
+            if (timer >= greenLightTime)
+            {
+                timer -= greenLightTime;
+                TurnAllRed();
+            }
+        }
+        else
+        {
+            if (timer >= timeBetweenLightSwitches)
+            {
+                timer -= timeBetweenLightSwitches;
+                redForAll = false;
+                ReverseLights();
+            }
         }
     }
 
-    
+    private void TurnAllRed()
+    {
+        redForAll = true;
+
+        if (state == State.Group1)
+        {
+            for (int i = 0; i < carLightgroup1.Length; i++)
+            {
+                carLightgroup1[i].SetAllowedToPass(false);
+            }
+            for (int i = 0; i < pedestrianLightgroup1.Length; i++)
+            {
+                pedestrianLightgroup1[i].greenLight = false;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < carLightgroup2.Length; i++)
+            {
+                carLightgroup2[i].SetAllowedToPass(false);
+            }
+            for (int i = 0; i < pedestrianLightgroup2.Length; i++)
+            {
+                pedestrianLightgroup2[i].greenLight = false;
+            }
+        }
+
+    }
 
     private void ReverseLights()
     {
-        for (int i = 0; i < lightGroup1.Length; i++)
+        if (state == State.Group1)
         {
-            lightGroup1[i].SwitchAllowedToPass();
+            state = State.Group2;
+            for (int i = 0; i < carLightgroup2.Length; i++)
+            {
+                carLightgroup2[i].SetAllowedToPass(true);
+            }
+            for (int i = 0; i < pedestrianLightgroup2.Length; i++)
+            {
+                pedestrianLightgroup2[i].greenLight = true;
+            }
         }
-
-        for (int i = 0; i < lightGroup2.Length; i++)
+        else
         {
-            lightGroup2[i].SwitchAllowedToPass();
+            state = State.Group1;
+            for (int i = 0; i < carLightgroup1.Length; i++)
+            {
+                carLightgroup1[i].SetAllowedToPass(true);
+            }
+            for (int i = 0; i < pedestrianLightgroup1.Length; i++)
+            {
+                pedestrianLightgroup1[i].greenLight = true;
+            }
         }
     }
 }

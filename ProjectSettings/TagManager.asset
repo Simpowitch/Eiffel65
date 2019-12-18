@@ -7,6 +7,9 @@ TagManager:
   - Terrain
   - Vehicle
   - WorldObject
+  - RoadSegment
+  - PathNode
+  - PedestrianCrossing
   layers:
   - Default
   - TransparentFX

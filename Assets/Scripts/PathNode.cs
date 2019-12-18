@@ -4,27 +4,62 @@ using UnityEngine;
 
 public class PathNode : MonoBehaviour
 {
-    public static PathNode dragConnectedNode;
+    public static PathNode selectedNodeForConnection; //used with hotkeys for quick connection between nodes
 
-    [SerializeField] bool allowedToPass = true;
+    [SerializeField] bool greenLight = true;
     [SerializeField] float roadSpeedLimit = 30;
-    [SerializeField] int pathFindingCost = 0;
+    float intersectionSpeedLimitOverride = 30;
 
-    [SerializeField] List<PathNode> possibleNextNodes;
+    public bool isPartOfIntersection = false; //Used to enable cars to check for other cars in the intersection
+    //[SerializeField] List<PathNode> nodesToWaitFor = new List<PathNode>();
+    public List<CarAI> carsOnThisNode = new List<CarAI>(); //debug public
 
-    List<PathNode> backwardNodes; //used for catmull-rom (curved path)
+    public List<DirectionChoice> outChoices = new List<DirectionChoice>();
+    public List<PathNode> inNodes = new List<PathNode>(); //used for catmull-rom (curved path)
 
+
+    private void Start()
+    {
+        if (outChoices.Count < 1)
+        {
+            Debug.LogError("You have not set up the path correctly, this node is missing a nodeconnection " + transform.name);
+        }
+        ValidateConnections();
+        ValidateSetup();
+    }
 
     /// <summary>
     /// Returns true when green light is on, or if there is no traffic light present
     /// </summary>
-    public bool IsAllowedToPass()
+    public bool IsCarAllowedToPass(PathNode nextNodeToGoTo)
     {
-        //if (!hasTrafficLights)
-        //{
-        //    return true;
-        //}
-        return allowedToPass;
+        if (!greenLight)
+        {
+            return false;
+        }
+        if (isPartOfIntersection)
+        {
+            //Check which outnode of this node we are going to next
+            for (int i = 0; i < outChoices.Count; i++)
+            {
+                if (outChoices[i].outNode == nextNodeToGoTo)
+                {
+                    //Look through that choice and the nodes to wait for to see if there are any cars
+                    for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
+                    {
+                        if (outChoices[i].nodesToWaitFor[j].carsOnThisNode.Count != 0 && outChoices[i].nodesToWaitFor[j].greenLight)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     /// <summary>
@@ -32,7 +67,7 @@ public class PathNode : MonoBehaviour
     /// </summary>
     public void SetAllowedToPass(bool input)
     {
-        allowedToPass = input;
+        greenLight = input;
     }
 
     /// <summary>
@@ -40,7 +75,7 @@ public class PathNode : MonoBehaviour
     /// </summary>
     public void SwitchAllowedToPass()
     {
-        allowedToPass = allowedToPass ? false : true;
+        greenLight = greenLight ? false : true;
     }
 
     /// <summary>
@@ -60,117 +95,235 @@ public class PathNode : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the nodes possible to go to next from this position
+    /// Returns the nodes and directions possible to go to next from this position
     /// </summary>
-    public List<PathNode> GetPathNodes()
+    public List<DirectionChoice> GetOutChoices()
     {
-        return possibleNextNodes;
+        return outChoices;
     }
 
     /// <summary>
-    /// Adds a new node to the list of connected nodes, mainly used in editor too quickly create new nodes
+    /// Adds a new node to the list of connected nodes and out direction choices
     /// </summary>
-    public void AddConnectedNode(PathNode input)
+    public void AddOutChoice(DirectionChoice input)
     {
-        if (input != this && !possibleNextNodes.Contains(input))
+        if (input.outNode == this)
         {
-            possibleNextNodes.Add(input);
-            input.AddBackwardsNodeConnection(this);
+            Debug.Log("Cannot add this pathnode to itself" + transform.name);
+            return;
         }
+
+        for (int i = 0; i < outChoices.Count; i++)
+        {
+            if (outChoices[i].outNode == input.outNode)
+            {
+                Debug.Log("Cannot add an already existing connected node to this pathnode" + transform.name);
+                return;
+            }
+        }
+        outChoices.Add(input);
+        input.outNode.AddInConnection(this);
     }
-    public void AddConnectedNode(List<PathNode> input)
+
+    /// <summary>
+    /// Adds a list of nodes to the list of connected nodes and out direction choices
+    /// </summary>
+    public void AddOutChoice(List<DirectionChoice> input)
     {
         for (int i = 0; i < input.Count; i++)
         {
-            AddConnectedNode(input[i]);
+            AddOutChoice(input[i]);
         }
     }
 
     /// <summary>
     /// Adds a new node to the list of previous or incoming nodes, used for catmull-rom calculation
     /// </summary>
-    public void AddBackwardsNodeConnection(PathNode input)
+    public void AddInConnection(PathNode input)
     {
-        if (input != this && !backwardNodes.Contains(input))
+        if (input != this && !inNodes.Contains(input))
         {
-            backwardNodes.Add(input);
+            inNodes.Add(input);
         }
     }
 
-    public List<PathNode> GetBackWardConnections()
+    /// <summary>
+    /// Returns all backward connections of this node
+    /// </summary>
+    public List<PathNode> GetInConnections()
     {
-        return backwardNodes;
+        return inNodes;
     }
 
     /// <summary>
     /// Replaces the connected node, mainly used in editor too quickly create new nodes between already made nodes
     /// </summary>
-    public void ReplaceConnectedNode(PathNode input)
+    public void ReplaceSingleConnection(PathNode newNode)
     {
-        possibleNextNodes[0] = input;
+        outChoices.Clear();
+        DirectionChoice newChoice = new DirectionChoice(newNode, Turn.Straight);
+        AddOutChoice(newChoice);
     }
 
+    //public void ClearForwardConnections()
+    //{
+    //    for (int i = 0; i < possibleNextNodes.Count; i++)
+    //    {
+    //        possibleNextNodes[i].inNodes.Remove(this);
+    //    }
+    //    possibleNextNodes.Clear();
+    //}
 
 
-    public void AddPathFindingCost()
+
+    public void AddCarToNode(CarAI car)
     {
-        pathFindingCost++;
+        if (carsOnThisNode.Contains(car))
+        {
+            //Do nothing
+            //Debug.LogWarning("Tried to add an already existing car: " + car.transform.name + " to this node" + transform.name);
+        }
+        else
+        {
+            carsOnThisNode.Add(car);
+        }
     }
 
-    public void ReducePathFindingCost()
+    public void RemoveCarFromNode(CarAI car)
     {
-        pathFindingCost--;
+        if (carsOnThisNode.Contains(car))
+        {
+            StartCoroutine(RemoveCarAfterSeconds(2f, car));
+            //carsOnThisNode.Remove(car);
+        }
+        else
+        {
+            //DO nothing
+            //Debug.Log("Tried to remove " + car.transform.name + " from this node" + transform.name);
+        }
     }
 
-    public int GetPathFindingCost()
+    IEnumerator RemoveCarAfterSeconds(float seconds, CarAI car)
     {
-        return pathFindingCost;
+        CarAI tempCar = null;
+        carsOnThisNode.Remove(car);
+        carsOnThisNode.Add(tempCar);
+        yield return new WaitForSeconds(seconds);
+        carsOnThisNode.Remove(tempCar);
     }
+
+    public List<CarAI> GetCarsOnThisNode()
+    {
+        return carsOnThisNode;
+    }
+
 
 
 
     [Header("Editor")]
-    public Color lineColor;
-    private Color nodeColor;
-    public float nodeSize = 1f;
+    Color allowedToPassColor = Color.green;
+    Color notAllowedToPassColor = Color.red;
+    float nodeSize = 1f;
+    int visualPathSubsteps = 15; //substeps for catmull-rom curve
+
     private void OnDrawGizmos()
     {
-        Transform[] pathTransforms = GetComponentsInChildren<Transform>();
+        ValidateConnections();
+        ValidateSetup();
 
-        nodeColor = allowedToPass ? Color.blue : Color.red;
-        Gizmos.color = nodeColor;
+        //Draw sphere
+        Gizmos.color = greenLight ? allowedToPassColor : notAllowedToPassColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
-        Gizmos.color = lineColor;
-        for (int i = 0; i < possibleNextNodes.Count; i++)
-        {
-            if (possibleNextNodes[i] != null)
-            {
-                Vector3 currentNode = this.transform.position;
-                Vector3 nextNode = Vector3.zero;
-                nextNode = possibleNextNodes[i].transform.position;
-                Gizmos.DrawLine(currentNode, nextNode);
+        #region DrawLinesAndCheckConnectivity
+        bool catmullCurveAllowed = true;
+        int visualizationSubsteps = visualPathSubsteps;
 
-                Vector3 direction = (nextNode - currentNode).normalized;
-                Vector3 arrowPosition = currentNode + direction;
-                DrawArrow.ForGizmo(arrowPosition, direction, lineColor, 0.4f, 30);
-            }
-            else
-            {
-                possibleNextNodes.Remove(possibleNextNodes[i]);
-                i--;
-            }
+
+        //Lines and curves
+        for (int i = 0; i < outChoices.Count; i++)
+        {
+            Gizmos.color = greenLight ? allowedToPassColor : notAllowedToPassColor; ;
 
             //Safety check before catmull-rom to make sure connections can be checked both ways
-            if (!possibleNextNodes[i].GetBackWardConnections().Contains(this))
+            if (!outChoices[i].outNode.GetInConnections().Contains(this))
             {
-                possibleNextNodes[i].AddBackwardsNodeConnection(this);
+                outChoices[i].outNode.AddInConnection(this);
             }
 
-        }
-    }
+            //If we are missing any connections anywhere here we cannot make a proper catmull-curve
+            if (inNodes.Count < 1 || inNodes.Count < 1 || outChoices[i].outNode.outChoices.Count < 1)
+            {
+                catmullCurveAllowed = false;
+                Color temp = Gizmos.color;
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(this.transform.position, outChoices[i].outNode.transform.position);
+                Gizmos.color = temp;
+            }
 
-    private int visualizationSubsteps = 20;
+            //Change color of gizmo if we cannot use this outchoice due to need to wait, or if not allowed to pass
+            for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
+            {
+                if (outChoices[i].nodesToWaitFor[j].carsOnThisNode.Count != 0 && outChoices[i].nodesToWaitFor[j].greenLight)
+                {
+                    Gizmos.color = Color.red;
+                    break;
+                }
+            }
+
+            //Draw arrow
+            Vector3 currentNode = this.transform.position;
+            Vector3 nextNode = Vector3.zero;
+            nextNode = outChoices[i].outNode.transform.position;
+            Vector3 direction = (nextNode - currentNode).normalized;
+            Vector3 arrowPosition = currentNode + direction;
+            DrawArrow.ForGizmo(arrowPosition, direction, Gizmos.color, 0.4f, 30);
+
+            if (catmullCurveAllowed)
+            {
+                //instead of showing many paths for all different kind of combinations of inputs and outputs, we take the average of position 1 and 4 of the catmull-rom if there are multiple
+                Vector3 averageBackwardsNodePosition = Vector3.zero;
+                for (int inNode = 0; inNode < inNodes.Count; inNode++)
+                {
+                    averageBackwardsNodePosition += inNodes[inNode].transform.position;
+                }
+                averageBackwardsNodePosition /= inNodes.Count;
+
+                Vector3 averageOutNodeOutNodesPosition = Vector3.zero;
+                for (int j = 0; j < outChoices[i].outNode.outChoices.Count; j++)
+                {
+                    averageOutNodeOutNodesPosition += outChoices[i].outNode.outChoices[j].outNode.transform.position;
+                }
+                averageOutNodeOutNodesPosition /= outChoices[i].outNode.outChoices.Count;
+
+                //use catmull rom to draw a curved path
+                for (int step = 0; step < visualizationSubsteps; step++)
+                {
+                    float progress = (float)step / (float)visualizationSubsteps;
+                    Vector3 a = CatmullRom(averageBackwardsNodePosition, this.transform.position, outChoices[i].outNode.transform.position, averageOutNodeOutNodesPosition, progress);
+                    progress = ((float)step + 1) / (float)visualizationSubsteps;
+                    Vector3 b = CatmullRom(averageBackwardsNodePosition, this.transform.position, outChoices[i].outNode.transform.position, averageOutNodeOutNodesPosition, progress);
+                    Gizmos.DrawLine(a, b);
+                }
+            }
+        }
+        #endregion
+
+        //Show waiting nodes
+        //Gizmos.color = Color.red;
+
+        //for (int i = 0; i < outChoices.Count; i++)
+        //{
+        //    //Look through that choice and the nodes to wait for to see if there are any cars
+        //    for (int j = 0; j < outChoices[i].nodesToWaitFor.Count; j++)
+        //    {
+        //        if (outChoices[i].nodesToWaitFor[j].carsOnThisNode.Count != 0)
+        //        {
+        //            Gizmos.DrawLine(this.transform.position, outChoices[i].nodesToWaitFor[j].transform.position);
+        //        }
+        //    }
+        //}
+    }
 
     private Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float i)
     {
@@ -179,6 +332,78 @@ public class PathNode : MonoBehaviour
         return 0.5f *
                ((2 * p1) + (-p0 + p2) * i + (2 * p0 - 5 * p1 + 4 * p2 - p3) * i * i +
                 (-p0 + 3 * p1 - 3 * p2 + p3) * i * i * i);
+    }
+
+    private void ValidateConnections()
+    {
+        //Safety check, delete inactive nodes
+        for (int i = 0; i < inNodes.Count; i++)
+        {
+            if (inNodes[i] == null)
+            {
+                inNodes.Remove(inNodes[i]);
+                Debug.Log("Removed null-node");
+            }
+        }
+        for (int i = 0; i < outChoices.Count; i++)
+        {
+            if (outChoices[i].outNode == null)
+            {
+                outChoices.RemoveAt(i);
+                Debug.Log("Removed null-node");
+            }
+        }
+
+        //Add if this is missing in connected nodes backward nodes
+        for (int i = 0; i < outChoices.Count; i++)
+        {
+            if (!outChoices[i].outNode.GetInConnections().Contains(this))
+            {
+                outChoices[i].outNode.AddInConnection(this);
+                Debug.Log("Added missing node connection");
+            }
+        }
+
+        //If this node has backward connections which no longer is connected to this node, remove the backward - connection
+        for (int i = 0; i < inNodes.Count; i++)
+        {
+            List<DirectionChoice> choices = inNodes[i].GetOutChoices();
+            bool remove = true;
+            for (int j = 0; j < choices.Count; j++)
+            {
+                if (choices[j].outNode == this)
+                {
+                    remove = false;
+                }
+            }
+            if (remove)
+            {
+                inNodes.RemoveAt(i);
+                Debug.Log("Removed backward node (" + inNodes[i].transform.name + ") to a no longer connected node from: " + transform.name + transform.position);
+            }
+        }
+    }
+
+    private void ValidateSetup()
+    {
+        for (int i = 0; i < outChoices.Count; i++)
+        {
+            if (outChoices[i].nodesToWaitFor.Count > 0)
+            {
+                isPartOfIntersection = true;
+                break;
+            }
+        }
+
+        if (isPartOfIntersection)
+        {
+            roadSpeedLimit = intersectionSpeedLimitOverride;
+
+            for (int i = 0; i < inNodes.Count; i++)
+            {
+                inNodes[i].roadSpeedLimit = intersectionSpeedLimitOverride;
+            }
+        }
     }
 }
 
@@ -224,4 +449,20 @@ public static class DrawArrow
         Debug.DrawRay(pos + direction, right * arrowHeadLength, color);
         Debug.DrawRay(pos + direction, left * arrowHeadLength, color);
     }
+}
+
+public enum Turn { Straight, Left, Right }
+
+[System.Serializable]
+public class DirectionChoice
+{
+    public DirectionChoice(PathNode node, Turn direction)
+    {
+        outNode = node;
+        turnDirection = direction;
+    }
+
+    public PathNode outNode;
+    public Turn turnDirection;
+    public List<PathNode> nodesToWaitFor = new List<PathNode>();
 }
