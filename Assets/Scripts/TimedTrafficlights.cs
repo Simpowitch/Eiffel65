@@ -6,10 +6,10 @@ public class TimedTrafficlights : MonoBehaviour
 {
     private enum State { Group1, Group2 }
     State state = State.Group1;
-    [SerializeField] PathNode[] carLightgroup1;
-    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup1;
-    [SerializeField] PathNode[] carLightgroup2;
-    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup2;
+    [SerializeField] PathNode[] carLightgroup1 = null;
+    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup1 = null;
+    [SerializeField] PathNode[] carLightgroup2 = null;
+    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup2 = null;
     bool redForAll = false;
 
     // Start is called before the first frame update

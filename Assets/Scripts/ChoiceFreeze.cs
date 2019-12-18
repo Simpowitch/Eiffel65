@@ -13,7 +13,7 @@ public interface IFreezeChoice
 public class ChoiceFreeze : MonoBehaviour
 {
 	#region Field
-	[SerializeField] float timeFrozen, timeScale;
+	[SerializeField] float timeFrozen = 0, timeScale = 1;
 
 	int pressedKey = 0;
 	float timer, timeFrozenInv;

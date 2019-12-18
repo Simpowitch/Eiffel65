@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	[SerializeField] private GameObject[] menus; // 0 = FastChoice (for now)
-	[SerializeField] private Text[] promptSpaces;
-	[SerializeField] private Image fillBar;
+	[SerializeField] private GameObject[] menus = null; // 0 = FastChoice (for now)
+	[SerializeField] private Text[] promptSpaces = null;
+	[SerializeField] private Image fillBar = null;
 
 	ChoiceFreeze cf;
 
