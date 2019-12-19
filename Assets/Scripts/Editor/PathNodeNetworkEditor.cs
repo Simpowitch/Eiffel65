@@ -16,5 +16,10 @@ public class PathNodeNetworkEditor : Editor
         {
             network.SavePathnodesAndConnections();
         }
+
+        if (GUILayout.Button("Load network"))
+        {
+            network.LoadPathnodesAndConnections();
+        }
     }
 }

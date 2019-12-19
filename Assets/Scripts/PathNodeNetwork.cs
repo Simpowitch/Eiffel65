@@ -31,4 +31,20 @@ public class PathNodeNetwork : MonoBehaviour
 
         Debug.Log("Network saved");
     }
+
+    public void LoadPathnodesAndConnections()
+    {
+        foreach (var item in pathNodes)
+        {
+            item.LoadNode();
+        }
+        foreach (var item in pathNodes)
+        {
+            item.ValidateConnections();
+        }
+        foreach (var item in pathNodes)
+        {
+            item.ValidateSetup();
+        }
+    }
 }

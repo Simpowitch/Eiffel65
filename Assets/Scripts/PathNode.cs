@@ -144,7 +144,6 @@ public class PathNode : MonoBehaviour
         outChoices.Add(newChoice);
         newChoice.nextNode.AddInConnection(this);
 
-        SaveNode();
         Debug.Log("Node added");
     }
 
@@ -168,7 +167,6 @@ public class PathNode : MonoBehaviour
         {
             inNodes.Add(input);
         }
-        SaveNode();
     }
 
     /// <summary>
@@ -356,7 +354,7 @@ public class PathNode : MonoBehaviour
                 (-p0 + 3 * p1 - 3 * p2 + p3) * i * i * i);
     }
 
-    public void ValidateConnections()
+    public void LoadNode()
     {
         if (!GetComponentInParent<PathNodeNetwork>())
         {
@@ -374,7 +372,10 @@ public class PathNode : MonoBehaviour
             }
         }
         outChoices = savedChoices;
+    }
 
+    public void ValidateConnections()
+    {
         //Add if this is missing in connected nodes backward nodes
         for (int i = 0; i < outChoices.Count; i++)
         {

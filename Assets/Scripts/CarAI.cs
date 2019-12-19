@@ -87,7 +87,6 @@ public class CarAI : MonoBehaviour
 
     private void Start()
     {
-
         wheelController = GetComponent<WheelDrive>();
         rb = GetComponent<Rigidbody>();
         aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
