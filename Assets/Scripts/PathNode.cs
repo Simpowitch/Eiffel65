@@ -14,28 +14,8 @@ public class PathNode : MonoBehaviour
     public bool isPartOfIntersection = false; //Used to enable cars to check for other cars in the intersection
     public List<CarAI> carsOnThisNode = new List<CarAI>(); //debug public
 
-    [SerializeField] List<DirectionChoice> outChoices = new List<DirectionChoice>();
+    public List<DirectionChoice> outChoices = new List<DirectionChoice>();
     public List<PathNode> inNodes = new List<PathNode>(); //used for catmull-rom (curved path)
-
-    private void Awake()
-    {
-        if (!GetComponentInParent<PathNodeNetwork>())
-        {
-            transform.SetParent(GameObject.FindObjectOfType<PathNodeNetwork>().transform);
-        }
-        PathNodeNetwork network = GetComponentInParent<PathNodeNetwork>();
-
-        List<DirectionChoice> savedChoices = new List<DirectionChoice>();
-
-        foreach (var item in network.directionChoices)
-        {
-            if (item.originalNode == this)
-            {
-                savedChoices.Add(item);
-            }
-        }
-        outChoices = savedChoices;
-    }
 
     private void Start()
     {
@@ -229,17 +209,6 @@ public class PathNode : MonoBehaviour
         return carsOnThisNode;
     }
 
-
-    private void SaveNode()
-    {
-        if (!GetComponentInParent<PathNodeNetwork>())
-        {
-            transform.SetParent(GameObject.FindObjectOfType<PathNodeNetwork>().transform);
-        }
-        GetComponentInParent<PathNodeNetwork>().SavePathnodesAndConnections();
-    }
-
-
     [Header("Editor")]
     Color allowedToPassColor = Color.green;
     Color notAllowedToPassColor = Color.red;
@@ -354,26 +323,7 @@ public class PathNode : MonoBehaviour
                 (-p0 + 3 * p1 - 3 * p2 + p3) * i * i * i);
     }
 
-    public void LoadNode()
-    {
-        if (!GetComponentInParent<PathNodeNetwork>())
-        {
-            transform.SetParent(GameObject.FindObjectOfType<PathNodeNetwork>().transform);
-        }
-        PathNodeNetwork network = GetComponentInParent<PathNodeNetwork>();
-
-        List<DirectionChoice> savedChoices = new List<DirectionChoice>();
-
-        foreach (var item in network.directionChoices)
-        {
-            if (item.originalNode == this)
-            {
-                savedChoices.Add(item);
-            }
-        }
-        outChoices = savedChoices;
-    }
-
+    
     public void ValidateConnections()
     {
         //Add if this is missing in connected nodes backward nodes

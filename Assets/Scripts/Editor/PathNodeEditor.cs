@@ -99,8 +99,8 @@ public class PathNodeEditor : Editor
     private PathNode CreateNewNode(PathNode selectedPathNode)
     {
         PathNode newNode;
-        //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), selectedPathNode.transform.position, selectedPathNode.transform.rotation);
-        GameObject newObject = PrefabUtility.InstantiatePrefab(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
+        //GameObject newObject = PrefabUtility.InstantiatePrefab(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
+        GameObject newObject = Instantiate (Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
         newObject.transform.position = selectedPathNode.transform.position;
         newNode = newObject.GetComponent<PathNode>();
 
@@ -119,14 +119,9 @@ public class PathNodeEditor : Editor
 
     private GameObject CreateNewSingleConnection(PathNode myPathNode)
     {
-        //PathNode newNode;
-        //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
         PathNode newNode = CreateNewNode(myPathNode);
         DirectionChoice newChoice = new DirectionChoice(newNode, myPathNode, Turn.Straight);
         myPathNode.AddOutChoice(newChoice);
-        //newNode.transform.SetParent(myPathNode.transform.parent);
-        //newNode.gameObject.name = roadName + " - " + pathName;
-        //newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
         return newNode.gameObject;
     }
 
@@ -143,17 +138,6 @@ public class PathNodeEditor : Editor
         newNode.AddOutChoice(myPathNode.GetOutChoices());
         myPathNode.ReplaceSingleConnection(newNode);
         return newNode.gameObject;
-
-
-        //PathNode newNode;
-        //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
-        //newNode.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
-        //newNode.AddOutChoice(myPathNode.GetOutChoices());
-        //newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
-        //myPathNode.ReplaceSingleConnection(newNode);
-        //newNode.transform.SetParent(myPathNode.transform.parent);
-        //newNode.gameObject.name = roadName + " - " + pathName;
-        //return newNode.gameObject;
     }
 
     private Transform CreateRoadSegmentParent(Vector3 position, PathNode selectedPathNode)
@@ -206,11 +190,7 @@ public class PathNodeEditor : Editor
             if (Vector3.Distance(position, endPos) > metersBetweenNodes / 2)
             {
                 newNode = CreateNewNode(myPathNode);
-                //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
                 newNode.transform.position = position;
-                //newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
-                //newNode.transform.SetParent(myPathNode.transform.parent);
-                //newNode.gameObject.name = roadName + " - " + pathName + " " + i;
                 createdNodes.Add(newNode);
             }
         }
@@ -294,9 +274,6 @@ public class PathNodeEditor : Editor
 
                 newNode = CreateNewNode(myPathNode);
                 newNode.transform.position = position;
-                //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), position, myPathNode.transform.rotation);
-
-                //newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : myPathNode.GetRoadSpeedLimit());
 
                 if (previousNode != null)
                 {
@@ -418,9 +395,8 @@ public class PathNodeEditor : Editor
     [MenuItem("PathNode/Create new pathnode #n")]
     static void CreateNewNode()
     {
-        //PathNode newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"));
-
-        GameObject newObject = PrefabUtility.InstantiatePrefab(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
+        //GameObject newObject = PrefabUtility.InstantiatePrefab(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
+        GameObject newObject = Instantiate(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
         PathNode newNode = newObject.GetComponent<PathNode>();
 
         Camera cam = SceneView.lastActiveSceneView.camera;
