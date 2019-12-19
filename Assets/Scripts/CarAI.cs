@@ -882,11 +882,11 @@ public class CarAI : MonoBehaviour
     {
         if (path.Count > 1)
         {
-            for (int i = 0; i < path[0].outChoices.Count; i++)
+            for (int i = 0; i < path[0].GetOutChoices().Count; i++)
             {
-                if (path[1] == path[0].outChoices[i].outNode)
+                if (path[1] == path[0].GetOutChoices()[i].nextNode)
                 {
-                    Turn newTurn = path[0].outChoices[i].turnDirection;
+                    Turn newTurn = path[0].GetOutChoices()[i].turnDirection;
 
                     //If we are turning
                     if (newTurn != Turn.Straight)

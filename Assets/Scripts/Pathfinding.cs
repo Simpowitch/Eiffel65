@@ -19,7 +19,7 @@ public static class Pathfinding
         List<PathNode> pathOptions = new List<PathNode>();
         for (int i = 0; i < choices.Count; i++)
         {
-            pathOptions.Add(choices[i].outNode);
+            pathOptions.Add(choices[i].nextNode);
         }
 
         pathOptions = SortNodesByDistance(pathOptions, target);
@@ -74,7 +74,7 @@ public static class Pathfinding
         List<PathNode> pathOptions = new List<PathNode>();
         for (int i = 0; i < choices.Count; i++)
         {
-            pathOptions.Add(choices[i].outNode);
+            pathOptions.Add(choices[i].nextNode);
         }
         if (pathOptions.Count > 1)
         {

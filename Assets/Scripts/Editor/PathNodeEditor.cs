@@ -122,7 +122,7 @@ public class PathNodeEditor : Editor
         //PathNode newNode;
         //newNode = Instantiate(Resources.Load<PathNode>("Prefabs/Road/Pathnode"), myPathNode.transform.position, myPathNode.transform.rotation);
         PathNode newNode = CreateNewNode(myPathNode);
-        DirectionChoice newChoice = new DirectionChoice(newNode, Turn.Straight);
+        DirectionChoice newChoice = new DirectionChoice(newNode, myPathNode, Turn.Straight);
         myPathNode.AddOutChoice(newChoice);
         //newNode.transform.SetParent(myPathNode.transform.parent);
         //newNode.gameObject.name = roadName + " - " + pathName;
@@ -132,14 +132,14 @@ public class PathNodeEditor : Editor
 
     private GameObject ReplaceNodeSingle(PathNode myPathNode)
     {
-        if (myPathNode.outChoices.Count != 1)
+        if (myPathNode.GetOutChoices().Count != 1)
         {
             Debug.LogWarning("Not allowed to replace nodes if the number of connections isn't 1");
             return null;
         }
 
         PathNode newNode = CreateNewNode(myPathNode);
-        newNode.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2;
+        newNode.transform.position = (myPathNode.transform.position + myPathNode.GetOutChoices()[0].nextNode.transform.position) / 2;
         newNode.AddOutChoice(myPathNode.GetOutChoices());
         myPathNode.ReplaceSingleConnection(newNode);
         return newNode.gameObject;
@@ -170,14 +170,14 @@ public class PathNodeEditor : Editor
 
     private GameObject ReplaceNodeMultiple(PathNode myPathNode)
     {
-        if (myPathNode.outChoices.Count != 1)
+        if (myPathNode.GetOutChoices().Count != 1)
         {
             Debug.LogWarning("Not allowed to replace nodes if the number of connections isn't 1");
             return null;
         }
 
         PathNode newNode = myPathNode;
-        PathNode endNode = myPathNode.GetOutChoices()[0].outNode;
+        PathNode endNode = myPathNode.GetOutChoices()[0].nextNode;
         Vector3 endPos = endNode.transform.position;
         int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, endPos) / metersBetweenNodes);
         Vector3 direction = endPos - myPathNode.transform.position;
@@ -190,7 +190,7 @@ public class PathNodeEditor : Editor
         List<DirectionChoice> originalChoices = myPathNode.GetOutChoices();
         for (int i = 0; i < originalChoices.Count; i++)
         {
-            originalConnections.Add(originalChoices[i].outNode);
+            originalConnections.Add(originalChoices[i].nextNode);
         }
 
         //Remove the selected node from in-nodes on the old connected nodes
@@ -221,7 +221,7 @@ public class PathNodeEditor : Editor
         //Add connectivity to each newly created node
         for (int i = 0; i < createdNodes.Count - 1; i++)
         {
-            DirectionChoice newDirection = new DirectionChoice(createdNodes[i + 1], Turn.Straight);
+            DirectionChoice newDirection = new DirectionChoice(createdNodes[i + 1], createdNodes[i], Turn.Straight);
             createdNodes[i].AddOutChoice(newDirection);
         }
         //add the original nodes to the last created node
@@ -229,7 +229,7 @@ public class PathNodeEditor : Editor
 
         for (int i = 0; i < originalConnections.Count; i++)
         {
-            DirectionChoice choice = new DirectionChoice(originalConnections[i], Turn.Straight);
+            DirectionChoice choice = new DirectionChoice(originalConnections[i], newNode, Turn.Straight);
             newNode.AddOutChoice(choice);
         }
         return newNode.gameObject;
@@ -237,7 +237,7 @@ public class PathNodeEditor : Editor
 
     private GameObject CreateRoadSection(PathNode myPathNode)
     {
-        if (myPathNode.outChoices.Count != 1)
+        if (myPathNode.GetOutChoices().Count != 1)
         {
             Debug.LogWarning("Not allowed to replace nodes if the number of connections isn't 1");
             return null;
@@ -246,11 +246,11 @@ public class PathNodeEditor : Editor
         PathNode newNode = myPathNode;
         if (!roadSegmentParent)
         {
-            CreateRoadSegmentParent((myPathNode.transform.position + myPathNode.GetOutChoices()[0].outNode.transform.position) / 2, myPathNode);
+            CreateRoadSegmentParent((myPathNode.transform.position + myPathNode.GetOutChoices()[0].nextNode.transform.position) / 2, myPathNode);
         }
 
         //Rotate the node - helps us create the nodes in line towards the endnode
-        myPathNode.transform.LookAt(myPathNode.GetOutChoices()[0].outNode.transform);
+        myPathNode.transform.LookAt(myPathNode.GetOutChoices()[0].nextNode.transform);
 
         List<PathNode> originalInNodes = new List<PathNode>();
         //Save the inconnections from the startnode
@@ -260,7 +260,7 @@ public class PathNodeEditor : Editor
         }
 
 
-        PathNode endNode = myPathNode.GetOutChoices()[0].outNode;
+        PathNode endNode = myPathNode.GetOutChoices()[0].nextNode;
         Vector3 startPos = myPathNode.transform.position;
         Vector3 endPos = endNode.transform.position;
         int nodesToCreate = Mathf.FloorToInt(Vector3.Distance(myPathNode.transform.position, endPos) / metersBetweenNodes) + 1; //the start and finish nodes will be removed
@@ -300,7 +300,7 @@ public class PathNodeEditor : Editor
 
                 if (previousNode != null)
                 {
-                    DirectionChoice choice = new DirectionChoice(newNode, Turn.Straight);
+                    DirectionChoice choice = new DirectionChoice(newNode, previousNode, Turn.Straight);
                     previousNode.AddOutChoice(choice);
                 }
 
@@ -344,13 +344,13 @@ public class PathNodeEditor : Editor
                     //If there is a lane to one side of our (inside the array but not this) and there is a node forward on that lane to connect to
                     if (lane + 1 < lanes.Length && node + 1 < lanes[lane + 1].Count)
                     {
-                        DirectionChoice choice = new DirectionChoice(lanes[lane + 1][node + 1], Turn.Straight);
+                        DirectionChoice choice = new DirectionChoice(lanes[lane + 1][node + 1], lanes[lane][node], Turn.Straight);
                         lanes[lane][node].AddOutChoice(choice);
                     }
                     //If there is a lane to one side of our (inside the array but not this) and there is a node forward on that lane to connect to
                     if (lane - 1 >= 0 && node + 1 < lanes[lane - 1].Count)
                     {
-                        DirectionChoice choice = new DirectionChoice(lanes[lane - 1][node + 1], Turn.Straight);
+                        DirectionChoice choice = new DirectionChoice(lanes[lane - 1][node + 1], lanes[lane][node], Turn.Straight);
                         lanes[lane][node].AddOutChoice(choice);
                     }
                 }
@@ -360,11 +360,11 @@ public class PathNodeEditor : Editor
         //Add the original in-nodes connection towards the newly created first node on the new road
         for (int i = 0; i < originalInNodes.Count; i++)
         {
-            DirectionChoice newchoice = new DirectionChoice(lanes[0][0], Turn.Straight);
+            DirectionChoice newchoice = new DirectionChoice(lanes[0][0], originalInNodes[i], Turn.Straight);
             originalInNodes[i].AddOutChoice(newchoice);
         }
 
-        GameObject.DestroyImmediate(myPathNode.GetOutChoices()[0].outNode.gameObject);
+        GameObject.DestroyImmediate(myPathNode.GetOutChoices()[0].nextNode.gameObject);
         GameObject.DestroyImmediate(myPathNode.gameObject);
         return newNode.gameObject;
     }
@@ -384,7 +384,7 @@ public class PathNodeEditor : Editor
             }
             else
             {
-                DirectionChoice choice = new DirectionChoice((PathNode)target, Turn.Straight);
+                DirectionChoice choice = new DirectionChoice((PathNode)target, PathNode.selectedNodeForConnection, Turn.Straight);
                 PathNode.selectedNodeForConnection.AddOutChoice(choice);
                 PathNode.selectedNodeForConnection = null;
                 Debug.Log("Node connected");
