@@ -26168,8 +26168,9 @@ MonoBehaviour:
   spawnedCars: []
   carsParent: {fileID: 902616439}
   spawnChance: 5
-  maxCars: 20
-  despawnRange: 100
+  maxCars: 30
+  carSpawnBlocker: {fileID: 1718932304}
+  despawnRange: 200
 --- !u!1 &1404703277
 GameObject:
   m_ObjectHideFlags: 0
@@ -32023,6 +32024,12 @@ Transform:
   m_Father: {fileID: 957709404}
   m_RootOrder: 100
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1718932304 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1718932304, guid: f42c640aab343f44e86c2c1ef2f5d0e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1539688733}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1725391056
 GameObject:
   m_ObjectHideFlags: 0
@@ -33637,6 +33644,11 @@ PrefabInstance:
       propertyPath: carToFollow
       value: 
       objectReference: {fileID: 1040092181}
+    - target: {fileID: 8775815133816168273, guid: aff155d1a2ec26244ac8d239cc5ea84e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aff155d1a2ec26244ac8d239cc5ea84e, type: 3}
 --- !u!1 &1831019175
