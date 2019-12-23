@@ -18,6 +18,7 @@ public class PathNodeEditor : Editor
     bool forbidLaneChangeInEnd = false;
     int laneChangeDisallowanceNodes = 1;
     Transform roadSegmentParent;
+    Turn turn;
 
     public override void OnInspectorGUI()
     {
@@ -26,7 +27,7 @@ public class PathNodeEditor : Editor
         DrawDefaultInspector();
 
         GUILayout.Space(10);
-        GUILayout.Label("\nNew node options");
+        GUILayout.Label("\nNew node options", EditorStyles.boldLabel);
 
         if (roadName == "RoadName" && myPathNode.transform.parent)
         {
@@ -50,6 +51,8 @@ public class PathNodeEditor : Editor
         {
             roadSegmentParent = null;
         }
+
+        turn = (Turn) EditorGUILayout.EnumPopup("Direction to new", turn);
 
         changeSpeed = EditorGUILayout.Toggle("New node has new speed", changeSpeed);
         if (changeSpeed)
@@ -100,7 +103,7 @@ public class PathNodeEditor : Editor
     {
         PathNode newNode;
         //GameObject newObject = PrefabUtility.InstantiatePrefab(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
-        GameObject newObject = Instantiate (Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
+        GameObject newObject = Instantiate(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
         newObject.transform.position = selectedPathNode.transform.position;
         newNode = newObject.GetComponent<PathNode>();
 
@@ -110,7 +113,7 @@ public class PathNodeEditor : Editor
         }
         else
         {
-            CreateRoadSegmentParent(selectedPathNode.transform.position, selectedPathNode);
+            newNode.transform.SetParent(CreateRoadSegmentParent(selectedPathNode.transform.position, selectedPathNode));
         }
         newNode.gameObject.name = roadName + " - " + pathName;
         newNode.SetRoadSpeedLimit(changeSpeed ? pathSpeed : selectedPathNode.GetRoadSpeedLimit());
@@ -120,7 +123,7 @@ public class PathNodeEditor : Editor
     private GameObject CreateNewSingleConnection(PathNode myPathNode)
     {
         PathNode newNode = CreateNewNode(myPathNode);
-        DirectionChoice newChoice = new DirectionChoice(newNode, myPathNode, Turn.Straight);
+        DirectionChoice newChoice = new DirectionChoice(newNode, myPathNode, turn);
         myPathNode.AddOutChoice(newChoice);
         return newNode.gameObject;
     }
@@ -146,7 +149,15 @@ public class PathNodeEditor : Editor
         roadSegmentParent = Instantiate(empty).transform;
         DestroyImmediate(empty);
         roadSegmentParent.gameObject.name = roadName;
-        roadSegmentParent.SetParent(selectedPathNode.gameObject.transform.parent);
+
+        if (GameObject.Find("PathParent"))
+        {
+            roadSegmentParent.SetParent(GameObject.Find("PathParent").transform);
+        }
+        else
+        {
+            roadSegmentParent.SetParent(selectedPathNode.gameObject.transform.parent);
+        }
         roadSegmentParent.transform.position = position;
         roadSegmentParent.tag = "RoadSegment";
         return roadSegmentParent;

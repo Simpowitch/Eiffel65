@@ -265,8 +265,24 @@ public class PathNode : MonoBehaviour
             Vector3 nextNode = Vector3.zero;
             nextNode = outChoices[i].nextNode.transform.position;
             Vector3 direction = (nextNode - currentNode).normalized;
+            Turn turnDirection = outChoices[i].turnDirection;
+            Color arrowColor = Color.green;
+            switch (turnDirection)
+            {
+                case Turn.Straight:
+                    break;
+                case Turn.Left:
+                    arrowColor = Color.blue;
+                    break;
+                case Turn.Right:
+                    arrowColor = Color.red;
+                    break;
+            }
             Vector3 arrowPosition = currentNode + direction;
-            DrawArrow.ForGizmo(arrowPosition, direction, Gizmos.color, 0.4f, 30);
+            DrawArrow.ForGizmo(arrowPosition, direction, arrowColor, 0.4f, 30);
+
+            //Reset color
+            Gizmos.color = Color.green;
 
             if (catmullCurveAllowed)
             {

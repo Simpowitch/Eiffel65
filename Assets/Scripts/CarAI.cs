@@ -26,7 +26,7 @@ public class CarAI : MonoBehaviour
     Rigidbody rb;
 
     //The path parent where the car picks random nodes from to go to
-    [SerializeField] private Transform pathParent = null;
+    public Transform pathParent = null;
     //How many nodes is the maximum when getting a new random path
     [SerializeField] int maxNodesInRandomizer = 30;
 
