@@ -7314,8 +7314,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 1, g: 0.99786615, b: 0.9103774, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.4680936, g: 0.59494746, b: 0.6320754, a: 1}
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -19079,11 +19079,11 @@ MonoBehaviour:
   - 0.8
   - 0.5
   sunColor:
-  - {r: 1, g: 0.9427224, b: 0.9198113, a: 1}
+  - {r: 0.8490566, g: 0.7859781, b: 0.76495194, a: 1}
   - {r: 1, g: 0.99786615, b: 0.9103774, a: 1}
-  - {r: 1, g: 0.9696467, b: 0.84313726, a: 1}
-  - {r: 1, g: 0.8726415, b: 0.8726415, a: 1}
-  - {r: 0.8066038, g: 0.95678926, b: 1, a: 1}
+  - {r: 0.8018868, g: 0.7784354, b: 0.68462974, a: 1}
+  - {r: 0.6603774, g: 0.59496266, b: 0.59496266, a: 1}
+  - {r: 0.4680936, g: 0.59494746, b: 0.6320754, a: 1}
 --- !u!4 &1226641727
 Transform:
   m_ObjectHideFlags: 0
@@ -21803,7 +21803,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400067528}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86670667fc79a124a91fc919a21f51c3, type: 3}
   m_Name: 
