@@ -41,10 +41,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 34293.145
-    damper: 5486.9033
+    spring: 34293.137
+    damper: 5486.902
     targetPosition: 0.5
-  m_SuspensionDistance: 0.1962
+  m_SuspensionDistance: 0.19620001
   m_ForceAppPointDistance: 0.67725265
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -105,7 +105,7 @@ WheelCollider:
     spring: 40208.22
     damper: 6433.315
     targetPosition: 0.5
-  m_SuspensionDistance: 0.19620001
+  m_SuspensionDistance: 0.1962
   m_ForceAppPointDistance: 0.67725265
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -261,10 +261,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 34791.79
-    damper: 5566.686
+    spring: 34791.78
+    damper: 5566.6855
     targetPosition: 0.5
-  m_SuspensionDistance: 0.1962
+  m_SuspensionDistance: 0.19620003
   m_ForceAppPointDistance: 0.67725265
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -319,6 +319,7 @@ Transform:
   - {fileID: 3520741656857614238}
   - {fileID: 3520741657340703540}
   - {fileID: 6958491101959218439}
+  - {fileID: 4731137992476350580}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -425,8 +426,7 @@ MonoBehaviour:
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 500
   carWidth: 2
-  carLength: 3
-  carHeight: 2.5
+  carLength: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
 --- !u!1 &3517759492708339122
@@ -470,10 +470,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 40706.867
-    damper: 6513.099
+    spring: 40706.863
+    damper: 6513.098
     targetPosition: 0.5
-  m_SuspensionDistance: 0.19620001
+  m_SuspensionDistance: 0.1962
   m_ForceAppPointDistance: 0.67725265
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -490,6 +490,50 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!1 &4877393323770077117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4731137992476350580}
+  - component: {fileID: 4332682607414720366}
+  m_Layer: 0
+  m_Name: CarSafetyArea
+  m_TagString: Vehicle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4731137992476350580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877393323770077117}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 2, z: 7}
+  m_Children: []
+  m_Father: {fileID: 3520741659819737128}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4332682607414720366
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877393323770077117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &119084582697767386
 PrefabInstance:
   m_ObjectHideFlags: 0

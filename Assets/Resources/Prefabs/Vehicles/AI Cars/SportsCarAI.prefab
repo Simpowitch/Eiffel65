@@ -320,6 +320,7 @@ Transform:
   - {fileID: 5215257271299656815}
   - {fileID: 5215257270162948627}
   - {fileID: 5215257273897649765}
+  - {fileID: 3883276306895578156}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -368,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pilotedBy: 0
-  maxAngle: 30
+  maxAngle: 45
   maxTorque: 1200
   brakeTorque: 30000
   wheelShape: {fileID: 1000012053017232, guid: 5df883237f1a04244b9a90ad4ee7b437, type: 3}
@@ -426,8 +427,7 @@ MonoBehaviour:
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 500
   carWidth: 2
-  carLength: 3
-  carHeight: 2.5
+  carLength: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
 --- !u!1 &5219083351374368115
@@ -491,6 +491,50 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
+--- !u!1 &7725976360632952542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3883276306895578156}
+  - component: {fileID: 3446738832826803398}
+  m_Layer: 0
+  m_Name: CarSafetyArea
+  m_TagString: Vehicle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3883276306895578156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725976360632952542}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 3, y: 2, z: 7}
+  m_Children: []
+  m_Father: {fileID: 5215257273799084743}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3446738832826803398
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725976360632952542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2978784660506735288
 PrefabInstance:
   m_ObjectHideFlags: 0

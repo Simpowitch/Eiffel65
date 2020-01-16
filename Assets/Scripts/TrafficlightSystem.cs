@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimedTrafficlights : MonoBehaviour
+public class TrafficlightSystem : MonoBehaviour
 {
     private enum State { Group1, Group2 }
     State state = State.Group1;
     [SerializeField] PathNode[] carLightgroup1 = null;
-    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup1 = null;
     [SerializeField] PathNode[] carLightgroup2 = null;
-    [SerializeField] PedestrianTrafficLight[] pedestrianLightgroup2 = null;
     bool redForAll = false;
 
     // Start is called before the first frame update
@@ -20,15 +18,11 @@ public class TimedTrafficlights : MonoBehaviour
         {
             carLightgroup2[i].SetAllowedToPass(false);
         }
-        for (int i = 0; i < pedestrianLightgroup2.Length; i++)
-        {
-            pedestrianLightgroup2[i].greenLight = false;
-        }
     }
 
     float timer;
-    [SerializeField] float greenLightTime = 10f;
-    [SerializeField] float timeBetweenLightSwitches = 3f;
+    [SerializeField] float greenLightTime = 15f;
+    [SerializeField] float timeBetweenLightSwitches = 5f;
 
     // Update is called once per frame
     void Update()
@@ -64,20 +58,12 @@ public class TimedTrafficlights : MonoBehaviour
             {
                 carLightgroup1[i].SetAllowedToPass(false);
             }
-            for (int i = 0; i < pedestrianLightgroup1.Length; i++)
-            {
-                pedestrianLightgroup1[i].greenLight = false;
-            }
         }
         else
         {
             for (int i = 0; i < carLightgroup2.Length; i++)
             {
                 carLightgroup2[i].SetAllowedToPass(false);
-            }
-            for (int i = 0; i < pedestrianLightgroup2.Length; i++)
-            {
-                pedestrianLightgroup2[i].greenLight = false;
             }
         }
 
@@ -92,10 +78,6 @@ public class TimedTrafficlights : MonoBehaviour
             {
                 carLightgroup2[i].SetAllowedToPass(true);
             }
-            for (int i = 0; i < pedestrianLightgroup2.Length; i++)
-            {
-                pedestrianLightgroup2[i].greenLight = true;
-            }
         }
         else
         {
@@ -103,10 +85,6 @@ public class TimedTrafficlights : MonoBehaviour
             for (int i = 0; i < carLightgroup1.Length; i++)
             {
                 carLightgroup1[i].SetAllowedToPass(true);
-            }
-            for (int i = 0; i < pedestrianLightgroup1.Length; i++)
-            {
-                pedestrianLightgroup1[i].greenLight = true;
             }
         }
     }

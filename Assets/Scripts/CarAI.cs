@@ -164,12 +164,17 @@ public class CarAI : MonoBehaviour
 
         if (collisionsInMyPath.Count > 0 && currentState == AIState.Queue)
         {
+            //If 2 cars are mutually blocking each other
             if (blockingCar && blockingCar.blockingCar == this)
             {
-                if (blockingCar && blockingCar.currentState == AIState.Queue)
+                if (blockingCar.currentState == AIState.Queue)
                 {
                     currentState = CheckTrafficRulePriority(blockingCar) ? AIState.Drive : AIState.Queue;
                 }
+            }
+            if (blockingCar && blockingCar.currentState == AIState.StopAtNextPathNode && CheckIfAllowedToPass())
+            {
+                currentState = AIState.Drive;
             }
         }
 
@@ -414,25 +419,23 @@ public class CarAI : MonoBehaviour
 
         for (int i = 0; i < possibleCollisions.Count; i++)
         {
-            if (possibleCollisions[i].transform.GetComponent<CarAI>() != null && possibleCollisions[i].transform.parent.GetComponent<CarAI>() != null)
+            if (possibleCollisions[i].transform.GetComponent<CarAI>() != null || possibleCollisions[i].transform.parent.GetComponent<CarAI>() != null)
             {
                 blockingCar = possibleCollisions[i].transform.parent.GetComponent<CarAI>();
                 break;
             }
         }
 
-        if (isStuck && newState == AIState.AvoidCollision || backingCoroutineIsOn)
+        if (isStuck || backingCoroutineIsOn)
         {
             newState = AIState.BackingFromStuck;
         }
         return newState;
     }
 
-    string pedestrianTag = "Pedestrian";
     string terrainTag = "Terrain";
     string vehicleTag = "Vehicle";
     string pathNodeTag = "PathNode";
-    string pedestrianCrossingTag = "PedestrianCrossing";
     /// <summary>
     /// Checks for any collisions towards a set of waypoints this car is going to
     /// Also checks for collisions right in front of this car
@@ -448,11 +451,11 @@ public class CarAI : MonoBehaviour
         List<GameObject> collisionObjects = new List<GameObject>();
 
         float searchSphereMultiplier = 1;
-        //Check directly infront of the car
-        if (turningDirection != Turn.Straight)
-        {
-            searchSphereMultiplier *= 2;
-        }
+        //if (turningDirection != Turn.Straight)
+        //{
+        //    searchSphereMultiplier *= 2;
+        //}
+
         SearchSphere searchSphere = new SearchSphere(this.transform.position + (transform.forward * (carLength)), carWidth * searchSphereMultiplier / 2 * 1.25f);
         searchSpheres.Add(searchSphere);
         collisions.AddRange(Physics.OverlapSphere(searchSphere.pos, searchSphere.radius));
@@ -476,20 +479,7 @@ public class CarAI : MonoBehaviour
 
         for (int i = 0; i < collisions.Count; i++)
         {
-            if (collisions[i].gameObject.tag == pedestrianCrossingTag)
-            {
-                collisions.RemoveAt(i);
-                i--;
-            }
-            else if (collisions[i].gameObject.tag == pedestrianTag && collisions[i].GetComponent<PedestrianAI>() != null)
-            {
-                if (!collisions[i].GetComponent<PedestrianAI>().isOnRoad || collisions[i].GetComponent<PedestrianAI>().isWaiting)
-                {
-                    collisions.RemoveAt(i);
-                    i--;
-                }
-            }
-            else if (collisions[i].gameObject.tag == terrainTag || collisions[i].gameObject.tag == pathNodeTag)
+            if (collisions[i].gameObject.tag == terrainTag || collisions[i].gameObject.tag == pathNodeTag)
             {
                 collisions.RemoveAt(i);
                 i--;
@@ -505,12 +495,7 @@ public class CarAI : MonoBehaviour
             }
         }
 
-        //Display the search
-        for (int i = 0; i < collisionObjects.Count; i++)
-        {
-            searchSpheres.Add(new SearchSphere(collisionObjects[i].transform.position, carWidth * searchSphereMultiplier / 2));
-        }
-
+        //Show the first collision
         if (collisionObjects.Count > 0)
         {
             firstCollision = GetClosestObject(transform.position, collisionObjects);
@@ -661,6 +646,12 @@ public class CarAI : MonoBehaviour
             return 0;
         }
         float newSpeed = currentNode.GetRoadSpeedLimit();
+
+        if (path.Count > 1)
+        {
+            Mathf.Min(newSpeed, path[1].GetRoadSpeedLimit());
+        }
+
         newSpeed *= (1 - Mathf.Abs(steerPercentage * speedModificationFactor));
         newSpeed *= (1 - Mathf.Abs(aiPathProgressTracker.curvePercentage * speedModificationFactor));
         if (recklessDriver || ignoreSpeedLimit)
@@ -717,19 +708,15 @@ public class CarAI : MonoBehaviour
     /// </summary>
     private PathNode FindClosestNode(Vector3 positionToSearchFrom)
     {
-        Collider[] allOverlappingColliders = Physics.OverlapSphere(positionToSearchFrom, closestNodeSearchDistance);
         PathNode closestNode = null;
         float distance = float.MaxValue;
-        foreach (var item in allOverlappingColliders)
+        foreach (var item in pathParent.GetComponentsInChildren<PathNode>())
         {
-            if (item.GetComponent<PathNode>() != null)
+            float testDistance = Vector3.Distance(positionToSearchFrom, item.transform.position);
+            if (testDistance < distance)
             {
-                float testDistance = Vector3.Distance(positionToSearchFrom, item.transform.position);
-                if (testDistance < distance)
-                {
-                    closestNode = item.GetComponent<PathNode>();
-                    distance = testDistance;
-                }
+                closestNode = item;
+                distance = testDistance;
             }
         }
 
@@ -806,7 +793,7 @@ public class CarAI : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns true if there is a red light to stop for. Or if there are cars needed to wait for
+    /// Returns false  if there is a red light to stop for. Or if there are cars needed to wait for
     /// </summary>
     public bool CheckIfAllowedToPass()
     {
@@ -833,31 +820,73 @@ public class CarAI : MonoBehaviour
     /// </summary>
     private void CheckIfStuck()
     {
-        //Checking if stuck
-        //if (kmhSpeed < speedToHold && kmhSpeed <= lastSpeedCheck)
-        if (kmhSpeed + stuckSpeedSensistivity < speedToHold && kmhSpeed <= lastSpeedCheck && kmhSpeed < 3)
+        if (kmhSpeed < speedToHold && kmhSpeed < stuckSpeedSensistivity)
         {
             if (!checkingIfStuck)
             {
+                checkingIfStuck = true;
                 StartCoroutine(CheckIfStuckCoroutine());
             }
         }
         else
         {
-            StopCoroutine(CheckIfStuckCoroutine());
             isStuck = false;
-            checkingIfStuck = false;
+            if (checkingIfStuck)
+            {
+                StopCoroutine(CheckIfStuckCoroutine());
+                checkingIfStuck = false;
+            }
         }
-        lastSpeedCheck = kmhSpeed;
-    }
 
+        ////Checking if stuck
+        //if (kmhSpeed < speedToHold && kmhSpeed <= lastSpeedCheck && kmhSpeed < 3)
+        //{
+        //    if (!checkingIfStuck)
+        //    {
+        //        StartCoroutine(CheckIfStuckCoroutine());
+        //    }
+        //}
+        //else
+        //{
+        //    StopCoroutine(CheckIfStuckCoroutine());
+        //    isStuck = false;
+        //    checkingIfStuck = false;
+        //}
+        //lastSpeedCheck = kmhSpeed;
+    }
     IEnumerator CheckIfStuckCoroutine()
     {
-        checkingIfStuck = true;
-        yield return new WaitForSeconds(checkTimeBeforeStuck);
-        isStuck = (kmhSpeed + stuckSpeedSensistivity < speedToHold);
-        //isStuck = (kmhSpeed < speedToHold);
-        checkingIfStuck = false;
+        Vector3 startPos = Vector3.zero;
+        if (currentState != AIState.Drive)
+        {
+            checkingIfStuck = false;
+            StopCoroutine(CheckIfStuckCoroutine());
+            yield return null;
+        }
+        else
+        {
+            startPos = this.transform.position;
+            yield return new WaitForSeconds(checkTimeBeforeStuck);
+            if (currentState != AIState.Drive)
+            {
+                checkingIfStuck = false;
+                StopCoroutine(CheckIfStuckCoroutine());
+                yield return null;
+            }
+            else
+            {
+                Vector3 newPos = this.transform.position;
+                isStuck = (Vector3.Distance(startPos, newPos) < stuckSpeedSensistivity);
+                checkingIfStuck = false;
+            }
+        }
+
+
+        //checkingIfStuck = true;
+        //yield return new WaitForSeconds(checkTimeBeforeStuck);
+        //isStuck = (kmhSpeed + stuckSpeedSensistivity < speedToHold);
+        ////isStuck = (kmhSpeed < speedToHold);
+        //checkingIfStuck = false;
     }
 
     bool backingCoroutineIsOn = false;
@@ -965,23 +994,6 @@ public class CarAI : MonoBehaviour
                 return true;
             }
         }
-        ////If we are turning (changling lane)
-        //if (turningDirection != Turn.Straight)
-        //{
-        //    //if the other car is turning to the left
-        //    if (otherCar.turningDirection == Turn.Left)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-        //else
-        //{
-        //    return true;
-        //}
     }
 
     /// <summary>
@@ -1059,10 +1071,7 @@ public class CarAI : MonoBehaviour
     {
         if (Physics.Raycast(startPoint, obstacle.transform.position - startPoint, out RaycastHit hit, Mathf.Infinity))
         {
-            if (hit.transform.gameObject == obstacle)
-            {
-                return Vector3.Distance(startPoint, hit.point);
-            }
+            return Vector3.Distance(startPoint, hit.point);
         }
         return Vector3.Distance(startPoint, obstacle.transform.position);
     }
