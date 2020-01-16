@@ -7314,7 +7314,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.99786615, b: 0.9103774, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -19040,6 +19040,64 @@ Transform:
   m_Father: {fileID: 957709404}
   m_RootOrder: 80
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1226641725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1226641727}
+  - component: {fileID: 1226641726}
+  m_Layer: 0
+  m_Name: Systems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1226641726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226641725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fdd1e1d58e42e0419444d150c32e470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  automaticDayNightCycle: 0
+  daySpeedMultiplier: 1
+  sun: {fileID: 504252223}
+  sunIntensity:
+  - 0.8
+  - 1
+  - 0.9
+  - 0.8
+  - 0.5
+  sunColor:
+  - {r: 1, g: 0.9427224, b: 0.9198113, a: 1}
+  - {r: 1, g: 0.99786615, b: 0.9103774, a: 1}
+  - {r: 1, g: 0.9696467, b: 0.84313726, a: 1}
+  - {r: 1, g: 0.8726415, b: 0.8726415, a: 1}
+  - {r: 0.8066038, g: 0.95678926, b: 1, a: 1}
+--- !u!4 &1226641727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226641725}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228792686
 GameObject:
   m_ObjectHideFlags: 0
@@ -21745,7 +21803,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400067528}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86670667fc79a124a91fc919a21f51c3, type: 3}
   m_Name: 
@@ -21759,7 +21817,7 @@ MonoBehaviour:
   carsParent: {fileID: 902616439}
   spawnChance: 5
   maxCars: 30
-  despawnRange: 200
+  despawnRange: 150
 --- !u!1 &1404703277
 GameObject:
   m_ObjectHideFlags: 0
@@ -24180,14 +24238,6 @@ PrefabInstance:
       propertyPath: m_ForceAppPointDistance
       value: 0.56362724
       objectReference: {fileID: 0}
-    - target: {fileID: 1718932304, guid: f42c640aab343f44e86c2c1ef2f5d0e1, type: 3}
-      propertyPath: m_Size.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1718932302, guid: f42c640aab343f44e86c2c1ef2f5d0e1, type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6220863155540902172, guid: f42c640aab343f44e86c2c1ef2f5d0e1,
         type: 3}
       propertyPath: m_SuspensionSpring.spring
@@ -24232,6 +24282,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ForceAppPointDistance
       value: 0.56362724
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998688583403674890, guid: f42c640aab343f44e86c2c1ef2f5d0e1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f42c640aab343f44e86c2c1ef2f5d0e1, type: 3}
