@@ -82,7 +82,6 @@ public class CarSpawnSystem : MonoBehaviour
     }
 
     float obstructionCheck = 20f;
-    float minimumSpawnRange = 100f;
     bool TestSpawn(PathNode nodeToSpawnAt)
     {
         //If obstructed

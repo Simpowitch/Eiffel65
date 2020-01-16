@@ -233,7 +233,7 @@ public class ChoiceNode : Node
         float adaptiveY = rect.y + PADDING;
         float xLeft = rect.x + PADDING;
         float xMiddle = rect.x + boxWidth / 2;
-        float halfWidth = boxWidth / 2 - (PADDING * 2);
+        //float halfWidth = boxWidth / 2 - (PADDING * 2);
         float fullWidth = boxWidth - (PADDING * 2);
 
         choiceTextRect = new Rect(xLeft, adaptiveY, fullWidth, TEXTSQUAREHEIGHT * 2);

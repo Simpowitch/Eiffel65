@@ -19,8 +19,8 @@ public class PathNode : MonoBehaviour
 
     private void Start()
     {
-        ValidateConnections();
-        ValidateSetup();
+        AnalyzeAndValidate();
+
         if (outChoices.Count < 1)
         {
             Debug.LogError("You have not set up the path correctly, this node is missing a nodeconnection " + transform.name);
@@ -212,13 +212,12 @@ public class PathNode : MonoBehaviour
     [Header("Editor")]
     Color allowedToPassColor = Color.green;
     Color notAllowedToPassColor = Color.red;
-    float nodeSize = 1f;
-    int visualPathSubsteps = 15; //substeps for catmull-rom curve
+    static float nodeSize = 1f;
+    static int visualPathSubsteps = 10; //substeps for catmull-rom curve
 
     private void OnDrawGizmos()
     {
-        ValidateConnections();
-        ValidateSetup();
+        AnalyzeAndValidate();
 
         //Draw sphere
         Gizmos.color = greenLight ? allowedToPassColor : notAllowedToPassColor;
@@ -264,6 +263,14 @@ public class PathNode : MonoBehaviour
             Vector3 currentNode = this.transform.position;
             Vector3 nextNode = Vector3.zero;
             nextNode = outChoices[i].nextNode.transform.position;
+
+            //Check if double node created (if at same space)
+            if (nextNode == currentNode)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(this.transform.position, 10f);
+            }
+
             Vector3 direction = (nextNode - currentNode).normalized;
             Turn turnDirection = outChoices[i].turnDirection;
             Color arrowColor = Color.green;
@@ -339,8 +346,16 @@ public class PathNode : MonoBehaviour
                 (-p0 + 3 * p1 - 3 * p2 + p3) * i * i * i);
     }
 
-    
-    public void ValidateConnections()
+
+    //Validations
+    public void AnalyzeAndValidate()
+    {
+        ValidateConnections();
+        ValidateSetup();
+        SetPositionToMatchTerrain();
+    }
+
+    private void ValidateConnections()
     {
         //Add if this is missing in connected nodes backward nodes
         for (int i = 0; i < outChoices.Count; i++)
@@ -387,7 +402,7 @@ public class PathNode : MonoBehaviour
         }
     }
 
-    public void ValidateSetup()
+    private void ValidateSetup()
     {
         for (int i = 0; i < outChoices.Count; i++)
         {
@@ -408,6 +423,24 @@ public class PathNode : MonoBehaviour
             }
         }
     }
+
+    private void SetPositionToMatchTerrain()
+    {
+        if (Physics.Raycast(this.transform.position, -this.transform.up, out RaycastHit hit))
+        {
+            if (hit.transform.tag == "Terrain")
+            {
+                this.transform.position = hit.point + new Vector3(0, nodeSize / 2, 0);
+            }
+        }
+        else if (Physics.Raycast(this.transform.position + this.transform.up * 100, -this.transform.up, out hit))
+        {
+            if (hit.transform.tag == "Terrain")
+            {
+                this.transform.position = hit.point + new Vector3(0, nodeSize / 2, 0);
+            }
+        }
+    }
 }
 
 
@@ -416,6 +449,11 @@ public static class DrawArrow
 {
     public static void ForGizmo(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
     {
+        if (direction == Vector3.zero)
+        {
+            return;
+        }
+
         Gizmos.DrawRay(pos, direction);
 
         Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);
@@ -426,6 +464,11 @@ public static class DrawArrow
 
     public static void ForGizmo(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
     {
+        if (direction == Vector3.zero)
+        {
+            return;
+        }
+
         Gizmos.color = color;
         Gizmos.DrawRay(pos, direction);
         Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);

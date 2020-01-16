@@ -1134,7 +1134,6 @@ public class CarAI : MonoBehaviour
     [Header("Sensor Info")]
     [SerializeField] float carWidth = 2f;
     [SerializeField] float carLength = 3f;
-    [SerializeField] float carHeight = 2.5f;
     #endregion
 
     #region GizmosAndEditor
