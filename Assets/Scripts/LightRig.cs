@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum LightGroup { Headlights, Breaklights, Reverselights, LeftBlinkers, RightBlinkers }
+public enum LightGroup { Headlights, BrakeLights, Reverselights, LeftBlinkers, RightBlinkers, PoliceLights }
 public class LightRig : MonoBehaviour
 {
     [SerializeField] Light[] forwardSpotLights = null;
@@ -13,6 +13,7 @@ public class LightRig : MonoBehaviour
     [SerializeField] Light[] reverseLights = null;
     [SerializeField] Light[] leftBlinkers = null;
     [SerializeField] Light[] rightBlinkers = null;
+    [SerializeField] Animator policeLightAnimator = null;
 
     //Ranges + intensity
 
@@ -69,11 +70,15 @@ public class LightRig : MonoBehaviour
             item.color = blinkersColor;
         }
 
-        SetLightgroup(false, LightGroup.Headlights);
-        SetLightgroup(false, LightGroup.Breaklights);
-        SetLightgroup(false, LightGroup.Reverselights);
-        SetLightgroup(false, LightGroup.LeftBlinkers);
-        SetLightgroup(false, LightGroup.RightBlinkers);
+        SetLightGroup(false, LightGroup.Headlights);
+        SetLightGroup(false, LightGroup.BrakeLights);
+        SetLightGroup(false, LightGroup.Reverselights);
+        SetLightGroup(false, LightGroup.LeftBlinkers);
+        SetLightGroup(false, LightGroup.RightBlinkers);
+        if (policeLightAnimator != null)
+        {
+            SetLightGroup(false, LightGroup.PoliceLights);
+        }
     }
 
     bool headlightsOn = true;
@@ -81,8 +86,33 @@ public class LightRig : MonoBehaviour
     bool rightBlinkersOn = true;
     bool reverseLightOn = true;
     bool brakeLightOn = true;
+    bool policeLightOn = true;
 
-    public void SetLightgroup(bool on, LightGroup group)
+
+    public void SetLightGroup(LightGroup group)
+    {
+        switch (group)
+        {
+            case LightGroup.Headlights:
+                SetLightGroup(!headlightsOn, LightGroup.Headlights);
+                break;
+            case LightGroup.LeftBlinkers:
+                SetLightGroup(!leftBlinkersOn, LightGroup.LeftBlinkers);
+                break;
+            case LightGroup.RightBlinkers:
+                SetLightGroup(!rightBlinkersOn, LightGroup.RightBlinkers);
+                break;
+            case LightGroup.PoliceLights:
+                SetLightGroup(!policeLightOn, LightGroup.PoliceLights);
+                break;
+            case LightGroup.BrakeLights:
+            case LightGroup.Reverselights:
+                Debug.LogWarning("No Function");
+                break;
+        }
+    }
+
+    public void SetLightGroup(bool on, LightGroup group)
     {
         int index = on ? 1 : 0;
 
@@ -93,7 +123,7 @@ public class LightRig : MonoBehaviour
                 StartCoroutine(ChangeLightSetting(forwardSpotLights, forwardSpotIntensity[index], forwardSpotRange[index], 0.01f, 2));
                 StartCoroutine(ChangeLightSetting(forwardPointLights, forwardPointIntensity[index], forwardPointRange[index], 0.01f, 2));
                 break;
-            case LightGroup.Breaklights:
+            case LightGroup.BrakeLights:
                 if (on == brakeLightOn)
                 {
                     return;
@@ -123,6 +153,10 @@ public class LightRig : MonoBehaviour
                 {
                     item.GetComponent<Animator>().SetBool("On", on);
                 }
+                break;
+            case LightGroup.PoliceLights:
+                policeLightOn = on;
+                policeLightAnimator.SetBool("On", on);
                 break;
         }
     }

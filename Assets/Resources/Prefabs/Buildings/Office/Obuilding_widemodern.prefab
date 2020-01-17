@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3944794172319966545}
   - component: {fileID: 5468988262043787111}
   - component: {fileID: 1790522466652480414}
+  - component: {fileID: 6868632375119175606}
   m_Layer: 0
   m_Name: Obuilding_widemodern
   m_TagString: Untagged
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6868632375119175606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64704879918012226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2300, y: 1216.2081, z: 1300}
+  m_Center: {x: 0, y: 608.00397, z: 0}

@@ -33,7 +33,7 @@ public class WheelDrive : MonoBehaviour
     [Tooltip("The vehicle's drive type: rear-wheels drive, front-wheels drive or all-wheels drive.")]
     public DriveType driveType;
 
-    [SerializeField] LightRig lightRig = null;
+    LightRig lightRig = null;
 
     private WheelCollider[] m_Wheels;
 
@@ -129,7 +129,7 @@ public class WheelDrive : MonoBehaviour
                 brakingTorque = Input.GetKey(KeyCode.Space) ? brakeTorque : 0;
             }
 
-            lightRig.SetLightgroup(brakingTorque > 0, LightGroup.Breaklights);
+            lightRig.SetLightGroup(brakingTorque > 0, LightGroup.BrakeLights);
         }
         foreach (WheelCollider wheel in m_Wheels)
         {
