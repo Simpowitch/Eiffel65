@@ -9,7 +9,7 @@ public class CarSpawnSystem : MonoBehaviour
     PathNode[] allNodes;
     [SerializeField] Transform playerCar = null;
 
-    [SerializeField] List<GameObject> spawnedCars = new List<GameObject>();
+    public static List<GameObject> spawnedCars = new List<GameObject>();
     [SerializeField] Transform carsParent = null;
 
     [SerializeField] int spawnChance = 25;

@@ -25,6 +25,9 @@ public class CarAI : MonoBehaviour
     //Our vehicle
     Rigidbody rb;
 
+    //Lightsystem to control the car lights
+    LightRig lightRig; public LightRig GetLightRig() { return lightRig; }
+
     //The path parent where the car picks random nodes from to go to
     public Transform pathParent = null;
     //How many nodes is the maximum when getting a new random path
@@ -90,6 +93,12 @@ public class CarAI : MonoBehaviour
         wheelController = GetComponent<WheelDrive>();
         rb = GetComponent<Rigidbody>();
         aiPathProgressTracker = GetComponent<PathNodeProgressTracker>();
+        lightRig = GetComponentInChildren<LightRig>();
+
+        if (DayNightSystem.actualTimeOfDay == TimeOfDay.Night)
+        {
+            lightRig.SetLightGroup(true, LightGroup.Headlights);
+        }
 
         if (!pathParent)
         {
@@ -1083,59 +1092,28 @@ public class CarAI : MonoBehaviour
     /// </summary>
     private void UseLights()
     {
-        //if nighttime
+        switch (turningDirection)
         {
-            //use headlights
-        }
-        //else
-        {
-            //use normal lights
-        }
-        if (turningDirection != Turn.Straight && !blinkersCoroutineIsInitialized)
-        {
-            StartCoroutine(UseBlinkers(turningDirection));
-        }
-        else if (turningDirection == Turn.Straight && blinkersCoroutineIsInitialized)
-        {
-            StopCoroutine(UseBlinkers(turningDirection));
+            case Turn.Straight:
+                lightRig.SetLightGroup(false, LightGroup.LeftBlinkers);
+                lightRig.SetLightGroup(false, LightGroup.RightBlinkers);
+                break;
+            case Turn.Left:
+                lightRig.SetLightGroup(true, LightGroup.LeftBlinkers);
+                lightRig.SetLightGroup(false, LightGroup.RightBlinkers);
+                break;
+            case Turn.Right:
+                lightRig.SetLightGroup(false, LightGroup.LeftBlinkers);
+                lightRig.SetLightGroup(true, LightGroup.RightBlinkers);
+                break;
         }
         if (braking)
         {
-            //use brakelights
+            lightRig.SetLightGroup(true, LightGroup.BrakeLights);
         }
         else
         {
-            //turn off brakelights
-        }
-    }
-
-    bool blinkersCoroutineIsInitialized = false;
-    //Blinks until coroutine is stopped
-    IEnumerator UseBlinkers(Turn side)
-    {
-        blinkersCoroutineIsInitialized = true;
-        while (true)
-        {
-            switch (side)
-            {
-                case Turn.Left:
-                    //turn on left blinker light
-                    break;
-                case Turn.Right:
-                    //turn on right blinker light
-                    break;
-            }
-            yield return new WaitForSeconds(blinkerTimeLit);
-            switch (side)
-            {
-                case Turn.Left:
-                    //turn off left blinker light
-                    break;
-                case Turn.Right:
-                    //turn off right blinker light
-                    break;
-            }
-            yield return new WaitForSeconds(blinkerTimeUnLit);
+            lightRig.SetLightGroup(false, LightGroup.BrakeLights);
         }
     }
 

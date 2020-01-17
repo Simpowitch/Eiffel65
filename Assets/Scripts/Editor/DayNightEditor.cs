@@ -16,7 +16,7 @@ public class DayNightEditor : Editor
 
         if (GUILayout.Button("Set Time"))
         {
-            system.SetDayTime(timeOfday);
+            system.SetDayTime(timeOfday, false);
         }
     }
 }

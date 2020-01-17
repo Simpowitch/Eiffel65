@@ -561,9 +561,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
         type: 3}
+      propertyPath: policeLights.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
       propertyPath: policeLightAnimator
       value: 
       objectReference: {fileID: 2705830015427706595}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeColor.r
+      value: 0.254539
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeColor.g
+      value: 0.254539
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeColor.b
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeLights.Array.data[0]
+      value: 
+      objectReference: {fileID: 7434923591681019006}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeLights.Array.data[1]
+      value: 
+      objectReference: {fileID: 5070984013863808623}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeLights.Array.data[2]
+      value: 
+      objectReference: {fileID: 2401472226189375731}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeLights.Array.data[3]
+      value: 
+      objectReference: {fileID: 7023437036314724255}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeLights.Array.data[4]
+      value: 
+      objectReference: {fileID: 3049025051902757420}
+    - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: policeLights.Array.data[5]
+      value: 
+      objectReference: {fileID: 2871839937595735614}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f205f9a72f368154695879361017bdc1, type: 3}
 --- !u!4 &5710151945674535769 stripped
@@ -757,6 +807,42 @@ Transform:
 --- !u!95 &2705830015427706595 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5439888041999200833, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 7994829739479633058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &7434923591681019006 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 710848386981953756, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 7994829739479633058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &5070984013863808623 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 2930882787133153997, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 7994829739479633058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &2401472226189375731 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5737842171719087185, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 7994829739479633058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &7023437036314724255 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1120012640395266877, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 7994829739479633058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &3049025051902757420 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4945804974015104654, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+    type: 3}
+  m_PrefabInstance: {fileID: 7994829739479633058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &2871839937595735614 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5271890519830950556, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
     type: 3}
   m_PrefabInstance: {fileID: 7994829739479633058}
   m_PrefabAsset: {fileID: 0}

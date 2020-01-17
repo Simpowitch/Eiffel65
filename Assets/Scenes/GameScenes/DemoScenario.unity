@@ -19070,6 +19070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   automaticDayNightCycle: 0
+  timeOfDaySeconds: -60
   daySpeedMultiplier: 1
   sun: {fileID: 504252223}
   sunIntensity:
@@ -19084,6 +19085,7 @@ MonoBehaviour:
   - {r: 0.8018868, g: 0.7784354, b: 0.68462974, a: 1}
   - {r: 0.6603774, g: 0.59496266, b: 0.59496266, a: 1}
   - {r: 0.4680936, g: 0.59494746, b: 0.6320754, a: 1}
+  startTimeOfDay: 4
 --- !u!4 &1226641727
 Transform:
   m_ObjectHideFlags: 0
@@ -21813,7 +21815,6 @@ MonoBehaviour:
   - {fileID: 5219083351184105261, guid: a5b168fe7167bf34c889cec66ccc95a0, type: 3}
   - {fileID: 7064377278007357752, guid: 84a2037b505a122489b34a8300fd7a4f, type: 3}
   playerCar: {fileID: 1040092181}
-  spawnedCars: []
   carsParent: {fileID: 902616439}
   spawnChance: 5
   maxCars: 30

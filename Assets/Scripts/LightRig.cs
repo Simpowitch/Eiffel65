@@ -13,6 +13,8 @@ public class LightRig : MonoBehaviour
     [SerializeField] Light[] reverseLights = null;
     [SerializeField] Light[] leftBlinkers = null;
     [SerializeField] Light[] rightBlinkers = null;
+
+    [SerializeField] Light[] policeLights = null;
     [SerializeField] Animator policeLightAnimator = null;
 
     //Ranges + intensity
@@ -26,11 +28,11 @@ public class LightRig : MonoBehaviour
     float[] forwardPointRange = new float[] { 0.5f, 1 };
 
     //Breaklights (spot)
-    float[] breakSpotIntensity = new float[] { 2, 4 };
-    float[] breakSpotRange = new float[] { 5, 20 };
+    float[] breakSpotIntensity = new float[] { 1, 2 };
+    float[] breakSpotRange = new float[] { 3, 10 };
 
     //Breaklights (point)
-    float[] breakPointIntensity = new float[] { 4, 8 };
+    float[] breakPointIntensity = new float[] { 3, 6 };
     float[] breakPointRange = new float[] { 0.5f, 1 };
 
     //Color
@@ -38,8 +40,10 @@ public class LightRig : MonoBehaviour
     [SerializeField] Color blinkersColor = Color.yellow;
     [SerializeField] Color breakColor = Color.red;
     [SerializeField] Color reverseColor = Color.white;
+    [SerializeField] Color policeColor = Color.blue;
 
-    private void Start()
+
+    private void Awake()
     {
         foreach (var item in forwardSpotLights)
         {
@@ -68,6 +72,10 @@ public class LightRig : MonoBehaviour
         foreach (var item in rightBlinkers)
         {
             item.color = blinkersColor;
+        }
+        foreach (var item in policeLights)
+        {
+            item.color = policeColor;
         }
 
         SetLightGroup(false, LightGroup.Headlights);
@@ -141,6 +149,10 @@ public class LightRig : MonoBehaviour
                 ChangeLightSetting(reverseLights, on);
                 break;
             case LightGroup.LeftBlinkers:
+                if (on == leftBlinkersOn)
+                {
+                    return;
+                }
                 leftBlinkersOn = on;
                 foreach (var item in leftBlinkers)
                 {
@@ -148,6 +160,10 @@ public class LightRig : MonoBehaviour
                 }
                 break;
             case LightGroup.RightBlinkers:
+                if (on == rightBlinkersOn)
+                {
+                    return;
+                }
                 rightBlinkersOn = on;
                 foreach (var item in rightBlinkers)
                 {
