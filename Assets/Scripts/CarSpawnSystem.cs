@@ -22,6 +22,10 @@ public class CarSpawnSystem : MonoBehaviour
 
         for (int i = 0; i < allNodes.Length; i++)
         {
+            if (spawnedCars.Count >= maxCars)
+            {
+                break;
+            }
             int rng = Random.Range(0, 100);
 
             if (rng < spawnChance && Vector3.Distance(playerCar.transform.position, allNodes[i].transform.position) < despawnRange)
@@ -89,6 +93,11 @@ public class CarSpawnSystem : MonoBehaviour
     float obstructionCheck = 20f;
     bool CheckIfAllowedSpawn(PathNode nodeToSpawnAt)
     {
+        if (nodeToSpawnAt.isPartOfIntersection)
+        {
+            return false;
+        }
+
         //If obstructed
         Collider[] objectsAtNode = Physics.OverlapSphere(nodeToSpawnAt.transform.position, obstructionCheck);
         foreach (var item in objectsAtNode)
@@ -131,11 +140,29 @@ public class CarSpawnSystem : MonoBehaviour
             //If car is outside despawn range, respawn the car
             if (Vector3.Distance(playerCar.transform.position, spawnedCars[i].transform.position) > despawnRange)
             {
-                Destroy(spawnedCars[i]);
+                DespawnCar(spawnedCars[i]);
                 spawnedCars.RemoveAt(i);
                 i--;
                 continue;
             }
         }
+    }
+
+    public void DespawnAllCars()
+    {
+        foreach (var item in spawnedCars)
+        {
+            DespawnCar(item);
+        }
+    }
+
+    private void DespawnCar(GameObject carObject)
+    {
+        DespawnCar(carObject.GetComponent<CarAI>());
+    }
+
+    public void DespawnCar(CarAI carToDespawn)
+    {
+        carToDespawn.Despawn(false);
     }
 }

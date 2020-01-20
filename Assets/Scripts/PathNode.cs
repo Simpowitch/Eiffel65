@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [System.Serializable]
 public class PathNode : MonoBehaviour
@@ -212,18 +213,24 @@ public class PathNode : MonoBehaviour
     [Header("Editor")]
     Color allowedToPassColor = Color.green;
     Color notAllowedToPassColor = Color.red;
-    static float nodeSize = 1f;
+    static float nodeSize = 1.5f;
     static int visualPathSubsteps = 10; //substeps for catmull-rom curve
+    static float maxDistanceToEditorCamera = 150f;
 
     private void OnDrawGizmos()
     {
         AnalyzeAndValidate();
 
+        if (Vector3.Distance(this.transform.position, SceneView.lastActiveSceneView.camera.transform.position) > maxDistanceToEditorCamera)
+        {
+            return;
+        }
+
+        #region DrawLinesAndCheckConnectivity
         //Draw sphere
         Gizmos.color = greenLight ? allowedToPassColor : notAllowedToPassColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
-        #region DrawLinesAndCheckConnectivity
         bool catmullCurveAllowed = true;
         int visualizationSubsteps = visualPathSubsteps;
 

@@ -426,7 +426,7 @@ MonoBehaviour:
   runningFromPolice: 0
   criminalSpeedFactor: 1.5
   maxRangeFromCarToEndNodeRandom: 500
-  carWidth: 2
+  carWidth: 1.8
   carLength: 2.5
   lineToNode: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   showLineToNextNode: 0
@@ -517,7 +517,7 @@ Transform:
   m_GameObject: {fileID: 4877393323770077117}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 2, z: 7}
+  m_LocalScale: {x: 2.5, y: 2, z: 7}
   m_Children: []
   m_Father: {fileID: 3520741659819737128}
   m_RootOrder: 6
@@ -617,16 +617,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3520741659819737128}
     m_Modifications:
-    - target: {fileID: 1913952348667257842, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.052
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216922677907991867, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_Name
-      value: LightRig
-      objectReference: {fileID: 0}
     - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -681,6 +671,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913952348667257842, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.052
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216922677907991867, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_Name
+      value: LightRig
       objectReference: {fileID: 0}
     - target: {fileID: 4860033673455131448, guid: f205f9a72f368154695879361017bdc1,
         type: 3}

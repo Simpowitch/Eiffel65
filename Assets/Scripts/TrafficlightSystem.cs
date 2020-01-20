@@ -88,4 +88,9 @@ public class TrafficlightSystem : MonoBehaviour
             }
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        
+    }
 }

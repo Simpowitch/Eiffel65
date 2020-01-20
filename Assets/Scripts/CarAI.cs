@@ -48,7 +48,7 @@ public class CarAI : MonoBehaviour
     float criminalNodeAcceptanceDistance = 6f;
 
     //Our speed
-    [SerializeField] float kmhSpeed;
+    [SerializeField] float kmhSpeed; public float GetSpeed() { return kmhSpeed; }
     //Our speed limit
     [SerializeField] float speedToHold = 30;
     //How much is the car steering to the right (1) or left (-1)
@@ -61,13 +61,13 @@ public class CarAI : MonoBehaviour
     //Is the timer on to check if we have moved
     bool checkingIfStuck = false;
     //Time before reversing
-    float checkTimeBeforeStuck = 5f;
+    float checkTimeBeforeStuck = 10f;
     //Is the car stuck
     [SerializeField] bool isStuck = false;
     //If we are this speed lower than what we want, then we are possibly stuck
     float stuckSpeedSensistivity = 5f;
     //How long time shall we back if stuck
-    float timeToBack = 3f;
+    float timeToBack = 2f;
     //Used to check if car is accelerating
     float lastSpeedCheck;
 
@@ -87,6 +87,9 @@ public class CarAI : MonoBehaviour
     //How many times faster do the criminal want to go compared to the road speed limit
     [SerializeField] float criminalSpeedFactor = 1.5f;
 
+    public bool breakingLaw = false;
+    [SerializeField] float resistanceToArrest = 0f;
+    [SerializeField] float resistanceMultiplier = 1f;
 
     private void Start()
     {
@@ -137,6 +140,8 @@ public class CarAI : MonoBehaviour
     private void Update()
     {
         kmhSpeed = rb.velocity.magnitude * 3.6f;
+
+        breakingLaw = (ignoreSpeedLimit || recklessDriver || ignoreStopsAndTrafficLights || runningFromPolice);
     }
 
     //Main function of the car AI
@@ -1085,8 +1090,6 @@ public class CarAI : MonoBehaviour
         return Vector3.Distance(startPoint, obstacle.transform.position);
     }
 
-    float blinkerTimeLit = 0.5f;
-    float blinkerTimeUnLit = 1f;
     /// <summary>
     /// Use lights depending on our car state (braking, turning etc.)
     /// </summary>
@@ -1114,6 +1117,47 @@ public class CarAI : MonoBehaviour
         else
         {
             lightRig.SetLightGroup(false, LightGroup.BrakeLights);
+        }
+    }
+
+    public bool TryArrest()
+    {
+        if (resistanceToArrest < 0)
+        {
+            StopCriminalActivity();
+            return true;
+        }
+        return false;
+    }
+
+    public void ReduceResistanceToArrest(float change)
+    {
+        resistanceToArrest -= (change * resistanceMultiplier);
+        if (resistanceToArrest < 0)
+        {
+            runningFromPolice = false;
+        }
+    }
+
+    private void StopCriminalActivity()
+    {
+        ignoreSpeedLimit = false;
+        ignoreStopsAndTrafficLights = false;
+        recklessDriver = false;
+        runningFromPolice = false;
+    }
+
+    private void OnDestroy()
+    {
+        Despawn(true);
+    }
+
+    public void Despawn(bool destroyCall)
+    {
+        currentNode.RemoveCarFromNode(this);
+        if (!destroyCall)
+        {
+            GameObject.Destroy(this.gameObject, 0.1f);
         }
     }
 
