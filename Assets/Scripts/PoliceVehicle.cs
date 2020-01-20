@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PoliceVehicle : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PoliceVehicle : MonoBehaviour
 
     Rigidbody rb;
     public float carSpeed = 0f;
+    [SerializeField] Text speedText = null;
 
 
     private void Awake()
@@ -29,6 +31,10 @@ public class PoliceVehicle : MonoBehaviour
     private void Update()
     {
         carSpeed = rb.velocity.magnitude * 3.6f;
+        if (speedText)
+        {
+            speedText.text = Mathf.RoundToInt(carSpeed).ToString();
+        }
 
         criminalWithinStopDistance.Clear();
         criminalWithinAffectionDistance.Clear();

@@ -51,14 +51,20 @@ public class DayNightSystem : MonoBehaviour
             {
                 foreach (var item in CarSpawnSystem.spawnedCars)
                 {
-                    item.GetComponentInChildren<LightRig>().SetLightGroup(true, LightGroup.Headlights);
+                    if (item != null)
+                    {
+                        item.GetComponentInChildren<LightRig>().SetLightGroup(true, LightGroup.Headlights);
+                    }
                 }
             }
             else if ((actualTimeOfDay == TimeOfDay.Night && newTimeOfDay != TimeOfDay.Night) || startUp)
             {
                 foreach (var item in CarSpawnSystem.spawnedCars)
                 {
-                    item.GetComponentInChildren<LightRig>().SetLightGroup(false, LightGroup.Headlights);
+                    if (item != null)
+                    {
+                        item.GetComponentInChildren<LightRig>().SetLightGroup(false, LightGroup.Headlights);
+                    }
                 }
             }
         }
