@@ -13,7 +13,7 @@ public interface IFreezeChoice
 public class ChoiceFreeze : MonoBehaviour
 {
 	#region Field
-	[SerializeField] float timeFrozen = 0, timeScale = 1;
+	[SerializeField] float timeFrozen = 1, timeScale = 0;
 
 	int pressedKey = 0;
 	float timer, timeFrozenInv;
@@ -98,10 +98,11 @@ public class ChoiceFreeze : MonoBehaviour
 
 	private void EndOptions()
 	{
-		Time.timeScale = 1;
+		GameManager.instance.timeScale = 1;
 		timer = 0;
 		pressedKey = 0;
 		GameManager.instance.DisplayFastChoice(false);
+		GameManager.instance.gameState = GameState.Playing;
 	}
 
 	#endregion
@@ -125,10 +126,11 @@ public class ChoiceFreeze : MonoBehaviour
 		{
 			calls[i] = callOptions[i];
 		}
-		
+
+		GameManager.instance.gameState = GameState.Unpausable;
 		this.caller = caller;
 		timer = timeFrozen;
-		Time.timeScale = timeScale;
+		GameManager.instance.timeScale = timeScale;
 		
 
 		GameManager.instance.DisplayFastChoice(true, callsOptions);

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum GameState {Playing, Unpausable ,Paused, Menu }
 
 public class GameManager : MonoBehaviour
 {
@@ -9,9 +12,14 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private Text[] promptSpaces = null;
 	[SerializeField] private Image fillBar = null;
 
+	GameState state;
+	float currentTimeScale;
+
 	ChoiceFreeze cf;
 
 	static GameManager inst;
+
+	#region Properties
 
 	public float FillBarAmount
 	{
@@ -24,6 +32,17 @@ public class GameManager : MonoBehaviour
 		get { return cf; }
 	}
 
+	public GameState gameState
+	{
+		get { return state; }
+		set { OnStateExit(state, value);OnStateEnter(state, value); }
+	}
+
+	public float timeScale
+	{
+		get { return currentTimeScale; }
+		set { currentTimeScale = value; Time.timeScale = currentTimeScale; }
+	}
 
 	public static GameManager instance
 	{
@@ -31,10 +50,11 @@ public class GameManager : MonoBehaviour
 	}
 
 
+	#endregion
 
-
-    // Start is called before the first frame update
-    private void Awake()
+	#region Private Methods
+	// Start is called before the first frame update
+	private void Awake()
     {
 		if (instance == null || instance == this)
 			inst = this;
@@ -42,6 +62,57 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 		cf = GetComponent<ChoiceFreeze>();
     }
+
+	private void OnStateEnter(GameState from, GameState to)
+	{
+		switch (to)
+		{
+			case GameState.Menu:
+				break;
+			case GameState.Paused:
+				if(from == GameState.Unpausable)
+				{
+					return;
+				}
+				Time.timeScale = 0;
+				break;
+			case GameState.Playing:
+				Time.timeScale = currentTimeScale;
+				break;
+			case GameState.Unpausable:
+				
+				break;
+
+
+		}
+		state = to;
+	}
+
+	private void OnStateExit(GameState from, GameState to)
+	{
+		switch (to)
+		{
+			case GameState.Menu:
+				break;
+			case GameState.Paused:
+				if (from == GameState.Unpausable)
+				{
+					return;
+				}
+				break;
+			case GameState.Playing:
+				break;
+			case GameState.Unpausable:
+
+				break;
+
+
+		}
+	}
+
+	#endregion
+
+	#region Public Methods
 
 	public void DisplayFastChoice(bool enabled)
 	{
@@ -63,4 +134,21 @@ public class GameManager : MonoBehaviour
 			promptSpaces[i].text = (i+1) + ". " + prompts[i].callText;
 		}
 	}
+
+	public void ChangeScene(int index)
+	{
+		SceneManager.LoadScene(0);
+	}
+
+	public void ChangeScene(string sceneName)
+	{
+		SceneManager.LoadScene(sceneName);
+	}
+
+	public void ReloadScene()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
+
+	#endregion
 }

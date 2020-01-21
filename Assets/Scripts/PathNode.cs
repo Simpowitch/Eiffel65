@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [System.Serializable]
 public class PathNode : MonoBehaviour
@@ -14,33 +15,13 @@ public class PathNode : MonoBehaviour
     public bool isPartOfIntersection = false; //Used to enable cars to check for other cars in the intersection
     public List<CarAI> carsOnThisNode = new List<CarAI>(); //debug public
 
-    [SerializeField] List<DirectionChoice> outChoices = new List<DirectionChoice>();
+    public List<DirectionChoice> outChoices = new List<DirectionChoice>();
     public List<PathNode> inNodes = new List<PathNode>(); //used for catmull-rom (curved path)
-
-    private void Awake()
-    {
-        if (!GetComponentInParent<PathNodeNetwork>())
-        {
-            transform.SetParent(GameObject.FindObjectOfType<PathNodeNetwork>().transform);
-        }
-        PathNodeNetwork network = GetComponentInParent<PathNodeNetwork>();
-
-        List<DirectionChoice> savedChoices = new List<DirectionChoice>();
-
-        foreach (var item in network.directionChoices)
-        {
-            if (item.originalNode == this)
-            {
-                savedChoices.Add(item);
-            }
-        }
-        outChoices = savedChoices;
-    }
 
     private void Start()
     {
-        ValidateConnections();
-        ValidateSetup();
+        AnalyzeAndValidate();
+
         if (outChoices.Count < 1)
         {
             Debug.LogError("You have not set up the path correctly, this node is missing a nodeconnection " + transform.name);
@@ -229,33 +210,27 @@ public class PathNode : MonoBehaviour
         return carsOnThisNode;
     }
 
-
-    private void SaveNode()
-    {
-        if (!GetComponentInParent<PathNodeNetwork>())
-        {
-            transform.SetParent(GameObject.FindObjectOfType<PathNodeNetwork>().transform);
-        }
-        GetComponentInParent<PathNodeNetwork>().SavePathnodesAndConnections();
-    }
-
-
     [Header("Editor")]
     Color allowedToPassColor = Color.green;
     Color notAllowedToPassColor = Color.red;
-    float nodeSize = 1f;
-    int visualPathSubsteps = 15; //substeps for catmull-rom curve
+    static float nodeSize = 1.5f;
+    static int visualPathSubsteps = 10; //substeps for catmull-rom curve
+    static float maxDistanceToEditorCamera = 150f;
 
     private void OnDrawGizmos()
     {
-        ValidateConnections();
-        ValidateSetup();
+        AnalyzeAndValidate();
 
+        if (Vector3.Distance(this.transform.position, SceneView.lastActiveSceneView.camera.transform.position) > maxDistanceToEditorCamera)
+        {
+            return;
+        }
+
+        #region DrawLinesAndCheckConnectivity
         //Draw sphere
         Gizmos.color = greenLight ? allowedToPassColor : notAllowedToPassColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
 
-        #region DrawLinesAndCheckConnectivity
         bool catmullCurveAllowed = true;
         int visualizationSubsteps = visualPathSubsteps;
 
@@ -295,9 +270,33 @@ public class PathNode : MonoBehaviour
             Vector3 currentNode = this.transform.position;
             Vector3 nextNode = Vector3.zero;
             nextNode = outChoices[i].nextNode.transform.position;
+
+            //Check if double node created (if at same space)
+            if (nextNode == currentNode)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(this.transform.position, 10f);
+            }
+
             Vector3 direction = (nextNode - currentNode).normalized;
+            Turn turnDirection = outChoices[i].turnDirection;
+            Color arrowColor = Color.green;
+            switch (turnDirection)
+            {
+                case Turn.Straight:
+                    break;
+                case Turn.Left:
+                    arrowColor = Color.blue;
+                    break;
+                case Turn.Right:
+                    arrowColor = Color.red;
+                    break;
+            }
             Vector3 arrowPosition = currentNode + direction;
-            DrawArrow.ForGizmo(arrowPosition, direction, Gizmos.color, 0.4f, 30);
+            DrawArrow.ForGizmo(arrowPosition, direction, arrowColor, 0.4f, 30);
+
+            //Reset color
+            Gizmos.color = Color.green;
 
             if (catmullCurveAllowed)
             {
@@ -354,27 +353,16 @@ public class PathNode : MonoBehaviour
                 (-p0 + 3 * p1 - 3 * p2 + p3) * i * i * i);
     }
 
-    public void LoadNode()
+
+    //Validations
+    public void AnalyzeAndValidate()
     {
-        if (!GetComponentInParent<PathNodeNetwork>())
-        {
-            transform.SetParent(GameObject.FindObjectOfType<PathNodeNetwork>().transform);
-        }
-        PathNodeNetwork network = GetComponentInParent<PathNodeNetwork>();
-
-        List<DirectionChoice> savedChoices = new List<DirectionChoice>();
-
-        foreach (var item in network.directionChoices)
-        {
-            if (item.originalNode == this)
-            {
-                savedChoices.Add(item);
-            }
-        }
-        outChoices = savedChoices;
+        ValidateConnections();
+        ValidateSetup();
+        SetPositionToMatchTerrain();
     }
 
-    public void ValidateConnections()
+    private void ValidateConnections()
     {
         //Add if this is missing in connected nodes backward nodes
         for (int i = 0; i < outChoices.Count; i++)
@@ -421,7 +409,7 @@ public class PathNode : MonoBehaviour
         }
     }
 
-    public void ValidateSetup()
+    private void ValidateSetup()
     {
         for (int i = 0; i < outChoices.Count; i++)
         {
@@ -442,6 +430,24 @@ public class PathNode : MonoBehaviour
             }
         }
     }
+
+    private void SetPositionToMatchTerrain()
+    {
+        if (Physics.Raycast(this.transform.position, -this.transform.up, out RaycastHit hit))
+        {
+            if (hit.transform.tag == "Terrain")
+            {
+                this.transform.position = hit.point + new Vector3(0, nodeSize / 2, 0);
+            }
+        }
+        else if (Physics.Raycast(this.transform.position + this.transform.up * 100, -this.transform.up, out hit))
+        {
+            if (hit.transform.tag == "Terrain")
+            {
+                this.transform.position = hit.point + new Vector3(0, nodeSize / 2, 0);
+            }
+        }
+    }
 }
 
 
@@ -450,6 +456,11 @@ public static class DrawArrow
 {
     public static void ForGizmo(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
     {
+        if (direction == Vector3.zero)
+        {
+            return;
+        }
+
         Gizmos.DrawRay(pos, direction);
 
         Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);
@@ -460,6 +471,11 @@ public static class DrawArrow
 
     public static void ForGizmo(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
     {
+        if (direction == Vector3.zero)
+        {
+            return;
+        }
+
         Gizmos.color = color;
         Gizmos.DrawRay(pos, direction);
         Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * new Vector3(0, 0, 1);
