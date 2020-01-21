@@ -453,6 +453,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usingSirens: 0
+  criminalWithinStopDistance: []
+  criminalWithinAffectionDistance: []
+  carSpeed: 0
+  speedText: {fileID: 0}
 --- !u!114 &8022342647179797946
 MonoBehaviour:
   m_ObjectHideFlags: 0

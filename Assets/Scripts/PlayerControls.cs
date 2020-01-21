@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    [SerializeField] LightRig lightSystem;
-    [SerializeField] PoliceVehicle policeVehicle;
+    [SerializeField] LightRig lightSystem = null;
+    [SerializeField] PoliceVehicle policeVehicle = null;
 
     // Update is called once per frame
     void Update()

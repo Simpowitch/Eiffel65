@@ -44,6 +44,9 @@ public class PoliceVehicle : MonoBehaviour
             return;
         }
 
+        //draw particle-effect//shader around car displaying the area of effect of the sirens
+
+
         resistanceReductionDistance = Mathf.Max(resistanceReductionDistanceMinimum, carSpeed);
 
         //Affect criminals around police (even speeding cars)
