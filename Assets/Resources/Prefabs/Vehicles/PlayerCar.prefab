@@ -116,6 +116,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -478,90 +479,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6078863158994244954}
     m_Modifications:
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9216922677907991867, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_Name
-      value: LightRig
-      objectReference: {fileID: 0}
-    - target: {fileID: 7806983276579429158, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7806983276579429158, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1192689259405930579, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1192689259405930579, guid: f205f9a72f368154695879361017bdc1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 625835609128806555, guid: f205f9a72f368154695879361017bdc1,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192689259405930579, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192689259405930579, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3180793546955434688, guid: f205f9a72f368154695879361017bdc1,
         type: 3}
@@ -618,6 +549,76 @@ PrefabInstance:
       propertyPath: policeLights.Array.data[5]
       value: 
       objectReference: {fileID: 2871839937595735614}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505984861458248583, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806983276579429158, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806983276579429158, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216922677907991867, guid: f205f9a72f368154695879361017bdc1,
+        type: 3}
+      propertyPath: m_Name
+      value: LightRig
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f205f9a72f368154695879361017bdc1, type: 3}
 --- !u!4 &5710151945674535769 stripped
@@ -645,11 +646,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6078863158994244954}
     m_Modifications:
-    - target: {fileID: 7006242550319858091, guid: 1cdf6ec190b01e34aaee239a219e1819,
-        type: 3}
-      propertyPath: m_Name
-      value: CamRig
-      objectReference: {fileID: 0}
     - target: {fileID: 7004949024601273565, guid: 1cdf6ec190b01e34aaee239a219e1819,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -705,6 +701,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7006242550319858091, guid: 1cdf6ec190b01e34aaee239a219e1819,
+        type: 3}
+      propertyPath: m_Name
+      value: CamRig
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cdf6ec190b01e34aaee239a219e1819, type: 3}
 --- !u!4 &6078863158925040120 stripped
@@ -725,6 +726,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoliceRoofLamp
       objectReference: {fileID: 0}
+    - target: {fileID: 2533253264032067981, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 48e132a6b3a913a42ae0272760f7ed0e, type: 2}
     - target: {fileID: 2846641627151244662, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
         type: 3}
       propertyPath: m_LocalPosition.x

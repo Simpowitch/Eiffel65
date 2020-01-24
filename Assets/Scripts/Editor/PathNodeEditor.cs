@@ -102,7 +102,6 @@ public class PathNodeEditor : Editor
     private PathNode CreateNewNode(PathNode selectedPathNode)
     {
         PathNode newNode;
-        //GameObject newObject = PrefabUtility.InstantiatePrefab(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
         GameObject newObject = Instantiate(Resources.Load("Prefabs/Road/Pathnode")) as GameObject;
         newObject.transform.position = selectedPathNode.transform.position;
         newNode = newObject.GetComponent<PathNode>();
