@@ -778,6 +778,7 @@ GameObject:
   - component: {fileID: 3186443939566292217}
   - component: {fileID: 1966407517264615434}
   - component: {fileID: 4535390494250768102}
+  - component: {fileID: 1449423425727069849}
   m_Layer: 0
   m_Name: Front_grill3
   m_TagString: Untagged
@@ -846,6 +847,24 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1449423425727069849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5085106792111822723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00576fb5238c49e46a60e445f3cb9296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorChoices:
+  - {r: 0.6886792, g: 0.1786668, b: 0.1786668, a: 1}
+  - {r: 0.16558382, g: 0.21858647, b: 0.5754717, a: 1}
+  - {r: 0.14247064, g: 0.4056604, b: 0.109069064, a: 1}
+  - {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &6124967638545643983
 GameObject:
   m_ObjectHideFlags: 0
