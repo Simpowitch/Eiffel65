@@ -61,6 +61,7 @@ public class WheelDrive : MonoBehaviour
                 ws.transform.parent = wheel.transform;
             }
         }
+        normalGrip = m_Wheels[0].sidewaysFriction.extremumSlip;
     }
 
 
@@ -69,6 +70,9 @@ public class WheelDrive : MonoBehaviour
     float engineTorque;
     float brakingTorque;
     float targetSteerAngleAI;
+
+    float normalGrip;
+    float slideGrip = 1;
 
 	public float EngineTorque
 	{
@@ -127,6 +131,26 @@ public class WheelDrive : MonoBehaviour
             else
             {
                 brakingTorque = Input.GetKey(KeyCode.Space) ? brakeTorque : 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                foreach (var item in m_Wheels)
+                {
+                    WheelFrictionCurve curve = item.sidewaysFriction;
+                    curve.extremumSlip = slideGrip;
+                    item.sidewaysFriction = curve;
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                foreach (var item in m_Wheels)
+                {
+                    WheelFrictionCurve curve = item.sidewaysFriction;
+                    curve.extremumSlip = normalGrip;
+                    item.sidewaysFriction = curve;
+                }
             }
 
             lightRig.SetLightGroup(brakingTorque > 0, LightGroup.BrakeLights);

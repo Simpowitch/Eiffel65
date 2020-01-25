@@ -28,11 +28,11 @@ public class LightRig : MonoBehaviour
     float[] forwardPointRange = new float[] { 0.25f, 0.5f };
 
     //Breaklights (spot)
-    float[] breakSpotIntensity = new float[] { 50, 200 };
+    float[] breakSpotIntensity = new float[] { 10, 100 };
     float[] breakSpotRange = new float[] { 3, 10 };
 
     //Breaklights (point)
-    float[] breakPointIntensity = new float[] { 50, 100 };
+    float[] breakPointIntensity = new float[] { 10, 50 };
     float[] breakPointRange = new float[] { 0.1f, 0.5f };
 
     //Color

@@ -689,13 +689,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!1 &6075863498664590106
 GameObject:
@@ -850,13 +850,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!1 &6075863501015292042
 GameObject:
@@ -913,11 +913,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.1
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_Enabled: 1
 --- !u!1 &6075863501871354606
 GameObject:
@@ -972,13 +972,13 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!1 &6075863502049067184
 GameObject:
@@ -1347,11 +1347,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoliceRoofLamp
       objectReference: {fileID: 0}
-    - target: {fileID: 710848386981953756, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 95.492966
-      objectReference: {fileID: 0}
     - target: {fileID: 1120012640395266877, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
         type: 3}
       propertyPath: m_Intensity
@@ -1424,18 +1419,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2930882787133153997, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
         type: 3}
-      propertyPath: m_Intensity
-      value: 95.492966
-      objectReference: {fileID: 0}
-    - target: {fileID: 2930882787133153997, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
-        type: 3}
       propertyPath: m_InnerSpotAngle
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4945804974015104654, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 95.492966
       objectReference: {fileID: 0}
     - target: {fileID: 4945804974015104654, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
         type: 3}
@@ -1446,16 +1431,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_InnerSpotPercent
       value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5271890519830950556, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 95.492966
-      objectReference: {fileID: 0}
-    - target: {fileID: 5737842171719087185, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 95.492966
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47, type: 3}
