@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 6220863155540902172}
   m_Layer: 0
   m_Name: a0r
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -677,11 +677,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 36890.45
-    damper: 5902.472
+    spring: 36890.61
+    damper: 5902.4976
     targetPosition: 0.5
   m_SuspensionDistance: 0.1962
-  m_ForceAppPointDistance: 0.56362724
+  m_ForceAppPointDistance: 0.563627
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 6220863156788133680}
   m_Layer: 0
   m_Name: a1l
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -838,11 +838,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 38109.55
-    damper: 6097.5283
+    spring: 38109.395
+    damper: 6097.503
     targetPosition: 0.5
   m_SuspensionDistance: 0.19620001
-  m_ForceAppPointDistance: 0.56362724
+  m_ForceAppPointDistance: 0.563627
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 6220863155203302816}
   m_Layer: 0
   m_Name: a0l
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -899,11 +899,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 36872.44
-    damper: 5899.591
+    spring: 36871.445
+    damper: 5899.431
     targetPosition: 0.5
   m_SuspensionDistance: 0.19619998
-  m_ForceAppPointDistance: 0.56362724
+  m_ForceAppPointDistance: 0.563627
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -931,7 +931,7 @@ GameObject:
   - component: {fileID: 6220863156776711786}
   m_Layer: 0
   m_Name: a1r
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -960,11 +960,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 38127.55
-    damper: 6100.4087
+    spring: 38128.566
+    damper: 6100.5703
     targetPosition: 0.5
   m_SuspensionDistance: 0.19620003
-  m_ForceAppPointDistance: 0.56362724
+  m_ForceAppPointDistance: 0.563627
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -1347,6 +1347,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoliceRoofLamp
       objectReference: {fileID: 0}
+    - target: {fileID: 710848386981953756, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 95.492966
+      objectReference: {fileID: 0}
     - target: {fileID: 1120012640395266877, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
         type: 3}
       propertyPath: m_Intensity
@@ -1422,15 +1427,35 @@ PrefabInstance:
       propertyPath: m_InnerSpotAngle
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2930882787133153997, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 95.492966
+      objectReference: {fileID: 0}
     - target: {fileID: 4945804974015104654, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
         type: 3}
       propertyPath: m_InnerSpotAngle
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4945804974015104654, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 95.492966
+      objectReference: {fileID: 0}
     - target: {fileID: 5097593706845682060, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
         type: 3}
       propertyPath: m_InnerSpotPercent
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271890519830950556, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 95.492966
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737842171719087185, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 95.492966
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18df9dbf25f72fe4bb142c9ceb3a5c47, type: 3}

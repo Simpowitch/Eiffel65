@@ -45,7 +45,7 @@ WheelCollider:
     damper: 5358.2295
     targetPosition: 0.5
   m_SuspensionDistance: 0.19620001
-  m_ForceAppPointDistance: 0.66366076
+  m_ForceAppPointDistance: 0.6636603
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -102,10 +102,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 27344.81
-    damper: 4375.1694
+    spring: 27344.805
+    damper: 4375.169
     targetPosition: 0.5
-  m_SuspensionDistance: 0.1962
+  m_SuspensionDistance: 0.19620001
   m_ForceAppPointDistance: 0.6636603
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -316,10 +316,10 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.315
   m_SuspensionSpring:
-    spring: 32655.197
-    damper: 5224.8315
+    spring: 32655.191
+    damper: 5224.831
     targetPosition: 0.5
-  m_SuspensionDistance: 0.19620001
+  m_SuspensionDistance: 0.19620003
   m_ForceAppPointDistance: 0.6636603
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -567,6 +567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BMW
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641291049703867450, guid: 4538b700fa23bb54db0efe8a0c3b9826,
+        type: 3}
+      propertyPath: m_TagString
+      value: Vehicle
       objectReference: {fileID: 0}
     - target: {fileID: 5571667495116741071, guid: 4538b700fa23bb54db0efe8a0c3b9826,
         type: 3}
