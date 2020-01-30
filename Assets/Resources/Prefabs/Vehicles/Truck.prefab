@@ -55,6 +55,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -112,7 +113,7 @@ GameObject:
   - component: {fileID: 146000012825162578}
   m_Layer: 0
   m_Name: a1r
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,11 +142,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 38452.406
-    damper: 6152.385
+    spring: 51269.88
+    damper: 8203.181
     targetPosition: 0.5
-  m_SuspensionDistance: 0.1962
-  m_ForceAppPointDistance: 1.6563822
+  m_SuspensionDistance: 0.19620001
+  m_ForceAppPointDistance: 1.6563823
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -173,7 +174,7 @@ GameObject:
   - component: {fileID: 146000012593794246}
   m_Layer: 0
   m_Name: a2r
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,11 +203,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 27355.688
-    damper: 4376.9097
+    spring: 36474.254
+    damper: 5835.8804
     targetPosition: 0.5
   m_SuspensionDistance: 0.1962
-  m_ForceAppPointDistance: 1.6563822
+  m_ForceAppPointDistance: 1.6563823
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -234,7 +235,7 @@ GameObject:
   - component: {fileID: 146000012837650480}
   m_Layer: 0
   m_Name: a1l
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,11 +264,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 38452.152
-    damper: 6152.344
+    spring: 51269.53
+    damper: 8203.125
     targetPosition: 0.5
-  m_SuspensionDistance: 0.1962
-  m_ForceAppPointDistance: 1.6563822
+  m_SuspensionDistance: 0.19620001
+  m_ForceAppPointDistance: 1.6563823
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -390,7 +391,7 @@ GameObject:
   - component: {fileID: 146000010921399008}
   m_Layer: 0
   m_Name: a2l
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -419,11 +420,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 27355.434
-    damper: 4376.8696
+    spring: 36473.9
+    damper: 5835.824
     targetPosition: 0.5
-  m_SuspensionDistance: 0.19620001
-  m_ForceAppPointDistance: 1.6563822
+  m_SuspensionDistance: 0.19620003
+  m_ForceAppPointDistance: 1.6563823
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -451,7 +452,7 @@ GameObject:
   - component: {fileID: 146000013669706522}
   m_Layer: 0
   m_Name: a0l
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,11 +481,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 84192.02
-    damper: 13470.724
+    spring: 112256.03
+    damper: 17960.967
     targetPosition: 0.5
   m_SuspensionDistance: 0.19620001
-  m_ForceAppPointDistance: 1.6563822
+  m_ForceAppPointDistance: 1.6563823
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -512,7 +513,7 @@ GameObject:
   - component: {fileID: 146000011169500426}
   m_Layer: 0
   m_Name: a0r
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -541,11 +542,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 84192.29
-    damper: 13470.766
+    spring: 112256.36
+    damper: 17961.018
     targetPosition: 0.5
   m_SuspensionDistance: 0.19620001
-  m_ForceAppPointDistance: 1.6563822
+  m_ForceAppPointDistance: 1.6563823
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -568,10 +569,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4000012581370544}
     m_Modifications:
-    - target: {fileID: 7006242550319858091, guid: 1cdf6ec190b01e34aaee239a219e1819,
+    - target: {fileID: 3394605192154824763, guid: 1cdf6ec190b01e34aaee239a219e1819,
         type: 3}
-      propertyPath: m_Name
-      value: CamRig
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7004949024601273565, guid: 1cdf6ec190b01e34aaee239a219e1819,
         type: 3}
@@ -638,10 +639,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.83
       objectReference: {fileID: 0}
-    - target: {fileID: 3394605192154824763, guid: 1cdf6ec190b01e34aaee239a219e1819,
+    - target: {fileID: 7006242550319858091, guid: 1cdf6ec190b01e34aaee239a219e1819,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
+      propertyPath: m_Name
+      value: CamRig
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cdf6ec190b01e34aaee239a219e1819, type: 3}

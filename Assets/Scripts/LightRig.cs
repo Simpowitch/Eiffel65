@@ -20,20 +20,20 @@ public class LightRig : MonoBehaviour
     //Ranges + intensity
 
     //Forward headlights (spot)
-    float[] forwardSpotIntensity = new float[] { 2, 4 };
-    float[] forwardSpotRange = new float[] { 10, 40 };
+    float[] forwardSpotIntensity = new float[] { 200, 600 };
+    float[] forwardSpotRange = new float[] { 5, 40 };
 
     //Forward headlights (point)
-    float[] forwardPointIntensity = new float[] { 4, 8 };
-    float[] forwardPointRange = new float[] { 0.5f, 1 };
+    float[] forwardPointIntensity = new float[] { 200, 600 };
+    float[] forwardPointRange = new float[] { 0.25f, 0.5f };
 
     //Breaklights (spot)
-    float[] breakSpotIntensity = new float[] { 1, 2 };
+    float[] breakSpotIntensity = new float[] { 10, 100 };
     float[] breakSpotRange = new float[] { 3, 10 };
 
     //Breaklights (point)
-    float[] breakPointIntensity = new float[] { 3, 6 };
-    float[] breakPointRange = new float[] { 0.5f, 1 };
+    float[] breakPointIntensity = new float[] { 10, 50 };
+    float[] breakPointRange = new float[] { 0.1f, 0.5f };
 
     //Color
     [SerializeField] Color headlightColor = Color.white;

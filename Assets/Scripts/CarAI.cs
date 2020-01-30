@@ -1024,7 +1024,7 @@ public class CarAI : MonoBehaviour
             if (item.gameObject.tag == vehicleTag && item.transform.parent.GetComponent<PoliceVehicle>() != null)
             {
                 PoliceVehicle detectedPolice = item.transform.parent.GetComponent<PoliceVehicle>();
-                if (detectedPolice.usingSirens)
+                if (detectedPolice.GetUsingSirens())
                 {
                     float testDistance = Vector3.Distance(transform.position, item.transform.position);
                     if (testDistance < closestDistance)
