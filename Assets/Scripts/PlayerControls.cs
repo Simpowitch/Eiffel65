@@ -25,7 +25,7 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             lightSystem.SetLightGroup(LightGroup.PoliceLights);
-            policeVehicle.usingSirens = !policeVehicle.usingSirens;
+            policeVehicle.FlipUsingSirens();
         }
     }
 }

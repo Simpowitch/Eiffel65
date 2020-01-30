@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class PoliceVehicle : MonoBehaviour
 {
-    public bool usingSirens = true; //Test true
+    private bool usingSirens = true; //Test true
 
+    [SerializeField] GameObject policeAOEIndicator = null;
 
     float arrestDistance = 10f;
     float arrestMaxSpeed = 0.5f;
@@ -23,9 +24,32 @@ public class PoliceVehicle : MonoBehaviour
     [SerializeField] Text speedText = null;
 
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        SetUsingSirens(false);
+    }
+
+
+    public void SetUsingSirens(bool onOff)
+    {
+        usingSirens = onOff;
+        policeAOEIndicator.SetActive(onOff);
+    }
+
+    public void FlipUsingSirens()
+    {
+        SetUsingSirens(!usingSirens);
+    }
+
+    public bool GetUsingSirens()
+    {
+        return usingSirens;
     }
 
     private void Update()
@@ -44,10 +68,11 @@ public class PoliceVehicle : MonoBehaviour
             return;
         }
 
-        //draw particle-effect//shader around car displaying the area of effect of the sirens
-
 
         resistanceReductionDistance = Mathf.Max(resistanceReductionDistanceMinimum, carSpeed);
+
+        //draw particle-effect//shader around car displaying the area of effect of the sirens
+        policeAOEIndicator.transform.localScale = new Vector3(resistanceReductionDistance, policeAOEIndicator.transform.lossyScale.y, resistanceReductionDistance);
 
         //Affect criminals around police (even speeding cars)
         Collider[] nearbyObjects = Physics.OverlapSphere(this.transform.position, resistanceReductionDistance);
