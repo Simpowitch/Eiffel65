@@ -28,6 +28,18 @@ public class PathNode : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        for (int i = 0; i < carsOnThisNode.Count; i++)
+        {
+            if (carsOnThisNode[i] == null)
+            {
+                carsOnThisNode.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+
     /// <summary>
     /// Returns true when green light is on, or if there is no traffic light present
     /// </summary>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(EasySuspension))]
 [RequireComponent(typeof(PathNodeProgressTracker))]
 [RequireComponent(typeof(WheelDrive))]
@@ -134,7 +135,6 @@ public class CarAI : MonoBehaviour
 
         path[0].AddCarToNode(this);
     }
-
 
 
     private void Update()
