@@ -91,9 +91,17 @@ public class CarSpawnSystem : MonoBehaviour
     }
 
     float obstructionCheck = 20f;
+    [SerializeField] float minSpawnRange = 100f;
     bool CheckIfAllowedSpawn(PathNode nodeToSpawnAt)
     {
+        //If it's part of an intersection
         if (nodeToSpawnAt.isPartOfIntersection)
+        {
+            return false;
+        }
+
+        //If too short
+        if (Vector3.Distance(playerCar.transform.position, nodeToSpawnAt.transform.position) < minSpawnRange)
         {
             return false;
         }

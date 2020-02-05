@@ -229,6 +229,7 @@ public class PathNode : MonoBehaviour
     static int visualPathSubsteps = 10; //substeps for catmull-rom curve
     static float maxDistanceToEditorCamera = 150f;
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         AnalyzeAndValidate();
@@ -238,7 +239,7 @@ public class PathNode : MonoBehaviour
             return;
         }
 
-        #region DrawLinesAndCheckConnectivity
+#region DrawLinesAndCheckConnectivity
         //Draw sphere
         Gizmos.color = greenLight ? allowedToPassColor : notAllowedToPassColor;
         Gizmos.DrawWireSphere(this.transform.position, nodeSize);
@@ -338,7 +339,7 @@ public class PathNode : MonoBehaviour
                 }
             }
         }
-        #endregion
+#endregion
 
         //Show waiting nodes
         //Gizmos.color = Color.red;
@@ -355,6 +356,8 @@ public class PathNode : MonoBehaviour
         //    }
         //}
     }
+#endif
+
 
     private Vector3 CatmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float i)
     {
