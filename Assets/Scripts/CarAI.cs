@@ -144,8 +144,8 @@ public class CarAI : MonoBehaviour
         breakingLaw = (ignoreSpeedLimit || recklessDriver || ignoreStopsAndTrafficLights || runningFromPolice);
     }
 
-    //Main function of the car AI
-    private void FixedUpdate()
+    //Main function of car ai, controller from CarAIMaster for performance, by not running every frame
+    public void UpdateStatus()
     {
         if (!pathParent)
         {

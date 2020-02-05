@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CarSpawnSystem : MonoBehaviour
 {
+    [SerializeField] CarAIMaster carMaster = null;
+
     [SerializeField] GameObject[] vehicles = null;
 
+    [SerializeField] Transform pathParent = null;
     PathNode[] allNodes;
     [SerializeField] Transform playerCar = null;
 
@@ -18,7 +21,7 @@ public class CarSpawnSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        allNodes = GetComponentsInChildren<PathNode>();
+        allNodes = pathParent.GetComponentsInChildren<PathNode>();
 
         for (int i = 0; i < allNodes.Length; i++)
         {
@@ -118,7 +121,7 @@ public class CarSpawnSystem : MonoBehaviour
         return true;
     }
 
-    Vector3 spawnOffset = new Vector3(0, 1, 0);
+    Vector3 spawnOffset = new Vector3(0, 0.1f, 0);
     void SpawnVehicle(PathNode nodeSpawn)
     {
         GameObject spawn = Instantiate(vehicles[Random.Range(0, vehicles.Length)]);
@@ -126,9 +129,10 @@ public class CarSpawnSystem : MonoBehaviour
         spawn.transform.LookAt(nodeSpawn.outChoices[0].nextNode.transform.position);
         spawn.transform.SetParent(carsParent);
 
-        spawn.GetComponent<CarAI>().pathParent = this.transform;
+        spawn.GetComponent<CarAI>().pathParent = pathParent;
 
         spawnedCars.Add(spawn);
+        carMaster.AddCarToQueue(spawn.GetComponent<CarAI>());
         Debug.Log("Car spawned");
     }
 
