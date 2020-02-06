@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class CarAIMaster : MonoBehaviour
 {
+    #region Singleton
+    public static CarAIMaster instance;
+    private void Awake()
+    {
+        if (CarAIMaster.instance == null)
+        {
+            CarAIMaster.instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("another instance of " + this + " was tried to be created, but is now destroyed from gameobject" + this.gameObject.name);
+            Destroy(this);
+        }
+    }
+    #endregion
+
+
     [SerializeField] CarAI[] manuallyAddedAICars = null;
     Queue<CarAI> carAIqueue = new Queue<CarAI>();
 

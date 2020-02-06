@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CarSpawnSystem : MonoBehaviour
 {
-    [SerializeField] CarAIMaster carMaster = null;
-
     [SerializeField] GameObject[] vehicles = null;
 
     [SerializeField] Transform pathParent = null;
@@ -132,7 +130,6 @@ public class CarSpawnSystem : MonoBehaviour
         spawn.GetComponent<CarAI>().pathParent = pathParent;
 
         spawnedCars.Add(spawn);
-        carMaster.AddCarToQueue(spawn.GetComponent<CarAI>());
         Debug.Log("Car spawned");
     }
 

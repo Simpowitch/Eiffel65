@@ -134,6 +134,8 @@ public class CarAI : MonoBehaviour
         }
 
         path[0].AddCarToNode(this);
+
+        CarAIMaster.instance.AddCarToQueue(this);
     }
 
 

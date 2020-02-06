@@ -27,19 +27,18 @@ public class MessageManager : MonoBehaviour
     private Message lastReceivedMessage;
     [SerializeField] TextMeshProUGUI senderNameText = null;
     [SerializeField] TextMeshProUGUI messageText = null;
-    [SerializeField] Image screen = null;
-    [SerializeField] Color screenColorOn = Color.blue;
+    [SerializeField] Animator messagePanelAnimator = null;
 
     private void Start()
     {
-        SetComputerStatus(false);
+        SetMessagePanelStatus(false);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            ToggleComputer();
+            ToggleStatus();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
@@ -52,7 +51,7 @@ public class MessageManager : MonoBehaviour
     {
         Debug.Log("Receiving message from: " + message.sender);
 
-        SetComputerStatus(true);
+        SetMessagePanelStatus(true);
 
         //Save the received message
         lastReceivedMessage = message;
@@ -78,35 +77,33 @@ public class MessageManager : MonoBehaviour
         }
     }
 
-    bool computerOn = false;
-    public void ToggleComputer()
+    bool panelOn = false;
+    public void ToggleStatus()
     {
-        SetComputerStatus(!computerOn);
+        SetMessagePanelStatus(!panelOn);
     }
 
 
-    private void SetComputerStatus(bool on)
+    private void SetMessagePanelStatus(bool on)
     {
-        computerOn = on;
+        panelOn = on;
+        messagePanelAnimator.SetBool("Show", on);
         if (on)
         {
-            screen.color = screenColorOn;
-
             if (lastReceivedMessage != null)
             {
                 //Display last message received
                 senderNameText.text = lastReceivedMessage.sender;
                 messageText.text = lastReceivedMessage.message;
             }
-            Debug.Log("Computer turned on");
+            Debug.Log("Message panel opened");
         }
         else
         {
             StopAllCoroutines();
-            screen.color = Color.black;
             senderNameText.text = "";
             messageText.text = "";
-            Debug.Log("Computer Closed");
+            Debug.Log("Message panel Closed");
         }
     }
 }
