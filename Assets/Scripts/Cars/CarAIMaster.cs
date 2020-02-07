@@ -61,4 +61,9 @@ public class CarAIMaster : MonoBehaviour
         }
         //Debug.Log(numOfCarsDone + " cars done on update in " + (Time.realtimeSinceStartup - timeStart) * 1000 + " ms");
     }
+
+    public CarAI[] GetCarAIs()
+    {
+        return carAIqueue.ToArray();
+    }
 }

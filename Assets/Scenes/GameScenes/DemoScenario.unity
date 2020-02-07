@@ -2494,10 +2494,16 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 47.746483
       objectReference: {fileID: 0}
+    - target: {fileID: 1587779821561844025, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
+        type: 3}
+      propertyPath: debugTestMission
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b39167326cac464ca97ae7d714a359f,
+        type: 2}
     - target: {fileID: 2559640095223945580, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
       propertyPath: m_Intensity
-      value: 190.98593
+      value: 95.492966
       objectReference: {fileID: 0}
     - target: {fileID: 3569149044659581714, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
@@ -2517,7 +2523,7 @@ PrefabInstance:
     - target: {fileID: 4756004857352980797, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
       propertyPath: m_Intensity
-      value: 190.98593
+      value: 95.492966
       objectReference: {fileID: 0}
     - target: {fileID: 4938711877180526576, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
@@ -2527,7 +2533,7 @@ PrefabInstance:
     - target: {fileID: 5731457437866442031, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
       propertyPath: m_Intensity
-      value: 190.98593
+      value: 95.492966
       objectReference: {fileID: 0}
     - target: {fileID: 7339295148476197734, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
@@ -12196,7 +12202,7 @@ GameObject:
   - component: {fileID: 649404059}
   - component: {fileID: 649404058}
   m_Layer: 5
-  m_Name: Image Operator
+  m_Name: Image Operator/Radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16658,7 +16664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434fe1141884d124caa79fea8c6d6cdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMessage: {fileID: 11400000, guid: 7560941cd8990e04e98d38f0f4105180, type: 2}
   senderNameText: {fileID: 1240608037}
   messageText: {fileID: 332191073}
   messagePanelAnimator: {fileID: 1926225437}
@@ -33421,6 +33426,11 @@ PrefabInstance:
     - target: {fileID: 1618800985452795856, guid: 900cf4fca93f7294496b3a0a4a02ace0,
         type: 3}
       propertyPath: ignoreSpeedLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618800985452795856, guid: 900cf4fca93f7294496b3a0a4a02ace0,
+        type: 3}
+      propertyPath: missionCarID
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2321941837724969810, guid: 900cf4fca93f7294496b3a0a4a02ace0,

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17b6265a30357294abcd78ee85a6fb1e, type: 3}
-  m_Name: DebugMessage
+  m_Name: M1Start
   m_EditorClassIdentifier: 
   sender: "Allm\xE4nt anrop"
-  message: "Bankr\xE5net p\xE5 Nordbanken har nu \xF6verg\xE5tt i flykt med fordon.
-    Alla enheter uppm\xE4rksamma en m\xF6rkbl\xE5 kombi \xE5kandes norrut p\xE5 Storgatan,
-    f\xF6lj och inv\xE4nta vidare order"
+  message: The active bank robbery on Nordbanken has now escalated to the suspects
+    fleeing in a dark vehicle. All units be alert and ready to pursuit if possible.
+    The suspects last seen heading north on Storgatan

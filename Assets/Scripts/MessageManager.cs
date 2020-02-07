@@ -22,7 +22,6 @@ public class MessageManager : MonoBehaviour
     }
     #endregion
 
-    public Message debugMessage = null;
 
     private Message lastReceivedMessage;
     [SerializeField] TextMeshProUGUI senderNameText = null;
@@ -40,15 +39,15 @@ public class MessageManager : MonoBehaviour
         {
             ToggleStatus();
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            ReceiveMessage(debugMessage);
-        }
     }
 
     public void ReceiveMessage(Message message)
     {
+        if (message == null)
+        {
+            return;
+        }
+
         Debug.Log("Receiving message from: " + message.sender);
 
         SetMessagePanelStatus(true);

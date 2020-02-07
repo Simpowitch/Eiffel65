@@ -87,6 +87,7 @@ public class CarAI : MonoBehaviour
     [SerializeField] bool runningFromPolice = false;
     //How many times faster do the criminal want to go compared to the road speed limit
     [SerializeField] float criminalSpeedFactor = 1.5f;
+    [SerializeField] int missionCarID = 0; public int GetMissionCarID() { return missionCarID; }
 
     public bool breakingLaw = false;
     [SerializeField] float resistanceToArrest = 0f;

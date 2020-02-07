@@ -114,4 +114,27 @@ public class PoliceVehicle : MonoBehaviour
             }
         }
     }
+
+    public List<CarAI> GetStoppedCars()
+    {
+        List<CarAI> stoppedCars = new List<CarAI>();
+
+        //Search for stopped cars (cars with low speed and criminals)
+        Collider[] nearbyObjects = Physics.OverlapSphere(this.transform.position, arrestDistance);
+        foreach (var item in nearbyObjects)
+        {
+            CarAI car = item.GetComponentInParent<CarAI>();
+            if (car && !stoppedCars.Contains(car))
+            {
+                if (car.GetSpeed() < arrestMaxSpeed && carSpeed < arrestMaxSpeed)
+                {
+                    if (car.TryArrest())
+                    {
+                        stoppedCars.Add(car);
+                    }
+                }
+            }
+        }
+        return stoppedCars;
+    }
 }
