@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd09a996401866418775f348c711446, type: 3}
+  m_Name: "M1-Bankr\xE5n"
+  m_EditorClassIdentifier: 
+  winCondition: 1
+  loseCondition: 1
+  missionCarID: 1
+  missionCriticalDistance: 50
+  reachPosition: {x: 0, y: 0, z: 0}
+  positionRadius: 0
+  timeLimit: 0
+  messageAtStart: {fileID: 11400000, guid: 7560941cd8990e04e98d38f0f4105180, type: 2}
+  messageAtWin: {fileID: 11400000, guid: 5d196c799c194f443bf142d680934403, type: 2}
+  messageAtLose: {fileID: 11400000, guid: bc34e8f0b21267b43a7e532580c2a2e2, type: 2}
