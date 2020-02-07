@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
             CheckMissionComplete();
         }
         if (mission)
-        { 
+        {
             CheckMissionFail();
         }
 
@@ -84,11 +84,13 @@ public class Player : MonoBehaviour
 
                 if (stoppedCars.Contains(missionCarAI))
                 {
-                        CompleteMission();
+                    CompleteMission();
                 }
                 break;
         }
     }
+
+    float[] raycastOffsets = new float[] { -1, -0.5f, 0, 0.5f, 1 };
 
     public void CheckMissionFail()
     {
@@ -107,7 +109,31 @@ public class Player : MonoBehaviour
             case LoseCondition.LostSight:
                 if (Vector3.Distance(playerCar.position, missionCarAI.transform.position) > mission.missionCriticalDistance)
                 {
-                    FailMission();
+                    bool carSeen = false;
+
+                    Vector3 startPos = Camera.main.transform.position;
+                    Vector3 aimPos = missionCarAI.transform.position;
+
+
+                    RaycastHit hit;
+
+                    for (int i = 0; i < raycastOffsets.Length; i++)
+                    {
+                        if (Physics.Raycast(startPos, new Vector3(aimPos.x, aimPos.y+raycastOffsets[i], aimPos.z) - startPos, out hit))
+                        {
+                            if (hit.transform.GetComponentInParent<CarAI>() == missionCarAI)
+                            {
+                                {
+                                    carSeen = true;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!carSeen)
+                    {
+                        FailMission();
+                    }
                 }
                 break;
         }
