@@ -2503,7 +2503,7 @@ PrefabInstance:
     - target: {fileID: 2559640095223945580, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
       propertyPath: m_Intensity
-      value: 95.492966
+      value: 190.98593
       objectReference: {fileID: 0}
     - target: {fileID: 3569149044659581714, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
@@ -2523,7 +2523,7 @@ PrefabInstance:
     - target: {fileID: 4756004857352980797, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
       propertyPath: m_Intensity
-      value: 95.492966
+      value: 190.98593
       objectReference: {fileID: 0}
     - target: {fileID: 4938711877180526576, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
@@ -2533,7 +2533,7 @@ PrefabInstance:
     - target: {fileID: 5731457437866442031, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
       propertyPath: m_Intensity
-      value: 95.492966
+      value: 190.98593
       objectReference: {fileID: 0}
     - target: {fileID: 7339295148476197734, guid: 3ecb280db5002414fbf3a5f1d64d3b03,
         type: 3}
@@ -33421,7 +33421,7 @@ PrefabInstance:
     - target: {fileID: 1618800985452795856, guid: 900cf4fca93f7294496b3a0a4a02ace0,
         type: 3}
       propertyPath: recklessDriver
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1618800985452795856, guid: 900cf4fca93f7294496b3a0a4a02ace0,
         type: 3}
@@ -33432,6 +33432,21 @@ PrefabInstance:
         type: 3}
       propertyPath: missionCarID
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618800985452795856, guid: 900cf4fca93f7294496b3a0a4a02ace0,
+        type: 3}
+      propertyPath: runningFromPolice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618800985452795856, guid: 900cf4fca93f7294496b3a0a4a02ace0,
+        type: 3}
+      propertyPath: ignoreStopsAndTrafficLights
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618800985452795856, guid: 900cf4fca93f7294496b3a0a4a02ace0,
+        type: 3}
+      propertyPath: resistanceToArrest
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2321941837724969810, guid: 900cf4fca93f7294496b3a0a4a02ace0,
         type: 3}
