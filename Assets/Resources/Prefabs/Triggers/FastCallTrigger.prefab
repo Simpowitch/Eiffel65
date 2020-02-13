@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43aad21d63597d64d9476f3775bca6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clips: []
   Consequences:
-  - callText: Insult you boss!
+  - callText: Insult your boss!
     consequense: 2
-  - callText: Insult you bosses ex-wife
+  - callText: Insult your bosses ex-wife
     consequense: 3
   - callText: Catch the criminal
     consequense: 4

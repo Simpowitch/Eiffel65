@@ -34,9 +34,15 @@ public class FastCallCaller : MonoBehaviour, IFreezeChoice
 	{
 		if (other.tag == "Vehicle")
 		{
-			WheelDrive _vehicle = other.transform.GetComponent<WheelDrive>();
-			if (_vehicle != null && _vehicle.pilotedBy == triggerdBy) 
+			
+			WheelDrive _vehicle = other.transform.parent.GetComponent<WheelDrive>();
+			print(other.name);
+			if (_vehicle != null && _vehicle.pilotedBy == triggerdBy)
+			{
+				print("HERE I AM2");
 				GameManager.instance.choiceFreeze.FreezeCall(Consequences, this);
+			}
+
 		}
 	}
 
@@ -44,11 +50,11 @@ public class FastCallCaller : MonoBehaviour, IFreezeChoice
 	{
 		consequense _fastCallCons;
 
-		if (call > 0 && ConsDic.TryGetValue(Consequences[call-1].consequense, out _fastCallCons))
+		if (call > 0 && ConsDic.TryGetValue(Consequences[call - 1].consequense, out _fastCallCons))
 		{
 			_fastCallCons();
 		}
-		else if(call == 0 && ConsDic.TryGetValue(NoAnswer, out _fastCallCons))
+		else if (call == 0 && ConsDic.TryGetValue(NoAnswer, out _fastCallCons))
 		{
 			_fastCallCons();
 		}
