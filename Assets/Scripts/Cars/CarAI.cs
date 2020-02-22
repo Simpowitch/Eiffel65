@@ -436,7 +436,7 @@ public class CarAI : MonoBehaviour
 
         for (int i = 0; i < possibleCollisions.Count; i++)
         {
-            if (possibleCollisions[i].transform.GetComponent<CarAI>() != null || possibleCollisions[i].transform.parent.GetComponent<CarAI>() != null)
+            if (possibleCollisions[i].tag == "Vehicle" && (possibleCollisions[i].transform.GetComponent<CarAI>() != null || possibleCollisions[i].transform.parent.GetComponent<CarAI>() != null))
             {
                 blockingCar = possibleCollisions[i].transform.parent.GetComponent<CarAI>();
                 break;

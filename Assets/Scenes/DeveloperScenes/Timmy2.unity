@@ -16351,6 +16351,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FastCallTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 4846082168969400912, guid: 7bde9e812951b7241b6bf02efab332a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4846082168969400918, guid: 7bde9e812951b7241b6bf02efab332a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16364,7 +16369,7 @@ PrefabInstance:
     - target: {fileID: 4846082168969400918, guid: 7bde9e812951b7241b6bf02efab332a2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 440.2
+      value: 449.5
       objectReference: {fileID: 0}
     - target: {fileID: 4846082168969400918, guid: 7bde9e812951b7241b6bf02efab332a2,
         type: 3}
