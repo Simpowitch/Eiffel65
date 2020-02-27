@@ -192,13 +192,13 @@ public class AudioManager : MonoBehaviour
 	/// <returns></returns>
 	public AudioSource PlayClip(AudioClip clip, Transform fromObject)
 	{
-		for (int i = 1; i < worldPositionSources.Count; i++)
+		for (int i = 1; i < movingAudioSources.Count; i++)
 		{
-			if (!worldPositionSources[i].isPlaying)
+			if (!movingAudioSources[i].audioSource.isPlaying)
 			{
-				worldPositionSources[i].clip = clip;
-				worldPositionSources[i].Play();
-				return worldPositionSources[i];
+				movingAudioSources[i].audioSource.clip = clip;
+				movingAudioSources[i].audioSource.Play();
+				return movingAudioSources[i].audioSource;
 			}
 		}
 		GameObject temp = new GameObject();
@@ -211,16 +211,22 @@ public class AudioManager : MonoBehaviour
 		_source.Play();
 		return _source;
 	}
-
+	/// <summary>
+	/// Play a sound that follows the given transform.
+	/// </summary>
+	/// <param name="clip"></param>
+	/// <param name="fromObject"></param>
+	/// <param name="loop"></param>
+	/// <returns></returns>
 	public AudioSource PlayClip(AudioClip clip, Transform fromObject, bool loop)
 	{
-		for (int i = 1; i < worldPositionSources.Count; i++)
+		for (int i = 1; i < movingAudioSources.Count; i++)
 		{
-			if (!worldPositionSources[i].isPlaying)
+			if (!movingAudioSources[i].audioSource.isPlaying)
 			{
-				worldPositionSources[i].clip = clip;
-				worldPositionSources[i].Play();
-				return worldPositionSources[i];
+				movingAudioSources[i].audioSource.clip = clip;
+				movingAudioSources[i].audioSource.Play();
+				return movingAudioSources[i].audioSource;
 			}
 		}
 		GameObject temp = new GameObject();

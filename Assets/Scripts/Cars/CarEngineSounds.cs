@@ -34,7 +34,8 @@ public class CarEngineSounds : MonoBehaviour
 		gear = 11;
 		for (int i = 0; i < engineSounds.Length-1; i++)
 		{
-			if (IsInRange(wheels.Speed * Input.GetAxis("Vertical"), speedThresholds[i], speedThresholds[i+1]))
+			float _throttle = 0.5f + 0.5f * Input.GetAxis("Vertical");
+			if (IsInRange(wheels.Speed * _throttle, speedThresholds[i], speedThresholds[i+1]))
 			{
 				gear = i;
 			}
@@ -48,7 +49,6 @@ public class CarEngineSounds : MonoBehaviour
 			previousAudioSource = AudioManager.Instance.PlayClip(engineSounds[gear], transform, true);
 		}
 		previousGear = gear;
-		print(gear);
     }
 
 	/// <summary>
