@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public enum GameState {Playing, Unpausable ,Paused, Menu }
 
 public class GameManager : MonoBehaviour
 {
 	[SerializeField] private GameObject[] menus = null; // 0 = FastChoice (for now)
-	[SerializeField] private Text[] promptSpaces = null;
+	[SerializeField] private TextMeshProUGUI[] promptSpaces = null;
 	[SerializeField] private Image fillBar = null;
 
 	GameState state;
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
 	public void DisplayFastChoice(bool enabled, FastCall[] prompts)
 	{
 		//Resets the prompts on the canvas
-		foreach(Text t in promptSpaces)
+		foreach(TextMeshProUGUI t in promptSpaces)
 		{
 			t.text = "";
 		}
